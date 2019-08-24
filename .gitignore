@@ -1,0 +1,22 @@
+# netbeans project files
+nbproject
+
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# Yii temp directories
+web/assets/**
+runtime/**
+web/minify/**
