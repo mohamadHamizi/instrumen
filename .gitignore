@@ -20,3 +20,6 @@ phpunit.phar
 web/assets/**
 runtime/**
 web/minify/**
+
+config/db.php
+web/index.php
