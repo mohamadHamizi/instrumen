@@ -9,7 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Users;
-//use Yii;
 use yii\filters\AccessControl;
 use app\models\OkuQuestions;
 use app\models\OkuRespons;
@@ -18,6 +17,8 @@ use app\models\OkuSumber;
 use yii\data\ActiveDataProvider;
 use app\models\OkuGroups;
 use app\models\OkuDimensi;
+use app\models\OkuStrategi;
+use app\models\OkuKesan;
 
 /**
  * CutiController implements the CRUD actions for RekodCuti model.
@@ -41,10 +42,10 @@ class IksokufController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['mohon', 'pengganti'],
+                'only' => ['bahagian-a', 'bahagian-b', 'bahagian-a', 'bahagian-d'],
                 'rules' => [
                     [
-                        'actions' => ['mohon', 'pengganti'],
+                        'actions' => ['bahagian-a', 'bahagian-b', 'bahagian-a', 'bahagian-d'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -109,6 +110,52 @@ class IksokufController extends Controller {
         ]);
     }
 
+    public function actionBahagianC() {
+
+        $this->view->title = "BAHAGIAN C : STRATEGI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL";
+
+        $groups = OkuGroups::findAll(['type' => 'C']);
+
+        $model = new OkuStrategi();
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+           $model->main_id = 1;
+
+            if ($model->save()) {
+                return $this->redirect(['bahagian-d']);
+            }
+        }
+
+        return $this->render('bahagian-c', [
+                    'model1' => $model,
+                    'groups' => $groups,
+        ]);
+    }
+    
+    public function actionBahagianD() {
+
+        $this->view->title = "BAHAGIAN D : KESAN KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL";
+
+        $groups = OkuGroups::findAll(['type' => 'D']);
+
+        $model = new OkuKesan();
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+           $model->main_id = 1;
+
+            if ($model->save()) {
+                return $this->redirect(['bahagian-d']);
+            }
+        }
+
+        return $this->render('bahagian-d', [
+                    'model1' => $model,
+                    'groups' => $groups,
+        ]);
+    }
+    
     public function actionPapan() {
 
         $model = RekodCuti::find()->where(['status' => 'APPROVED'])->all();

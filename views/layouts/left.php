@@ -31,9 +31,9 @@
             </div>
         </form>-->
         <!-- /.search form -->
-        <?php $noti_ganti = app\models\RekodCuti::noti_ganti(); ?>
-        <?php $noti_peraku = app\models\RekodCuti::noti_peraku(); ?>
-        <?php $noti_lulus = app\models\RekodCuti::noti_lulus(); ?>
+        <?php //$noti_ganti = app\models\RekodCuti::noti_ganti(); ?>
+        <?php //$noti_peraku = app\models\RekodCuti::noti_peraku(); ?>
+        <?php //$noti_lulus = app\models\RekodCuti::noti_lulus(); ?>
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
@@ -41,19 +41,23 @@
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
 //                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
 //                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Dashboard','icon' => 'calendar', 'url' => ['cuti/papan'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'Mohon Cuti','icon' => 'calendar-plus-o', 'url' => ['cuti/mohon'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => "Pengganti $noti_ganti", 'encode'=>false,'icon' => 'user', 'url' => ['cuti/pengganti'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => "Perakuan $noti_peraku", 'encode'=>false,'icon' => 'check-circle-o', 'url' => ['cuti/peraku'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => "Kelulusan $noti_lulus", 'encode'=>false,'icon' => 'check-circle', 'url' => ['cuti/lulus'], 'visible' => !Yii::$app->user->isGuest],
+//                    ['label' => 'Dashboard','icon' => 'calendar', 'url' => ['cuti/papan'], 'visible' => !Yii::$app->user->isGuest],
+//                    ['label' => 'Mohon Cuti','icon' => 'calendar-plus-o', 'url' => ['cuti/mohon'], 'visible' => !Yii::$app->user->isGuest],
+//                    ['label' => "Pengganti $noti_ganti", 'encode'=>false,'icon' => 'user', 'url' => ['cuti/pengganti'], 'visible' => !Yii::$app->user->isGuest],
+//                    ['label' => "Perakuan $noti_peraku", 'encode'=>false,'icon' => 'check-circle-o', 'url' => ['cuti/peraku'], 'visible' => !Yii::$app->user->isGuest],
+//                    ['label' => "Kelulusan $noti_lulus", 'encode'=>false,'icon' => 'check-circle', 'url' => ['cuti/lulus'], 'visible' => !Yii::$app->user->isGuest],
 //                    ['label' => 'Senarai Permohonan','icon' => 'list', 'url' => ['cuti/senarai'], 'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-//                    [
-//                        'label' => 'Some tools',
-//                        'icon' => 'share',
-//                        'url' => '#',
-//                        'items' => [
-//                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
+//                    ['label' => 'e-IKSOKU-F','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => !Yii::$app->user->isGuest],
+                    [
+                        'label' => 'e-IKSOKU-F',
+                        'icon' => 'list',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Bahagian A','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => !Yii::$app->user->isGuest],
+                            ['label' => 'Bahagian B','icon' => 'list', 'url' => ['iksokuf/bahagian-b'], 'visible' => !Yii::$app->user->isGuest],
+                            ['label' => 'Bahagian C','icon' => 'list', 'url' => ['iksokuf/bahagian-c'], 'visible' => !Yii::$app->user->isGuest],
+                            ['label' => 'Bahagian D','icon' => 'list', 'url' => ['iksokuf/bahagian-d'], 'visible' => !Yii::$app->user->isGuest],
 //                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
 //                            [
 //                                'label' => 'Level One',
@@ -72,8 +76,8 @@
 //                                    ],
 //                                ],
 //                            ],
-//                        ],
-//                    ],
+                        ],
+                    ],
                 ],
             ]
         ) ?>
