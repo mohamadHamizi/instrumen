@@ -64,7 +64,7 @@ use kartik\growl\Growl;
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2019 <a href="http://www.ums.edu.my/koleje/pentadbiran">Kolej Kediaman Excellent</a>.</strong> Hak Cipta Terpelihara.
+    <strong>&copy; <?=date('Y') ?> <a href="https://uppsiks">Profesor Madya Dr. Muhammad Idris Bin Bullare @ Hj. Bahari</a>.</strong>
 </footer>
 
 <!-- Control Sidebar -->

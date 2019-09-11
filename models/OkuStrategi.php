@@ -159,4 +159,27 @@ class OkuStrategi extends \yii\db\ActiveRecord
             'c59' => 'C59',
         ];
     }
+    
+    public static function GroupSkor($group_id, $main_id) {
+
+        $q = OkuQuestions::findAll(['group_id' => $group_id]);
+
+        $arr = '';
+        $skor = 0;
+
+        foreach ($q as $v) {
+            $arr .= strtolower($v->code) . ',';
+        }
+
+        $model = OkuStrategi::find()
+                ->select("$arr")
+                ->where(['main_id' => $main_id])
+                ->one();
+
+        foreach($model as $key => $val){
+            $skor += $val;
+        }
+        
+        return $skor;
+    }
 }

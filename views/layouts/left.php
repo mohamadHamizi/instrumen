@@ -3,22 +3,22 @@
     <section class="sidebar">
 
         <!-- Sidebar user panel -->
-        <div class="user-panel">
+<!--        <div class="user-panel">
             <div class="pull-left image">
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p style="font-size:9px"><?php 
-                   $icno = Yii::$app->user->getId();
-                   $user = app\models\Users::findOne(['icno'=>$icno]);
-                   
-                   echo $user->fullname
+//                   $icno = Yii::$app->user->getId();
+//                   $user = app\models\Users::findOne(['icno'=>$icno]);
+//                   
+//                   echo $user->fullname
                 
                 ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-        </div>
+        </div>-->
 
         <!-- search form -->
 <!--        <form action="#" method="get" class="sidebar-form">
@@ -47,17 +47,19 @@
 //                    ['label' => "Perakuan $noti_peraku", 'encode'=>false,'icon' => 'check-circle-o', 'url' => ['cuti/peraku'], 'visible' => !Yii::$app->user->isGuest],
 //                    ['label' => "Kelulusan $noti_lulus", 'encode'=>false,'icon' => 'check-circle', 'url' => ['cuti/lulus'], 'visible' => !Yii::$app->user->isGuest],
 //                    ['label' => 'Senarai Permohonan','icon' => 'list', 'url' => ['cuti/senarai'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+//                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
 //                    ['label' => 'e-IKSOKU-F','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => !Yii::$app->user->isGuest],
                     [
                         'label' => 'e-IKSOKU-F',
-                        'icon' => 'list',
+                        'icon' => 'wheelchair-alt',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Bahagian A','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => !Yii::$app->user->isGuest],
-                            ['label' => 'Bahagian B','icon' => 'list', 'url' => ['iksokuf/bahagian-b'], 'visible' => !Yii::$app->user->isGuest],
-                            ['label' => 'Bahagian C','icon' => 'list', 'url' => ['iksokuf/bahagian-c'], 'visible' => !Yii::$app->user->isGuest],
-                            ['label' => 'Bahagian D','icon' => 'list', 'url' => ['iksokuf/bahagian-d'], 'visible' => !Yii::$app->user->isGuest],
+                            ['label' => 'Bahagian A','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => true],
+                            ['label' => 'Bahagian B','icon' => 'list', 'url' => ['iksokuf/bahagian-b'], 'visible' => true],
+                            ['label' => 'Bahagian C','icon' => 'list', 'url' => ['iksokuf/bahagian-c'], 'visible' => true],
+                            ['label' => 'Bahagian D','icon' => 'list', 'url' => ['iksokuf/bahagian-d'], 'visible' => true],
+                            ['label' => 'Keputusan','icno' => 'file', 'url' => ['iksokuf/result'], 'visible' => true],
+//                            ['label' => 'Bahagian D','icon' => 'list', 'url' => ['iksokuf/bahagian-d'], 'visible' => !Yii::$app->user->isGuest],
 //                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
 //                            [
 //                                'label' => 'Level One',

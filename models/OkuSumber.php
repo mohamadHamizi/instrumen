@@ -165,4 +165,58 @@ class OkuSumber extends \yii\db\ActiveRecord
             'b62' => 'B62',
         ];
     }
+    
+    public static function GroupSkor($group_id, $main_id) {
+
+        $q = OkuQuestions::findAll(['group_id' => $group_id]);
+
+        $arr = '';
+        $skor = 0;
+
+        foreach ($q as $v) {
+            $arr .= strtolower($v->code) . ',';
+        }
+
+        $model = OkuSumber::find()
+                ->select("$arr")
+                ->where(['main_id' => $main_id])
+                ->one();
+
+        foreach($model as $key => $val){
+            $skor += $val;
+        }
+        
+        return $skor;
+    }
+
+    public function getKepuasan() {
+        return $this->GroupSkor(1, $this->main_id);
+    }
+    public function getSokonganPenjaga() {
+        return $this->GroupSkor(2, $this->main_id);
+    }
+    public function getSokonganRakan() {
+        return $this->GroupSkor(3, $this->main_id);
+    }
+    public function getSokonganInstitusi() {
+        return $this->GroupSkor(4, $this->main_id);
+    }
+    public function getPeralatan() {
+        return $this->GroupSkor(5, $this->main_id);
+    }
+    public function getAksesibiliti() {
+        return $this->GroupSkor(6, $this->main_id);
+    }
+    public function getKesaksamaan() {
+        return $this->GroupSkor(7, $this->main_id);
+    }
+    public function getKebebasan() {
+        return $this->GroupSkor(8, $this->main_id);
+    }
+    public function getPencapaian() {
+        return $this->GroupSkor(9, $this->main_id);
+    }
+    public function getKesihatanFizikal() {
+        return $this->GroupSkor(10, $this->main_id);
+    }
 }

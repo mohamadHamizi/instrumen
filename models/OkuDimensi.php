@@ -68,23 +68,21 @@ use Yii;
  * @property int $a57
  * @property int $a58
  */
-class OkuDimensi extends \yii\db\ActiveRecord
-{
+class OkuDimensi extends \yii\db\ActiveRecord {
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'oku_dimensi';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['main_id', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12', 'a13', 'a14', 'a15', 'a16', 'a17', 'a18', 'a19', 'a20', 'a21', 'a22', 'a23', 'a24', 'a25', 'a26', 'a27', 'a28', 'a29', 'a30', 'a31', 'a32', 'a33', 'a34', 'a35', 'a36', 'a37', 'a38', 'a39', 'a40', 'a41', 'a42', 'a43', 'a44', 'a45', 'a46', 'a47', 'a48', 'a49', 'a50', 'a51', 'a52', 'a53', 'a54', 'a55', 'a56', 'a57', 'a58'], 'required', 'message'=>"Ruangan ini adalah wajib!"],
+            [['main_id', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12', 'a13', 'a14', 'a15', 'a16', 'a17', 'a18', 'a19', 'a20', 'a21', 'a22', 'a23', 'a24', 'a25', 'a26', 'a27', 'a28', 'a29', 'a30', 'a31', 'a32', 'a33', 'a34', 'a35', 'a36', 'a37', 'a38', 'a39', 'a40', 'a41', 'a42', 'a43', 'a44', 'a45', 'a46', 'a47', 'a48', 'a49', 'a50', 'a51', 'a52', 'a53', 'a54', 'a55', 'a56', 'a57', 'a58'], 'required', 'message' => "Ruangan ini adalah wajib!"],
             [['main_id', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12', 'a13', 'a14', 'a15', 'a16', 'a17', 'a18', 'a19', 'a20', 'a21', 'a22', 'a23', 'a24', 'a25', 'a26', 'a27', 'a28', 'a29', 'a30', 'a31', 'a32', 'a33', 'a34', 'a35', 'a36', 'a37', 'a38', 'a39', 'a40', 'a41', 'a42', 'a43', 'a44', 'a45', 'a46', 'a47', 'a48', 'a49', 'a50', 'a51', 'a52', 'a53', 'a54', 'a55', 'a56', 'a57', 'a58'], 'integer'],
         ];
     }
@@ -92,8 +90,7 @@ class OkuDimensi extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'main_id' => 'Main ID',
@@ -157,4 +154,56 @@ class OkuDimensi extends \yii\db\ActiveRecord
             'a58' => 'A58',
         ];
     }
+
+    public static function GroupSkor($group_id, $main_id) {
+
+        $q = OkuQuestions::findAll(['group_id' => $group_id]);
+
+        $arr = '';
+        $skor = 0;
+
+        foreach ($q as $v) {
+            $arr .= strtolower($v->code) . ',';
+        }
+
+        $model = OkuDimensi::find()
+                ->select("$arr")
+                ->where(['main_id' => $main_id])
+                ->one();
+
+        foreach($model as $key => $val){
+            $skor += $val;
+        }
+        
+        return $skor;
+    }
+
+    public function getKepuasan() {
+        return $this->GroupSkor(11, $this->main_id);
+    }
+
+    public function getPenerimaanKendiri() {
+         return $this->GroupSkor(12, $this->main_id);
+    }
+
+    public function getAltruisme() {
+         return $this->GroupSkor(13, $this->main_id);
+    }
+
+    public function getAfekPositif() {
+        return $this->GroupSkor(14, $this->main_id);
+    }
+
+    public function getAfekNegatif() {
+         return $this->GroupSkor(15, $this->main_id);
+    }
+
+    public function getKerohanian() {
+         return $this->GroupSkor(16, $this->main_id);
+    }
+
+    public function getPemikiranPositif() {
+        return $this->GroupSkor(17, $this->main_id);
+    }
+
 }

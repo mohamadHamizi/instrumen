@@ -5,8 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'pentadbiran',
-    'name' => 'Kolej Excellent',
-    'defaultRoute' => 'cuti/mohon',
+    'name' => 'OKU TEST',
+    'defaultRoute' => 'iksokuf/bahagian-a',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [

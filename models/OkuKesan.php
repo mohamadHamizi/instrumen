@@ -73,4 +73,27 @@ class OkuKesan extends \yii\db\ActiveRecord
             'd16' => 'D16',
         ];
     }
+    
+    public static function GroupSkor($group_id, $main_id) {
+
+        $q = OkuQuestions::findAll(['group_id' => $group_id]);
+
+        $arr = '';
+        $skor = 0;
+
+        foreach ($q as $v) {
+            $arr .= strtolower($v->code) . ',';
+        }
+
+        $model = OkuKesan::find()
+                ->select("$arr")
+                ->where(['main_id' => $main_id])
+                ->one();
+
+        foreach($model as $key => $val){
+            $skor += $val;
+        }
+        
+        return $skor;
+    }
 }

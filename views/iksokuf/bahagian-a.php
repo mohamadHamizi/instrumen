@@ -98,7 +98,6 @@ use app\models\OkuQuestions;
 
                 <?php ActiveForm::end(); ?>
 
-
             </div>
         </div>
     </div>
