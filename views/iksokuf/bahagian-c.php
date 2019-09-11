@@ -12,7 +12,7 @@ use app\models\OkuQuestions;
 ?>
 <div class="box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-calendar-plus-o"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
+        <h3 class="box-title"><i class="fa fa-hourglass-start"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
     </div>
 
 

@@ -54,11 +54,11 @@
                         'icon' => 'wheelchair-alt',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Bahagian A','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => true],
-                            ['label' => 'Bahagian B','icon' => 'list', 'url' => ['iksokuf/bahagian-b'], 'visible' => true],
-                            ['label' => 'Bahagian C','icon' => 'list', 'url' => ['iksokuf/bahagian-c'], 'visible' => true],
-                            ['label' => 'Bahagian D','icon' => 'list', 'url' => ['iksokuf/bahagian-d'], 'visible' => true],
-                            ['label' => 'Keputusan','icno' => 'file', 'url' => ['iksokuf/result'], 'visible' => true],
+                            ['label' => 'Bahagian A','icon' => 'th-large', 'url' => ['iksokuf/bahagian-a'], 'visible' => true],
+                            ['label' => 'Bahagian B','icon' => 'random', 'url' => ['iksokuf/bahagian-b'], 'visible' => true],
+                            ['label' => 'Bahagian C','icon' => 'hourglass-start', 'url' => ['iksokuf/bahagian-c'], 'visible' => true],
+                            ['label' => 'Bahagian D','icon' => 'cloud-download', 'url' => ['iksokuf/bahagian-d'], 'visible' => true],
+                            ['label' => 'Keputusan','icon' => 'file-text', 'url' => ['iksokuf/result'], 'visible' => true],
 //                            ['label' => 'Bahagian D','icon' => 'list', 'url' => ['iksokuf/bahagian-d'], 'visible' => !Yii::$app->user->isGuest],
 //                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
 //                            [
