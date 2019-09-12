@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'pentadbiran',
-    'name' => 'OKU TEST',
+    'name' => 'UPPsikS',
     'defaultRoute' => 'iksokuf/bahagian-a',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
