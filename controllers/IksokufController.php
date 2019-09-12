@@ -21,6 +21,7 @@ use app\models\OkuStrategi;
 use app\models\OkuKesan;
 use app\models\OkuMain;
 use yii\web\Session;
+use app\models\OkuDemografi;
 
 /**
  * CutiController implements the CRUD actions for RekodCuti model.
@@ -74,15 +75,18 @@ class IksokufController extends Controller {
 
             //sekiranya ada rekod.. just continue ke page yang blum ada markah
             if ($exist) {
+
                 $session->set('icno', $exist->icno);
                 $session->set('main_id', $exist->id);
-                return $this->redirect(['bahagian-a']);
+                return $this->redirect(['demografi']);
             } else {
+
+                $model->created_dt = date("Y-m-d");
 
                 if ($model->save()) {
                     $session->set('icno', $model->icno);
                     $session->set('main_id', $model->id);
-                    return $this->redirect(['bahagian-a']);
+                    return $this->redirect(['demografi']);
                 }
             }
         }
@@ -92,24 +96,50 @@ class IksokufController extends Controller {
         ]);
     }
 
+    public function actionDemografi() {
+        
+        $this->view->title = "PROFIL DEMOGRAFI";
+        $this->checkSession();
 
-    
+        $main_id = \Yii::$app->session->get('main_id');
+
+        $model = new OkuDemografi();
+        
+        $demografi = OkuDemografi::findOne(['main_id' => $main_id]);
+
+        if ($demografi) {
+            $model = $demografi;
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->main_id = $main_id;
+
+            if ($model->save()) {
+                return $this->redirect(['bahagian-a']);
+            }
+        }
+
+        return $this->render('demografi', [
+                    'model' => $model,
+        ]);
+    }
 
     public function actionBahagianA() {
 
         $this->checkSession();
-        
+
         $main_id = \Yii::$app->session->get('main_id');
 
         $this->view->title = "BAHAGIAN A : DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL";
 
         $groups = OkuGroups::findAll(['type' => 'A']);
-        
+
         $model = new OkuDimensi();
-        
-        $dimensi = OkuDimensi::findOne(['main_id'=>$main_id]);
-        
-        if($dimensi){
+
+        $dimensi = OkuDimensi::findOne(['main_id' => $main_id]);
+
+        if ($dimensi) {
             $model = $dimensi;
         }
 
@@ -127,13 +157,13 @@ class IksokufController extends Controller {
                     'groups' => $groups,
         ]);
     }
-    
+
     /**
      * Lists all RekodCuti models.
      * @return mixed
      */
     public function actionBahagianB() {
-        
+
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
@@ -142,13 +172,13 @@ class IksokufController extends Controller {
         $groups = OkuGroups::findAll(['type' => 'B']);
 
         $model = new OkuSumber();
-        
-        $sumber = OkuSumber::findOne(['main_id'=>$main_id]);
-        
-        if($sumber){
+
+        $sumber = OkuSumber::findOne(['main_id' => $main_id]);
+
+        if ($sumber) {
             $model = $sumber;
         }
-        
+
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -166,7 +196,7 @@ class IksokufController extends Controller {
     }
 
     public function actionBahagianC() {
-        
+
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
@@ -175,10 +205,10 @@ class IksokufController extends Controller {
         $groups = OkuGroups::findAll(['type' => 'C']);
 
         $model = new OkuStrategi();
-        
-        $strategi = OkuStrategi::findOne(['main_id'=>$main_id]);
-        
-        if($strategi){
+
+        $strategi = OkuStrategi::findOne(['main_id' => $main_id]);
+
+        if ($strategi) {
             $model = $strategi;
         }
 
@@ -198,7 +228,7 @@ class IksokufController extends Controller {
     }
 
     public function actionBahagianD() {
-        
+
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
@@ -207,10 +237,10 @@ class IksokufController extends Controller {
         $groups = OkuGroups::findAll(['type' => 'D']);
 
         $model = new OkuKesan();
-        
-        $kesan = OkuKesan::findOne(['main_id'=>$main_id]);
-        
-        if($kesan){
+
+        $kesan = OkuKesan::findOne(['main_id' => $main_id]);
+
+        if ($kesan) {
             $model = $kesan;
         }
 
@@ -228,27 +258,26 @@ class IksokufController extends Controller {
                     'groups' => $groups,
         ]);
     }
-    
-    
+
     public function actionResult() {
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
         $this->view->title = "KEPUTUSAN";
-        
-        
-        $model = OkuMain::findOne(['id'=>$main_id]);
-        $bhgnA = OkuDimensi::findOne(['main_id'=>$main_id]);
-        $bhgnB = OkuSumber::findOne(['main_id'=>$main_id]);
-        $bhgnC = OkuStrategi::findOne(['main_id'=>$main_id]);
-        $bhgnD = OkuKesan::findOne(['main_id'=>$main_id]);
-        
-        $groups = OkuGroups::findAll(['type'=>'A']);
-        $groupsB = OkuGroups::findAll(['type'=>'B']);
-        $groupsC = OkuGroups::findAll(['type'=>'C']);
-        $groupsD = OkuGroups::findAll(['type'=>'D']);
-        
-        
+
+
+        $model = OkuMain::findOne(['id' => $main_id]);
+        $bhgnA = OkuDimensi::findOne(['main_id' => $main_id]);
+        $bhgnB = OkuSumber::findOne(['main_id' => $main_id]);
+        $bhgnC = OkuStrategi::findOne(['main_id' => $main_id]);
+        $bhgnD = OkuKesan::findOne(['main_id' => $main_id]);
+
+        $groups = OkuGroups::findAll(['type' => 'A']);
+        $groupsB = OkuGroups::findAll(['type' => 'B']);
+        $groupsC = OkuGroups::findAll(['type' => 'C']);
+        $groupsD = OkuGroups::findAll(['type' => 'D']);
+
+
         return $this->render('result', [
                     'model' => $model,
                     'bhgnA' => $bhgnA,
@@ -549,7 +578,7 @@ class IksokufController extends Controller {
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    
+
     protected function checkSession() {
         $icno = \Yii::$app->session->get('icno');
 

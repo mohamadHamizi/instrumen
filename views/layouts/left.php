@@ -54,6 +54,8 @@
                         'icon' => 'wheelchair-alt',
                         'url' => '#',
                         'items' => [
+                            ['label' => 'Utama','icon' => 'tachometer', 'url' => ['iksokuf/index'], 'visible' => true],
+                            ['label' => 'Profil Demografi','icon' => 'user', 'url' => ['iksokuf/demografi'], 'visible' => true],
                             ['label' => 'Bahagian A','icon' => 'th-large', 'url' => ['iksokuf/bahagian-a'], 'visible' => true],
                             ['label' => 'Bahagian B','icon' => 'random', 'url' => ['iksokuf/bahagian-b'], 'visible' => true],
                             ['label' => 'Bahagian C','icon' => 'hourglass-start', 'url' => ['iksokuf/bahagian-c'], 'visible' => true],

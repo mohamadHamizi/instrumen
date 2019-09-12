@@ -93,7 +93,7 @@ use app\models\OkuQuestions;
                 <?php } ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Seterusnya', ['class' => 'btn btn-success']) ?>
+                    <?= Html::submitButton('Seterusnya', ['class' => 'btn btn-primary']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>
