@@ -22,26 +22,10 @@ use app\models\OkuQuestions;
         $form = ActiveForm::begin();
         ?>
         <div class="box-body">
-            <p><strong>Arahan:</strong> Pernyataan berikut merupakan persetujuan anda mengenai sumber atau faktor anda bahagia. Anda dikehendaki menjawab <strong>SEMUA</strong> pernyataan dengan menandakan pada salah satu respons yang diberikan. </p>
+            <p><strong>Arahan:</strong> Pernyataan berikut merupakan persetujuan anda mengenai Dimensi kebahagiaan subjektif OKU-Fizikal. Anda dikehendaki menjawab <strong>SEMUA</strong> pernyataan dengan menandakan pada salah satu respons yang diberikan. </p>
             <div class="table-responsive">
 
-                <table class="table table-bordered table-striped table-condensed">
-                    <tr>
-                        <th style="width: 20%" class="text-center text-capitalize">1</th>
-                        <th style="width: 20%" class="text-center text-capitalize">2</th>
-                        <th style="width: 20%" class="text-center text-capitalize">3</th>
-                        <th style="width: 20%" class="text-center text-capitalize">4</th>
-                        <th style="width: 20%" class="text-center text-capitalize">5</th>
-                    </tr>
-
-                    <tr style="font-weight: bold">
-                        <td class="text-center" >Sangat Tidak Setuju</td>
-                        <td class="text-center" >Tidak Setuju</td>
-                        <td class="text-center" >Neutral</td>
-                        <td class="text-center" >Setuju</td>
-                        <td class="text-center" >Sangat Setuju</td>
-                    </tr>
-                </table>
+               <?=$this->render('_skala')?>
                 
                 <table class="table table-bordered table-striped table-condensed">
                     <tr>

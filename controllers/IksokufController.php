@@ -167,7 +167,7 @@ class IksokufController extends Controller {
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
-        $this->view->title = "BAHAGIAN B : SUMBER KEBAHAGIAN SUBJEKTIF OKU-FIZIKAL";
+        $this->view->title = "BAHAGIAN B : SUMBER KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL";
 
         $groups = OkuGroups::findAll(['type' => 'B']);
 
