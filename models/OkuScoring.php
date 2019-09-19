@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use app\models\OkuScoring;
+use app\models\OkuDimensi;
 
 /**
  * This is the model class for table "oku_scoring".
@@ -14,21 +16,19 @@ use Yii;
  * @property string $tahap
  * @property string $deskripsi
  */
-class OkuScoring extends \yii\db\ActiveRecord
-{
+class OkuScoring extends \yii\db\ActiveRecord {
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'oku_scoring';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['group_id'], 'required'],
             [['group_id', 'skor'], 'integer'],
@@ -41,8 +41,7 @@ class OkuScoring extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'group_id' => 'Group ID',
@@ -52,4 +51,35 @@ class OkuScoring extends \yii\db\ActiveRecord
             'deskripsi' => 'Deskripsi',
         ];
     }
+
+    public static function loadScale($main_id, $type) {
+
+        $groups = OkuGroups::findAll(['type' => $type]);
+
+        $data = [];
+
+        if ($type == 'A') {
+            foreach ($groups as $a) {
+                $data[] = OkuScoring::findOne(['group_id' => $a->id, 'skor' => OkuDimensi::GroupSkor($a->id, $main_id)])->scale;
+            }
+        }
+        if ($type == 'B') {
+            foreach ($groups as $a) {
+                $data[] = OkuScoring::findOne(['group_id' => $a->id, 'skor' => OkuSumber::GroupSkor($a->id, $main_id)])->scale;
+            }
+        }
+        if ($type == 'C') {
+            foreach ($groups as $a) {
+                $data[] = OkuScoring::findOne(['group_id' => $a->id, 'skor' => OkuStrategi::GroupSkor($a->id, $main_id)])->scale;
+            }
+        }
+        if ($type == 'D') {
+            foreach ($groups as $a) {
+                $data[] = OkuScoring::findOne(['group_id' => $a->id, 'skor' => OkuKesan::GroupSkor($a->id, $main_id)])->scale;
+            }
+        }
+
+        return $data;
+    }
+
 }

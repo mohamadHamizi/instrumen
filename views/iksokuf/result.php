@@ -5,56 +5,9 @@ use app\models\OkuScoring;
 use app\models\OkuSumber;
 use app\models\OkuStrategi;
 use app\models\OkuKesan;
+use app\models\OkuGroups;
 ?>
-
-
-<!-- PRODUCT LIST -->
-<div class="box box-default">
-    <div class="box-header with-border">
-        <h3 class="box-title">STATISTIK KEBAHAGIAAN SUBJEKTIF ORANG KURANG UPAYA-FIZIKAL (e-IKSOKU-F)</h3>
-
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-        </div>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-        <?=
-        \dosamigos\highcharts\HighCharts::widget([
-            'clientOptions' => [
-                'chart' => [
-                    'type' => 'line'
-                ],
-                'title' => [
-//                    'text' => 'Statistik OKU'
-                ],
-                'xAxis' => [
-                    'categories' => [
-                        'DK',
-                        'DEP',
-                        'DED',
-                        'DA',
-                        'KP',
-                        'KH',
-                    ]
-                ],
-                'yAxis' => [
-                    'title' => [
-                        'text' => 'Skala'
-                    ]
-                ],
-                'series' => [
-                    ['name' => 'ANDA', 'data' => [1, 5, 1,2.5,3,2]],
-                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4]],
-                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5]]
-                ]
-            ]
-        ]);
-// ... 
-        ?>
-    </div>
-</div>
+<?php //yii\helpers\VarDumper::dump($dataA,10,true); ?>
 
 <!-- PRODUCT LIST -->
 <div class="box box-primary">
@@ -68,6 +21,32 @@ use app\models\OkuKesan;
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        
+        <?=\dosamigos\highcharts\HighCharts::widget([
+            'clientOptions' => [
+                'chart' => [
+                    'type' => 'line'
+                ],
+                'title' => [
+                    'text' => 'STATISTIK DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                ],
+                'xAxis' => [
+                    'categories' => OkuGroups::groupLabel('A'),
+                ],
+                'yAxis' => [
+                    'title' => [
+                        'text' => 'Skala'
+                    ]
+                ],
+                'series' => [
+                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'A'),'dataLabels'=>true],
+//                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
+//                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
+                ]
+            ]
+        ]);
+        ?>
+        
         <ul class="products-list product-list-in-box">
             <?php foreach ($groups as $group) { ?>
                 <li class="item">
@@ -75,7 +54,7 @@ use app\models\OkuKesan;
                         <h4><?= $skor = OkuDimensi::GroupSkor($group->id, $main_id) ?>/<?= OkuScoring::find()->where(['group_id' => $group->id])->orderBy('skor DESC')->one()->skor; ?></h4>
                     </div>
                     <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?>
+                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?> (<?= $group->shortname ?>)
                             <span class="label label-warning pull-right">Skala : <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->scale; ?></span></a>
                         <p style=" display: block; color: #999; overflow: hidden;text-overflow: ellipsis;">
                             <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->deskripsi; ?>
@@ -99,6 +78,30 @@ use app\models\OkuKesan;
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        <?=\dosamigos\highcharts\HighCharts::widget([
+            'clientOptions' => [
+                'chart' => [
+                    'type' => 'line'
+                ],
+                'title' => [
+                    'text' => 'STATISTIK DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                ],
+                'xAxis' => [
+                    'categories' => OkuGroups::groupLabel('B'),
+                ],
+                'yAxis' => [
+                    'title' => [
+                        'text' => 'Skala'
+                    ]
+                ],
+                'series' => [
+                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'B')],
+//                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
+//                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
+                ]
+            ]
+        ]);
+        ?>
         <ul class="products-list product-list-in-box">
             <?php foreach ($groupsB as $group) { ?>
                 <li class="item">
@@ -106,7 +109,7 @@ use app\models\OkuKesan;
                         <h4><?= $skor = OkuSumber::GroupSkor($group->id, $main_id) ?>/<?= OkuScoring::find()->where(['group_id' => $group->id])->orderBy('skor DESC')->one()->skor; ?></h4>
                     </div>
                     <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?>
+                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?> (<?= $group->shortname ?>)
                             <span class="label label-warning pull-right">Skala : <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->scale; ?></span></a>
                         <p style=" display: block; color: #999; overflow: hidden;text-overflow: ellipsis;">
                             <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->deskripsi; ?>
@@ -130,6 +133,30 @@ use app\models\OkuKesan;
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        <?=\dosamigos\highcharts\HighCharts::widget([
+            'clientOptions' => [
+                'chart' => [
+                    'type' => 'line'
+                ],
+                'title' => [
+                    'text' => 'STATISTIK DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                ],
+                'xAxis' => [
+                    'categories' => OkuGroups::groupLabel('C'),
+                ],
+                'yAxis' => [
+                    'title' => [
+                        'text' => 'Skala'
+                    ]
+                ],
+                'series' => [
+                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'C')],
+//                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
+//                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
+                ]
+            ]
+        ]);
+        ?>
         <ul class="products-list product-list-in-box">
             <?php foreach ($groupsC as $group) { ?>
                 <li class="item">
@@ -137,7 +164,7 @@ use app\models\OkuKesan;
                         <h4><?= $skor = OkuStrategi::GroupSkor($group->id, $main_id) ?>/<?= OkuScoring::find()->where(['group_id' => $group->id])->orderBy('skor DESC')->one()->skor; ?></h4>
                     </div>
                     <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?>
+                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?> (<?= $group->shortname ?>)
                             <span class="label label-warning pull-right">Skala : <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->scale; ?></span></a>
                         <p style=" display: block; color: #999; overflow: hidden;text-overflow: ellipsis;">
                             <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->deskripsi; ?>
@@ -161,6 +188,30 @@ use app\models\OkuKesan;
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        <?=\dosamigos\highcharts\HighCharts::widget([
+            'clientOptions' => [
+                'chart' => [
+                    'type' => 'line'
+                ],
+                'title' => [
+                    'text' => 'STATISTIK DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                ],
+                'xAxis' => [
+                    'categories' => OkuGroups::groupLabel('D'),
+                ],
+                'yAxis' => [
+                    'title' => [
+                        'text' => 'Skala'
+                    ]
+                ],
+                'series' => [
+                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'D')],
+//                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
+//                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
+                ]
+            ]
+        ]);
+        ?>
         <ul class="products-list product-list-in-box">
             <?php foreach ($groupsD as $group) { ?>
                 <li class="item">
@@ -168,7 +219,7 @@ use app\models\OkuKesan;
                         <h4><?= $skor = OkuKesan::GroupSkor($group->id, $main_id) ?>/<?= OkuScoring::find()->where(['group_id' => $group->id])->orderBy('skor DESC')->one()->skor; ?></h4>
                     </div>
                     <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?>
+                        <a href="javascript:void(0)" class="product-title"><?= $group->name ?> (<?= $group->shortname ?>)
                             <span class="label label-warning pull-right">Skala : <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->scale; ?></span></a>
                         <p style=" display: block; color: #999; overflow: hidden;text-overflow: ellipsis;">
                             <?= OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor])->deskripsi; ?>

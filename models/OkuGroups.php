@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $type
  * @property string $name
+ * @property string $shortname
  */
 class OkuGroups extends \yii\db\ActiveRecord
 {
@@ -29,6 +30,7 @@ class OkuGroups extends \yii\db\ActiveRecord
         return [
             [['type'], 'string', 'max' => 5],
             [['name'], 'string', 'max' => 150],
+            [['shortname'], 'string', 'max' => 10],
         ];
     }
 
@@ -41,6 +43,20 @@ class OkuGroups extends \yii\db\ActiveRecord
             'id' => 'ID',
             'type' => 'Type',
             'name' => 'Name',
+            'shortname' => 'Shortname',
         ];
+    }
+    
+    public static function groupLabel($type){
+        
+        $groups = OkuGroups::findAll(['type' => $type]);
+        
+        $label = [];
+        
+        foreach ($groups as $a){
+            $label[] = $a->shortname;
+        }
+        
+        return $label;
     }
 }
