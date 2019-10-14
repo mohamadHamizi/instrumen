@@ -23,6 +23,7 @@ use app\models\OkuMain;
 use yii\web\Session;
 use app\models\OkuDemografi;
 use app\models\OkuScoring;
+use app\models\OkuTotals;
 
 /**
  * CutiController implements the CRUD actions for RekodCuti model.
@@ -265,7 +266,18 @@ class IksokufController extends Controller {
         $main_id = \Yii::$app->session->get('main_id');
 
         $this->view->title = "KEPUTUSAN";
-
+        
+        $this->saveTotals($main_id);
+        
+//        $main = OkuMain::findAll(['status'=>0]);
+        
+//        \yii\helpers\VarDumper::dump($main,10,true);
+//        exit();
+        
+//        foreach($main as $m){
+//            $this->saveTotals($main->id);
+//        }
+        
 
         $model = OkuMain::findOne(['id' => $main_id]);
         $bhgnA = OkuDimensi::findOne(['main_id' => $main_id]);
@@ -293,14 +305,55 @@ class IksokufController extends Controller {
         ]);
     }
 
-    public function actionPapan() {
-
-        $model = RekodCuti::find()->where(['status' => 'APPROVED'])->all();
-
-        return $this->render('papan', [
-                    'model' => $model,
-                    'bil' => 1,
-        ]);
+    public static function saveTotals($main_id){
+        
+        $model = OkuTotals::findOne(['main_id'=>$main_id]);
+        
+        if(!$model){
+            $model = new OkuTotals();
+        }
+        
+        $model->main_id = $main_id; 
+        
+        $model->kp = OkuScoring::ScaleOnly('KP', $main_id);
+        $model->pn = OkuScoring::ScaleOnly('PN', $main_id);
+        $model->al = OkuScoring::ScaleOnly('AL', $main_id);
+        $model->ap = OkuScoring::ScaleOnly('AP', $main_id);
+        $model->an = OkuScoring::ScaleOnly('AN', $main_id);
+        $model->kr = OkuScoring::ScaleOnly('KR', $main_id);
+        $model->pp = OkuScoring::ScaleOnly('PP', $main_id);
+        $model->hb = OkuScoring::ScaleOnly('HB', $main_id);
+        $model->sk = OkuScoring::ScaleOnly('SK', $main_id);
+        $model->sr = OkuScoring::ScaleOnly('SR', $main_id);
+        $model->si = OkuScoring::ScaleOnly('SI', $main_id);
+        $model->pr = OkuScoring::ScaleOnly('PR', $main_id);
+        $model->kb = OkuScoring::ScaleOnly('KB', $main_id);
+        $model->ks = OkuScoring::ScaleOnly('KS', $main_id);
+        $model->kn = OkuScoring::ScaleOnly('KN', $main_id);
+        $model->pc = OkuScoring::ScaleOnly('PC', $main_id);
+        $model->kf = OkuScoring::ScaleOnly('KF', $main_id);
+        $model->hi = OkuScoring::ScaleOnly('HI', $main_id);
+        $model->rk = OkuScoring::ScaleOnly('RK', $main_id);
+        $model->jn = OkuScoring::ScaleOnly('JN', $main_id);
+        $model->ka = OkuScoring::ScaleOnly('KA', $main_id);
+        $model->pm = OkuScoring::ScaleOnly('PM', $main_id);
+        $model->us = OkuScoring::ScaleOnly('US', $main_id);
+        $model->bp = OkuScoring::ScaleOnly('BP', $main_id);
+        $model->bd = OkuScoring::ScaleOnly('BD', $main_id);
+        $model->in = OkuScoring::ScaleOnly('IN', $main_id);
+        $model->as = OkuScoring::ScaleOnly('AS', $main_id);
+        $model->em = OkuScoring::ScaleOnly('EM', $main_id);
+        $model->pi = OkuScoring::ScaleOnly('PI', $main_id);
+        $model->kh = OkuScoring::ScaleOnly('KH', $main_id);
+        
+        
+        if($model->save()){
+            return true;
+        }
+        
+        
+        return false;
+        
     }
 
     public function actionDes() {

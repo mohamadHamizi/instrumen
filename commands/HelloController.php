@@ -9,6 +9,8 @@ namespace app\commands;
 
 use yii\console\Controller;
 use yii\console\ExitCode;
+use app\controllers\IksokufController;
+use app\models\OkuMain;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -29,6 +31,25 @@ class HelloController extends Controller
     {
         echo $message . "\n";
 
+        return ExitCode::OK;
+    }
+    
+    public function actionResult(){
+//        echo 'test';
+        
+        $main = OkuMain::find()->where(['>','id','5'])->all();
+        
+//        \yii\helpers\VarDumper::dump($main,10,true);
+//        exit();
+        
+        foreach($main as $m){
+            echo $m->id . PHP_EOL ;
+            IksokufController::saveTotals($m->id);
+            
+//            $this->saveTotals($main->id);
+        }
+        
+        
         return ExitCode::OK;
     }
 }

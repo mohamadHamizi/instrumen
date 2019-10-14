@@ -81,5 +81,34 @@ class OkuScoring extends \yii\db\ActiveRecord {
 
         return $data;
     }
+    
+    public static function ScaleOnly($shortname, $main_id){
+        
+        $group = OkuGroups::find()->where(['shortname'=>$shortname])->one();
+        
+        if($group->type == 'A'){
+            $skor = OkuDimensi::GroupSkor($group->id, $main_id);
+        }
+        
+        if($group->type == 'B'){
+            $skor = OkuSumber::GroupSkor($group->id, $main_id);
+        }
+        
+        if($group->type == 'C'){
+            $skor = OkuStrategi::GroupSkor($group->id, $main_id);
+        }
+        
+        if($group->type == 'D'){
+            $skor = OkuKesan::GroupSkor($group->id, $main_id);
+        }
+        
+        $model = OkuScoring::findOne(['group_id' => $group->id, 'skor' => $skor]);
+        
+        if(!$model){
+            return 0;
+        }
+        
+        return $model->scale;
+    }
 
 }

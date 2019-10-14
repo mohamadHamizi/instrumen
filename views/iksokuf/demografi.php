@@ -4,6 +4,7 @@ use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use app\models\OkuRefDemo;
 ?>
 
 
@@ -43,17 +44,9 @@ use yii\helpers\ArrayHelper;
 
             <div class="col-sm-6">
 
-                <?=
-                $form->field($model, 'kategori')->radiolist(['Kecederaan Saraf Tunjang ' => 'Kecederaan Saraf Tunjang ',
-                    'Kehilangan Anggota Kaki' => 'Kehilangan Anggota Kaki',
-                    'Kehilangan Anggota Tangan' => 'Kehilangan Anggota Tangan',
-                    'Cerebral Palsy' => 'Cerebral Palsy',
-                    'Polio' => 'Polio',
-                    'Kerdil' => 'Kerdil',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                <?= $form->field($model, 'kategori')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 2])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_kategori" name="lain_kategori" hidden="true"/>
+                <?= $form->field($model, 'kategori_lain')->textInput(['hidden'=>true, 'id'=>'kategori_lain'])->label(false)?>
             </div>
         </div>
         <div class="form-group">
@@ -62,13 +55,10 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'sebab')->radiolist([
-                    'Kemalangan' => 'Kemalangan',
-                    'Sakit' => 'Sakit',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                $form->field($model, 'sebab')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 3])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_sebab" name="lain_sebab" hidden="true"/>
+                <?= $form->field($model, 'sebab_lain')->textInput(['hidden'=>true, 'id'=>'sebab_lain'])->label(false)?>
+                
             </div>
         </div>
         <div class="form-group">
@@ -77,13 +67,9 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'sejak')->radiolist([
-                    'Sejak lahir' => 'Sejak lahir',
-                    'Sejak umur' => 'Sejak umur',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                $form->field($model, 'sejak')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 4])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_sejak" name="lain_sejak" hidden="true"/>
+                <?= $form->field($model, 'sejak_lain')->textInput(['hidden'=>true, 'id'=>'sejak_lain'])->label(false)?>
             </div>
         </div>
         <div class="form-group">
@@ -92,10 +78,7 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'jantina')->radiolist([
-                    'Lelaki' => 'Lelaki',
-                    'Perempuan' => 'Perempuan',
-                ])->label(false);
+                $form->field($model, 'jantina')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 5])->all(), 'key', 'value'))->label(false);
                 ?>
 
             </div>
@@ -106,15 +89,9 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'agama')->radiolist([
-                    'Islam' => 'Islam',
-                    'Kristian' => 'Kristian',
-                    'Buddha' => 'Buddha',
-                    'Hindu' => 'Hindu',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                $form->field($model, 'agama')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 6])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_agama" name="lain_agama" hidden="true"/>
+                <?= $form->field($model, 'agama_lain')->textInput(['hidden'=>true, 'id'=>'agama_lain'])->label(false)?>
             </div>
         </div>
         <div class="form-group">
@@ -123,16 +100,9 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'etnik')->radiolist([
-                    'Melayu' => 'Melayu',
-                    'Cina' => 'Cina',
-                    'India' => 'India',
-                    'Bumiputera Sabah' => 'Bumiputera Sabah',
-                    'Bumiputera Sarawak ' => 'Bumiputera Sarawak',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                $form->field($model, 'etnik')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 7])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_etnik" name="lain_etnik" hidden="true"/>
+                <?= $form->field($model, 'etnik_lain')->textInput(['hidden'=>true, 'id'=>'etnik_lain'])->label(false)?>
             </div>
         </div>
         <div class="form-group">
@@ -141,32 +111,20 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'kahwin')->radiolist([
-                    'Bujang' => 'Bujang',
-                    'Berkahwin ' => 'Berkahwin ',
-                    'Bercerai' => 'Bercerai',
-                    'Kematian Pasangan' => 'Kematian Pasangan',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                $form->field($model, 'kahwin')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 8])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_kahwin" name="lain_kahwin" hidden="true"/>
+                <?= $form->field($model, 'kahwin_lain')->textInput(['hidden'=>true, 'id'=>'kahwin_lain'])->label(false)?>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'peralatan'); ?></label>
+            <label class="col-sm-4 control-label">Peralatan yang anda guna sekarang(boleh pilih lebih dari 1)</label>
 
             <div class="col-sm-6">
-
-                <?=
-                $form->field($model, 'peralatan')->radiolist([
-                    'Kerusi Roda' => 'Kerusi Roda',
-                    'Kaki Palsu' => 'Kaki Palsu',
-                    'Tangan Palsu' => 'Tangan Palsu',
-                    'Tongkat' => 'Tongkat',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
-                ?>
-                <input type="text" id="lain_peralatan" name="lain_peralatan" hidden="true"/>
+                <?=$form->field($model, 'kerusi_roda')->checkbox();?>
+                <?=$form->field($model, 'kaki_palsu')->checkbox();?>
+                <?=$form->field($model, 'tgn_palsu')->checkbox();?>
+                <?=$form->field($model, 'tongkat')->checkbox();?>
+                <?=$form->field($model, 'peralatan_lain')->hint('Peralatan Lain')->textInput()->label(false)?>
             </div>
         </div>
         <div class="form-group">
@@ -187,21 +145,9 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
 
                 <?=
-                $form->field($model, 'pendidikan')->radiolist([
-                    'Tiada Pendidikan Formal' => 'Tiada Pendidikan Formal',
-                    'UPSR' => 'UPSR',
-                    'SRP/PMR/PT3' => 'SRP/PMR/PT3',
-                    'SPM/SPMV' => 'SPM/SPMV',
-                    'STPM/STAM' => 'STPM/STAM',
-                    'MATRIKULASI' => 'MATRIKULASI',
-                    'DIPLOMA' => 'DIPLOMA',
-                    'SARJANA MUDA' => 'SARJANA MUDA',
-                    'SARJANA' => 'SARJANA',
-                    'PHD' => 'PHD',
-                    'lain' => 'Lain-lain (Sila nyatakan)',
-                ])->label(false);
+                $form->field($model, 'pendidikan')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 11])->all(), 'key', 'value'))->label(false);
                 ?>
-                <input type="text" id="lain_pendidikan" name="lain_pendidikan" hidden="true"/>
+                <?= $form->field($model, 'pendidikan_lain')->textInput(['hidden'=>true, 'id'=>'pendidikan_lain'])->label(false)?>
             </div>
         </div>
         <div class="form-group">
@@ -210,11 +156,10 @@ use yii\helpers\ArrayHelper;
             <div class="col-sm-6">
                 <?=
                         $form->field($model, 'bantuan')->textInput()
-//                        ->hint('Please enter your name')
                         ->label(false)
                 ?>
             </div>
-            <?= Html::error($model, 'no_oku'); ?>
+            <?= Html::error($model, 'bantuan'); ?>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'jumlah'); ?></label>
@@ -276,6 +221,15 @@ use yii\helpers\ArrayHelper;
             </div>
             <?= Html::error($model, 'alamat'); ?>
         </div>
+         <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'negeri'); ?></label>
+
+            <div class="col-sm-6">
+                <?=
+                $form->field($model, 'negeri')->dropDownList(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 18])->all(), 'key', 'value'), ['prompt'=>'Pilih Negeri'])->label(false);
+                ?>
+            </div>
+        </div>
 
     </div>
     <!-- /.box-body -->
@@ -295,66 +249,59 @@ $script = <<< JS
         $(function () {
         
         $('input[name="OkuDemografi[kategori]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_kategori').show();
+            if ($(this).val() == '99') {
+                $('#kategori_lain').show();
             } else {
-                $('#lain_kategori').hide();
+                $('#kategori_lain').hide();
             }
         });
         
         $('input[name="OkuDemografi[sebab]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_sebab').show();
+            if ($(this).val() == '99') {
+                $('#sebab_lain').show();
             } else {
-                $('#lain_sebab').hide();
+                $('#sebab_lain').hide();
             }
         });
         
         $('input[name="OkuDemografi[sejak]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_sejak').show();
+            if ($(this).val() == '99') {
+                $('#sejak_lain').show();
             } else {
-                $('#lain_sejak').hide();
+                $('#sejak_lain').hide();
             }
         });
         
         $('input[name="OkuDemografi[agama]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_agama').show();
+            if ($(this).val() == '99') {
+                $('#agama_lain').show();
             } else {
-                $('#lain_agama').hide();
+                $('#agama_lain').hide();
             }
         });
         
         $('input[name="OkuDemografi[etnik]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_etnik').show();
+            if ($(this).val() == '99') {
+                $('#etnik_lain').show();
             } else {
-                $('#lain_etnik').hide();
+                $('#etnik_lain').hide();
             }
         });
         
         $('input[name="OkuDemografi[kahwin]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_kahwin').show();
+            if ($(this).val() == '99') {
+                $('#kahwin_lain').show();
             } else {
-                $('#lain_kahwin').hide();
+                $('#kahwin_lain').hide();
             }
         });
         
-        $('input[name="OkuDemografi[peralatan]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_peralatan').show();
-            } else {
-                $('#lain_peralatan').hide();
-            }
-        });
         
         $('input[name="OkuDemografi[pendidikan]"]').on('click', function () {
-            if ($(this).val() == 'lain') {
-                $('#lain_pendidikan').show();
+            if ($(this).val() == '99') {
+                $('#pendidikan_lain').show();
             } else {
-                $('#lain_pendidikan').hide();
+                $('#pendidikan_lain').hide();
             }
         });
         

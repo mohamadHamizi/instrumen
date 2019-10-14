@@ -9,8 +9,36 @@ use Yii;
  *
  * @property int $id
  * @property int $main_id
- * @property int $group_id
- * @property int $skor
+ * @property double $kp
+ * @property double $pn
+ * @property double $al
+ * @property double $ap
+ * @property double $an
+ * @property double $kr
+ * @property double $pp
+ * @property double $hb
+ * @property double $sk
+ * @property double $sr
+ * @property double $si
+ * @property double $pr
+ * @property double $kb
+ * @property double $ks
+ * @property double $kn
+ * @property double $pc
+ * @property double $kf
+ * @property double $hi
+ * @property double $rk
+ * @property double $jn
+ * @property double $ka
+ * @property double $pm
+ * @property double $us
+ * @property double $bp
+ * @property double $bd
+ * @property double $in
+ * @property double $as
+ * @property double $em
+ * @property double $pi
+ * @property double $kh
  */
 class OkuTotals extends \yii\db\ActiveRecord
 {
@@ -28,7 +56,8 @@ class OkuTotals extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['main_id', 'group_id', 'skor'], 'integer'],
+            [['main_id'], 'integer'],
+            [['kp', 'pn', 'al', 'ap', 'an', 'kr', 'pp', 'hb', 'sk', 'sr', 'si', 'pr', 'kb', 'ks', 'kn', 'pc', 'kf', 'hi', 'rk', 'jn', 'ka', 'pm', 'us', 'bp', 'bd', 'in', 'as', 'em', 'pi', 'kh'], 'number'],
         ];
     }
 
@@ -40,8 +69,36 @@ class OkuTotals extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'main_id' => 'Main ID',
-            'group_id' => 'Group ID',
-            'skor' => 'Skor',
+            'kp' => 'Kp',
+            'pn' => 'Pn',
+            'al' => 'Al',
+            'ap' => 'Ap',
+            'an' => 'An',
+            'kr' => 'Kr',
+            'pp' => 'Pp',
+            'hb' => 'Hb',
+            'sk' => 'Sk',
+            'sr' => 'Sr',
+            'si' => 'Si',
+            'pr' => 'Pr',
+            'kb' => 'Kb',
+            'ks' => 'Ks',
+            'kn' => 'Kn',
+            'pc' => 'Pc',
+            'kf' => 'Kf',
+            'hi' => 'Hi',
+            'rk' => 'Rk',
+            'jn' => 'Jn',
+            'ka' => 'Ka',
+            'pm' => 'Pm',
+            'us' => 'Us',
+            'bp' => 'Bp',
+            'bd' => 'Bd',
+            'in' => 'In',
+            'as' => 'As',
+            'em' => 'Em',
+            'pi' => 'Pi',
+            'kh' => 'Kh',
         ];
     }
 }
