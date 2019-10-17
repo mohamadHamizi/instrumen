@@ -54,4 +54,9 @@ class OkuMain extends \yii\db\ActiveRecord
             'created_dt' => 'Created Dt',
         ];
     }
+    
+    
+    public function getDemografi() {
+        return $this->hasOne(OkuDemografi::className(), ['main_id'=>'id']);
+    }
 }

@@ -23,7 +23,7 @@ class SiteController extends Controller
                 'only' => ['logout','index'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index', 'login'],
+                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -79,7 +79,8 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goHome();
+//            return $this->goHome();
+            return $this->redirect(['/admin/index']);
         }
 
         $model->password = '';
@@ -99,6 +100,8 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+    
+//    public function action
 
     /**
      * Displays contact page.
