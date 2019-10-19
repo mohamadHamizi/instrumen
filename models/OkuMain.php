@@ -59,4 +59,20 @@ class OkuMain extends \yii\db\ActiveRecord
     public function getDemografi() {
         return $this->hasOne(OkuDemografi::className(), ['main_id'=>'id']);
     }
+    public function getDimensi() {
+        return $this->hasOne(OkuDimensi::className(), ['main_id'=>'id']);
+    }
+    public function getSumber() {
+        return $this->hasOne(OkuSumber::className(), ['main_id'=>'id']);
+    }
+    public function getStrategi() {
+        return $this->hasOne(OkuStrategi::className(), ['main_id'=>'id']);
+    }
+    public function getKesan() {
+        return $this->hasOne(OkuKesan::className(), ['main_id'=>'id']);
+    }
+    
+    public function getTarikh() {
+        return ($this->created_dt) ? Yii::$app->formatter->asDate($this->created_dt, 'd/MM/Y') : '-';
+    }
 }

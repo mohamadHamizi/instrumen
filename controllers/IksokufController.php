@@ -83,7 +83,7 @@ class IksokufController extends Controller {
                 return $this->redirect(['demografi']);
             } else {
 
-                $model->created_dt = date("Y-m-d");
+                $model->created_dt = date("Y-m-d H:i:s");
 
                 if ($model->save()) {
                     $session->set('icno', $model->icno);

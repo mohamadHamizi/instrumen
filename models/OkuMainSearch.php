@@ -40,7 +40,7 @@ class OkuMainSearch extends OkuMain
      */
     public function search($params)
     {
-        $query = OkuMain::find();
+        $query = OkuMain::find()->orderBy(['id'=>'DESC']);
 
         // add conditions that should always apply here
 
@@ -64,7 +64,6 @@ class OkuMainSearch extends OkuMain
             'skor_c' => $this->skor_c,
             'skor_d' => $this->skor_d,
             'status' => $this->status,
-            'created_dt' => $this->created_dt,
         ]);
 
         $query->andFilterWhere(['like', 'icno', $this->icno]);
