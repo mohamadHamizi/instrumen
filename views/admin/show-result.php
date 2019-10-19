@@ -285,7 +285,7 @@ use app\models\OkuRefDemo;
                     ]
                 ],
                 'series' => [
-                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'A')],
+                    ['name' => 'INDIVIDU', 'data' => OkuScoring::loadScale($main_id, 'A')],
                     ['name' => 'SABAH', 'data' => VDemoResults::statistik(1, 12)],
                     ['name' => 'SEMENANJUNG', 'data' => VDemoResults::statistik(1, 1)],
                     ['name' => 'SARAWAK', 'data' => VDemoResults::statistik(1, 13)],
@@ -350,7 +350,7 @@ use app\models\OkuRefDemo;
                     ]
                 ],
                 'series' => [
-                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'B')],
+                    ['name' => 'INDIVIDU', 'data' => OkuScoring::loadScale($main_id, 'B')],
                     ['name' => 'SABAH', 'data' => VDemoResults::statistik(3, 12)],
                     ['name' => 'SEMENANJUNG', 'data' => VDemoResults::statistik(3, 1)],
                     ['name' => 'SARAWAK', 'data' => VDemoResults::statistik(3, 13)],
@@ -414,7 +414,7 @@ use app\models\OkuRefDemo;
                     ]
                 ],
                 'series' => [
-                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'C')],
+                    ['name' => 'INDIVIDU', 'data' => OkuScoring::loadScale($main_id, 'C')],
 //                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
 //                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
                 ],
@@ -475,7 +475,7 @@ use app\models\OkuRefDemo;
                     ]
                 ],
                 'series' => [
-                    ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'D')],
+                    ['name' => 'INDIVIDU', 'data' => OkuScoring::loadScale($main_id, 'D')],
 //                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
 //                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
                 ],
