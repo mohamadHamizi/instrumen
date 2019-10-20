@@ -26,14 +26,33 @@ use app\models\OkuRefDemo;
     ?>
 
     <div class="box-body">
+        
+        <?php  
+
+// yii\helpers\VarDumper::dump(\app\models\OkuScoring::loadScale(1033, 'A')); 
+        
+        echo \app\models\OkuDimensi::GroupSkor(16, 1033);
+        
+        ?>
+        
         <?= $form->errorSummary($model); ?>
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'nama'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                        $form->field($model, 'nama')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+            <?= Html::error($model, 'nama'); ?>
+        </div>
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'no_oku'); ?></label>
 
             <div class="col-sm-5">
                 <?=
                         $form->field($model, 'no_oku')->textInput()
-//                        ->hint('Please enter your name')
                         ->label(false)
                 ?>
             </div>
@@ -69,6 +88,7 @@ use app\models\OkuRefDemo;
                 <?=
                 $form->field($model, 'sejak')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 4])->all(), 'key', 'value'))->label(false);
                 ?>
+                <?= $form->field($model, 'sejak_umur')->textInput(['hidden'=>true, 'id'=>'sejak_umur'])->label(false)?>
                 <?= $form->field($model, 'sejak_lain')->textInput(['hidden'=>true, 'id'=>'sejak_lain'])->label(false)?>
             </div>
         </div>
@@ -248,6 +268,9 @@ $script = <<< JS
        
         $(function () {
         
+         $('#sejak_umur').hide();
+        $('#sejak_lain').hide();
+        
         $('input[name="OkuDemografi[kategori]"]').on('click', function () {
             if ($(this).val() == '99') {
                 $('#kategori_lain').show();
@@ -261,6 +284,14 @@ $script = <<< JS
                 $('#sebab_lain').show();
             } else {
                 $('#sebab_lain').hide();
+            }
+        });
+        
+        $('input[name="OkuDemografi[sejak]"]').on('click', function () {
+            if ($(this).val() == '2') {
+                $('#sejak_umur').show();
+            } else {
+                $('#sejak_umur').hide();
             }
         });
         

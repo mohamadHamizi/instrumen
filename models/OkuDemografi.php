@@ -9,12 +9,14 @@ use Yii;
  *
  * @property int $id
  * @property int $main_id
+ * @property string $nama nama
  * @property string $no_oku 1. No Pendaftaran Kad OKU-Fizikal
  * @property int $kategori 2. Kategori OKU-Fizikal
  * @property string $kategori_lain kategori lain
  * @property int $sebab 3. Sebab OKU-Fizikal
  * @property string $sebab_lain sebab lain
  * @property int $sejak 4. Sejak Umur Berapa Anda Disahkan sebagai OKU-Fizikal
+ * @property string $sejak_umur sejak umur
  * @property string $sejak_lain sejak lain
  * @property int $jantina 5. Jantina
  * @property int $agama 6. Agama
@@ -56,7 +58,7 @@ class OkuDemografi extends \yii\db\ActiveRecord
     {
         return [
             [['main_id', 'kategori', 'sebab', 'sejak', 'jantina', 'agama', 'etnik', 'kahwin', 'kerusi_roda', 'kaki_palsu', 'tgn_palsu', 'tongkat', 'pendidikan'], 'integer'],
-            [['no_oku', 'kategori_lain', 'sebab_lain', 'sejak_lain', 'peralatan_lain', 'pendidikan_lain', 'bantuan', 'kerja_anda', 'kerja_psgn', 'negeri'], 'string', 'max' => 150],
+            [['nama','no_oku', 'kategori_lain', 'sebab_lain', 'sejak_umur','sejak_lain', 'peralatan_lain', 'pendidikan_lain', 'bantuan', 'kerja_anda', 'kerja_psgn', 'negeri'], 'string', 'max' => 150],
             [['agama_lain', 'etnik_lain', 'kahwin_lain', 'pendapatan'], 'string', 'max' => 100],
             [['umur', 'jumlah'], 'string', 'max' => 50],
             [['alamat'], 'string', 'max' => 200],
@@ -71,12 +73,14 @@ class OkuDemografi extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'main_id' => 'Main ID',
+            'nama' => 'Nama',
             'no_oku' => '1. No Pendaftaran Kad OKU-Fizikal',
             'kategori' => '2. Kategori OKU-Fizikal',
             'kategori_lain' => 'kategori lain',
             'sebab' => '3. Sebab OKU-Fizikal',
             'sebab_lain' => 'sebab lain',
             'sejak' => '4. Sejak Umur Berapa Anda Disahkan sebagai OKU-Fizikal',
+            'sejak_umur' => 'Sejak Umur',
             'sejak_lain' => 'sejak lain',
             'jantina' => '5. Jantina',
             'agama' => '6. Agama',
