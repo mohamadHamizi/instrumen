@@ -36,7 +36,7 @@ use app\models\VDemoResults;
             <div class="icon">
                 <i class="fa fa-user"></i>
             </div>
-            <a href="#" class="small-box-footer">Index Anda <i class="fa fa-check-square-o"></i></a>
+            <a href="#" class="small-box-footer">Indeks Anda <i class="fa fa-check-square-o"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -49,7 +49,7 @@ use app\models\VDemoResults;
             <div class="icon">
                 <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">Index Keseluruhan <i class="fa fa-line-chart"></i></a>
+            <a href="#" class="small-box-footer">Indeks Keseluruhan <i class="fa fa-line-chart"></i></a>
         </div>
     </div>
 </div>
