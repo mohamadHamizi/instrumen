@@ -157,6 +157,7 @@ class IksokufController extends Controller {
         return $this->render('bahagian-a', [
                     'model1' => $model,
                     'groups' => $groups,
+            'main_id' => $main_id,
         ]);
     }
 
@@ -268,17 +269,10 @@ class IksokufController extends Controller {
         $this->view->title = "KEPUTUSAN";
         
         $this->saveTotals($main_id);
-        
-//        $main = OkuMain::findAll(['status'=>0]);
-        
-//        \yii\helpers\VarDumper::dump($main,10,true);
-//        exit();
-        
-//        foreach($main as $m){
-//            $this->saveTotals($main->id);
-//        }
-        
 
+        
+       
+        
         $model = OkuMain::findOne(['id' => $main_id]);
         $bhgnA = OkuDimensi::findOne(['main_id' => $main_id]);
         $bhgnB = OkuSumber::findOne(['main_id' => $main_id]);
@@ -290,8 +284,11 @@ class IksokufController extends Controller {
         $groupsC = OkuGroups::findAll(['type' => 'C']);
         $groupsD = OkuGroups::findAll(['type' => 'D']);
         
+        $indeksAll = OkuDimensi::IndeksAll();
         
         return $this->render('result', [
+                    'indeksAll' => $indeksAll,
+                    'tahapIndeksAll' => OkuDimensi::tahap($indeksAll),
                     'model' => $model,
                     'bhgnA' => $bhgnA,
                     'bhgnB' => $bhgnB,

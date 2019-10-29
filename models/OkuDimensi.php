@@ -155,7 +155,7 @@ class OkuDimensi extends \yii\db\ActiveRecord {
         ];
     }
 
-    public static function GroupSkor($group_id, $main_id) {
+    public static function GroupSkor($group_id, $main_id, $rev = FALSE) {
 
         $q = OkuQuestions::findAll(['group_id' => $group_id]);
 
@@ -171,39 +171,163 @@ class OkuDimensi extends \yii\db\ActiveRecord {
                 ->where(['main_id' => $main_id])
                 ->one();
 
-        foreach($model as $key => $val){
-            $skor += $val;
+        if ($rev) {
+            foreach ($model as $key => $val) {
+                $skor += self::reverseValue($val);
+            }
+        } else {
+            foreach ($model as $key => $val) {
+                $skor += $val;
+            }
         }
-        
+
         return $skor;
     }
+    
+    
+    
+    public static function Std($group_id, $main_id, $rev = FALSE) {
+
+        $q = OkuQuestions::findAll(['group_id' => $group_id]);
+        $skor = self::GroupSkor($group_id, $main_id, $rev);
+
+        $total = count($q);
+        
+        $std = (($skor - $total) / (($total*5) - $total)) * 100;
+        
+        $std = round($std,2);
+
+
+        return $std;
+    }
+    
 
     public function getKepuasan() {
         return $this->GroupSkor(11, $this->main_id);
     }
+    
+    public function getStdKepuasan() {
+       return $this->Std(11, $this->main_id);
+    }
 
     public function getPenerimaanKendiri() {
-         return $this->GroupSkor(12, $this->main_id);
+        return $this->GroupSkor(12, $this->main_id);
+    }
+    
+    public function getStdPenerimaanKendiri() {
+        return $this->Std(12, $this->main_id);
     }
 
     public function getAltruisme() {
-         return $this->GroupSkor(13, $this->main_id);
+        return $this->GroupSkor(13, $this->main_id);
+    }
+    public function getStdAltruisme() {
+        return $this->Std(13, $this->main_id);
     }
 
     public function getAfekPositif() {
         return $this->GroupSkor(14, $this->main_id);
     }
+    public function getStdAfekPositif() {
+        return $this->Std(14, $this->main_id);
+    }
 
     public function getAfekNegatif() {
-         return $this->GroupSkor(15, $this->main_id);
+        return $this->GroupSkor(15, $this->main_id);
+    }
+    public function getStdAfekNegatif() {
+        return $this->Std(15, $this->main_id);
+    }
+    
+    public function getAfekNegatifRev() {
+        return $this->GroupSkor(15, $this->main_id,TRUE);
+    }
+    public function getStdAfekNegatifRev() {
+        return $this->Std(15, $this->main_id,TRUE);
     }
 
     public function getKerohanian() {
-         return $this->GroupSkor(16, $this->main_id);
+        return $this->GroupSkor(16, $this->main_id);
+    }
+    public function getStdKerohanian() {
+        return $this->Std(16, $this->main_id);
     }
 
     public function getPemikiranPositif() {
         return $this->GroupSkor(17, $this->main_id);
     }
+    public function getStdPemikiranPositif() {
+        return $this->Std(17, $this->main_id);
+    }
+    
+    public function getIndex() {
+        $val = (($this->getStdKepuasan() + $this->getStdPenerimaanKendiri() + $this->getStdAltruisme() + $this->getStdAfekPositif() + $this->getStdAfekNegatifRev() + $this->getStdKerohanian() + $this->getStdPemikiranPositif()) / 700 ) * 100;
+    
+        return round($val,2);
+    }
+    
+    public function getTahap() {
+        return $this->tahap($this->getIndex());
+    }
 
+    public function reverseValue($val) {
+        $rval = 0;
+
+        switch ($val) {
+            case 1:
+                $rval = 5;
+                break;
+            case 2:
+                $rval = 4;
+                break;
+            case 3:
+                $rval = 3;
+                break;
+            case 4:
+                $rval = 2;
+                break;
+            case 5:
+                $rval = 1;
+                break;
+            default:
+                $rval = 0;
+        }
+
+        return $rval;
+    }
+
+    public static function tahap($val) {
+        
+        $tahap = '';
+        
+        if($val <= 49.99){
+            $tahap = "RENDAH";
+        }
+        
+        if($val >= 50 && $val <= 79.99){
+            $tahap = "SEDERHANA";
+        }
+        
+        if($val >= 80){
+            $tahap = "TINGGI";
+        }
+        
+        return $tahap;
+    }
+    
+    public static function IndeksAll(){
+        
+        $model = OkuDimensi::find()->where([])->all();
+        $total = OkuDimensi::find()->count();
+        
+        $total_index = 0;
+        
+        foreach ($model as $models) {
+                $total_index += $models->index;
+            }
+        
+        return round($total_index /(int)$total,2);
+    }
+    
+    
 }

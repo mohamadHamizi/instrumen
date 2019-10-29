@@ -8,7 +8,53 @@ use app\models\OkuKesan;
 use app\models\OkuGroups;
 use app\models\VDemoResults;
 ?>
-<?php //yii\helpers\VarDumper::dump($dataA,10,true);   ?>
+<?php //yii\helpers\VarDumper::dump($dataA,10,true);      ?>
+
+<!--<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">INDEX</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+     /.box-header 
+    <div class="box-body">
+
+    </div>
+</div>-->
+<div class="row">
+    <div class="col-lg-6 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3><?=$bhgnA->index ?><sup style="font-size: 20px">%</sup></h3>
+
+                <p><?=$bhgnA->tahap ?></p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user"></i>
+            </div>
+            <a href="#" class="small-box-footer">Index Anda <i class="fa fa-check-square-o"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-6 col-xs-6">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3><?=$indeksAll ?><sup style="font-size: 20px">%</sup></h3>
+                <p><?=$tahapIndeksAll?></p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <a href="#" class="small-box-footer">Index Keseluruhan <i class="fa fa-line-chart"></i></a>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
 
 <!-- PRODUCT LIST -->
 <div class="box box-primary">
@@ -22,7 +68,7 @@ use app\models\VDemoResults;
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-       
+
         <?=
         \dosamigos\highcharts\HighCharts::widget([
             'clientOptions' => [
@@ -42,11 +88,11 @@ use app\models\VDemoResults;
                 ],
                 'series' => [
                     ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'A')],
-                    ['name' => 'SABAH', 'data' => VDemoResults::statistik(1,12)],
-                    ['name' => 'SEMENANJUNG', 'data' => VDemoResults::statistik(1,1)],
-                    ['name' => 'SARAWAK', 'data' => VDemoResults::statistik(1,13)],
-                    ['name' => 'LELAKI', 'data' => VDemoResults::statistik(2,1)],
-                    ['name' => 'PEREMPUAN', 'data' => VDemoResults::statistik(2,2)],
+                    ['name' => 'SABAH', 'data' => VDemoResults::statistik(1, 12)],
+                    ['name' => 'SEMENANJUNG', 'data' => VDemoResults::statistik(1, 1)],
+                    ['name' => 'SARAWAK', 'data' => VDemoResults::statistik(1, 13)],
+                    ['name' => 'LELAKI', 'data' => VDemoResults::statistik(2, 1)],
+                    ['name' => 'PEREMPUAN', 'data' => VDemoResults::statistik(2, 2)],
                 ],
                 'plotOptions' => [
                     'line' => [
@@ -107,11 +153,11 @@ use app\models\VDemoResults;
                 ],
                 'series' => [
                     ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'B')],
-                    ['name' => 'SABAH', 'data' => VDemoResults::statistik(3,12)],
-                    ['name' => 'SEMENANJUNG', 'data' => VDemoResults::statistik(3,1)],
-                    ['name' => 'SARAWAK', 'data' => VDemoResults::statistik(3,13)],
-                    ['name' => 'LELAKI', 'data' => VDemoResults::statistik(4,1)],
-                    ['name' => 'PEREMPUAN', 'data' => VDemoResults::statistik(4,2)],
+                    ['name' => 'SABAH', 'data' => VDemoResults::statistik(3, 12)],
+                    ['name' => 'SEMENANJUNG', 'data' => VDemoResults::statistik(3, 1)],
+                    ['name' => 'SARAWAK', 'data' => VDemoResults::statistik(3, 13)],
+                    ['name' => 'LELAKI', 'data' => VDemoResults::statistik(4, 1)],
+                    ['name' => 'PEREMPUAN', 'data' => VDemoResults::statistik(4, 2)],
                 ],
                 'plotOptions' => [
                     'line' => [
