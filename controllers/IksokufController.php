@@ -24,6 +24,7 @@ use yii\web\Session;
 use app\models\OkuDemografi;
 use app\models\OkuScoring;
 use app\models\OkuTotals;
+use app\models\OkuIndeks;
 
 /**
  * CutiController implements the CRUD actions for RekodCuti model.
@@ -270,9 +271,6 @@ class IksokufController extends Controller {
         
         $this->saveTotals($main_id);
 
-        
-       
-        
         $model = OkuMain::findOne(['id' => $main_id]);
         $bhgnA = OkuDimensi::findOne(['main_id' => $main_id]);
         $bhgnB = OkuSumber::findOne(['main_id' => $main_id]);
@@ -284,11 +282,11 @@ class IksokufController extends Controller {
         $groupsC = OkuGroups::findAll(['type' => 'C']);
         $groupsD = OkuGroups::findAll(['type' => 'D']);
         
-        $indeksAll = OkuDimensi::IndeksAll();
+        $indeksAll = OkuIndeks::find()->orderBy(['id'=>'DESC'])->one();
         
         return $this->render('result', [
-                    'indeksAll' => $indeksAll,
-                    'tahapIndeksAll' => OkuDimensi::tahap($indeksAll),
+                    'indeksAll' => $indeksAll->indeks,
+                    'tahapIndeksAll' => OkuDimensi::tahap($indeksAll->indeks),
                     'model' => $model,
                     'bhgnA' => $bhgnA,
                     'bhgnB' => $bhgnB,

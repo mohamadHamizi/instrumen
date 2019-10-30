@@ -11,6 +11,8 @@ use yii\console\Controller;
 use yii\console\ExitCode;
 use app\controllers\IksokufController;
 use app\models\OkuMain;
+use app\models\OkuDimensi;
+use app\models\OkuIndeks;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -49,6 +51,23 @@ class HelloController extends Controller
 //            $this->saveTotals($main->id);
         }
         
+        
+        return ExitCode::OK;
+    }
+    
+    
+    public function actionGenIndeksAll(){
+        
+//        echo 'test';
+        
+        $model = new OkuIndeks();
+        
+        $model->indeks = OkuDimensi::IndeksAll();
+        $model->create_dt = date('Y-m-d H:i:s');
+        
+        if($model->save()){
+            echo 'OK!';
+        }
         
         return ExitCode::OK;
     }
