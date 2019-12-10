@@ -63,6 +63,11 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    
+    public function actionPdpa()
+    {
+        return $this->render('pdpa');
+    }
 
     /**
      * Login action.

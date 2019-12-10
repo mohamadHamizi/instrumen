@@ -26,6 +26,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
         <?php $this->head() ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
+        <?php //echo \app\widgets\PdpaWidget::widget() ?>
         <?php $this->beginBody() ?>
         <div class="wrapper">
 

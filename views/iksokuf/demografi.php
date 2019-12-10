@@ -27,14 +27,6 @@ use app\models\OkuRefDemo;
 
     <div class="box-body">
         
-        <?php  
-
-// yii\helpers\VarDumper::dump(\app\models\OkuScoring::loadScale(1033, 'A')); 
-        
-        echo \app\models\OkuDimensi::GroupSkor(16, 1033);
-        
-        ?>
-        
         <?= $form->errorSummary($model); ?>
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'nama'); ?></label>
@@ -253,7 +245,7 @@ use app\models\OkuRefDemo;
 
     </div>
     <!-- /.box-body -->
-    <div class="box-footer">
+    <div class="box-footer text-center">
         <!--<button type="reset" class="btn btn-default"><i class="fa fa-repeat"></i>&nbsp;Reset</button>-->
         <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary']) ?>
     </div>

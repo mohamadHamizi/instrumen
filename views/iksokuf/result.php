@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use app\models\OkuDimensi;
 use app\models\OkuScoring;
 use app\models\OkuSumber;
@@ -8,7 +9,7 @@ use app\models\OkuKesan;
 use app\models\OkuGroups;
 use app\models\VDemoResults;
 ?>
-<?php //yii\helpers\VarDumper::dump($dataA,10,true);      ?>
+<?php //yii\helpers\VarDumper::dump($dataA,10,true);        ?>
 
 <!--<div class="box box-primary">
     <div class="box-header with-border">
@@ -29,9 +30,9 @@ use app\models\VDemoResults;
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3><?=$bhgnA->index ?><sup style="font-size: 20px">%</sup></h3>
+                <h3><?= $bhgnA->index ?><sup style="font-size: 20px">%</sup></h3>
 
-                <p><?=$bhgnA->tahap ?></p>
+                <p><?= $bhgnA->tahap ?></p>
             </div>
             <div class="icon">
                 <i class="fa fa-user"></i>
@@ -43,8 +44,8 @@ use app\models\VDemoResults;
     <div class="col-lg-6 col-xs-6">
         <div class="small-box bg-green">
             <div class="inner">
-                <h3><?=$indeksAll ?><sup style="font-size: 20px">%</sup></h3>
-                <p><?=$tahapIndeksAll?></p>
+                <h3><?= $indeksAll ?><sup style="font-size: 20px">%</sup></h3>
+                <p><?= $tahapIndeksAll ?></p>
             </div>
             <div class="icon">
                 <i class="fa fa-users"></i>
@@ -306,6 +307,10 @@ use app\models\VDemoResults;
             <?php } ?>
         </ul>
     </div>
+</div>
+<div class="form-group text-center">
+    <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi', ['iksokuf/des'], ['class' => 'btn btn-danger']) ?>
+
 </div>
 
 

@@ -79,10 +79,30 @@ class IksokufController extends Controller {
             //sekiranya ada rekod.. just continue ke page yang blum ada markah
             if ($exist) {
 
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
+                
                 $session->set('icno', $exist->icno);
                 $session->set('main_id', $exist->id);
                 return $this->redirect(['demografi']);
             } else {
+                
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
 
                 $model->created_dt = date("Y-m-d H:i:s");
 
@@ -119,6 +139,15 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
                 return $this->redirect(['bahagian-a']);
             }
         }
@@ -151,6 +180,15 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
                 return $this->redirect(['bahagian-b']);
             }
         }
@@ -189,6 +227,15 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
                 return $this->redirect(['bahagian-c']);
             }
         }
@@ -221,6 +268,15 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
                 return $this->redirect(['bahagian-d']);
             }
         }
@@ -253,6 +309,15 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Tahniah anda selesai menjawab semua soalan :)',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
                 return $this->redirect(['result']);
             }
         }
@@ -354,7 +419,7 @@ class IksokufController extends Controller {
     public function actionDes() {
 
         \Yii::$app->session->destroy(); // destroy all session
-        return $this->redirect(['index']);
+        return $this->redirect(['site/pdpa']);
     }
 
     

@@ -76,7 +76,8 @@ use app\models\OkuQuestions;
                     ?>
                 <?php } ?>
 
-                <div class="form-group">
+                <div class="form-group text-center">
+                    <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Back', ['iksokuf/bahagian-b'], ['class' => 'btn btn-success']) ?>
                     <?= Html::submitButton('Seterusnya', ['class' => 'btn btn-primary']) ?>
                 </div>
 

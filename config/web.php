@@ -16,7 +16,7 @@ $config = [
     ],
     'id' => 'pentadbiran',
     'name' => 'UPPsikS',
-    'defaultRoute' => 'iksokuf/bahagian-a',
+    'defaultRoute' => 'site/pdpa',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
