@@ -307,8 +307,14 @@ class IksokufController extends Controller {
         if ($model->load(Yii::$app->request->post())) {
 
             $model->main_id = $main_id;
+             
 
             if ($model->save()) {
+
+                $main = OkuMain::findOne($main_id);
+                $main->status = 1;
+                $main->save(false);
+
                 Yii::$app->getSession()->setFlash('success', [
                     'type' => 'success',
                     'duration' => 5000,

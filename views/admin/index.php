@@ -26,61 +26,65 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         $gridColumns = [
             ['class' => 'yii\grid\SerialColumn'],
-//            'id',
+            'demografi.nama',
             'icno',
             'demografi.no_oku',
             'tarikh',
+            'statusName',
+            'status',
             [
                 'label' => 'Keputusan',
                 'format' => 'raw',
                 'value' => function ($data) {
-                    return Html::a("<i class='fa fa-eye'></i>&nbsp;Papar",['admin/show-result', 'id'=>$data->id],['target'=>'_blank']);
+
+                    if ($data->status == 1) {
+                        return Html::a("<i class='fa fa-eye'></i>&nbsp;Papar", ['admin/show-result', 'id' => $data->id], ['target' => '_blank']);
+                    } else if($data->status == 0) {
+                        return '';
+                    }
                 },
             ],
-//            'demografi.kategori',
-//            'demografi.sebab',
-//            'demografi.sejak',
-//            'demografi.jantina',
-//            'demografi.agama',
-//            'demografi.etnik',
-//            'demografi.kahwin',
-//            'demografi.kerusi_roda',
-//            'demografi.kaki_palsu',
-//            'demografi.tgn_palsu',
-//            'demografi.tongkat',
-//            'demografi.umur',
-//            'demografi.pendidikan',
-//            'demografi.bantuan',
-//            'demografi.jumlah',
-//            'demografi.kerja_anda',
-//            'demografi.kerja_psgn',
-//            'demografi.pendapatan',
-//            'demografi.alamat',
-//            'demografi.negeri',
-//            ['class' => 'yii\grid\ActionColumn'],
+            //            'demografi.kategori',
+            //            'demografi.sebab',
+            //            'demografi.sejak',
+            //            'demografi.jantina',
+            //            'demografi.agama',
+            //            'demografi.etnik',
+            //            'demografi.kahwin',
+            //            'demografi.kerusi_roda',
+            //            'demografi.kaki_palsu',
+            //            'demografi.tgn_palsu',
+            //            'demografi.tongkat',
+            //            'demografi.umur',
+            //            'demografi.pendidikan',
+            //            'demografi.bantuan',
+            //            'demografi.jumlah',
+            //            'demografi.kerja_anda',
+            //            'demografi.kerja_psgn',
+            //            'demografi.pendapatan',
+            //            'demografi.alamat',
+            //            'demografi.negeri',
+            //            ['class' => 'yii\grid\ActionColumn'],
         ];
 
 
-//        echo ExportMenu::widget([
-//            'dataProvider' => $dataProvider,
-//            'columns' => $gridColumns,
-//            'clearBuffers' => true,
-//        ]);
+        //        echo ExportMenu::widget([
+        //            'dataProvider' => $dataProvider,
+        //            'columns' => $gridColumns,
+        //            'clearBuffers' => true,
+        //        ]);
         ?>
 
         <?=
-        GridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-//            'responsiveWrap' => true,
-//            'responsive' => true,
-            'hover' => true,
-            'pjax' => true,
-            'columns' => $gridColumns,
-        ]);
+            GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                //            'responsiveWrap' => true,
+                //            'responsive' => true,
+                'hover' => true,
+                'pjax' => true,
+                'columns' => $gridColumns,
+            ]);
         ?>
     </div>
 </div>
-
-
-
