@@ -162,19 +162,9 @@ class MipkController extends Controller
 
     public function actionDes() {
 
-        // $session = Yii::$app->session;
-
-        // check if a session is already open
-        // if ($session->isActive) ...
-
-        // close a session
         Yii::$app->session->close();
-// 
-        Yii::$app->session->remove('mipk_id');
-        
-        // destroys all data registered to a session.
-        // Yii::$app->session->destroy();
 
+        Yii::$app->session->remove('mipk_id');
 
         Yii::$app->session->destroy(); // destroy all session
         return $this->redirect(['mipk/index']);

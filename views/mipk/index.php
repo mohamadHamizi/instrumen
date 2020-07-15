@@ -13,7 +13,7 @@ use yii\helpers\Url;
     </div>
     <div class="box-body">
         <p>Sukacita dimaklumkan bahawa Jabatan Hal Ehwal Wanita Sabah (JHEWA) dan Majlis Penasihat Wanita Sabah (MPWS) ingin memohon jasa baik Tuan/Puan/Saudara/Saudari untuk memberi maklum balas mengenai pengetahuan anda mengenai isu perkahwinan kanak-kanak. Tujuan pentadbiran soal selidik ini adalah membantu peserta mengetahui secara umum mengenai perkahwinan kanak-kanak yang terkandung dalam MIPK dan mengetahui tahap pengetahuan peserta mengenai perkahwinan kanak-kanak khasnya di negeri Sabah.</p>
-        <p>Maklum balas yang diberikan adalah sangat penting untuk mengumpul maklumat dan data berkaitan isu perkahwinan kanak-kanak. Terdapat 12 pernyataan dan anda boleh menandakan (√) pada setiap pernyataan mengikut skala pilihan anda. </p>
+        <p>Maklum balas yang diberikan adalah sangat penting untuk mengumpul maklumat dan data berkaitan isu perkahwinan kanak-kanak.</p>
         <p>
             <h5><strong>PANDUAN:</strong></h5>
             <ol>
