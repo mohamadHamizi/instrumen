@@ -41,7 +41,8 @@ class MipkPengetahuan extends \yii\db\ActiveRecord
     {
         return [
             [['main_id'], 'required'],
-            [['main_id', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12', 'cadangan', 'skor'], 'integer'],
+            [['main_id', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12', 'skor'], 'integer'],
+            [['item1','item2','item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12'], 'required', 'message'=>'Sila jawab!'],
         ];
     }
 
@@ -91,7 +92,7 @@ class MipkPengetahuan extends \yii\db\ActiveRecord
             'item10' => 'Item10',
             'item11' => 'Item11',
             'item12' => 'Item12',
-            'cadangan' => 'Cadangan',
+            'cadangan' => 'Cadangan dan pandangan anda berkaitan isu perkahwinan kanak-kanak ',
             'skor' => 'Skor',
         ];
     }

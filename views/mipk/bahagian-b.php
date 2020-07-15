@@ -23,52 +23,60 @@ use app\models\MipkQuestions;
         $form = ActiveForm::begin();
         ?>
         <div class="box-body">
-            
-               
-                    <?php echo GridView::widget([
-                        'summary' => '',
-                        //'emptyText' => 'Tiada rekod penetapan SKT',
-                        'dataProvider' => MipkQuestions::getProvider(),
-                        'columns' => [
-                            [
-                                'label' => 'BIL.',
-                                'headerOptions' => ['class' => 'text-center'],
-                                'contentOptions' => ['class' => 'text-center', 'style' => 'width:5%'],
-                                'attribute' => 'id',
-                            ],
-                            [
-                                'label' => 'PERNYATAAN',
-                                'headerOptions' => ['class' => ''],
-                                //'contentOptions' => ['style'=>'width:75%'],
-                                'attribute' => 'pernyataan',
-                                'format' => 'html'
-                            ],
-                            [
-                                'label' => 'SKALA',
-                                'headerOptions' => ['class' => 'text-center'],
-                                'contentOptions' => ['class' => 'text-center', 'style' => 'width:50%'],
-                                'value' => function($model) use ($form, $model1) {
-                                    //return Html::radio('skor['.$model->id.']', false, ['value' => $model->id]);
-                                    $data = [1 => 'BETUL', 2 => 'SALAH', 3 => 'TIDAK TAHU'];
-                                    return $form->field($model1, "item$model->id")->radioButtonGroup($data,['class'=>'', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary']]])->label(false);
-                                },
-                                'format' => 'raw'
-                            ],
-                        ],
-                    ]);
+
+
+            <?php echo GridView::widget([
+                'summary' => '',
+                //'emptyText' => 'Tiada rekod penetapan SKT',
+                'dataProvider' => MipkQuestions::getProvider(),
+                'columns' => [
+                    [
+                        'label' => 'BIL.',
+                        'headerOptions' => ['class' => 'text-center'],
+                        'contentOptions' => ['class' => 'text-center', 'style' => 'width:5%'],
+                        'attribute' => 'id',
+                    ],
+                    [
+                        'label' => 'PERNYATAAN',
+                        'headerOptions' => ['class' => ''],
+                        //'contentOptions' => ['style'=>'width:75%'],
+                        'attribute' => 'pernyataan',
+                        'format' => 'html'
+                    ],
+                    [
+                        'label' => 'SKALA',
+                        'headerOptions' => ['class' => 'text-center'],
+                        'contentOptions' => ['class' => 'text-center', 'style' => 'width:50%'],
+                        'value' => function ($model) use ($form, $model1) {
+                            //return Html::radio('skor['.$model->id.']', false, ['value' => $model->id]);
+                            $data = [1 => 'BETUL', 2 => 'SALAH', 3 => 'TIDAK TAHU'];
+                            return $form->field($model1, "item$model->id")->radioButtonGroup($data, ['class' => '', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary']]])->label(false);
+                        },
+                        'format' => 'raw'
+                    ],
+                ],
+            ]);
+            ?>
+
+            <div class="form-group">
+                <label class="col-sm-12 control-label"><?= Html::activeLabel($model, 'cadangan'); ?></label>
+
+                <div class="col-sm-12">
+                    <?=
+                        $form->field($model, 'cadangan')->textarea(['rows'=>4])->label(false)
                     ?>
-
-                <div class="form-group text-center">
-                    <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Back', ['iksokuf/demografi'], ['class' => 'btn btn-success']) ?>
-                    <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary']) ?>
                 </div>
-
-                <?php ActiveForm::end(); ?>
-
+                <?= Html::error($model, 'cadangan'); ?>
             </div>
+
+            <div class="form-group text-center">
+                <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Back', ['mipk/bahagian-a'], ['class' => 'btn btn-success']) ?>
+                <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Next', ['class' => 'btn btn-primary']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+
         </div>
     </div>
 </div>
-
-
-
+</div>

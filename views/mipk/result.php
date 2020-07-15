@@ -29,5 +29,5 @@ use yii\helpers\Html;
 
 </div>
 <div class="form-group text-center">
-    <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi', ['mipk/index'], ['class' => 'btn btn-danger']) ?>
+    <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi / Jawab Semula', ['mipk/des'], ['class' => 'btn btn-danger']) ?>
 </div>

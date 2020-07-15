@@ -199,7 +199,7 @@ use app\models\OkuRefDemo;
         <!-- /.box-body -->
         <div class="box-footer text-center">
             <!--<button type="reset" class="btn btn-default"><i class="fa fa-repeat"></i>&nbsp;Reset</button>-->
-            <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Next', ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.box-footer -->
         <?php ActiveForm::end(); ?>
