@@ -14,13 +14,13 @@ class VDataMipkSearch extends VDataMipk
     /**
      * {@inheritdoc}
      */
-    // public function rules()
-    // {
-    //     return [
-    //         [['id', 'skor_a', 'skor_b', 'skor_c', 'skor_d', 'status'], 'integer'],
-    //         [['icno', 'created_dt'], 'safe'],
-    //     ];
-    // }
+    public function rules()
+    {
+        return [
+            // [['id', 'skor_a', 'skor_b', 'skor_c', 'skor_d', 'status'], 'integer'],
+            [['nama', 'create_datetime','skor'], 'safe'],
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -58,12 +58,10 @@ class VDataMipkSearch extends VDataMipk
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            // 'skor_a' => $this->skor_a,
-            // 'skor_b' => $this->skor_b,
-            // 'skor_c' => $this->skor_c,
-            // 'skor_d' => $this->skor_d,
-            // 'status' => $this->status,
+            // 'id' => $this->id,
+            'nama' => $this->nama,
+            'create_datetime' => $this->create_datetime,
+            'skor' => $this->skor,
         ]);
 
         $query->andFilterWhere(['like', 'id', $this->id]);

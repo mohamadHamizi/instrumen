@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         $gridColumns = [
             ['class' => 'yii\grid\SerialColumn'],
-            'id','jantina','umur','etnik','agama','pendidikan','status_kerja','kerja_anda','adik_beradik',
+            'create_datetime','nama','jantina','umur','etnik','agama','pendidikan','status_kerja','kerja_anda','adik_beradik',
             'saudara','kesedaran','kesalahan','status_kahwin','umur_anda','umur_psgn','anak',
             'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12','skor','cadangan',
         ];

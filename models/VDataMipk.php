@@ -72,6 +72,8 @@ class VDataMipk extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'create_datetime' => 'Tarikh/Masa',
+            'nama' => 'Nama',
             'jantina' => 'Jantina',
             'umur' => 'Umur',
             'etnik' => 'Etnik',

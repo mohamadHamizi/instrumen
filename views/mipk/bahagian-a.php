@@ -29,6 +29,17 @@ use app\models\OkuRefDemo;
         <?= $form->errorSummary($model); ?>
 
         <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'item16'); ?></label>
+
+            <div class="col-sm-6">
+                <?=
+                    $form->field($model, 'item16')->textInput()->label(false)
+                ?>
+            </div>
+            <?= Html::error($model, 'item16'); ?>
+        </div>
+
+        <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'item1'); ?></label>
 
             <div class="col-sm-2">

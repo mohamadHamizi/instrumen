@@ -86,6 +86,7 @@ class MipkDemografi extends \yii\db\ActiveRecord
             'item13' => '13. Umur anda ketika mula berkahwin:',
             'item14' => '14. Umur pasangan anda ketika mula berkahwin:',
             'item15' => '15. Adakah anak anda berkahwin di bawah umur?',
+            'item16' => 'Nama',
         ];
     }
 }

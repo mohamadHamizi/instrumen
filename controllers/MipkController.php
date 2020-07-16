@@ -37,6 +37,7 @@ class MipkController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $session = Yii::$app->session;
+            $model->create_dt = date('Y-m-d H:i:s');
 
             if ($model->save()) {
                 Yii::$app->getSession()->setFlash('success', [
