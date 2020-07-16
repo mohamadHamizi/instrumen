@@ -50,11 +50,12 @@ class MipkDemografi extends \yii\db\ActiveRecord
             [['item1'], 'string', 'max' => 1],
             [['item3', 'item4', 'item4_other', 'item5', 'item5_other', 'item6', 'item6_other', 'item12_other'], 'string', 'max' => 100],
             [['item7'], 'string', 'max' => 150],
+            [['item16'], 'string', 'max' => 200],
             [['item8', 'item12'], 'string', 'max' => 10],
             [['item9', 'item10', 'item11'], 'string', 'max' => 5],
             [['item15'], 'string', 'max' => 20],
             // [['item1','item2','item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12', 'item13', 'item14', 'item15',  ], 'required'],
-            [['item1','item2','item3', 'item4', 'item5', 'item6', 'item8', 'item9', 'item10', 'item11', 'item12',], 'required'],
+            [['item1','item2','item3', 'item4', 'item5', 'item6', 'item8', 'item9', 'item10', 'item11', 'item12','item16',], 'required'],
         ];
     }
 
