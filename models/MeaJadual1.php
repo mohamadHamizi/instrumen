@@ -52,6 +52,14 @@ class MeaJadual1 extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getSkorPilihanAnda(){
+        return MeaMain::highestSkor($this->total_anda1, $this->total_anda2);
+    }
+
+    public function getSkorPilihanBos(){
+        return MeaMain::highestSkor($this->total_bos1, $this->total_bos2);
+    }
+
     /**
      * {@inheritdoc}
      */

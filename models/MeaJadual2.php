@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\MeaMain;
 
 /**
  * This is the model class for table "mea_jadual2".
@@ -50,6 +51,14 @@ class MeaJadual2 extends \yii\db\ActiveRecord
             // [['r1_anda', 'r1_bos', 'r2_anda', 'r2_bos', 'r3_anda', 'r3_bos', 'r4_anda', 'r4_bos', 'r5_anda', 'r5_bos', 'r6_anda', 'r6_bos', 'r7_anda', 'r7_bos'], 'required'],
             [['pil_anda', 'pil_bos'], 'string', 'max' => 1],
         ];
+    }
+
+    public function getSkorPilihanAnda(){
+        return MeaMain::highestSkor($this->total_anda1, $this->total_anda2);
+    }
+
+    public function getSkorPilihanBos(){
+        return MeaMain::highestSkor($this->total_bos1, $this->total_bos2);
     }
 
     /**

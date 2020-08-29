@@ -22,18 +22,42 @@ use yii\helpers\Html;
                 <th class="text-center" colspan="4">Ketua</th>
             </tr>
             <tr>
-                <td class="text-center"><strong><?php echo $model->jadual1->pil_anda?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual2->pil_anda?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual3->pil_anda?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual4->pil_anda?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual1->pil_bos?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual2->pil_bos?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual3->pil_bos?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual4->pil_bos?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual1->pil_anda ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual2->pil_anda ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual3->pil_anda ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual4->pil_anda ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual1->pil_bos ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual2->pil_bos ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual3->pil_bos ?></strong></td>
+                <td class="text-center"><strong><?php echo $model->jadual4->pil_bos ?></strong></td>
             </tr>
             <tr>
                 <td colspan="4"><strong><?php echo $anda->tret ?></strong><br><?php echo $anda->rumusan ?></td>
                 <td colspan="4"><strong><?php echo $bos->tret ?></strong><br><?php echo $bos->rumusan ?></td>
+            </tr>
+        </table>
+
+
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <th class="text-center">Anda</th>
+                <th class="text-center">Ketua</th>
+            </tr>
+            <tr>
+                <td class="text-center"><h1>(<?php echo $model->jadual1->skorPilihanAnda ?>) <?php echo $model->jadual1->pil_anda ?></h1></td>
+                <td class="text-center"><h1><?php echo $model->jadual1->pil_bos ?> (<?php echo $model->jadual1->skorPilihanBos?>)</h1></td>
+            </tr>
+            <tr>
+                <td class="text-center"><h1>(<?php echo $model->jadual2->skorPilihanAnda ?>) <?php echo $model->jadual2->pil_anda ?></h1></td>
+                <td class="text-center"><h1><?php echo $model->jadual2->pil_bos ?> (<?php echo $model->jadual2->skorPilihanBos ?>)</h1></td>
+            </tr>
+            <tr>
+                <td class="text-center"><h1>(<?php echo $model->jadual3->skorPilihanAnda ?>) <?php echo $model->jadual3->pil_anda ?></h1></td>
+                <td class="text-center"><h1><?php echo $model->jadual3->pil_bos ?> (<?php echo $model->jadual3->skorPilihanBos ?>)</h1></td>
+            </tr>
+            <tr>
+                <td class="text-center"><h1>(<?php echo $model->jadual4->skorPilihanAnda ?>) <?php echo $model->jadual4->pil_anda ?></h1></td>
+                <td class="text-center"><h1><?php echo $model->jadual4->pil_bos ?> (<?php echo $model->jadual4->skorPilihanBos ?>)</h1></td>
             </tr>
         </table>
     </div>

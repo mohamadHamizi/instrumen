@@ -64,6 +64,16 @@ class MeaMain extends \yii\db\ActiveRecord
         return $this->hasOne(MeaJadual4::className(), ['main_id'=>'id']);
     }
 
+    public static function highestSkor($pil1, $pil2){
+        if($pil1 > $pil2){
+            return $pil1;
+        }
+
+        if($pil2 > $pil1){
+            return $pil2;
+        }
+    }
+
 
     /**
      * {@inheritdoc}
