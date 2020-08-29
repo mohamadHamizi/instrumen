@@ -41,22 +41,27 @@ use yii\helpers\Html;
         <table class="table table-bordered table-hover table-striped">
             <tr>
                 <th class="text-center">Anda</th>
+                <th class="text-center">&nbsp;</th>
                 <th class="text-center">Ketua</th>
             </tr>
             <tr>
                 <td class="text-center"><h1>(<?php echo $model->jadual1->skorPilihanAnda ?>) <?php echo $model->jadual1->pil_anda ?></h1></td>
+                <td class="text-center"><h2><i class="fa fa-arrow-left"></i> <strong>ENERGY</strong> <i class="fa fa-arrow-right"></i></h2></td>
                 <td class="text-center"><h1><?php echo $model->jadual1->pil_bos ?> (<?php echo $model->jadual1->skorPilihanBos?>)</h1></td>
             </tr>
             <tr>
                 <td class="text-center"><h1>(<?php echo $model->jadual2->skorPilihanAnda ?>) <?php echo $model->jadual2->pil_anda ?></h1></td>
+                <td class="text-center"><h2><i class="fa fa-arrow-left"></i> <strong>INFORMATION</strong> <i class="fa fa-arrow-right"></i></h2></td>
                 <td class="text-center"><h1><?php echo $model->jadual2->pil_bos ?> (<?php echo $model->jadual2->skorPilihanBos ?>)</h1></td>
             </tr>
             <tr>
                 <td class="text-center"><h1>(<?php echo $model->jadual3->skorPilihanAnda ?>) <?php echo $model->jadual3->pil_anda ?></h1></td>
+                <td class="text-center"><h2><i class="fa fa-arrow-left"></i> <strong>DECISIONS</strong> <i class="fa fa-arrow-right"></i></h2></td>
                 <td class="text-center"><h1><?php echo $model->jadual3->pil_bos ?> (<?php echo $model->jadual3->skorPilihanBos ?>)</h1></td>
             </tr>
             <tr>
                 <td class="text-center"><h1>(<?php echo $model->jadual4->skorPilihanAnda ?>) <?php echo $model->jadual4->pil_anda ?></h1></td>
+                <td class="text-center"><h2><i class="fa fa-arrow-left"></i> <strong>LIFESTYLE</strong> <i class="fa fa-arrow-right"></i></h2></td>
                 <td class="text-center"><h1><?php echo $model->jadual4->pil_bos ?> (<?php echo $model->jadual4->skorPilihanBos ?>)</h1></td>
             </tr>
         </table>
