@@ -39,16 +39,6 @@
                     'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
                     'items' => [
                         ['label' => 'Menu', 'options' => ['class' => 'header']],
-//                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-//                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-//                    ['label' => 'Dashboard','icon' => 'calendar', 'url' => ['cuti/papan'], 'visible' => !Yii::$app->user->isGuest],
-//                    ['label' => 'Mohon Cuti','icon' => 'calendar-plus-o', 'url' => ['cuti/mohon'], 'visible' => !Yii::$app->user->isGuest],
-//                    ['label' => "Pengganti $noti_ganti", 'encode'=>false,'icon' => 'user', 'url' => ['cuti/pengganti'], 'visible' => !Yii::$app->user->isGuest],
-//                    ['label' => "Perakuan $noti_peraku", 'encode'=>false,'icon' => 'check-circle-o', 'url' => ['cuti/peraku'], 'visible' => !Yii::$app->user->isGuest],
-//                    ['label' => "Kelulusan $noti_lulus", 'encode'=>false,'icon' => 'check-circle', 'url' => ['cuti/lulus'], 'visible' => !Yii::$app->user->isGuest],
-//                    ['label' => 'Senarai Permohonan','icon' => 'list', 'url' => ['cuti/senarai'], 'visible' => !Yii::$app->user->isGuest],
-//                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-//                    ['label' => 'e-IKSOKU-F','icon' => 'list', 'url' => ['iksokuf/bahagian-a'], 'visible' => !Yii::$app->user->isGuest],
                         [
                             'label' => 'e-IKSOKU-F',
                             'icon' => 'wheelchair-alt',
@@ -61,24 +51,6 @@
                                 ['label' => 'Bahagian C', 'icon' => 'hourglass-start', 'url' => ['iksokuf/bahagian-c'], 'visible' => true],
                                 ['label' => 'Bahagian D', 'icon' => 'cloud-download', 'url' => ['iksokuf/bahagian-d'], 'visible' => true],
                                 ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['iksokuf/result'], 'visible' => true],
-//                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-//                            [
-//                                'label' => 'Level One',
-//                                'icon' => 'circle-o',
-//                                'url' => '#',
-//                                'items' => [
-//                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-//                                    [
-//                                        'label' => 'Level Two',
-//                                        'icon' => 'circle-o',
-//                                        'url' => '#',
-//                                        'items' => [
-//                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-//                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-//                                        ],
-//                                    ],
-//                                ],
-//                            ],
                             ],
                         ],
                         [
@@ -93,6 +65,19 @@
                             ],
                         ],
                         [
+                            'label' => 'EA-Malay',
+                            'icon' => 'line-chart',
+                            'url' => '#',
+                            'items' => [
+                                ['label' => 'Pengenalan', 'icon' => 'home', 'url' => ['mea/index'], 'visible' => true],
+                                ['label' => 'Jadual 1', 'icon' => 'th-large', 'url' => ['mea/jadual-1'], 'visible' => true],
+                                ['label' => 'Jadual 2', 'icon' => 'th-large', 'url' => ['mea/jadual-2'], 'visible' => true],
+                                ['label' => 'Jadual 3', 'icon' => 'th-large', 'url' => ['mea/jadual-3'], 'visible' => true],
+                                ['label' => 'Jadual 4', 'icon' => 'th-large', 'url' => ['mea/jadual-4'], 'visible' => true],
+                                ['label' => 'Keputusan', 'icon' => 'star-half-o', 'url' => ['mea/skor'], 'visible' => true],
+                            ],
+                        ],
+                        [
                             'label' => 'Admin Dashboard',
                             'icon' => 'dashboard',
                             'url' => '#',
@@ -103,16 +88,12 @@
                                 ['label' => 'MIPK', 'icon' => 'table', 'url' => ['admin/data-mipk'], 'visible' => !Yii::$app->user->isGuest],
                             ]
                         ],
-//                        
                     ],
                 ]
         )
         ?>
         <?php
-// echo
-// yii\helpers\Html::a(
-//                                        'Sign out', ['/site/logout'], ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
-//                                )
+
         ?>
     </section>
 
