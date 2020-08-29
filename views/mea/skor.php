@@ -19,7 +19,7 @@ use yii\helpers\Html;
         <table class="table table-bordered table-hover table-striped">
             <tr>
                 <th class="text-center" colspan="4">Anda</th>
-                <th class="text-center" colspan="4">Ketua (<?php echo $bos->tret ?>)</th>
+                <th class="text-center" colspan="4">Ketua</th>
             </tr>
             <tr>
                 <td class="text-center"><strong><?php echo $model->jadual1->pil_anda?></strong></td>
@@ -33,7 +33,7 @@ use yii\helpers\Html;
             </tr>
             <tr>
                 <td colspan="4"><strong><?php echo $anda->tret ?></strong><br><?php echo $anda->rumusan ?></td>
-                <td colspan="4"><strong><?php echo $anda->tret ?></strong><br><?php echo $bos->rumusan ?></td>
+                <td colspan="4"><strong><?php echo $bos->tret ?></strong><br><?php echo $bos->rumusan ?></td>
             </tr>
         </table>
     </div>
