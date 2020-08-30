@@ -4,6 +4,7 @@ use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
+
 use yii\helpers\ArrayHelper;
 use app\models\OkuRefDemo;
 ?>
@@ -100,11 +101,14 @@ use app\models\OkuRefDemo;
             <?php echo DatePicker::widget([
                 'model' => $model,
                 'attribute' => 'tarikh_lahir',
-                'type' => DatePicker::TYPE_COMPONENT_PREPEND,
-                // 'value' => '23-Feb-1982',
+                'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                'readonly' => true,
+                'options'=>['placeholder'=>'hari/bulan/tahun'],
+                'pickerIcon' => '<i class="fa fa-calendar text-primary"></i>',
+                'removeIcon' => '<i class="fa fa-trash text-danger"></i>',
                 'pluginOptions' => [
                     'autoclose'=>true,
-                    'format' => 'yyyy-mm-dd'
+                    'format' => 'dd/mm/yyyy'
                 ]
             ]);?>
             </div>
