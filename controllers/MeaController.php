@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MeaDemo;
 use app\models\MeaJadual1;
 use app\models\MeaJadual2;
 use app\models\MeaJadual3;
@@ -43,10 +44,61 @@ class MeaController extends Controller
             $model->save();
 
             $session->set('mea_main_id', $model->id);
-            return $this->redirect(['jadual-1']);
+            return $this->redirect(['demografi']);
         }
 
         return $this->render('index', ['model' => $model]);
+    }
+
+    public function actionDemografi()
+    {
+        $this->view->title = "Demografi";
+
+        $id = \Yii::$app->session->get('mea_main_id');
+
+        if (!$id) {
+            Yii::$app->getSession()->setFlash('danger', [
+                'type' => 'danger',
+                'duration' => 5000,
+                'icon' => 'fa fa-exclamation',
+                'message' => 'Sila Masukkan No. Kad pengenalan',
+                'title' => 'Tidak berjaya',
+                'positonY' => 'top',
+                'positonX' => 'right'
+            ]);
+            return $this->redirect(['index']);
+        }
+
+
+        $model = new MeaDemo();
+        
+        $check_model = MeaDemo::findOne(['main_id'=>$id]);
+
+        if($check_model){
+            $model = $check_model;
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->main_id = $id;
+
+            if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    'icon' => 'fa fa-check',
+                    'message' => 'Maklumat telah disimpan',
+                    'title' => 'Berjaya',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
+
+                return $this->redirect(['jadual-1']);
+            }
+
+        }
+
+        return $this->render('demografi', ['model' => $model]);
     }
 
     public function actionJadual1()

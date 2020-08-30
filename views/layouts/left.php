@@ -70,6 +70,7 @@
                             'url' => '#',
                             'items' => [
                                 ['label' => 'Pengenalan', 'icon' => 'home', 'url' => ['mea/index'], 'visible' => true],
+                                ['label' => 'Demografi', 'icon' => 'th-large', 'url' => ['mea/demografi'], 'visible' => true],
                                 ['label' => 'Jadual 1', 'icon' => 'th-large', 'url' => ['mea/jadual-1'], 'visible' => true],
                                 ['label' => 'Jadual 2', 'icon' => 'th-large', 'url' => ['mea/jadual-2'], 'visible' => true],
                                 ['label' => 'Jadual 3', 'icon' => 'th-large', 'url' => ['mea/jadual-3'], 'visible' => true],

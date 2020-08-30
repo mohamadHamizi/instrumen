@@ -1,0 +1,175 @@
+<?php
+
+use yii\helpers\Html;
+//use yii\widgets\ActiveForm;
+use kartik\widgets\ActiveForm;
+use kartik\widgets\DatePicker;
+use yii\helpers\ArrayHelper;
+use app\models\OkuRefDemo;
+?>
+
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-calendar-plus-o"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <?php
+    $form = ActiveForm::begin([
+        'fieldConfig' => [
+            'options' => [
+                'tag' => false,
+            ],
+        ],
+        'options' => ['class' => 'form-horizontal form-label-left']
+    ]);
+    ?>
+
+    <div class="box-body">
+
+        <?= $form->errorSummary($model); ?>
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'nama_penuh'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                    $form->field($model, 'nama_penuh')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'nama_kj'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                    $form->field($model, 'nama_kj')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'jantina'); ?></label>
+
+            <div class="col-sm-6">
+
+                <?= $form->field($model, 'jantina')->radiolist(['L' => 'Lelaki', 'P' => 'Perempuan'])->label(false);
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'umur'); ?></label>
+
+            <div class="col-sm-2">
+                <?=
+                    $form->field($model, 'umur')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'jawatan'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                    $form->field($model, 'jawatan')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'organisasi'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                    $form->field($model, 'organisasi')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'tarikh_lahir'); ?></label>
+
+            <div class="col-sm-3">
+            <?php echo DatePicker::widget([
+                'model' => $model,
+                'attribute' => 'tarikh_lahir',
+                'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+                // 'value' => '23-Feb-1982',
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format' => 'yyyy-mm-dd'
+                ]
+            ]);?>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'warna'); ?></label>
+
+            <div class="col-sm-4">
+                <?=
+                    $form->field($model, 'warna')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'bangsa'); ?></label>
+
+            <div class="col-sm-3">
+                <?=
+                    $form->field($model, 'bangsa')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'darah'); ?></label>
+
+            <div class="col-sm-6">
+
+                <?= $form->field($model, 'darah')->radiolist(
+                    [
+                        'A+' => 'A+',
+                 'A-' => 'A-',
+                 'B+' => 'B+',
+                 'B-' => 'B-',
+                 'AB+' => 'AB+',
+                 'AB-' => 'AB-',
+                 'O+' => 'O+',
+                 'O-' => 'O-',
+                 'x' => 'Tidak Tahu',
+                 ])->label(false);
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'anak_keberapa'); ?></label>
+
+            <div class="col-sm-2">
+                <?=
+                    $form->field($model, 'anak_keberapa')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <!-- /.box-body -->
+        <div class="box-footer text-center">
+            <!--<button type="reset" class="btn btn-default"><i class="fa fa-repeat"></i>&nbsp;Reset</button>-->
+            <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary']) ?>
+        </div>
+        <!-- /.box-footer -->
+        <?php ActiveForm::end(); ?>
+    </div>
