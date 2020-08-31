@@ -92,7 +92,7 @@ class MeaDemo extends \yii\db\ActiveRecord
             'jantina' => 'Jantina',
             'umur' => 'Umur',
             'jawatan' => 'Jawatan',
-            'organisasi' => 'Nama Organisasi',
+            'organisasi' => 'JFPIU',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna kegemaran',
             'bangsa' => 'Bangsa',

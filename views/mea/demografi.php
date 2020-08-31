@@ -1,9 +1,11 @@
 <?php
 
+use app\models\Department;
 use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
+use kartik\widgets\Select2;
 
 use yii\helpers\ArrayHelper;
 use app\models\OkuRefDemo;
@@ -86,31 +88,37 @@ use app\models\OkuRefDemo;
 
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'organisasi'); ?></label>
+            <div class="col-sm-6">
+                <?php // Usage with ActiveForm and model
+                echo $form->field($model, 'organisasi')->widget(Select2::classname(), [
+                    'data' => ArrayHelper::map(Department::find()->where(['isActive' => 1])->orderBy(['shortname' => 'ASC'])->all(), 'shortname', 'fullname'),
+                    'options' => ['placeholder' => '--PILIH JFPIU--'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])->label(false);
 
-            <div class="col-sm-5">
-                <?=
-                    $form->field($model, 'organisasi')->textInput()
-                        ->label(false)
                 ?>
             </div>
         </div>
+
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'tarikh_lahir'); ?></label>
 
             <div class="col-sm-3">
-            <?php echo DatePicker::widget([
-                'model' => $model,
-                'attribute' => 'tarikh_lahir',
-                'type' => DatePicker::TYPE_COMPONENT_APPEND,
-                'readonly' => true,
-                'options'=>['placeholder'=>'hari/bulan/tahun'],
-                'pickerIcon' => '<i class="fa fa-calendar text-primary"></i>',
-                'removeIcon' => '<i class="fa fa-trash text-danger"></i>',
-                'pluginOptions' => [
-                    'autoclose'=>true,
-                    'format' => 'dd/mm/yyyy'
-                ]
-            ]);?>
+                <?php echo DatePicker::widget([
+                    'model' => $model,
+                    'attribute' => 'tarikh_lahir',
+                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                    'readonly' => true,
+                    'options' => ['placeholder' => 'hari/bulan/tahun'],
+                    'pickerIcon' => '<i class="fa fa-calendar text-primary"></i>',
+                    'removeIcon' => '<i class="fa fa-trash text-danger"></i>',
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'dd/mm/yyyy'
+                    ]
+                ]); ?>
             </div>
         </div>
 
@@ -145,15 +153,16 @@ use app\models\OkuRefDemo;
                 <?= $form->field($model, 'darah')->radiolist(
                     [
                         'A+' => 'A+',
-                 'A-' => 'A-',
-                 'B+' => 'B+',
-                 'B-' => 'B-',
-                 'AB+' => 'AB+',
-                 'AB-' => 'AB-',
-                 'O+' => 'O+',
-                 'O-' => 'O-',
-                 'x' => 'Tidak Tahu',
-                 ])->label(false);
+                        'A-' => 'A-',
+                        'B+' => 'B+',
+                        'B-' => 'B-',
+                        'AB+' => 'AB+',
+                        'AB-' => 'AB-',
+                        'O+' => 'O+',
+                        'O-' => 'O-',
+                        'x' => 'Tidak Tahu',
+                    ]
+                )->label(false);
                 ?>
             </div>
         </div>
