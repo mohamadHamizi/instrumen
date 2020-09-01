@@ -78,6 +78,7 @@
                                 ['label' => 'Keputusan', 'icon' => 'star-half-o', 'url' => ['mea/skor'], 'visible' => true],
                             ],
                         ],
+                        // ['label' => 'Hubungi Kami', 'icon' => 'phone', 'url' => ['site/contact'], 'visible' => true],
                         [
                             'label' => 'Admin Dashboard',
                             'icon' => 'dashboard',

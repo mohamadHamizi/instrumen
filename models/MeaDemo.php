@@ -91,7 +91,7 @@ class MeaDemo extends \yii\db\ActiveRecord
             'nama_kj' => 'Nama Ketua Jabatan',
             'jantina' => 'Jantina',
             'umur' => 'Umur',
-            'jawatan' => 'Jawatan',
+            'jawatan' => 'Jawatan Anda',
             'organisasi' => 'JFPIU',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna kegemaran',
