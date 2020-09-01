@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'tarikh_isi', 'icno', 'tret_anda', 'tret_bos', 'nama_penuh', 'nama_kj', 'jantina', 'umur', 'jawatan', 'organisasi', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa',
             'j1_total_anda_1', 'j1_total_anda_2', 'j2_total_anda_1', 'j2_total_anda_2', 'j3_total_anda_1', 'j3_total_anda_2', 'j4_total_anda_1', 'j4_total_anda_2', 
+            'j1_total_bos_1', 'j1_total_bos_2', 'j2_total_bos_1', 'j2_total_bos_2', 'j3_total_bos_1', 'j3_total_bos_2', 'j4_total_bos_1', 'j4_total_bos_2', 
         ];
-
 
         echo ExportMenu::widget([
             'dataProvider' => $dataProvider,
@@ -42,8 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
         GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-//            'responsiveWrap' => true,
-//            'responsive' => true,
             'hover' => true,
             'pjax' => true,
             'columns' => $gridColumns,

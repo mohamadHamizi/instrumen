@@ -17,7 +17,8 @@ class VDataMeaSearch extends VDataMea
     public function rules()
     {
         return [
-            [['id', 'umur', 'anak_keberapa', 'j1_total_anda_1', 'j1_total_anda_2', 'j2_total_anda_1', 'j2_total_anda_2', 'j3_total_anda_1', 'j3_total_anda_2', 'j4_total_anda_1', 'j4_total_anda_2'], 'integer'],
+            [['id', 'umur', 'anak_keberapa', 'j1_total_anda_1', 'j1_total_anda_2', 'j2_total_anda_1', 'j2_total_anda_2', 'j3_total_anda_1', 'j3_total_anda_2', 'j4_total_anda_1', 'j4_total_anda_2',
+            'j1_total_bos_1', 'j1_total_bos_2', 'j2_total_bos_1', 'j2_total_bos_2', 'j3_total_bos_1', 'j3_total_bos_2', 'j4_total_bos_1', 'j4_total_bos_2'], 'integer'],
             [['tarikh_isi', 'icno', 'tret_anda', 'tret_bos', 'nama_penuh', 'nama_kj', 'jantina', 'jawatan', 'organisasi', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'j1_pil_anda', 'j1_pil_bos', 'j2_pil_anda', 'j2_pil_bos', 'j3_pil_anda', 'j3_pil_bos', 'j4_pil_anda', 'j4_pil_bos'], 'safe'],
         ];
     }

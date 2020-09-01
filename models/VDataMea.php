@@ -25,24 +25,31 @@ use Yii;
  * @property int $anak_keberapa Anak Keberapa dalam keluarga
  * @property int $j1_total_anda_1
  * @property int $j1_total_anda_2
+ * @property int $j1_total_bos_1
+ * @property int $j1_total_bos_2
  * @property string $j1_pil_anda E atau I
  * @property string $j1_pil_bos E atau I
  * @property int $j2_total_anda_1
  * @property int $j2_total_anda_2
+ * @property int $j2_total_bos_1
+ * @property int $j2_total_bos_2
  * @property string $j2_pil_anda E atau I
  * @property string $j2_pil_bos E atau I
  * @property int $j3_total_anda_1
  * @property int $j3_total_anda_2
+ * @property int $j3_total_bos_1
+ * @property int $j3_total_bos_2
  * @property string $j3_pil_anda E atau I
  * @property string $j3_pil_bos E atau I
  * @property int $j4_total_anda_1
  * @property int $j4_total_anda_2
+ * @property int $j4_total_bos_1
+ * @property int $j4_total_bos_2
  * @property string $j4_pil_anda E atau I
  * @property string $j4_pil_bos E atau I
  */
 class VDataMea extends \yii\db\ActiveRecord
 {
-
     /**
      * {@inheritdoc}
      */
@@ -52,21 +59,12 @@ class VDataMea extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc $primaryKey
-     */
-    public static function primaryKey()
-    {
-        return ["id"];
-    }
-
-
-    /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'umur', 'anak_keberapa', 'j1_total_anda_1', 'j1_total_anda_2', 'j2_total_anda_1', 'j2_total_anda_2', 'j3_total_anda_1', 'j3_total_anda_2', 'j4_total_anda_1', 'j4_total_anda_2'], 'integer'],
+            [['id', 'umur', 'anak_keberapa', 'j1_total_anda_1', 'j1_total_anda_2', 'j1_total_bos_1', 'j1_total_bos_2', 'j2_total_anda_1', 'j2_total_anda_2', 'j2_total_bos_1', 'j2_total_bos_2', 'j3_total_anda_1', 'j3_total_anda_2', 'j3_total_bos_1', 'j3_total_bos_2', 'j4_total_anda_1', 'j4_total_anda_2', 'j4_total_bos_1', 'j4_total_bos_2'], 'integer'],
             [['tarikh_isi', 'tarikh_lahir'], 'safe'],
             [['icno', 'nama_penuh', 'nama_kj', 'jantina', 'umur', 'jawatan', 'organisasi', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa'], 'required'],
             [['icno'], 'string', 'max' => 12],
@@ -100,22 +98,30 @@ class VDataMea extends \yii\db\ActiveRecord
             'bangsa' => 'Bangsa',
             'darah' => 'Jenis Darah',
             'anak_keberapa' => 'Anak Keberapa dalam keluarga',
-            'j1_total_anda_1' => 'J1 Total Anda 1',
-            'j1_total_anda_2' => 'J1 Total Anda 2',
+            'j1_total_anda_1' => 'E-Anda',
+            'j1_total_anda_2' => 'I-Anda',
+            'j1_total_bos_1' => 'E-Bos',
+            'j1_total_bos_2' => 'I-Bos',
             'j1_pil_anda' => 'E atau I',
             'j1_pil_bos' => 'E atau I',
-            'j2_total_anda_1' => 'J2 Total Anda 1',
-            'j2_total_anda_2' => 'J2 Total Anda 2',
-            'j2_pil_anda' => 'E atau I',
-            'j2_pil_bos' => 'E atau I',
-            'j3_total_anda_1' => 'J3 Total Anda 1',
-            'j3_total_anda_2' => 'J3 Total Anda 2',
-            'j3_pil_anda' => 'E atau I',
-            'j3_pil_bos' => 'E atau I',
-            'j4_total_anda_1' => 'J4 Total Anda 1',
-            'j4_total_anda_2' => 'J4 Total Anda 2',
-            'j4_pil_anda' => 'E atau I',
-            'j4_pil_bos' => 'E atau I',
+            'j2_total_anda_1' => 'S-Anda',
+            'j2_total_anda_2' => 'N-Anda',
+            'j2_total_bos_1' => 'S-Bos',
+            'j2_total_bos_2' => 'N-Bos',
+            'j2_pil_anda' => 'S atau N',
+            'j2_pil_bos' => 'S atau N',
+            'j3_total_anda_1' => 'T-Anda',
+            'j3_total_anda_2' => 'F-Anda',
+            'j3_total_bos_1' => 'T-Bos',
+            'j3_total_bos_2' => 'F-Bos',
+            'j3_pil_anda' => 'T atau F',
+            'j3_pil_bos' => 'T atau F',
+            'j4_total_anda_1' => 'J-Anda',
+            'j4_total_anda_2' => 'P-Anda',
+            'j4_total_bos_1' => 'J-Bos',
+            'j4_total_bos_2' => 'P-Bos',
+            'j4_pil_anda' => 'J atau P',
+            'j4_pil_bos' => 'J atau P',
         ];
     }
 }
