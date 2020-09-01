@@ -88,6 +88,7 @@
                                 ['label' => 'Senarai', 'icon' => 'list', 'url' => ['admin/index'], 'visible' => !Yii::$app->user->isGuest],
                                 ['label' => 'Data', 'icon' => 'table', 'url' => ['admin/data'], 'visible' => !Yii::$app->user->isGuest],
                                 ['label' => 'MIPK', 'icon' => 'table', 'url' => ['admin/data-mipk'], 'visible' => !Yii::$app->user->isGuest],
+                                ['label' => 'MEA', 'icon' => 'table', 'url' => ['admin/data-mea'], 'visible' => !Yii::$app->user->isGuest],
                             ]
                         ],
                     ],
