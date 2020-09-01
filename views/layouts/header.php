@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
-/* @var $content string */
 ?>
 
 <header class="main-header">
@@ -19,7 +17,7 @@ use yii\helpers\Html;
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-                <li><?php echo  Html::a(' <i class="fa fa-phone"></i><span class="hidden-xs"> Hubungi Kami</span>',['/site/contact']); ?></li>
+                <li><?php echo  Html::a(' <i class="fa fa-phone"></i><span class="hidden-xs">Hubungi Kami</span>', ['/site/contact']); ?></li>
                 <li class="dropdown user user-menu">
                     <?php
                     if (Yii::$app->user->isGuest) {
@@ -46,15 +44,7 @@ use yii\helpers\Html;
                         ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                     )
                     ?>
-        </div>
-        </li>
-        </ul>
-        </li>
-        <!-- User Account: style can be found in dropdown.less -->
-        <!--                <li>
-                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                                </li>-->
-        </ul>
+            </ul>
         </div>
     </nav>
 </header>
