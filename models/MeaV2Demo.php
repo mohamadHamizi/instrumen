@@ -70,4 +70,34 @@ class MeaV2Demo extends \yii\db\ActiveRecord
             'anak_keberapa' => 'Anak Keberapa dalam keluarga',
         ];
     }
+
+     //  untuk convert date
+     public function behaviors() {
+        return [
+            'tarikh_lahir' => [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
+                ],
+                'value' => function ($event) {
+                    return date('Y-m-d', strtotime(str_replace("/", "-", $this->tarikh_lahir)));
+                },
+            ],
+        ];
+    }
+
+    public function afterFind()
+
+	{
+
+    	$this->tarikh_lahir = Yii::$app->formatter->asDate($this->tarikh_lahir, 'dd/MM/yyyy');
+
+    	//$this->importo = Yii::$app->formatter->asCurrency($this->importo, 'EUR');
+
+    	parent::afterFind();
+
+    	return true;
+
+	}
 }
