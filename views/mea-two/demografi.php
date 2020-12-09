@@ -113,6 +113,17 @@ use app\models\OkuRefDemo;
         </div>
 
         <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'organisasi_lain'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                    $form->field($model, 'organisasi_lain')->textInput()
+                        ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'tarikh_lahir'); ?></label>
 
             <div class="col-sm-3">
