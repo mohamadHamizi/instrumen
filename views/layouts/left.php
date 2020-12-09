@@ -44,6 +44,20 @@
                     ],
                 ],
                 [
+                    'label' => 'EA-Malay (v2)',
+                    'icon' => 'bar-chart',
+                    'url' => '#',
+                    'items' => [
+                        ['label' => 'Pengenalan', 'icon' => 'home', 'url' => ['mea-two/index'], 'visible' => true],
+                        ['label' => 'Demografi', 'icon' => 'th-large', 'url' => ['mea-two/demografi'], 'visible' => true],
+                        ['label' => 'Jadual 1', 'icon' => 'th-large', 'url' => ['mea-two/jadual-1'], 'visible' => true],
+                        ['label' => 'Jadual 2', 'icon' => 'th-large', 'url' => ['mea-two/jadual-2'], 'visible' => true],
+                        ['label' => 'Jadual 3', 'icon' => 'th-large', 'url' => ['mea-two/jadual-3'], 'visible' => true],
+                        ['label' => 'Jadual 4', 'icon' => 'th-large', 'url' => ['mea-two/jadual-4'], 'visible' => true],
+                        ['label' => 'Keputusan', 'icon' => 'star-half-o', 'url' => ['mea-two/skor'], 'visible' => true],
+                    ],
+                ],
+                [
                     'label' => 'Admin Dashboard',
                     'icon' => 'dashboard',
                     'url' => '#',
