@@ -16,6 +16,7 @@ use app\models\OkuSumber;
 use app\models\VDataMea;
 use app\models\VDataMeaSearch;
 use app\models\VDataMipkSearch;
+use app\models\VDataMeaV2Search;
 
 class AdminController extends \yii\web\Controller {
 
@@ -89,6 +90,20 @@ class AdminController extends \yii\web\Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('data-mea', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
+    public function actionDataMeaTwo() {
+        
+        ini_set('memory_limit', '1024M'); // or you could use 1G
+        
+        $searchModel = new VDataMeaV2Search();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('data-mea-two', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);
