@@ -69,10 +69,10 @@ class MeaDemo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['main_id', 'nama_penuh', 'nama_kj', 'jantina', 'umur', 'jawatan', 'organisasi', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa'], 'required'],
+            [['main_id', 'nama_penuh', 'nama_kj', 'jantina', 'umur', 'jawatan', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa'], 'required'],
             [['main_id', 'umur', 'anak_keberapa'], 'integer'],
             [['tarikh_lahir'], 'safe'],
-            [['nama_penuh', 'nama_kj', 'jawatan', 'organisasi'], 'string', 'max' => 255],
+            [['nama_penuh', 'nama_kj', 'jawatan', 'organisasi', 'organisasi_lain'], 'string', 'max' => 255],
             [['jantina'], 'string', 'max' => 1],
             [['warna', 'bangsa'], 'string', 'max' => 100],
             [['darah'], 'string', 'max' => 5],
@@ -93,6 +93,7 @@ class MeaDemo extends \yii\db\ActiveRecord
             'umur' => 'Umur',
             'jawatan' => 'Jawatan Anda',
             'organisasi' => 'JFPIU',
+            'organisasi_lain' => 'Nama Organisasi lain-lain',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna kegemaran',
             'bangsa' => 'Bangsa',
