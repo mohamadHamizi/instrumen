@@ -22,7 +22,7 @@ use app\models\OkuIndeks;
 class IksokufController extends Controller {
 
     public function actionIndex() {
-        $this->view->title = "PEMARKATAN KebahagiaanKu-OKU/MyHappiness-PwD";
+        $this->view->title = "Pemarkatan KebahagiaanKu-OKU/MyHappiness-PwD";
 
         $model = new OkuMain();
 
