@@ -24,21 +24,3 @@
     <td style="color: #0099ff"><strong>Sangat Setuju</strong></td>
   </tr>
 </table>
-
-<!-- <table class="table table-bordered table-striped table-condensed">
-                    <tr>
-                        <th style="width: 20%" class="text-center text-capitalize">1</th>
-                        <th style="width: 20%" class="text-center text-capitalize">2</th>
-                        <th style="width: 20%" class="text-center text-capitalize">3</th>
-                        <th style="width: 20%" class="text-center text-capitalize">4</th>
-                        <th style="width: 20%" class="text-center text-capitalize">5</th>
-                    </tr>
-
-                    <tr style="font-weight: bold">
-                        <td class="text-center" >Sangat Tidak Setuju</td>
-                        <td class="text-center" >Tidak Setuju</td>
-                        <td class="text-center" >Neutral</td>
-                        <td class="text-center" >Setuju</td>
-                        <td class="text-center" >Sangat Setuju</td>
-                    </tr>
-                </table>-->
