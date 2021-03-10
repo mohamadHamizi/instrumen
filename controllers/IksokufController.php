@@ -3,71 +3,26 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\RekodCuti;
-use app\models\RekodCutiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use app\models\Users;
-use yii\filters\AccessControl;
-use app\models\OkuQuestions;
-use app\models\OkuRespons;
-use yii\base\Model;
 use app\models\OkuSumber;
-use yii\data\ActiveDataProvider;
 use app\models\OkuGroups;
 use app\models\OkuDimensi;
 use app\models\OkuStrategi;
 use app\models\OkuKesan;
 use app\models\OkuMain;
-use yii\web\Session;
 use app\models\OkuDemografi;
 use app\models\OkuScoring;
 use app\models\OkuTotals;
 use app\models\OkuIndeks;
 
 /**
- * CutiController implements the CRUD actions for RekodCuti model.
+ * IksokufController implements the CRUD actions for Iksokuf model.
  */
 class IksokufController extends Controller {
 
-    /**
-     * {@inheritdoc}
-     */
-//    public function behaviors() {
-//        return [
-//            'verbs' => [
-//                'class' => VerbFilter::className(),
-//                'actions' => [
-//                    'delete' => ['POST'],
-//                ],
-//            ],
-//        ];
-//    }
-//    public function behaviors() {
-//        return [
-//            'access' => [
-//                'class' => AccessControl::className(),
-//                'only' => ['index', 'bahagian-a', 'bahagian-b', 'bahagian-a', 'bahagian-d'],
-//                'rules' => [
-//                    [
-//                        'actions' => ['index', 'bahagian-a', 'bahagian-b', 'bahagian-a', 'bahagian-d'],
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                    ],
-//                ],
-//            ],
-//            'verbs' => [
-//                'class' => VerbFilter::className(),
-//                'actions' => [
-//                    'logout' => ['post'],
-//                ],
-//            ],
-//        ];
-//    }
-
     public function actionIndex() {
-        $this->view->title = "PEMARKATAN e-INSTRUMEN KEBAHAGIAAN SUBJEKTIF ORANG KURANG UPAYA-FIZIKAL (e-IKSOKU-F)";
+        $this->view->title = "PEMARKATAN KebahagiaanKu-OKU/MyHappiness-PwD";
 
         $model = new OkuMain();
 
