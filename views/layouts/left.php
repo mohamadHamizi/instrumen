@@ -5,7 +5,7 @@
             'items' => [
                 ['label' => 'Menu', 'options' => ['class' => 'header']],
                 [
-                    'label' => 'e-IKSOKU-F',
+                    'label' => 'KK-OKU',
                     'icon' => 'wheelchair-alt',
                     'url' => '#',
                     'items' => [
