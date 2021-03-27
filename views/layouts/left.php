@@ -18,17 +18,17 @@
                         ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['iksokuf/result'], 'visible' => true],
                     ],
                 ],
-                [
-                    'label' => 'Mipk',
-                    'icon' => 'handshake-o',
-                    'url' => '#',
-                    'items' => [
-                        ['label' => 'Pengenalan', 'icon' => 'tachometer', 'url' => ['mipk/index'], 'visible' => true],
-                        ['label' => 'Bahagian A', 'icon' => 'th-large', 'url' => ['mipk/bahagian-a'], 'visible' => true],
-                        ['label' => 'Bahagian B', 'icon' => 'random', 'url' => ['mipk/bahagian-b'], 'visible' => true],
-                        ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['mipk/result'], 'visible' => true],
-                    ],
-                ],
+                // [
+                //     'label' => 'Mipk',
+                //     'icon' => 'handshake-o',
+                //     'url' => '#',
+                //     'items' => [
+                //         ['label' => 'Pengenalan', 'icon' => 'tachometer', 'url' => ['mipk/index'], 'visible' => true],
+                //         ['label' => 'Bahagian A', 'icon' => 'th-large', 'url' => ['mipk/bahagian-a'], 'visible' => true],
+                //         ['label' => 'Bahagian B', 'icon' => 'random', 'url' => ['mipk/bahagian-b'], 'visible' => true],
+                //         ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['mipk/result'], 'visible' => true],
+                //     ],
+                // ],
                 [
                     'label' => 'EA-Malay',
                     'icon' => 'line-chart',
