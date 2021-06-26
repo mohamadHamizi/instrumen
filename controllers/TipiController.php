@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use app\models\TipiJadual;
 
 /**
  * TipiController
@@ -23,10 +24,31 @@ class TipiController extends Controller
 
     public function actionQuestions()
     {
+        $model = new TipiJadual();
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->main_id = 1;
+            $model->create_dt = date('Y-m-d');
+
+            if ($model->save()) {
+                return $this->redirect(['result']);
+            }
+        }
 
         return $this->render('questions', [
+            'model' => $model,
+            'model1' => $model,
         ]);
+    }
 
+    public function actionResult($id)
+    {
+        $model = TipiJadual::findOne($id);
+
+        return $this->render('result', [
+            'model' => $model,
+        ]);   
     }
 
     public function actionDes()
