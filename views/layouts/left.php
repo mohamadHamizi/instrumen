@@ -58,6 +58,17 @@
                     ],
                 ],
                 [
+                    'label' => 'TIPI-Malay',
+                    'icon' => 'smile-o',
+                    'url' => '#',
+                    'items' => [
+                        // ['label' => 'Pengenalan', 'icon' => 'home', 'url' => ['mea-two/index'], 'visible' => true],
+                        // ['label' => 'Demografi', 'icon' => 'th-large', 'url' => ['mea-two/demografi'], 'visible' => true],
+                        ['label' => 'Jawab Soal Selidik', 'icon' => 'check-square-o', 'url' => ['tipi/questions'], 'visible' => true],
+                        // ['label' => 'Keputusan', 'icon' => 'star-half-o', 'url' => ['mea-two/'], 'visible' => true],
+                    ],
+                ],
+                [
                     'label' => 'Admin Dashboard',
                     'icon' => 'dashboard',
                     'url' => '#',

@@ -17,19 +17,19 @@ use yii\helpers\Html;
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-                <li><?php echo  Html::a(' <i class="fa fa-phone"></i><span class="hidden-xs">Hubungi Kami</span>', ['/site/contact']); ?></li>
+                <li><?php echo  Html::a('<i class="fa fa-phone"></i><span class="hidden-xs">&nbsp;Hubungi Kami</span>', ['/site/contact']); ?></li>
                 <li class="dropdown user user-menu">
                     <?php
                     if (Yii::$app->user->isGuest) {
                         echo Html::a(
-                            ' <i class="fa fa-user"></i>
+                            '<i class="fa fa-user"></i>
                         <span class="hidden-xs">Login</span>',
                             ['/site/login'],
                             ['class' => 'dropdown-toggle']
                         );
                     } else {
                         echo Html::a(
-                            ' <i class="fa fa-sign-out"></i>
+                            '<i class="fa fa-sign-out"></i>
                         <span class="hidden-xs">Logout</span>',
                             ['/site/logout'],
                             ['data-method' => 'post', 'class' => 'dropdown-toggle']

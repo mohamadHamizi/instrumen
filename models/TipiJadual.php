@@ -99,6 +99,8 @@ class TipiJadual extends \yii\db\ActiveRecord
     public static function FormulaTahap($indeks)
     {
 
+        $tahap = 'Tiada';
+
         if ($indeks >= 0 && $indeks <= 24.9) {
             $tahap = 'Sangat Rendah';
         } else if ($indeks >= 25 && $indeks <= 49.9) {
@@ -111,7 +113,6 @@ class TipiJadual extends \yii\db\ActiveRecord
 
         return $tahap;
     }
-
 
 
     public function getExtraversionIndex()
@@ -218,26 +219,23 @@ class TipiJadual extends \yii\db\ActiveRecord
         for ($x = 0; $x < $arrlength; $x++) {
 
             if ($x == 0) {
-                if($numbers[$x] == $skor){
+                if ($numbers[$x] == $skor) {
                     return $rank;
                 }
             } elseif ($numbers[$x] != $numbers[$x - 1]) {
                 $rank++;
                 $prev_rank = $rank;
-                if($numbers[$x] == $skor){
+                if ($numbers[$x] == $skor) {
                     return $rank;
                 }
             } else {
                 $rank++;
-                if($numbers[$x] == $skor){
+                if ($numbers[$x] == $skor) {
                     return $prev_rank;
                 }
             }
-
         }
     }
-
-
 
     public function getRItem2()
     {

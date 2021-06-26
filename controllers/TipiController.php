@@ -32,7 +32,7 @@ class TipiController extends Controller
             $model->create_dt = date('Y-m-d');
 
             if ($model->save()) {
-                return $this->redirect(['result']);
+                return $this->redirect(['result', 'id'=> $model->id]);
             }
         }
 
