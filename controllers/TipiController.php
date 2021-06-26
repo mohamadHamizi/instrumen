@@ -32,7 +32,8 @@ class TipiController extends Controller
             $model->create_dt = date('Y-m-d');
 
             if ($model->save()) {
-                return $this->redirect(['result', 'id'=> $model->id]);
+                $this->ifSuccess();
+                return $this->redirect(['result', 'id' => $model->id]);
             }
         }
 
@@ -48,7 +49,7 @@ class TipiController extends Controller
 
         return $this->render('result', [
             'model' => $model,
-        ]);   
+        ]);
     }
 
     public function actionDes()
@@ -78,5 +79,18 @@ class TipiController extends Controller
             ]);
             return $this->redirect(['index']);
         }
+    }
+
+    protected function ifSuccess()
+    {
+        return Yii::$app->getSession()->setFlash('success', [
+            'type' => 'success',
+            'duration' => 5000,
+            'icon' => 'fa fa-check',
+            'message' => 'Maklumat telah disimpan',
+            'title' => 'Berjaya',
+            'positonY' => 'top',
+            'positonX' => 'right'
+        ]);
     }
 }

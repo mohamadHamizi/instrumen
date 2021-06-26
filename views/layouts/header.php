@@ -17,7 +17,7 @@ use yii\helpers\Html;
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-                <li><?php echo  Html::a('<i class="fa fa-phone"></i><span class="hidden-xs">&nbsp;Hubungi Kami</span>', ['/site/contact']); ?></li>
+                <li><?php echo Html::a('<i class="fa fa-phone"></i><span class="hidden-xs">&nbsp;Hubungi Kami</span>', ['/site/contact']); ?></li>
                 <li class="dropdown user user-menu">
                     <?php
                     if (Yii::$app->user->isGuest) {

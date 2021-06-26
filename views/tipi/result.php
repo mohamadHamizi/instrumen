@@ -1,6 +1,7 @@
 <?php
 
 use app\models\TipiJadual;
+use yii\helpers\Html;
 
 ?>
 
@@ -13,7 +14,7 @@ use app\models\TipiJadual;
             <thead class="thead-light">
                 <tr>
                     <th class='text-center'>Dimensi</th>
-                    <th width='40%'  class='text-center'>Indeks</th>
+                    <th width='40%' class='text-center'>Indeks</th>
                     <th class='text-center'>Skor</th>
                     <th class='text-center'>Purata</th>
                     <th class='text-center'>Tahap</th>
@@ -152,4 +153,7 @@ use app\models\TipiJadual;
             </div>
         </div>
     </div>
+</div>
+<div class="text-center">
+    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/tipi/questions'], ['class' => 'btn btn-danger']); ?>
 </div>

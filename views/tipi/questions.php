@@ -56,7 +56,7 @@ use app\models\TipiQuestions;
         ?>
 
         <div class="form-group text-center">
-            <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary', 'data' => ['disabled-text' => 'Loading..']]) ?>
+            <?= Html::submitButton('Papar Keputusan&nbsp;<i class="fa fa-arrow-right"></i>', ['class' => 'btn btn-primary', 'data' => ['disabled-text' => 'Loading..']]) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

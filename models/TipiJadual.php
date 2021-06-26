@@ -38,7 +38,7 @@ class TipiJadual extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['main_id', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'create_dt'], 'required'],
+            [['main_id', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10'], 'required', 'message'=>'Item adalah wajib dijawab!'],
             [['main_id', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10'], 'integer'],
             [['create_dt'], 'safe'],
         ];
