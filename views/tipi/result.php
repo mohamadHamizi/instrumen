@@ -155,5 +155,5 @@ use yii\helpers\Html;
     </div>
 </div>
 <div class="text-center">
-    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/tipi/questions'], ['class' => 'btn btn-danger']); ?>
+    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/tipi/des'], ['class' => 'btn btn-danger']); ?>
 </div>

@@ -1,0 +1,73 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "tipi_demo".
+ *
+ * @property int $id
+ * @property int $main_id
+ * @property string $nama_penuh Nama Penuh Anda
+ * @property string $nama_kj Nama Ketua Jabatan
+ * @property string $jantina Jantina
+ * @property int $umur Umur
+ * @property string $jawatan Jawatan
+ * @property string $organisasi Nama Organisasi
+ * @property string $organisasi_lain Nama Organisasi lain-lain
+ * @property string $tarikh_lahir Tarikh Lahir
+ * @property string $warna Warna kegemaran
+ * @property string $bangsa Bangsa
+ * @property string $darah Jenis Darah
+ * @property int $anak_keberapa Anak Keberapa dalam keluarga
+ */
+class TipiDemo extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'tipi_demo';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['main_id', 'nama_penuh', 'nama_kj', 'jantina', 'umur', 'jawatan', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa'], 'required'],
+            [['main_id', 'umur', 'anak_keberapa'], 'integer'],
+            [['tarikh_lahir'], 'safe'],
+            [['nama_penuh', 'nama_kj', 'jawatan', 'organisasi', 'organisasi_lain'], 'string', 'max' => 255],
+            [['jantina'], 'string', 'max' => 1],
+            [['warna', 'bangsa'], 'string', 'max' => 100],
+            [['darah'], 'string', 'max' => 5],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'main_id' => 'Main ID',
+            'nama_penuh' => 'Nama Penuh',
+            'nama_kj' => 'Nama Kj',
+            'jantina' => 'Jantina',
+            'umur' => 'Umur',
+            'jawatan' => 'Jawatan',
+            'organisasi' => 'Organisasi',
+            'organisasi_lain' => 'Organisasi Lain',
+            'tarikh_lahir' => 'Tarikh Lahir',
+            'warna' => 'Warna',
+            'bangsa' => 'Bangsa',
+            'darah' => 'Darah',
+            'anak_keberapa' => 'Anak Keberapa',
+        ];
+    }
+}
