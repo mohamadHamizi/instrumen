@@ -12,7 +12,6 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property int $main_id
  * @property string $nama_penuh Nama Penuh Anda
- * @property string $nama_kj Nama Ketua Jabatan
  * @property string $jantina Jantina
  * @property int $umur Umur
  * @property string $jawatan Jawatan
@@ -74,7 +73,7 @@ class TipiDemo extends \yii\db\ActiveRecord
             [['main_id', 'nama_penuh', 'jantina', 'umur', 'jawatan', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa'], 'required'],
             [['main_id', 'umur', 'anak_keberapa'], 'integer'],
             [['tarikh_lahir'], 'safe'],
-            [['nama_penuh', 'nama_kj', 'jawatan', 'organisasi', 'organisasi_lain'], 'string', 'max' => 255],
+            [['nama_penuh', 'jawatan', 'organisasi', 'organisasi_lain'], 'string', 'max' => 255],
             [['jantina'], 'string', 'max' => 1],
             [['warna', 'bangsa'], 'string', 'max' => 100],
             [['darah'], 'string', 'max' => 5],
@@ -90,7 +89,6 @@ class TipiDemo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'main_id' => 'Main ID',
             'nama_penuh' => 'Nama Penuh Anda',
-            'nama_kj' => 'Nama Ketua Jabatan',
             'jantina' => 'Jantina',
             'umur' => 'Umur',
             'jawatan' => 'Jawatan Anda',
