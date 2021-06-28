@@ -57,6 +57,18 @@ class TipiController extends Controller
             return $this->redirect(['index']);
         }
 
+        $jenis_darah =  [
+            'A+' => 'A+',
+            'A-' => 'A-',
+            'B+' => 'B+',
+            'B-' => 'B-',
+            'AB+' => 'AB+',
+            'AB-' => 'AB-',
+            'O+' => 'O+',
+            'O-' => 'O-',
+            'x' => 'Tidak Tahu',
+        ];
+
 
         $model = new TipiDemo();
 
@@ -77,7 +89,7 @@ class TipiController extends Controller
             }
         }
 
-        return $this->render('demografi', ['model' => $model]);
+        return $this->render('demografi', ['model' => $model, 'jenis_darah' => $jenis_darah]);
     }
 
     public function actionQuestions()

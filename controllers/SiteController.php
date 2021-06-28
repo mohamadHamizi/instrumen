@@ -64,6 +64,11 @@ class SiteController extends Controller
         return $this->render('index');
     }
     
+    public function actionDashboard()
+    {
+        return $this->render('dashboard');
+    }
+
     public function actionPdpa()
     {
         return $this->render('pdpa');

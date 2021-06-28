@@ -25,22 +25,6 @@ use yii\widgets\ActiveForm;
         <p style="background-color: red;">
             Semoga dengan penerokaan personaliti berdasarkan Instrumen EA-M dapat membolehkan kita lebih memahami personaliti dan karakter diri seterusnya dapat diguna dan diaplikasikan dalam konteks kekeluargaan, pekerjaan, perhubungan dan sebagainya demi mencapai kehidupan yang lebih bahagia dan sejahtera.
         </p>
-
-        <p style="background-color: red; color : red">
-            <strong>ARAHAN:</strong>
-        <ol style="background-color: red;">
-            <li>Penyertaan anda dalam sesi pentadbiran soal selidik EA-M adalah sukarela. </li>
-            <li> Anda perlu menjawab semua soalan EA-M dengan jujur dan ikhlas.</li>
-            <li> Tidak ada jawapan betul atau salah.</li>
-            <li>Ujian ini akan mengambil masa lebih kurang 10-15 minit. </li>
-            <li>Jangan terlalu ambil masa lama menjawab dan menganalisa soalan.</li>
-            <li>Jawab soalan berdasarkan apa yang anda rasa pilihan yang paling tepat.</li>
-            <li> Jawab soalan berdasarkan jawapan yang mencerminkan diri anda yang sebenar, bukan diri anda yang mahu dilihat oleh orang lain. </li>
-            <li>Soalan berkaitan Ketua anda adalah berdasarkan persepsi anda.</li>
-            <li>Sila tandakan pilihan jawapan 1 atau 2 pada setiap soalan yang dikemukakan.</li>
-            <li>Empat huruf yang anda peroleh merupakan Personality Type/Preference anda dan Ketua anda.</li>
-        </ol>
-        </p>
         <p>
 
             Terima kasih atas kesudian dan kerjasama yang anda berikan.
@@ -49,11 +33,6 @@ use yii\widgets\ActiveForm;
             <strong>PERSETUJUAN</strong><br>
             Sila tekan butang “Seterusnya” jika anda faham tujuan soal selidik ini dan setuju terlibat secara sukarela.
         </p>
-
-
-
-
-
 
         <?php
         $form = ActiveForm::begin([

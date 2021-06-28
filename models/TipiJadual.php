@@ -107,7 +107,7 @@ class TipiJadual extends \yii\db\ActiveRecord
             $tahap = 'Rendah';
         } else if ($indeks >= 50 && $indeks <= 74.9) {
             $tahap = 'Tinggi';
-        } else if ($indeks >= 80 && $indeks <= 100) {
+        } else if ($indeks >= 75 && $indeks <= 100) {
             $tahap = 'Sangat Tinggi';
         }
 

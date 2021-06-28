@@ -36,6 +36,6 @@ use yii\helpers\Html;
 <div class="ln_solid"></div>
 
 <div class="text-center">
-    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Agree / Setuju', ['iksokuf/index'], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Agree / Setuju', ['site/dashboard'], ['class' => 'btn btn-success']) ?>
 </div>
 

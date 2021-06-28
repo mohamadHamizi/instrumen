@@ -4,6 +4,9 @@
             'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
             'items' => [
                 ['label' => 'Menu', 'options' => ['class' => 'header']],
+
+                ['label' => 'PDPA', 'icon' => 'book', 'url' => ['site/pdpa'], 'visible' => true],
+                ['label' => 'Laman Utama', 'icon' => 'tachometer', 'url' => ['site/dashboard'], 'visible' => true],
                 [
                     'label' => 'KK-OKU',
                     'icon' => 'wheelchair-alt',

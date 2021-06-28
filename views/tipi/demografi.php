@@ -37,19 +37,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-5">
                 <?=
-                    $form->field($model, 'nama_penuh')->textInput()
-                        ->label(false)
-                ?>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'nama_kj'); ?></label>
-
-            <div class="col-sm-5">
-                <?=
-                    $form->field($model, 'nama_kj')->textInput()
-                        ->label(false)
+                $form->field($model, 'nama_penuh')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
@@ -69,8 +58,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-2">
                 <?=
-                    $form->field($model, 'umur')->textInput()
-                        ->label(false)
+                $form->field($model, 'umur')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
@@ -80,8 +69,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-5">
                 <?=
-                    $form->field($model, 'jawatan')->textInput()
-                        ->label(false)
+                $form->field($model, 'jawatan')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
@@ -107,8 +96,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-5">
                 <?=
-                    $form->field($model, 'organisasi_lain')->textInput()
-                        ->label(false)
+                $form->field($model, 'organisasi_lain')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
@@ -139,8 +128,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-4">
                 <?=
-                    $form->field($model, 'warna')->textInput()
-                        ->label(false)
+                $form->field($model, 'warna')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
@@ -150,8 +139,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-3">
                 <?=
-                    $form->field($model, 'bangsa')->textInput()
-                        ->label(false)
+                $form->field($model, 'bangsa')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
@@ -159,21 +148,15 @@ use app\models\OkuRefDemo;
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'darah'); ?></label>
 
-            <div class="col-sm-6">
-
-                <?= $form->field($model, 'darah')->radiolist(
-                    [
-                        'A+' => 'A+',
-                        'A-' => 'A-',
-                        'B+' => 'B+',
-                        'B-' => 'B-',
-                        'AB+' => 'AB+',
-                        'AB-' => 'AB-',
-                        'O+' => 'O+',
-                        'O-' => 'O-',
-                        'x' => 'Tidak Tahu',
-                    ]
-                )->label(false);
+            <div class="col-sm-3">
+                <?php // Usage with ActiveForm and model
+                echo $form->field($model, 'darah')->widget(Select2::classname(), [
+                    'data' => $jenis_darah,
+                    'options' => ['placeholder' => '--PILIH JENIS DARAH--'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])->label(false);
                 ?>
             </div>
         </div>
@@ -183,8 +166,8 @@ use app\models\OkuRefDemo;
 
             <div class="col-sm-2">
                 <?=
-                    $form->field($model, 'anak_keberapa')->textInput()
-                        ->label(false)
+                $form->field($model, 'anak_keberapa')->textInput()
+                    ->label(false)
                 ?>
             </div>
         </div>
