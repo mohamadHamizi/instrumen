@@ -25,14 +25,14 @@ use yii\helpers\Html;
                 <td>Extraversion</td>
                 <td>
                     <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: <?= $model->extraversionIndex ?>%"></div>
+                        <div class="progress-bar progress-bar-aqua" style="width: <?= $extraversionIndex ?>%"></div>
                     </div>
-                    <?= $model->extraversionIndex ?>%
+                    <?= $extraversionIndex ?>%
                 </td>
-                <td class='text-center'><?= $model->extraversionSkor ?></td>
+                <td class='text-center'><?= $extraversionSkor ?></td>
                 <td class='text-center'><?= $model->extraversionPurata ?></td>
                 <td class='text-center'><?= $model->extraversionTahap ?></td>
-                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $model->extraversionSkor) ?></td>
+                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $extraversionSkor) ?></td>
             </tr>
             <tr>
                 <td>Agreeableness</td>
@@ -111,7 +111,7 @@ use yii\helpers\Html;
                         <span class="progress-number"><b>Introversion</b></span>
 
                         <div class="progress">
-                            <div class="progress-bar progress-bar-aqua" style="width: <?= $model->extraversionIndex ?>%"><?= $model->extraversionIndex ?>% - <?= $model->extraversionTahap ?></div>
+                            <div class="progress-bar progress-bar-aqua" style="width: <?= $extraversionIndex ?>%"><?= $extraversionIndex ?>% - <?= $model->extraversionTahap ?></div>
                         </div>
                     </div>
 

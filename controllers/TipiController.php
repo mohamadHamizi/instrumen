@@ -7,6 +7,8 @@ use Yii;
 use yii\web\Controller;
 use app\models\TipiJadual;
 use app\models\TipiMain;
+use Exception;
+use yii\helpers\VarDumper;
 
 /**
  * TipiController
@@ -136,10 +138,15 @@ class TipiController extends Controller
             return $this->redirect(['index']);
         }
 
-        $model = TipiJadual::findOne($id);
+        $model = TipiJadual::findOne(['main_id' => $id]);
+
+        $extraversionIndex = $model->extraversionIndex;
+        $extraversionSkor = $model->extraversionSkor;
 
         return $this->render('result', [
             'model' => $model,
+            'extraversionIndex' => $extraversionIndex,
+            'extraversionSkor' => $extraversionSkor,
         ]);
     }
 
