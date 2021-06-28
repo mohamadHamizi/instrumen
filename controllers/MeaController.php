@@ -55,6 +55,7 @@ class MeaController extends Controller
         $this->view->title = "Demografi";
 
         $id = \Yii::$app->session->get('mea_main_id');
+        $department = $this->DepartmentList();
 
         if (!$id) {
             Yii::$app->getSession()->setFlash('danger', [
@@ -98,7 +99,21 @@ class MeaController extends Controller
 
         }
 
-        return $this->render('demografi', ['model' => $model]);
+        return $this->render('demografi', ['model' => $model, 'department'=>$department]);
+    }
+
+    public function DepartmentList()
+    {
+
+        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
+
+        // Read JSON file
+        $json_data = file_get_contents($api_url);
+
+        // Decode JSON data into PHP array
+        $response_data = json_decode($json_data);
+
+        return $response_data;
     }
 
     public function actionJadual1()
