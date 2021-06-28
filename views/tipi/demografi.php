@@ -8,7 +8,7 @@ use kartik\widgets\DatePicker;
 use kartik\widgets\Select2;
 
 use yii\helpers\ArrayHelper;
-use app\models\OkuRefDemo;
+use yii\helpers\VarDumper;
 ?>
 
 
@@ -80,7 +80,7 @@ use app\models\OkuRefDemo;
             <div class="col-sm-6">
                 <?php // Usage with ActiveForm and model
                 echo $form->field($model, 'organisasi')->widget(Select2::classname(), [
-                    'data' => ArrayHelper::map(Department::find()->where(['isActive' => 1])->orderBy(['shortname' => 'ASC'])->all(), 'shortname', 'fullname'),
+                    'data' => ArrayHelper::map($department, 'shortname', 'fullname'),
                     'options' => ['placeholder' => '--PILIH JFPIU--'],
                     'pluginOptions' => [
                         'allowClear' => true
@@ -180,3 +180,5 @@ use app\models\OkuRefDemo;
         <!-- /.box-footer -->
         <?php ActiveForm::end(); ?>
     </div>
+
+</div>

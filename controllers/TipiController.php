@@ -71,6 +71,7 @@ class TipiController extends Controller
             'x' => 'Tidak Tahu',
         ];
 
+        $department = $this->DepartmentList();
 
         $model = new TipiDemo();
 
@@ -91,7 +92,7 @@ class TipiController extends Controller
             }
         }
 
-        return $this->render('demografi', ['model' => $model, 'jenis_darah' => $jenis_darah]);
+        return $this->render('demografi', ['model' => $model, 'jenis_darah' => $jenis_darah, 'department'=>$department]);
     }
 
     public function actionQuestions()
@@ -177,6 +178,20 @@ class TipiController extends Controller
             ]);
             return $this->redirect(['index']);
         }
+    }
+
+    public function DepartmentList()
+    {
+
+        $api_url = 'http://localhost/staff/web/api/staff/dept-list';
+
+        // Read JSON file
+        $json_data = file_get_contents($api_url);
+
+        // Decode JSON data into PHP array
+        $response_data = json_decode($json_data);
+
+        return $response_data;
     }
 
     protected function ifError()
