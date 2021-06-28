@@ -183,7 +183,7 @@ class TipiController extends Controller
     public function DepartmentList()
     {
 
-        $api_url = 'http://localhost/staff/web/api/staff/dept-list';
+        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
 
         // Read JSON file
         $json_data = file_get_contents($api_url);
