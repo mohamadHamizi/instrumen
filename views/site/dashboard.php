@@ -18,33 +18,33 @@ use yii\helpers\Html;
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <p>What is Lorem Ipsum?
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            <p>Setiap individu mempunyai pengalaman dengan ujian. Ujian adalah alat pengukuran atau teknik yang digunakan untuk mengukur tingkah laku atau membantu dalam pemahaman dan ramalan tingkah laku. Ujian psikologi adalah sekumpulan item yang dibentuk untuk mengukur ciri-ciri manusia yang berkaitan dengan proses kognitif dan tingkah laku. Ujian merupakan salah satu elemen penting dalam psikologi dan ia bergantung pada pengetahuan yang diperoleh dalam kajian penyelidikan psikologi. Kesahan dan kebolehpercayaan pengukuran penting kepada penyelidikan psikologi. Dalam masyarakat yang kompleks sekarang ini, prinsip yang relevan, aplikasi, dan peranan yang dimainkan oleh ujian psikologi melangkaui bidang psikologi.
 
-            <p>Why do we use it?
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            <p>Memandangkan ujian psikologi dilihat signifikan, maka penyelidik telah berusaha menjadikan alat ujian psikologi sama ada yang telah dibina sendiri oleh penyelidik atau menggunakan alat ujian yang sedia ada dibentuk dalam bentuk digital. Terdapat empat alat ujian atau instrumen yang ada dalam Portal MISI iaitu:
+
+            <p>
+            <ol>
+                <li>KebahagiaanKu-OKU/MyHappinesspPwD</li>
+                <li>Malay Version of Emblematic Analysis (EA-Malay)</li>
+                <li>Malay Version of Emblematic Analysis (EA-Malay) v2</li>
+                <li>Ten-Item Personality Inventory-Malay (TIPI-Malay)</li>
+            </ol>
 
 
-            <p>Where does it come from?
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-        </div>
-        <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-</div>
+            <p>
+                Keempat-empat alat ujian atau instrumen ini boleh diakses di pautan berikut, https://uppsiks.ums.edu.my/ . Inventori secara atas talian ini telah dibangunkan sendiri oleh Muhammad Idris Bullare @ Bahari (2020) hasil daripada kajian di peringkat PhD dan ia dinamakan sebagai e-Instrumen Kesejahteraan Subjektif Orang Kurang Upaya-Fizikal (e-IKSOKU-F), dan kemudiannya ditukar menjadi KebahagiaanKu-OKU (KK-OKU)/MyHappiness-PwD/MH-PwD), manakala instrument EA-Malay dan Ten-Item Personality Inventory-Malay (TIPI-Malay) merupakan instrumen piawai yang telah melalui proses terjemahan dan mendapat kebenaran daripada pengasas bagi kedua-dua inventori tersebut.
+                Akhir kata, saya ingin mengambil kesempatan mengucapkan ribuan terima kasih kepada pengguna yang sudi mengunjungi portal ini dan seterusnya menjawab alat ujian atau inventori yang disediakan.
 
-<div class="col-md-12 col-xs-12 col-lg-12">
-    <div class="box box-warning">
-        <div class="box-header with-border">
-            <h3 class="box-title">Senarai Instrumen</h3>
+            <p>
+                Profesor Madya Dr. Muhammad Idris Bin Bullare @ Bahari<br>
+                Unit Penyelidikan Psikologi dan Kesihatan Sosial<br>
+                Fakulti Psikologi dan Pendidikan<br>
+                Universiti Malaysia Sabah<br>
+                Tel: +6088-320 000 Samb: 8155<br>
+                Bimbit: +60165202070<br>
+                Faks: +6088-320 440<br>
+                Emel: ferlis@ums.edu.my<br>
 
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-            <!-- /.box-tools -->
-        </div>
-
-        <div class="box-body">
 
             <div class="col-md-4">
                 <div class="box box-primary box-solid">
@@ -131,8 +131,11 @@ use yii\helpers\Html;
                     <!-- /.box-body -->
 
                 </div>
-                <!-- /.box -->
             </div>
         </div>
+        <!-- /.box-body -->
+
+
     </div>
+    <!-- /.box -->
 </div>
