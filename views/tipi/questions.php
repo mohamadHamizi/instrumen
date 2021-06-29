@@ -16,13 +16,33 @@ use app\models\TipiQuestions;
     </div>
 
 
+
     <?php
     $form = ActiveForm::begin([
         'options' => ['class' => 'form-horizontal form-label-left disable-submit-buttons']
     ]);
     ?>
     <div class="box-body">
+
+        <p>
+            <i>
+                Here are a number of personality traits that may or may not apply to you. Please write a number next to each statement to indicate the extent to which you agree or disagree with that statement. You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other.
+            </i>
+        </p>
+
+        <p>
+            Berikut adalah beberapa sifat keperibadian yang mungkin atau mungkin tidak terpakai kepada anda. Sila tulis nombor di sebelah setiap pernyataan untuk menunjukkan sejauh mana anda bersetuju atau tidak bersetuju dengan pernyataan tersebut. Anda harus menilai sejauh mana pasangan sifat berkenaan terpakai kepada diri anda walaupun satu sifat mungkin lebih menyerlah daripada yang satu lagi.
+
+        </p>
+
         <?= $this->render('_skala') ?>
+        <hr>
+        <p>
+            <strong>
+                <i>I see myself as:</i><br>
+                Saya menganggap diri saya sebagai:
+            </strong>
+        </p>
 
         <?php echo GridView::widget([
             'summary' => '',

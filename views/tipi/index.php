@@ -10,23 +10,40 @@ use yii\widgets\ActiveForm;
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
     </div>
     <div class="box-body">
-        <p style="background-color: red;">
-            Setiap individu memiliki personaliti dan karakter yang berbeza serta unik seperti uniknya cap jari. Tidak ada cap jari yang sama bagi setiap individu. Begitu juga dengan personaliti dan karakter individu yang masing-masing mempunyai kekuatan, bakat dan potensi. Mengetahui dan memahami personaliti dan karakter diri, pasangan, ahli keluarga, rakan dan Ketua Jabatan merupakan aspek penting dalam menjalani kehidupan seharian khususnya dalam konteks hubungan kekeluargaan, hubungan antara pasangan, gaya pembelajaran, cara berkomunikasi, gaya bekerja, keinginan dan pencapaian.
+        <p>
+            Pada umumnya, personaliti memperihalkan seseorang individu dan secara khusus, personaliti adalah sifat-sifat yang ada pada seseorang individu seperti cara seseorang individu berfikir, beremosi, dan bertingkah laku. Oleh itu, personaliti memperihalkan sifat-sifat fizikal, emosi dan kognitif seseorang individu (Mahmood Nazar Mohamed, 2010). Personaliti manusia telah dikaji oleh pakar-pakar psikologi seperti. Beberapa orang tokoh psikologi seperti Sigmund Freud, Carl Jung, Alfred Adler, Carl Rogers, Abraham Maslow, B.F. Skinner, Raymond B. Cartell, dan Hans Eysenck telah mengutarakan teori dan definisi yang berlainan mengenai personaliti manusia.
         </p>
 
-        <p style="background-color: red;">
-            Salah satu instrumen yang boleh digunakan dalam memahami tret personaliti individu ialah menggunakan Instrumen EA-M. Instrumen ini menggunakan konsep <i>Jungian Personality Type</i>. Carl Gustav Jung telah membuat kesimpulan bahawa terdapat dua jenis personaliti berbeza manusia, iaitu extraversion yang lebih cenderung kepada dunia luaran sementara jenis personaliti introversion, lebih cenderung kepada dunia dalaman. Jung juga telah mengelompokkan individu kepada empat fungsi psikologikal yang menggambarkan asas proses kognitif setiap individu iaitu Thinking, Feeling, Sensing dan Intuitive.
-        <ul style="background-color: red;">
-            <li>Bagaimana seseorang membuat keputusan? Adakah berdasarkan pemikiran logikal atau perasaan/emosi? </li>
-            <li>Bagaimana seseorang mendapatkan informasi dalam membuat sesuatu keputusan? Adakah melihat dan fokus kepada sesuatu perkara atau melihat kepada gambaran besar?</li>
-        </ul>
-
+        <p>
+            Teori Trait menyatakan bahawa perbezaan antara individu disebabkan oleh sifat yang ada pada personaliti seseorang dan perbezaan individu ini dapat dilihat dari segi kuantiti (Carver & Scheier, 1988). Teori Trait mengenal pasti dan mencatatkan trait individu menggunakan dimensi atau skala. Beberapa tokoh telah mengasaskan teori trait masing-masing antaranya Sheldon, Gordon Allport, Raymond Cartell, Hans Eysenck dan dikembangkan oleh Costa dan McCrae dan Ashton dan Lee. The Sixteen Personality Factor Questionnaire (16PF) merupakan ujian personaliti bersifat laporan kendiri yang dibangunkan melalui kajia empirikal oleh Raymond B. Cattell, Maurice Tatsuoka dan Herbert Eber. Berdasarkan subset hanya 20 daripada 36 dimensi yang asalnya ditemui oleh Cattell, Ernest Tupes dan Raymond Christal (1961) mendakwa telah menemui hanya lima faktor iaitu surgency, agreeableness, dependability, emotional stability, and culture, dan kemudiannya Warren Norman memberi label "dependability" sebagai "conscientiousness".
         </p>
-        <p style="background-color: red;">
-            Semoga dengan penerokaan personaliti berdasarkan Instrumen EA-M dapat membolehkan kita lebih memahami personaliti dan karakter diri seterusnya dapat diguna dan diaplikasikan dalam konteks kekeluargaan, pekerjaan, perhubungan dan sebagainya demi mencapai kehidupan yang lebih bahagia dan sejahtera.
+
+
+        <p>
+            Kini, lima faktor dalam trait Big Five dikenali sebagai OCEAN atau CANOE. Pada tahun 1999, John dan Srivastava telah membentuk Big Five Inventory (BFI) yang mengandungi sebanyak 44 item dan kemudiannya Gosling, Rentfrow, dan Swann (2003) telah membentuk The Ten Item Personality Inventory-(TIPI) yang terdiri daripada 10 item untuk mengukur trait personaliti. TIPI sesuai digunakan apabila masa yang diambil adalah singkat, personaliti bukan topik utama yang diberi tumpuan, atau penyelidik boleh bertolak ansur dari aspek ciri psikometrik yang berkaitan (Gosling et al., 2003). Justeru, berdasarkan keperluan penggunaan TIPI dalam penyelidikan dan pelaksanaan program, penyelidik telah membentuk TIPI-Malay dan diterjemah ke dalam bentuk sistem aplikasi web yang mudah diakses oleh pengguna/responden
+        </p>
+
+        <p>
+            Semoga sistem TIPI-Malay memberi manfaat dan memudahkan para pengguna/responden mengetahui dan memahami trait personaliti masing-masing dan boleh digunakan dalam konteks kekeluargaan, pekerjaan, perhubungan dan sebagainya demi mencapai kehidupan yang lebih bahagia dan sejahtera.
+        </p>
+
+        <p>
+            <strong>ARAHAN</strong>
+        <ol>
+            <li>Penyertaan anda dalam sesi pentadbiran soal selidik TIPI-Malay adalah sukarela.</li>
+            <li>Anda perlu menjawab semua soalan TIPI-Malay dengan jujur dan ikhlas.</li>
+            <li>Tidak ada jawapan betul atau salah.</li>
+            <li>Ujian ini akan mengambil masa lebih kurang 5-8 minit.</li>
+            <li>Jangan terlalu ambil masa lama menjawab dan menganalisa soalan.</li>
+            <li>Jawab soalan berdasarkan apa yang anda rasa pilihan yang paling tepat.</li>
+            <li>Jawab soalan berdasarkan jawapan yang mencerminkan diri anda yang sebenar, bukan diri anda yang mahu dilihat oleh orang lain.</li>
+            <li>Sila tandakan satu pilihan jawapan bagi skala antara 1 hingga 7 pada setiap soalan yang dikemukakan.</li>
+            <li>Selepas anda selesai menjawab TIPI-Malay, anda akan peroleh keputusan bagi lima dimensi personaliti iaitu Ekstraversi, Kebersetujuan, Keberhemahan, Kestabilan Emosi dan Keterbukaan kepada Pengalaman.</li>
+
+        </ol>
+
         </p>
         <p>
-
             Terima kasih atas kesudian dan kerjasama yang anda berikan.
         </p>
         <p>
