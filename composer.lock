@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa3d8af9af3e1bbf50fd0894a0bf23fd",
+    "content-hash": "5ce7b5ba6d90978625c9fb7357840e4e",
     "packages": [
         {
             "name": "2amigos/yii2-highcharts-widget",
@@ -908,21 +908,22 @@
         },
         {
             "name": "kartik-v/yii2-dialog",
-            "version": "v1.0.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-dialog.git",
-                "reference": "c38616d719f52530749457c022ca6134d0ad31ce"
+                "reference": "bb0f6a1338caa3786893f7c0f34a0238c80a384d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-dialog/zipball/c38616d719f52530749457c022ca6134d0ad31ce",
-                "reference": "c38616d719f52530749457c022ca6134d0ad31ce",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dialog/zipball/bb0f6a1338caa3786893f7c0f34a0238c80a384d",
+                "reference": "bb0f6a1338caa3786893f7c0f34a0238c80a384d",
                 "shasum": ""
             },
             "require": {
                 "kartik-v/yii2-krajee-base": ">=2.0.0"
             },
+            "default-branch": true,
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
@@ -959,7 +960,7 @@
                 "issues": "https://github.com/kartik-v/yii2-dialog/issues",
                 "source": "https://github.com/kartik-v/yii2-dialog/tree/master"
             },
-            "time": "2018-10-09T08:08:51+00:00"
+            "time": "2021-06-02T17:48:36+00:00"
         },
         {
             "name": "kartik-v/yii2-dynagrid",
@@ -7286,7 +7287,8 @@
         "kartik-v/yii2-widget-select2": 20,
         "kartik-v/yii2-grid": 20,
         "kartik-v/yii2-export": 20,
-        "kartik-v/yii2-checkbox-x": 20
+        "kartik-v/yii2-checkbox-x": 20,
+        "kartik-v/yii2-dialog": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

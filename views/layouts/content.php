@@ -3,8 +3,12 @@
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Html;
 use kartik\growl\Growl;
+
 ?>
 <div class="content-wrapper">
+
+
+
     <!--    <section class="content-header">
         <?php if (isset($this->blocks['content-header'])) { ?>
             <h1><?= $this->blocks['content-header'] ?></h1>
@@ -25,11 +29,11 @@ use kartik\growl\Growl;
         <?php } ?>
 
         <?=
-            Breadcrumbs::widget(
-                [
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]
-            )
+        Breadcrumbs::widget(
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]
+        )
         ?>
     </section>-->
 

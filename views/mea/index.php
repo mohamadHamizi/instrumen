@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
-
+<?= $this->render("/site/dialog_pdpa") ?>
 
 <div class="box box-info">
     <div class="box-header with-border">

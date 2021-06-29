@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
 
-
+<?= $this->render("/site/dialog_pdpa") ?>
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong><?= $this->title ?></strong></h3>

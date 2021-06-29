@@ -92,7 +92,7 @@ class TipiController extends Controller
             }
         }
 
-        return $this->render('demografi', ['model' => $model, 'jenis_darah' => $jenis_darah, 'department'=>$department]);
+        return $this->render('demografi', ['model' => $model, 'jenis_darah' => $jenis_darah, 'department' => $department]);
     }
 
     public function actionQuestions()
@@ -106,14 +106,20 @@ class TipiController extends Controller
         }
 
         $model = new TipiJadual();
+        $disabled = false;
 
         $check_model = TipiJadual::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['result']);
+            }
 
             $model->main_id = $id;
             $model->create_dt = date('Y-m-d');
@@ -127,6 +133,7 @@ class TipiController extends Controller
         return $this->render('questions', [
             'model' => $model,
             'model1' => $model,
+            'disabled' => $disabled,
         ]);
     }
 

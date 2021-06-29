@@ -65,9 +65,9 @@ use app\models\TipiQuestions;
                     'label' => 'SKALA',
                     'headerOptions' => ['class' => 'text-center'],
                     'contentOptions' => ['class' => 'text-center', 'style' => 'width:50%'],
-                    'value' => function ($model) use ($form, $model1) {
+                    'value' => function ($model) use ($form, $model1, $disabled) {
                         $data = [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7,];
-                        return $form->field($model1, "item$model->id")->radioButtonGroup($data, ['class' => '', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary']]])->label(false);
+                        return $form->field($model1, "item$model->id")->radioButtonGroup($data, ['class' => '', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary', 'disabled' => $disabled]]])->label(false);
                     },
                     'format' => 'raw'
                 ],
