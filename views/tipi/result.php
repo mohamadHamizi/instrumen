@@ -134,7 +134,7 @@ use yii\helpers\Html;
 
                     <div class="progress-group">
                         <span class="progress-text">Emotional Stability</span>
-                        <span class="progress-number"><b>Neorotic</b></span>
+                        <span class="progress-number"><b>Neurotic</b></span>
 
                         <div class="progress">
                             <div class="progress-bar progress-bar-yellow" style="width: <?= $model->emotionalIndex ?>%"><?= $model->emotionalIndex ?>% - <?= $model->emotionalTahap ?></div>
