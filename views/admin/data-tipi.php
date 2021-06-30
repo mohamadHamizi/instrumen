@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         $gridColumns = [
             ['class' => 'yii\grid\SerialColumn'],
+            'create_dt:datetime',
             'icno',
             'demo.nama_penuh',
             'demo.jantina',
