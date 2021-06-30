@@ -116,12 +116,10 @@ class MeaController extends Controller
         $soalan = Soalan::find()->where(['jadual' => 1])->all();
 
         $model = new MeaJadual1();
-        $disabled = false;
         $check_model = MeaJadual1::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -241,7 +239,6 @@ class MeaController extends Controller
         return $this->render('jadual-1', [
             'soalan' => $soalan,
             'model' => $model,
-            'disabled' => $disabled,
         ]);
     }
     public function actionJadual2()
@@ -255,15 +252,7 @@ class MeaController extends Controller
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
@@ -271,14 +260,9 @@ class MeaController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
-
-            if ($disabled == true) {
-                return $this->redirect(['jadual-3']);
-            }
 
             $model->main_id = $id;
 
@@ -385,16 +369,7 @@ class MeaController extends Controller
             }
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
-
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
                 return $this->redirect(['jadual-3']);
             }
         }
@@ -402,9 +377,9 @@ class MeaController extends Controller
         return $this->render('jadual-2', [
             'soalan' => $soalan,
             'model' => $model,
-            'disabled' => $disabled,
         ]);
     }
+
     public function actionJadual3()
     {
         $this->view->title = "Jadual 3";
@@ -415,15 +390,7 @@ class MeaController extends Controller
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
@@ -540,16 +507,7 @@ class MeaController extends Controller
             }
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
-
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
                 return $this->redirect(['jadual-4']);
             }
         }
@@ -569,15 +527,7 @@ class MeaController extends Controller
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
@@ -694,16 +644,7 @@ class MeaController extends Controller
             }
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
-
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
                 return $this->redirect(['skor']);
             }
         }
@@ -722,15 +663,8 @@ class MeaController extends Controller
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifSuccess('Sila Masukkan No. Kad pengenalan');
+
             return $this->redirect(['index']);
         }
 

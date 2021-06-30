@@ -66,5 +66,5 @@ use kartik\growl\Growl;
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
     </div>
-    <strong>&copy; <?= date('Y') ?> <a href="https://uppsiks">Profesor Madya Dr. Muhammad Idris Bin Bullare @ Hj. Bahari</a>.</strong>
+    <strong>&copy; 2019 - <?= date('Y') ?> All Rights Reserved. <a href="https://uppsiks.ums.edu.my/instrumen/web/site/contact">Profesor Madya Dr. Muhammad Idris Bin Bullare @ Hj. Bahari</a>.</strong>
 </footer>
