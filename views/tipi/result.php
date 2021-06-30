@@ -48,7 +48,7 @@ use yii\helpers\Html;
                 <td class='text-center'><?= TipiJadual::rank($model->skorArray, $model->AgreeablenessSkor) ?></td>
             </tr>
             <tr>
-                <td>conscientiousness</td>
+                <td>Conscientiousness</td>
                 <td>
                     <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-green" style="width: <?= $model->conscientiousnessIndex ?>%"></div>
