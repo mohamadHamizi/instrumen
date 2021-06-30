@@ -13,6 +13,7 @@ use app\models\OkuDimensi;
 use app\models\OkuStrategi;
 use app\models\OkuKesan;
 use app\models\OkuSumber;
+use app\models\TipiMain;
 use app\models\VDataMea;
 use app\models\VDataMeaSearch;
 use app\models\VDataMipkSearch;
@@ -104,6 +105,20 @@ class AdminController extends \yii\web\Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('data-mea-two', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
+    public function actionDataTipi() {
+        
+        ini_set('memory_limit', '1024M'); // or you could use 1G
+        
+        $searchModel = new TipiMain();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('data-tipi', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);

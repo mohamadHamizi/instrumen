@@ -82,6 +82,7 @@
                         ['label' => 'MIPK', 'icon' => 'table', 'url' => ['admin/data-mipk'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'MEA', 'icon' => 'table', 'url' => ['admin/data-mea'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'MEA v2', 'icon' => 'table', 'url' => ['admin/data-mea-two'], 'visible' => !Yii::$app->user->isGuest],
+                        ['label' => 'TIPI', 'icon' => 'smile-o', 'url' => ['admin/data-tipi'], 'visible' => !Yii::$app->user->isGuest],
                     ]
                 ],
             ],
