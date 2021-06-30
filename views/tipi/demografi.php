@@ -148,7 +148,7 @@ use yii\helpers\VarDumper;
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'darah'); ?></label>
 
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <?php // Usage with ActiveForm and model
                 echo $form->field($model, 'darah')->widget(Select2::classname(), [
                     'data' => $jenis_darah,
@@ -168,6 +168,38 @@ use yii\helpers\VarDumper;
                 <?=
                 $form->field($model, 'anak_keberapa')->textInput()
                     ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'warganegara'); ?></label>
+            <div class="col-sm-2">
+                <?php // Usage with ActiveForm and model
+                echo $form->field($model, 'warganegara')->widget(Select2::classname(), [
+                    'data' => $warganegara,
+                    'options' => ['placeholder' => '--PILIH WARGANEGARA--'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])->label(false);
+
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'negara'); ?></label>
+            <div class="col-sm-3">
+                <?php // Usage with ActiveForm and model
+                echo $form->field($model, 'negara')->widget(Select2::classname(), [
+                    'data' => ArrayHelper::map($country, 'CountryCd', 'Country'),
+                    'options' => ['placeholder' => '--PILIH NEGARA--'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])->label(false);
+
                 ?>
             </div>
         </div>

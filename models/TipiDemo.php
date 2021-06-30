@@ -21,6 +21,8 @@ use yii\db\ActiveRecord;
  * @property string $warna Warna kegemaran
  * @property string $bangsa Bangsa
  * @property string $darah Jenis Darah
+ * @property string $warganegara
+ * @property string $negara 
  * @property int $anak_keberapa Anak Keberapa dalam keluarga
  */
 class TipiDemo extends \yii\db\ActiveRecord
@@ -70,7 +72,7 @@ class TipiDemo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['main_id', 'nama_penuh', 'jantina', 'umur', 'jawatan', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa'], 'required'],
+            [['main_id', 'nama_penuh', 'jantina', 'umur', 'jawatan', 'tarikh_lahir', 'warna', 'bangsa', 'darah', 'anak_keberapa', 'warganegara', 'negara'], 'required'],
             [['main_id', 'umur', 'anak_keberapa'], 'integer'],
             [['tarikh_lahir'], 'safe'],
             [['nama_penuh', 'jawatan', 'organisasi', 'organisasi_lain'], 'string', 'max' => 255],
@@ -99,6 +101,8 @@ class TipiDemo extends \yii\db\ActiveRecord
             'bangsa' => 'Bangsa',
             'darah' => 'Jenis Darah',
             'anak_keberapa' => 'Anak Keberapa dalam keluarga',
+            'warganegara' => 'Warganegara anda ?',
+            'negara' => 'Sekarang anda menetap di mana ?',
         ];
     }
 }

@@ -9,6 +9,7 @@ use app\models\TipiJadual;
 use app\models\TipiMain;
 use Exception;
 use yii\helpers\VarDumper;
+use app\models\UtilityFunc;
 
 /**
  * TipiController
@@ -59,19 +60,11 @@ class TipiController extends Controller
             return $this->redirect(['index']);
         }
 
-        $jenis_darah =  [
-            'A+' => 'A+',
-            'A-' => 'A-',
-            'B+' => 'B+',
-            'B-' => 'B-',
-            'AB+' => 'AB+',
-            'AB-' => 'AB-',
-            'O+' => 'O+',
-            'O-' => 'O-',
-            'x' => 'Tidak Tahu',
-        ];
+        $jenis_darah =  UtilityFunc::BloodTypeList();
+        $warganegara =  UtilityFunc::WargaList();
 
-        $department = $this->DepartmentList();
+        $department = UtilityFunc::DepartmentList();
+        $country = UtilityFunc::CountryList();
 
         $model = new TipiDemo();
 
@@ -92,7 +85,13 @@ class TipiController extends Controller
             }
         }
 
-        return $this->render('demografi', ['model' => $model, 'jenis_darah' => $jenis_darah, 'department' => $department]);
+        return $this->render('demografi', [
+            'model' => $model,
+            'jenis_darah' => $jenis_darah,
+            'department' => $department,
+            'country' => $country,
+            'warganegara' => $warganegara,
+        ]);
     }
 
     public function actionQuestions()
@@ -187,19 +186,6 @@ class TipiController extends Controller
         }
     }
 
-    public function DepartmentList()
-    {
-
-        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
-
-        // Read JSON file
-        $json_data = file_get_contents($api_url);
-
-        // Decode JSON data into PHP array
-        $response_data = json_decode($json_data);
-
-        return $response_data;
-    }
 
     protected function ifError()
     {
