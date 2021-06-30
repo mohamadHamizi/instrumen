@@ -98,7 +98,7 @@ class TipiDemo extends \yii\db\ActiveRecord
             'organisasi_lain' => 'Nama Organisasi lain-lain',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna kegemaran',
-            'bangsa' => 'Bangsa',
+            'bangsa' => 'Etnik',
             'darah' => 'Jenis Darah',
             'anak_keberapa' => 'Anak Keberapa dalam keluarga',
             'warganegara' => 'Warganegara anda ?',
