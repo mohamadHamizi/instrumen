@@ -30,6 +30,12 @@ use yii\widgets\ActiveForm;
         </p>
 
         <p>
+            <strong>RUJUKAN</strong><br>
+            <a href="http://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/">http://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/</a>
+
+        </p>
+
+        <p>
             <strong>ARAHAN</strong>
         <ol>
             <li>Penyertaan anda dalam sesi pentadbiran soal selidik TIPI-Malay adalah sukarela.</li>
