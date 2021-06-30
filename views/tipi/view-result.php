@@ -21,7 +21,6 @@ use yii\widgets\DetailView;
                 ],
                 'jantina',
                 'umur',
-                'jawatan',
                 [                      // the owner name of the model
                     'label' => 'Jawatan',
                     'value' => $demo->jawatan,

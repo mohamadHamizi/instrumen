@@ -46,6 +46,7 @@ class TipiMain extends \yii\db\ActiveRecord
             'create_dt' => 'Tarikh/Masa',
             'pdpaStatus' => 'Status PDPA',
             'pdpaTarikh' => 'Tarikh PDPA',
+            'btnView' => 'Perician',
         ];
     }
 
