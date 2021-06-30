@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "tipi_main".
@@ -43,7 +44,28 @@ class TipiMain extends \yii\db\ActiveRecord
             'id' => 'ID',
             'icno' => 'ICNO',
             'create_dt' => 'Tarikh/Masa',
+            'pdpaStatus' => 'Status PDPA',
+            'pdpaTarikh' => 'Tarikh PDPA',
         ];
+    }
+
+    public function getPdpaStatus()
+    {
+        return "Setuju";
+    }
+
+    public function getPdpaTarikh()
+    {
+        return Yii::$app->formatter->asDate($this->create_dt, 'php:d/m/Y'); // 2014-10-06;
+    }
+
+    public function getBtnView()
+    {
+        if ($this->jadual->item10) {
+            return  Html::a('<i class="fa fa-eye"></i>', ['tipi/view-result', 'id' => $this->id], ['target'=>'_blank']);
+        }
+
+        return null;
     }
 
     public function getJadual()

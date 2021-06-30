@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         $gridColumns = [
             ['class' => 'yii\grid\SerialColumn'],
+            'BtnView:html',
             'create_dt:datetime',
             'icno',
             'demo.nama_penuh',
@@ -50,6 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'jadual.item8',
             'jadual.item9',
             'jadual.item10',
+            'pdpaStatus',
+            'pdpaTarikh',
         ];
 
         echo ExportMenu::widget([

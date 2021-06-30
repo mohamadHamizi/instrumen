@@ -124,7 +124,7 @@ class AdminController extends \yii\web\Controller {
         ]);
         
     }
-    
+
     public function actionShowResult($id){
 //        $this->checkSession();
         $main_id = $id;

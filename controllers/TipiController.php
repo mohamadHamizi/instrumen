@@ -157,6 +157,24 @@ class TipiController extends Controller
         ]);
     }
 
+    public function actionViewResult($id)
+    {
+        
+        $model = TipiJadual::findOne(['main_id' => $id]);
+
+        $demo = TipiDemo::findOne(['main_id'=>$id]);
+
+        $extraversionIndex = $model->extraversionIndex;
+        $extraversionSkor = $model->extraversionSkor;
+
+        return $this->render('view-result', [
+            'model' => $model,
+            'demo' => $demo,
+            'extraversionIndex' => $extraversionIndex,
+            'extraversionSkor' => $extraversionSkor,
+        ]);
+    }
+
     public function actionDes()
     {
 
