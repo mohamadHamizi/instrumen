@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 class UtilityFunc
 {
 
@@ -55,5 +57,31 @@ class UtilityFunc
             'Penduduk Tetap' => 'Penduduk Tetap',
             'Bukan Warganegara' => 'Bukan Warganegara',
         ];
+    }
+
+    public static function ifError($msg)
+    {
+        return Yii::$app->getSession()->setFlash('danger', [
+            'type' => 'danger',
+            'duration' => 5000,
+            'icon' => 'fa fa-exclamation',
+            'message' => $msg,
+            'title' => 'Tidak Berjaya',
+            'positonY' => 'top',
+            'positonX' => 'right'
+        ]);
+    }
+
+    public static function ifSuccess($msg)
+    {
+        return Yii::$app->getSession()->setFlash('success', [
+            'type' => 'success',
+            'duration' => 5000,
+            'icon' => 'fa fa-check',
+            'message' => $msg,
+            'title' => 'Berjaya',
+            'positonY' => 'top',
+            'positonX' => 'right'
+        ]);
     }
 }

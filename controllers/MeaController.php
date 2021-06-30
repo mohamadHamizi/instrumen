@@ -10,6 +10,7 @@ use app\models\MeaJadual4;
 use app\models\MeaMain;
 use app\models\MeaResult;
 use app\models\Soalan;
+use app\models\UtilityFunc;
 use Yii;
 use yii\web\Controller;
 use yii\helpers\VarDumper;;
@@ -33,9 +34,9 @@ class MeaController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            $check_main = MeaMain::findOne(['icno'=>$model->icno]);
+            $check_main = MeaMain::findOne(['icno' => $model->icno]);
 
-            if($check_main){
+            if ($check_main) {
                 $model = $check_main;
             }
 
@@ -55,7 +56,7 @@ class MeaController extends Controller
         $this->view->title = "Demografi";
 
         $id = \Yii::$app->session->get('mea_main_id');
-        $department = $this->DepartmentList();
+        $department = UtilityFunc::DepartmentList();
 
         if (!$id) {
             Yii::$app->getSession()->setFlash('danger', [
@@ -72,10 +73,10 @@ class MeaController extends Controller
 
 
         $model = new MeaDemo();
-        
-        $check_model = MeaDemo::findOne(['main_id'=>$id]);
 
-        if($check_model){
+        $check_model = MeaDemo::findOne(['main_id' => $id]);
+
+        if ($check_model) {
             $model = $check_model;
         }
 
@@ -96,57 +97,35 @@ class MeaController extends Controller
 
                 return $this->redirect(['jadual-1']);
             }
-
         }
 
-        return $this->render('demografi', ['model' => $model, 'department'=>$department]);
-    }
-
-    public function DepartmentList()
-    {
-
-        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
-
-        // Read JSON file
-        $json_data = file_get_contents($api_url);
-
-        // Decode JSON data into PHP array
-        $response_data = json_decode($json_data);
-
-        return $response_data;
+        return $this->render('demografi', ['model' => $model, 'department' => $department]);
     }
 
     public function actionJadual1()
     {
-        // $this->checkSession();
         $this->view->title = "JADUAL 1";
 
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
         $soalan = Soalan::find()->where(['jadual' => 1])->all();
 
         $model = new MeaJadual1();
-        
-        $check_model = MeaJadual1::findOne(['main_id'=>$id]);
+        $disabled = false;
+        $check_model = MeaJadual1::findOne(['main_id' => $id]);
 
-        if($check_model){
+        if ($check_model) {
             $model = $check_model;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
+
 
             $model->main_id = $id;
 
@@ -253,15 +232,7 @@ class MeaController extends Controller
             }
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
 
                 return $this->redirect(['jadual-2']);
             }
@@ -270,6 +241,7 @@ class MeaController extends Controller
         return $this->render('jadual-1', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual2()
@@ -278,6 +250,7 @@ class MeaController extends Controller
 
         $soalan = Soalan::find()->where(['jadual' => 2])->all();
         $model = new MeaJadual2();
+        $disabled = false;
 
         $id = \Yii::$app->session->get('mea_main_id');
 
@@ -294,13 +267,18 @@ class MeaController extends Controller
             return $this->redirect(['index']);
         }
 
-        $check_model = MeaJadual2::findOne(['main_id'=>$id]);
+        $check_model = MeaJadual2::findOne(['main_id' => $id]);
 
-        if($check_model){
+        if ($check_model) {
             $model = $check_model;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['jadual-3']);
+            }
 
             $model->main_id = $id;
 
@@ -424,6 +402,7 @@ class MeaController extends Controller
         return $this->render('jadual-2', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual3()
@@ -448,9 +427,9 @@ class MeaController extends Controller
             return $this->redirect(['index']);
         }
 
-        $check_model = MeaJadual3::findOne(['main_id'=>$id]);
+        $check_model = MeaJadual3::findOne(['main_id' => $id]);
 
-        if($check_model){
+        if ($check_model) {
             $model = $check_model;
         }
 
@@ -602,9 +581,9 @@ class MeaController extends Controller
             return $this->redirect(['index']);
         }
 
-        $check_model = MeaJadual4::findOne(['main_id'=>$id]);
+        $check_model = MeaJadual4::findOne(['main_id' => $id]);
 
-        if($check_model){
+        if ($check_model) {
             $model = $check_model;
         }
 
@@ -735,7 +714,8 @@ class MeaController extends Controller
         ]);
     }
 
-    public function actionSkor(){
+    public function actionSkor()
+    {
 
         $this->view->title = "Keputusan";
 
@@ -754,11 +734,11 @@ class MeaController extends Controller
             return $this->redirect(['index']);
         }
 
-        $model = MeaMain::findOne(['id'=>$id]);
+        $model = MeaMain::findOne(['id' => $id]);
 
-        $anda = MeaResult::tret($model->jadual1->pil_anda,$model->jadual2->pil_anda, $model->jadual3->pil_anda,$model->jadual4->pil_anda);
-        $bos = MeaResult::tret($model->jadual1->pil_bos,$model->jadual2->pil_bos, $model->jadual3->pil_bos,$model->jadual4->pil_bos);
-        
+        $anda = MeaResult::tret($model->jadual1->pil_anda, $model->jadual2->pil_anda, $model->jadual3->pil_anda, $model->jadual4->pil_anda);
+        $bos = MeaResult::tret($model->jadual1->pil_bos, $model->jadual2->pil_bos, $model->jadual3->pil_bos, $model->jadual4->pil_bos);
+
         return $this->render('skor', [
             'model' => $model,
             'anda' => $anda,
