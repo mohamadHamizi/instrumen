@@ -59,6 +59,15 @@ class UtilityFunc
         ];
     }
 
+    public static function StatusKerja()
+    {
+        return [
+            'Bekerja' => 'Bekerja',
+            'Pelajar' => 'Pelajar',
+            '99' => 'Lain-lain',
+        ];
+    }
+
     public static function ifError($msg)
     {
         return Yii::$app->getSession()->setFlash('danger', [

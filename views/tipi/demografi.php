@@ -44,6 +44,17 @@ use yii\helpers\VarDumper;
         </div>
 
         <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'emel'); ?></label>
+
+            <div class="col-sm-5">
+                <?=
+                $form->field($model, 'emel')->textInput()
+                    ->label(false)
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'jantina'); ?></label>
 
             <div class="col-sm-6">
@@ -61,6 +72,15 @@ use yii\helpers\VarDumper;
                 $form->field($model, 'umur')->textInput()
                     ->label(false)
                 ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'status_kerja'); ?></label>
+
+            <div class="col-sm-5">
+                <?= $form->field($model, 'status_kerja')->radioButtonGroup($status_kerja, ['itemOptions' => ['labelOptions' => ['class' => 'btn btn-success']]])->label(false); ?>
+                <?= $form->field($model, 'status_kerja_lain')->textInput(['hidden' => true, 'id' => 'status_kerja_lain', 'placeholder' => 'Nyatakan Status Pekerjaan anda'])->label(false) ?>
             </div>
         </div>
 
@@ -214,3 +234,21 @@ use yii\helpers\VarDumper;
     </div>
 
 </div>
+<?php
+$script = <<< JS
+    
+        $(function () {
+
+        $('#status_kerja_lain').hide();
+        $('input[name="TipiDemo[status_kerja]"]').on('change', function () {
+            if ($(this).val() == '99') {
+                $('#status_kerja_lain').show();
+            } else {
+                $('#status_kerja_lain').hide();
+            }
+        });
+        });
+        
+        JS;
+$this->registerJs($script);
+?>

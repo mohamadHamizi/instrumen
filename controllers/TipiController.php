@@ -62,6 +62,7 @@ class TipiController extends Controller
 
         $jenis_darah =  UtilityFunc::BloodTypeList();
         $warganegara =  UtilityFunc::WargaList();
+        $status_kerja =  UtilityFunc::StatusKerja();
 
         $department = UtilityFunc::DepartmentList();
         $country = UtilityFunc::CountryList();
@@ -89,6 +90,7 @@ class TipiController extends Controller
             'model' => $model,
             'jenis_darah' => $jenis_darah,
             'department' => $department,
+            'status_kerja' => $status_kerja,
             'country' => $country,
             'warganegara' => $warganegara,
         ]);

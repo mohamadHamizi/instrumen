@@ -23,6 +23,9 @@ use yii\db\ActiveRecord;
  * @property string $darah Jenis Darah
  * @property string $warganegara
  * @property string $negara 
+ * @property string $emel 
+ * @property string $status_kerja 
+ * @property string $status_kerja_lain
  * @property int $anak_keberapa Anak Keberapa dalam keluarga
  */
 class TipiDemo extends \yii\db\ActiveRecord
@@ -59,8 +62,6 @@ class TipiDemo extends \yii\db\ActiveRecord
 
         $this->tarikh_lahir = Yii::$app->formatter->asDate($this->tarikh_lahir, 'dd/MM/yyyy');
 
-        //$this->importo = Yii::$app->formatter->asCurrency($this->importo, 'EUR');
-
         parent::afterFind();
 
         return true;
@@ -78,6 +79,8 @@ class TipiDemo extends \yii\db\ActiveRecord
             [['nama_penuh', 'jawatan', 'organisasi', 'organisasi_lain'], 'string', 'max' => 255],
             [['jantina'], 'string', 'max' => 1],
             [['warna', 'bangsa'], 'string', 'max' => 100],
+            [['emel', 'status_kerja_lain'], 'string', 'max' => 100],
+            [['status_kerja'], 'string', 'max' => 30],
             [['darah'], 'string', 'max' => 5],
         ];
     }
@@ -102,7 +105,9 @@ class TipiDemo extends \yii\db\ActiveRecord
             'darah' => 'Jenis Darah',
             'anak_keberapa' => 'Anak Keberapa dalam keluarga',
             'warganegara' => 'Warganegara anda ?',
-            'negara' => 'Sekarang anda menetap di mana ?',
+            'emel' => 'Alamat emel',
+            'status_kerja' => 'Status pekerjaan anda',
+            'status_kerja_lain' => 'Nyatakan sekiranya lain-lain',
         ];
     }
 }
