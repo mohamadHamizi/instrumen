@@ -234,8 +234,8 @@ use yii\helpers\VarDumper;
     </div>
 
 </div>
-<?php
-$script = <<< JS
+    <?php
+    $script = <<<JS
     
         $(function () {
 
@@ -247,8 +247,9 @@ $script = <<< JS
                 $('#status_kerja_lain').hide();
             }
         });
-        });
+
+    });
         
-        JS;
+JS;
 $this->registerJs($script);
 ?>
