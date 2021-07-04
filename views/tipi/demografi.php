@@ -234,22 +234,18 @@ use yii\helpers\VarDumper;
     </div>
 
 </div>
-    <?php
-    $script = <<<JS
-    
-        $(function () {
-
-        $('#status_kerja_lain').hide();
-        $('input[name="TipiDemo[status_kerja]"]').on('change', function () {
-            if ($(this).val() == '99') {
-                $('#status_kerja_lain').show();
-            } else {
-                $('#status_kerja_lain').hide();
-            }
-        });
-
-        });
-        
-    JS;
+<?php
+$script = <<<JS
+$(function () {
+$('#status_kerja_lain').hide();
+$('input[name="TipiDemo[status_kerja]"]').on('change', function () {
+if ($(this).val() == '99') {
+$('#status_kerja_lain').show();
+} else {
+$('#status_kerja_lain').hide();
+}
+});
+});        
+JS;
 $this->registerJs($script);
 ?>
