@@ -248,8 +248,8 @@ use yii\helpers\VarDumper;
             }
         });
 
-    });
+        });
         
-JS;
+    JS;
 $this->registerJs($script);
 ?>
