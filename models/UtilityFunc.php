@@ -54,7 +54,7 @@ class UtilityFunc
     {
         return [
             'Warganegara Malaysia' => 'Warganegara Malaysia',
-            'Penduduk Tetap' => 'Penduduk Tetap',
+            // 'Penduduk Tetap' => 'Penduduk Tetap',
             'Bukan Warganegara' => 'Bukan Warganegara',
         ];
     }
