@@ -5,7 +5,7 @@
   <tr style="font-weight: bold">
     <td class="text-center">
       <i>Disagree
-        strong
+        strongly
       </i><br>
       Sangat tidak setuju
     </td>

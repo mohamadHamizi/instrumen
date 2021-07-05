@@ -97,7 +97,7 @@ class TipiDemo extends \yii\db\ActiveRecord
             'jantina' => 'Jantina',
             'umur' => 'Umur',
             'jawatan' => 'Jawatan Anda',
-            'organisasi' => 'JFPIU',
+            'organisasi' => 'JFPIU (bagi kakitangan & pelajar UMS sahaja)',
             'organisasi_lain' => 'Nama Organisasi lain-lain',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna kegemaran',
