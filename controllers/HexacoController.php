@@ -393,6 +393,7 @@ class HexacoController extends Controller
             'dataArr' => $dataArr,
             'dimensiArr' => $dimensiArr,
             'label' => Main::labelSubDimensi(),
+            'labelDimensi' => Main::labelDimensi(),
         ]);
     }
 

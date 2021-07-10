@@ -3,6 +3,8 @@
 use dosamigos\highcharts\HighCharts;
 use yii\helpers\VarDumper;
 use yii\helpers\Html;
+use dosamigos\chartjs\ChartJs;
+use yii\web\JsExpression;
 
 ?>
 
@@ -11,76 +13,76 @@ use yii\helpers\Html;
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Dimensi</strong></h3>
     </div>
     <div class="box-body">
-
-        <?=
-        HighCharts::widget([
-
-            'clientOptions' => [
-                'chart' => [
-                    'polar' => true,
-                    'type' => 'line'
-                ],
-                'accessibility' => [
-                    'description' => 'A spiderweb chart compares the allocated budget against actual spending within an organization. The spider chart has six spokes. Each spoke represents one of the 6 departments within the organization: sales, marketing, development, customer support, information technology and administration. The chart is interactive, and each data point is displayed upon hovering. The chart clearly shows that 4 of the 6 departments have overspent their budget with Marketing responsible for the greatest overspend of $20,000. The allocated budget and actual spending data points for each department are as follows: Sales. Budget equals $43,000; spending equals $50,000. Marketing. Budget equals $19,000; spending equals $39,000. Development. Budget equals $60,000; spending equals $42,000. Customer support. Budget equals $35,000; spending equals $31,000. Information technology. Budget equals $17,000; spending equals $26,000. Administration. Budget equals $10,000; spending equals $14,000.'
-                ],
-                'title' => [
-                    'text' => 'Budget vs spending',
-                    'x' => -80,
-                ],
-                'pane' => [
-                    'size' => '80%'
-                ],
-                'xAxis' => [
-                    'categories' => [
-                        'Sales', 'Marketing', 'Development', 'Customer Support',
-                        'Information Technology', 'Administration'
-                    ],
-                    'tickmarkPlacement' => 'on',
-                    'lineWidth' => 0,
-                ],
-                'yAxis' => [
-                    'gridLineInterpolation' => 'polygon',
-                    'lineWidth' => 0,
-                    'min' => 0,
-                ],
-                'tooltip' => [
-                    'headerFormat' => '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>',
-                    'shared' => true,
-                ],
-                'series' => [
+        <?= ChartJs::widget([
+            'type' => 'radar',
+            'id' => 'structureDoughnut',
+            'options' => [
+                'height' => 300,
+                'width' => 500,
+            ],
+            'data' => [
+                //'radius' =>  "90%",
+                'labels' => $labelDimensi,
+                'datasets' => [
                     [
-                        'name' => 'Allocate Budget',
-                        'data' => [43000, 19000, 60000, 35000, 17000, 10000],
-                        'pointPlaement' => 'on',
-                    ],
-                    [
-                        'name' => 'Actual Spending',
-                        'data' => [50000, 39000, 42000, 31000, 26000, 14000],
-                        'pointPlaement' => 'on',
-                    ],
-                ],
-                'responsive' => [
-                    'rules' => [
-                        [
-                            'condition' => [
-                                'maxWidth' => 500,
-                            ],
-                            'chartOptions' => [
-                                'legend' => [
-                                    'align' => 'center',
-                                    'verticalAlign' => 'bottom',
-                                    'layout' => 'horizontal'
-                                ],
-                                'pane' => [
-                                    'size' => '70%'
-                                ],
-                            ],
-                        ],
+                        'data' => $dimensiArr,
+                        'label' => '',
+                        'fill' => true,
+                        'backgroundColor' => "rgba(255,99,132,0.2)",
+                        'borderColor' => "rgba(255,99,132,1)",
+                        'pointBorderColor' => "#fff",
+                        'pointBackgroundColor' => "rgba(255,99,132,1)",
+                        //'hoverBorderColor'=>["#999","#999","#999"],                
                     ]
                 ]
-            ]
+            ],
+            'clientOptions' => [
+                'responsive' => true,
+                'legend' => [
+                    'display' => false,
+                    'position' => 'bottom',
+                    'labels' => [
+                        'fontSize' => 14,
+                        'fontColor' => "#425062",
+                    ]
+                ],
+                'tooltips' => [
+                    //                                    'enabled' => true,
+                    //                                    'intersect' => true,
+                    'callbacks' => [
+                        'label' => new JsExpression("function(t, d) {
+                     var label = d.labels[t.index];
+                     var data = d.datasets[t.datasetIndex].data[t.index];
+                     if (t.datasetIndex === 0)
+                     return label + ': ' + data;
+                     else if (t.datasetIndex === 1)
+                     return label + ': $' + data.toLocaleString();
+              }"),
+                        'title' => new JsExpression('function(){}')
+                        //                                        'title' => '',
+                    ]
+                ],
+                'hover' => [
+                    'mode' => false
+                ],
+                'maintainAspectRatio' => false,
+                'scale' => [
+                    'ticks' => [
+                        'beginAtZero' => true,
+                        'precision' => 0,
+                        // 'suggestedMax' => max(array_values(ArrayHelper::getColumn($pemberat, 'pemberat'))),
+                        'stepSize' => 5
+                        //                                        'maxTicksLimit' => 10
+                    ],
+                    //                                    'pointLabels' => [
+                    //                                        'fontColor' => ArrayHelper::getColumn($markah, 'warna')
+                    //                                    ]
+                ]
+
+            ],
         ]);
         ?>
+
     </div>
 </div>
 

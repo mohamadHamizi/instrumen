@@ -102,6 +102,18 @@ class Main extends \yii\db\ActiveRecord
             'Tidak konvensional',
         ];
     }
+    public static function labelDimensi()
+    {
+
+        return [
+            'Kejujuran-Kerendahan Hari',
+            'Emosi',
+            'Ekstraversi',
+            'Kebersetujuan',
+            'Keberhemahan',
+            'Terbuka kepada Pengalaman',
+        ];
+    }
 
     public static function dimensiAnda($id)
     {
@@ -115,7 +127,6 @@ class Main extends \yii\db\ActiveRecord
             $model->getDimensiKeberhemahan(),
             $model->getDimensiTerbuka(),
         ];
-
     }
 
     public static function resultAnda($id)
