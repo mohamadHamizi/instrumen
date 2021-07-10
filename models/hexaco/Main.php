@@ -76,31 +76,46 @@ class Main extends \yii\db\ActiveRecord
     {
 
         return [
-            'Sincerity Keikhlasan',
-            'Fairness Keadilan',
-            'Greed-Avoidance Ketamakan-Pengelakan',
-            'Modesty Kesopanan',
-            'Fearfulness Ketakutan',
-            'Anxiety Kebimbangan',
-            'Dependence Kebergantungan',
-            'Sentimentality Sentimental',
-            'Social Self-Esteem Penghargaan Kendiri Sosial',
-            'Social Boldness Keberanian Sosial',
-            'Sociability Keramahan',
-            'Liveliness Keaktifan',
-            'Forgiveness Kemaafan',
-            'Gentleness Kelembutan',
-            'Flexibility Fleksibel',
-            'Patience Kesabaran',
-            'Organization Organisasi',
-            'Diligence Ketekunan',
-            'Perfectionism Kesempurnaan',
-            'Prudence Berhemah',
-            'Aesthetic appreciation Penghargaan estetika',
-            'Inquisitiveness Rasa ingin tahu',
-            'Creativity Kreativiti',
-            'Unconventionality Tidak konvensional',
+            'Keikhlasan',
+            'Keadilan',
+            'Ketamakan-Pengelakan',
+            'Kesopanan',
+            'Ketakutan',
+            'Kebimbangan',
+            'Kebergantungan',
+            'Sentimental',
+            'Penghargaan Kendiri Sosial',
+            'Keberanian Sosial',
+            'Keramahan',
+            'Keaktifan',
+            'Kemaafan',
+            'Kelembutan',
+            'Fleksibel',
+            'Kesabaran',
+            'Organisasi',
+            'Ketekunan',
+            'Kesempurnaan',
+            'Berhemah',
+            'Penghargaan estetika',
+            'Rasa ingin tahu',
+            'Kreativiti',
+            'Tidak konvensional',
         ];
+    }
+
+    public static function dimensiAnda($id)
+    {
+        $model = self::findOne($id);
+
+        return [
+            $model->getDimensiKejujuran(),
+            $model->getDimensiEmosi(),
+            $model->getDimensiEkstraversi(),
+            $model->getDimensiKebersetujuan(),
+            $model->getDimensiKeberhemahan(),
+            $model->getDimensiTerbuka(),
+        ];
+
     }
 
     public static function resultAnda($id)
@@ -135,6 +150,61 @@ class Main extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getDimensiKejujuran()
+    {
+        return $this->FormulaDimensi(
+            $this->getSincerityIndex(),
+            $this->getFairnessIndex(),
+            $this->getGreedIndex(),
+            $this->getModestyIndex()
+        );
+    }
+    public function getDimensiEmosi()
+    {
+        return $this->FormulaDimensi(
+            $this->getFearfulnessIndex(),
+            $this->getAnxietyIndex(),
+            $this->getDependenceIndex(),
+            $this->getSentimentalityIndex()
+        );
+    }
+
+    public function getDimensiEkstraversi()
+    {
+        return $this->FormulaDimensi(
+            $this->getSocialSelfIndex(),
+            $this->getSocialBoldnessIndex(),
+            $this->getSociabilityIndex(),
+            $this->getLivelinessIndex(),
+        );
+    }
+    public function getDimensiKebersetujuan()
+    {
+        return $this->FormulaDimensi(
+            $this->getForgivenessIndex(),
+            $this->getGentlenessIndex(),
+            $this->getFlexibilityIndex(),
+            $this->getPatienceIndex()
+        );
+    }
+    public function getDimensiKeberhemahan()
+    {
+        return $this->FormulaDimensi(
+            $this->getOrganizationIndex(),
+            $this->getDiligenceIndex(),
+            $this->getPerfectionismIndex(),
+            $this->getPrudenceIndex()
+        );
+    }
+    public function getDimensiTerbuka()
+    {
+        return $this->FormulaDimensi(
+            $this->getAestheticIndex(),
+            $this->getInquisitivenessIndex(),
+            $this->getCreativityIndex(),
+            $this->getUnconventionalityIndex()
+        );
+    }
 
     public function getPdpaStatus()
     {
@@ -228,6 +298,19 @@ class Main extends \yii\db\ActiveRecord
         return $reverse;
     }
 
+
+
+    public static function FormulaDimensi($sub1, $sub2, $sub3, $sub4)
+    {
+        $maxSkor = 400;
+        $minSkor = 0;
+        $jumlahSkor = $sub1 + $sub2 + $sub3 + $sub4;
+
+        $indeks = ($jumlahSkor - $minSkor) / ($maxSkor - $minSkor) * 100;
+
+        return round($indeks, 0);
+    }
+
     public static function FormulaIndeks($itemSkor1, $itemSkor2, $itemSkor3 = null)
     {
         $maxSkor = 10;
@@ -262,241 +345,124 @@ class Main extends \yii\db\ActiveRecord
 
     public function getSincerityIndex()
     {
-        return $this->FormulaIndeks($this->kejujuran->item6, $this->reverseSkor($this->ekstraversi->item30), $this->terbuka->item54);
-    }
-
-    public function getSincerityPurata()
-    {
-        return $this->FormulaPurata($this->kejujuran->item6, $this->reverseSkor($this->ekstraversi->item30), $this->terbuka->item54);
+        return $this->FormulaIndeks($this->kejujuran->item1, $this->reverseSkor($this->kejujuran->item2), $this->kejujuran->item3);
     }
 
     public function getFairnessIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->emosi->item12), $this->kebersetujuan->item36, $this->reverseSkor($this->terbuka->item60));
-    }
-
-    public function getFairnessPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->emosi->item12), $this->kebersetujuan->item36, $this->reverseSkor($this->terbuka->item60));
+        return $this->FormulaIndeks($this->reverseSkor($this->kejujuran->item4), $this->kejujuran->item5, $this->reverseSkor($this->kejujuran->item6));
     }
 
     public function getGreedIndex()
     {
-        return $this->FormulaIndeks($this->emosi->item18, $this->reverseSkor($this->keberhemahan->item42));
-    }
-
-    public function getGreedPurata()
-    {
-        return $this->FormulaPurata($this->emosi->item18, $this->reverseSkor($this->keberhemahan->item42));
+        return $this->FormulaIndeks($this->kejujuran->item7, $this->reverseSkor($this->kejujuran->item8));
     }
 
     public function getModestyIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->ekstraversi->item24), $this->reverseSkor($this->keberhemahan->item48));
+        return $this->FormulaIndeks($this->reverseSkor($this->kejujuran->item9), $this->reverseSkor($this->kejujuran->item10));
     }
 
-    public function getModestyPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->ekstraversi->item24), $this->reverseSkor($this->keberhemahan->item48));
-    }
 
     public function getFearfulnessIndex()
     {
-        return $this->FormulaIndeks($this->kejujuran->item5, $this->ekstraversi->item29, $this->reverseSkor($this->terbuka->item53));
+        return $this->FormulaIndeks($this->emosi->item11, $this->emosi->item12, $this->reverseSkor($this->emosi->item13));
     }
 
-    public function getFearfulnessPurata()
-    {
-        return $this->FormulaPurata($this->kejujuran->item5, $this->ekstraversi->item29, $this->reverseSkor($this->terbuka->item53));
-    }
 
     public function getAnxietyIndex()
     {
-        return $this->FormulaIndeks($this->emosi->item11, $this->reverseSkor($this->kebersetujuan->item35));
-    }
-
-    public function getAnxietyPurata()
-    {
-        return $this->FormulaPurata($this->emosi->item11, $this->reverseSkor($this->kebersetujuan->item35));
+        return $this->FormulaIndeks($this->emosi->item14, $this->reverseSkor($this->emosi->item15));
     }
 
     public function getDependenceIndex()
     {
-        return $this->FormulaIndeks($this->emosi->item17, $this->reverseSkor($this->keberhemahan->item41));
+        return $this->FormulaIndeks($this->emosi->item16, $this->reverseSkor($this->emosi->item17));
     }
 
-    public function getDependencePurata()
-    {
-        return $this->FormulaPurata($this->emosi->item17, $this->reverseSkor($this->keberhemahan->item41));
-    }
 
     public function getSentimentalityIndex()
     {
-        return $this->FormulaIndeks($this->ekstraversi->item23, $this->keberhemahan->item47, $this->reverseSkor($this->terbuka->item59));
-    }
-
-    public function getSentimentalityPurata()
-    {
-        return $this->FormulaPurata($this->ekstraversi->item23, $this->keberhemahan->item47, $this->reverseSkor($this->terbuka->item59));
+        return $this->FormulaIndeks($this->emosi->item18, $this->emosi->item19, $this->reverseSkor($this->emosi->item20));
     }
 
     public function getSocialSelfIndex()
     {
-        return $this->FormulaIndeks($this->kejujuran->item4, $this->reverseSkor($this->ekstraversi->item28), $this->reverseSkor($this->terbuka->item52));
-    }
-
-    public function getSocialSelfPurata()
-    {
-        return $this->FormulaPurata($this->kejujuran->item4, $this->reverseSkor($this->ekstraversi->item28), $this->reverseSkor($this->terbuka->item52));
+        return $this->FormulaIndeks($this->ekstraversi->item21, $this->reverseSkor($this->ekstraversi->item22), $this->reverseSkor($this->ekstraversi->item23));
     }
 
     public function getSocialBoldnessIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->kejujuran->item10), $this->kebersetujuan->item34, $this->terbuka->item58);
-    }
-
-    public function getSocialBoldnessPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->kejujuran->item10), $this->kebersetujuan->item34, $this->terbuka->item58);
+        return $this->FormulaIndeks($this->reverseSkor($this->ekstraversi->item24), $this->ekstraversi->item25, $this->ekstraversi->item26);
     }
 
     public function getSociabilityIndex()
     {
-        return $this->FormulaIndeks($this->emosi->item16, $this->kebersetujuan->item40);
-    }
-
-    public function getSociabilityPurata()
-    {
-        return $this->FormulaPurata($this->emosi->item16, $this->kebersetujuan->item40);
+        return $this->FormulaIndeks($this->ekstraversi->item27, $this->ekstraversi->item28);
     }
 
     public function getLivelinessIndex()
     {
-        return $this->FormulaIndeks($this->ekstraversi->item22, $this->reverseSkor($this->keberhemahan->item46));
-    }
-
-    public function getLivelinessPurata()
-    {
-        return $this->FormulaPurata($this->ekstraversi->item22, $this->reverseSkor($this->keberhemahan->item46));
+        return $this->FormulaIndeks($this->ekstraversi->item29, $this->reverseSkor($this->ekstraversi->item30));
     }
 
     public function getForgivenessIndex()
     {
-        return $this->FormulaIndeks($this->kejujuran->item3, $this->ekstraversi->item27);
-    }
-
-    public function getForgivenessPurata()
-    {
-        return $this->FormulaPurata($this->kejujuran->item3, $this->ekstraversi->item27);
+        return $this->FormulaIndeks($this->kebersetujuan->item31, $this->kebersetujuan->item32);
     }
 
     public function getGentlenessIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->kejujuran->item9), $this->kebersetujuan->item33, $this->terbuka->item51);
-    }
-
-    public function getGentlenessPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->kejujuran->item9), $this->kebersetujuan->item33, $this->terbuka->item51);
+        return $this->FormulaIndeks($this->reverseSkor($this->kebersetujuan->item33), $this->kebersetujuan->item34, $this->kebersetujuan->item35);
     }
 
     public function getFlexibilityIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->emosi->item15), $this->kebersetujuan->item39, $this->reverseSkor($this->terbuka->item57));
-    }
-
-    public function getFlexibilityPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->emosi->item15), $this->kebersetujuan->item39, $this->reverseSkor($this->terbuka->item57));
+        return $this->FormulaIndeks($this->reverseSkor($this->kebersetujuan->item36), $this->kebersetujuan->item37, $this->reverseSkor($this->kebersetujuan->item38));
     }
 
     public function getPatienceIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->ekstraversi->item21), $this->keberhemahan->item45);
-    }
-
-    public function getPatiencePurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->ekstraversi->item21), $this->keberhemahan->item45);
+        return $this->FormulaIndeks($this->reverseSkor($this->kebersetujuan->item39), $this->kebersetujuan->item40);
     }
 
     public function getOrganizationIndex()
     {
-        return $this->FormulaIndeks($this->kejujuran->item2, $this->reverseSkor($this->ekstraversi->item26));
-    }
-
-    public function getOrganizationPurata()
-    {
-        return $this->FormulaPurata($this->kejujuran->item2, $this->reverseSkor($this->ekstraversi->item26));
+        return $this->FormulaIndeks($this->keberhemahan->item41, $this->reverseSkor($this->keberhemahan->item42));
     }
 
     public function getDiligenceIndex()
     {
-        return $this->FormulaIndeks($this->kejujuran->item8, $this->reverseSkor($this->kebersetujuan->item32));
-    }
-
-    public function getDiligencePurata()
-    {
-        return $this->FormulaPurata($this->kejujuran->item8, $this->reverseSkor($this->kebersetujuan->item32));
+        return $this->FormulaIndeks($this->keberhemahan->item43, $this->reverseSkor($this->keberhemahan->item44));
     }
 
     public function getPerfectionismIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->emosi->item14), $this->kebersetujuan->item38, $this->reverseSkor($this->keberhemahan->item50));
-    }
-
-    public function getPerfectionismPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->emosi->item14), $this->kebersetujuan->item38, $this->reverseSkor($this->keberhemahan->item50));
+        return $this->FormulaIndeks($this->reverseSkor($this->keberhemahan->item45), $this->keberhemahan->item46, $this->reverseSkor($this->keberhemahan->item47));
     }
 
     public function getPrudenceIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->emosi->item20), $this->reverseSkor($this->keberhemahan->item44), $this->reverseSkor($this->terbuka->item56));
-    }
-
-    public function getPrudencePurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->emosi->item20), $this->reverseSkor($this->keberhemahan->item44), $this->reverseSkor($this->terbuka->item56));
+        return $this->FormulaIndeks($this->reverseSkor($this->keberhemahan->item48), $this->reverseSkor($this->keberhemahan->item49), $this->reverseSkor($this->keberhemahan->item50));
     }
 
     public function getAestheticIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->kejujuran->item1), $this->ekstraversi->item25);
-    }
-
-    public function getAestheticPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->kejujuran->item1), $this->ekstraversi->item25);
+        return $this->FormulaIndeks($this->reverseSkor($this->terbuka->item51), $this->terbuka->item52);
     }
 
     public function getInquisitivenessIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->kejujuran->item7), $this->kebersetujuan->item31);
-    }
-
-    public function getInquisitivenessPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->kejujuran->item7), $this->kebersetujuan->item31);
+        return $this->FormulaIndeks($this->reverseSkor($this->terbuka->item53), $this->terbuka->item54);
     }
 
     public function getCreativityIndex()
     {
-        return $this->FormulaIndeks($this->emosi->item13, $this->kebersetujuan->item37, $this->reverseSkor($this->keberhemahan->item49));
-    }
-
-    public function getCreativityPurata()
-    {
-        return $this->FormulaPurata($this->emosi->item13, $this->kebersetujuan->item37, $this->reverseSkor($this->keberhemahan->item49));
+        return $this->FormulaIndeks($this->terbuka->item55, $this->terbuka->item56, $this->reverseSkor($this->terbuka->item57));
     }
 
     public function getUnconventionalityIndex()
     {
-        return $this->FormulaIndeks($this->reverseSkor($this->emosi->item19), $this->keberhemahan->item43, $this->reverseSkor($this->terbuka->item55));
-    }
-
-    public function getUnconventionalityPurata()
-    {
-        return $this->FormulaPurata($this->reverseSkor($this->emosi->item19), $this->keberhemahan->item43, $this->reverseSkor($this->terbuka->item55));
+        return $this->FormulaIndeks($this->reverseSkor($this->terbuka->item58), $this->terbuka->item59, $this->reverseSkor($this->terbuka->item60));
     }
 }

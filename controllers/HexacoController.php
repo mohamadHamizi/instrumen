@@ -381,6 +381,8 @@ class HexacoController extends Controller
 
         $model = Main::find()->where(['id'=>$id])->one();
 
+        $dimensiArr = Main::dimensiAnda($id);
+
         $dataArr = [
             'name' => 'Indeks',
             'data' => Main::resultAnda($id),
@@ -389,6 +391,7 @@ class HexacoController extends Controller
         return $this->render('result', [
             'model' => $model,
             'dataArr' => $dataArr,
+            'dimensiArr' => $dimensiArr,
             'label' => Main::labelSubDimensi(),
         ]);
     }
