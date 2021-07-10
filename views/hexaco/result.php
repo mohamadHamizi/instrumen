@@ -1,5 +1,6 @@
 <?php
 
+use app\models\hexaco\Main;
 use dosamigos\highcharts\HighCharts;
 use yii\helpers\VarDumper;
 use yii\helpers\Html;
@@ -63,7 +64,7 @@ use yii\web\JsExpression;
                     ]
                 ],
                 'hover' => [
-                    'mode' => false
+                    'mode' => true
                 ],
                 'maintainAspectRatio' => false,
                 'scale' => [
@@ -74,9 +75,9 @@ use yii\web\JsExpression;
                         'stepSize' => 5
                         //                                        'maxTicksLimit' => 10
                     ],
-                    //                                    'pointLabels' => [
-                    //                                        'fontColor' => ArrayHelper::getColumn($markah, 'warna')
-                    //                                    ]
+                    'pointLabels' => [
+                        'fontColor' => ['blue', 'red', 'yellow', 'green', 'black', 'purple'],
+                    ]
                 ]
 
             ],
@@ -154,7 +155,17 @@ use yii\web\JsExpression;
 
 <?php
 
-VarDumper::dump($dimensiArr, $depth = 10, $highlight = true);
+VarDumper::dump($model->sincerityIndex, $depth = 50, $highlight = true);
+
+echo  $item1 = $model->kejujuran->item1;
+echo $item2 = Main::reverseSkor($model->kejujuran->item2);
+echo $item3 = $model->kejujuran->item3;
+
+$jum = $item1 + $item2 + $item3;
+echo '<br>';
+$total = ($jum-3)/(15-3)*100;
+
+echo $total;
 // VarDumper::dump($label, $depth = 10, $highlight = true);
 
 ?>
