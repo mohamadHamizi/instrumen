@@ -4,6 +4,7 @@ use app\models\hexaco\Main;
 use yii\helpers\Html;
 use dosamigos\chartjs\ChartJs;
 use yii\web\JsExpression;
+use yii\widgets\DetailView;
 
 ?>
 <style>
@@ -425,5 +426,5 @@ use yii\web\JsExpression;
     </div>
 </div>
 <div class="text-center">
-    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
+    <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-hexaco'], ['class' => 'btn btn-success']); ?>
 </div>
