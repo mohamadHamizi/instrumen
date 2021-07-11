@@ -8,6 +8,28 @@ use dosamigos\chartjs\ChartJs;
 use yii\web\JsExpression;
 
 ?>
+<style>
+    .honesty {
+        color: blue;
+    }
+    .emosi {
+        color: red;
+    }
+    .ekstraversi {
+        color: orange;
+    }
+    .kebersetujuan {
+        color: green;
+    }
+    .keberhemahan {
+        color: brown;
+    }
+    .terbuka {
+        color: purple;
+    }
+</style>
+
+
 
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -102,13 +124,13 @@ use yii\web\JsExpression;
                     <th class='text-center'>Indeks<br>Sub-dimensi</th>
                 </tr>
             </thead>
-            <tr>
+            <tr class="honesty">
                 <td><?= $bil++ ?></td>
-                <td align="center" class="text-center" rowspan="4">Kejujuran-Kerendahan Hati<br>(Honesty-Humility)<br>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Kejujuran-Kerendahan Hati<br>(Honesty-Humility)<br>
                     <font size="6px"><strong>H</strong>
                     </font>
                 </td>
-                <td align="center" class="text-center" rowspan="4">
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->getDimensiKejujuran(); ?>%</font>
                 </td>
                 <td><?= Main::labelSubDimensi($no = 0); ?></td>
@@ -117,8 +139,9 @@ use yii\web\JsExpression;
                         <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
                 </td>
+
             </tr>
-            <tr>
+            <tr class="honesty">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 1); ?></td>
                 <td>
@@ -127,7 +150,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="honesty">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 2); ?></td>
                 <td>
@@ -136,7 +159,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="honesty">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 3); ?></td>
                 <td>
@@ -146,13 +169,13 @@ use yii\web\JsExpression;
                 </td>
             </tr>
 
-            <tr>
+            <tr class="emosi">
                 <td><?= $bil++ ?></td>
-                <td align="center" class="text-center" rowspan="4">Emosi<br>(Emotionality)
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Emosi<br>(Emotionality)
                     <br>
                     <font size="6px"><strong>E</strong></font>
                 </td>
-                <td align="center" class="text-center" rowspan="4">
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->getDimensiEmosi(); ?>%</font>
                 </td>
                 <td><?= Main::labelSubDimensi($no = 4); ?></td>
@@ -162,7 +185,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="emosi">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 5); ?></td>
                 <td>
@@ -171,7 +194,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="emosi">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 6); ?></td>
                 <td>
@@ -180,7 +203,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="emosi">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 7); ?></td>
                 <td>
@@ -189,12 +212,12 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="ekstraversi">
                 <td><?= $bil++ ?></td>
-                <td align="center" class="text-center" rowspan="4">Ekstraversi<br>(Extraversion)<br>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Ekstraversi<br>(Extraversion)<br>
                     <font size="6px"><strong>X</strong></font>
                 </td>
-                <td align="center" class="text-center" rowspan="4">
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->getDimensiEkstraversi(); ?>%</font>
                 </td>
                 <td><?= Main::labelSubDimensi($no = 8); ?></td>
@@ -204,7 +227,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="ekstraversi">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 9); ?></td>
                 <td>
@@ -213,7 +236,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="ekstraversi">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 10); ?></td>
                 <td>
@@ -222,7 +245,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="ekstraversi">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 11); ?></td>
                 <td>
@@ -231,12 +254,12 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="kebersetujuan">
                 <td><?= $bil++ ?></td>
-                <td align="center" class="text-center" rowspan="4">Kebersetujuan<br>(Agreeableness)<br>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Kebersetujuan<br>(Agreeableness)<br>
                     <font size="6px"><strong>A</strong></font>
                 </td>
-                <td align="center" class="text-center" rowspan="4">
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->getDimensiKebersetujuan(); ?>%</font>
                 </td>
                 <td><?= Main::labelSubDimensi($no = 12); ?></td>
@@ -246,7 +269,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="kebersetujuan">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 13); ?></td>
                 <td>
@@ -255,7 +278,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="kebersetujuan">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 14); ?></td>
                 <td>
@@ -264,7 +287,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="kebersetujuan">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 15); ?></td>
                 <td>
@@ -273,12 +296,12 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="keberhemahan">
                 <td><?= $bil++ ?></td>
-                <td align="center" class="text-center" rowspan="4">Keberhemahan<br>(Conscientiousness)<br>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Keberhemahan<br>(Conscientiousness)<br>
                     <font size="6px"><strong>C</strong></font>
                 </td>
-                <td align="center" class="text-center" rowspan="4">
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->getDimensiKeberhemahan(); ?>%</font>
                 </td>
                 <td><?= Main::labelSubDimensi($no = 16); ?></td>
@@ -288,7 +311,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="keberhemahan">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 17); ?></td>
                 <td>
@@ -297,7 +320,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="keberhemahan">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 18); ?></td>
                 <td>
@@ -306,7 +329,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="keberhemahan">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 19); ?></td>
                 <td>
@@ -315,12 +338,12 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="terbuka">
                 <td><?= $bil++ ?></td>
-                <td align="center" class="text-center" rowspan="4">Terbuka kepada Pengalaman<br>(Openness to Experience)<br>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Terbuka kepada Pengalaman<br>(Openness to Experience)<br>
                     <font size="6px"><strong>O</strong></font>
                 </td>
-                <td align="center" class="text-center" rowspan="4">
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->getDimensiTerbuka(); ?>%</font>
                 </td>
                 <td><?= Main::labelSubDimensi($no = 20); ?></td>
@@ -330,7 +353,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="terbuka">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 21); ?></td>
                 <td>
@@ -339,7 +362,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="terbuka">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 22); ?></td>
                 <td>
@@ -348,7 +371,7 @@ use yii\web\JsExpression;
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="terbuka">
                 <td><?= $bil++ ?></td>
                 <td><?= Main::labelSubDimensi($no = 23); ?></td>
                 <td>
@@ -360,35 +383,6 @@ use yii\web\JsExpression;
         </table>
     </div>
 </div>
-
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Sub-Dimensi</strong></h3>
-    </div>
-    <div class="box-body">
-        <table class="table table-primary table-striped table-bordered">
-            <thead class="thead-light">
-                <tr>
-                    <th width='5%'>Bil</th>
-                    <th width='30%' class='text-center'>Sub-dimensi</th>
-                    <th class='text-center'>Indeks</th>
-                </tr>
-            </thead>
-            <?php for ($index = 0; $index < 24; $index++) { ?>
-                <tr>
-                    <td><?= $bil++ ?></td>
-                    <td><?= Main::labelSubDimensi($index); ?></td>
-                    <td>
-                        <div class="progress progress-lg">
-                            <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $index)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
-                        </div>
-                    </td>
-                </tr>
-            <?php } ?>
-        </table>
-    </div>
-</div>
-
 <div class="text-center">
     <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
 </div>
