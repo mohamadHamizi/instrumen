@@ -25,7 +25,7 @@ class HexacoController extends Controller
 
     public function actionIndex()
     {
-        $this->view->title = "Ten-Item Personality Inventory-Malay (TIPI-Malay)";
+        $this->view->title = "The HEXACO Personality Inventory-Malay (Hexaco-Malay)";
 
         $model = new Main();
 
@@ -392,28 +392,11 @@ class HexacoController extends Controller
             'model' => $model,
             'dataArr' => $dataArr,
             'dimensiArr' => $dimensiArr,
-            'label' => Main::labelSubDimensi(),
+            'id' => $id,
+            'bil' => 1,
             'labelDimensi' => Main::labelDimensi(),
         ]);
     }
-
-    // public function actionViewResult($id)
-    // {
-        
-    //     $model = TipiJadual::findOne(['main_id' => $id]);
-
-    //     $demo = TipiDemo::findOne(['main_id'=>$id]);
-
-    //     $extraversionIndex = $model->extraversionIndex;
-    //     $extraversionSkor = $model->extraversionSkor;
-
-    //     return $this->render('view-result', [
-    //         'model' => $model,
-    //         'demo' => $demo,
-    //         'extraversionIndex' => $extraversionIndex,
-    //         'extraversionSkor' => $extraversionSkor,
-    //     ]);
-    // }
 
     public function actionDes()
     {

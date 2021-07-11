@@ -72,14 +72,14 @@ class Main extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function labelSubDimensi()
+    public static function labelSubDimensi($index)
     {
 
-        return [
+        $arr = [
             'Keikhlasan',
             'Keadilan',
-            'Ketamakan-Pengelakan',
-            'Kesopanan',
+            'Pengelakan-Ketamakan',
+            'Kesederhanaan',
             'Ketakutan',
             'Kebimbangan',
             'Kebergantungan',
@@ -101,12 +101,85 @@ class Main extends \yii\db\ActiveRecord
             'Kreativiti',
             'Tidak konvensional',
         ];
+
+
+        return $arr[$index];
+
     }
+
+    public static function indeksSubDimensi($id, $index)
+    {
+        $model = self::findOne($id);
+
+        $arr = [
+            $model->getSincerityIndex(),
+            $model->getFairnessIndex(),
+            $model->getGreedIndex(),
+            $model->getModestyIndex(),
+            $model->getFearfulnessIndex(),
+            $model->getAnxietyIndex(),
+            $model->getDependenceIndex(),
+            $model->getSentimentalityIndex(),
+            $model->getSocialSelfIndex(),
+            $model->getSocialBoldnessIndex(),
+            $model->getSociabilityIndex(),
+            $model->getLivelinessIndex(),
+            $model->getForgivenessIndex(),
+            $model->getGentlenessIndex(),
+            $model->getFlexibilityIndex(),
+            $model->getPatienceIndex(),
+            $model->getOrganizationIndex(),
+            $model->getDiligenceIndex(),
+            $model->getPerfectionismIndex(),
+            $model->getPrudenceIndex(),
+            $model->getAestheticIndex(),
+            $model->getInquisitivenessIndex(),
+            $model->getCreativityIndex(),
+            $model->getUnconventionalityIndex(),
+        ];
+
+        return $arr[$index];
+    }
+
+    public static function tahapColor($indeks){
+
+        //0 - 32.9 merah
+        //33 - 65.9 kuning
+        //66 - 100 biru
+        if ($indeks >= 0 && $indeks <= 32.9) {
+            $color = 'progress-bar-red';
+        } else if ($indeks >= 33 && $indeks <= 65.9) {
+            $color = 'progress-bar-yellow';
+        } else if ($indeks >= 66 && $indeks <= 100) {
+            $color = 'progress-bar-default';
+        } 
+
+        return $color;
+    }
+
+    public static function FormulaTahap($indeks)
+    {
+
+        $tahap = 'Tiada';
+
+        if ($indeks >= 0 && $indeks <= 24.9) {
+            $tahap = 'Sangat Rendah';
+        } else if ($indeks >= 25 && $indeks <= 49.9) {
+            $tahap = 'Rendah';
+        } else if ($indeks >= 50 && $indeks <= 74.9) {
+            $tahap = 'Tinggi';
+        } else if ($indeks >= 75 && $indeks <= 100) {
+            $tahap = 'Sangat Tinggi';
+        }
+
+        return $tahap;
+    }
+
     public static function labelDimensi()
     {
 
         return [
-            'Kejujuran-Kerendahan Hari',
+            'Kejujuran-Kerendahan Hati',
             'Emosi',
             'Ekstraversi',
             'Kebersetujuan',
