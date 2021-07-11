@@ -42,8 +42,11 @@ class Main extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'icno' => 'Icno',
-            'create_dt' => 'Create Dt',
+            'icno' => 'ICNO',
+            'create_dt' => 'Tarikh/Masa',
+            'pdpaStatus' => 'Status PDPA',
+            'pdpaTarikh' => 'Tarikh PDPA',
+            'btnView' => 'Perician',
             'sincerity' => 'Sincerity Keikhlasan',
             'fairness' => 'Fairness Keadilan',
             'greed' => 'Greed-Avoidance Ketamakan-Pengelakan',
@@ -104,7 +107,6 @@ class Main extends \yii\db\ActiveRecord
 
 
         return $arr[$index];
-
     }
 
     public static function indeksSubDimensi($id, $index)
@@ -141,7 +143,8 @@ class Main extends \yii\db\ActiveRecord
         return $arr[$index];
     }
 
-    public static function tahapColor($indeks){
+    public static function tahapColor($indeks)
+    {
 
         //0 - 32.9 merah
         //33 - 65.9 kuning
@@ -152,7 +155,7 @@ class Main extends \yii\db\ActiveRecord
             $color = 'progress-bar-yellow';
         } else if ($indeks >= 66 && $indeks <= 100) {
             $color = 'progress-bar-default';
-        } 
+        }
 
         return $color;
     }
@@ -302,8 +305,8 @@ class Main extends \yii\db\ActiveRecord
 
     public function getBtnView()
     {
-        if ($this->jadual->item10) {
-            return  Html::a('<i class="fa fa-eye"></i>', ['tipi/view-result', 'id' => $this->id], ['target' => '_blank']);
+        if ($this->terbuka->item60) {
+            return  Html::a('<i class="fa fa-eye"></i>', ['hexaco/view-result', 'id' => $this->id], ['target' => '_blank']);
         }
 
         return null;

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\hexaco\Main;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -119,6 +120,20 @@ class AdminController extends \yii\web\Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('data-tipi', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
+    public function actionDataHexaco() {
+        
+        ini_set('memory_limit', '1024M'); // or you could use 1G
+        
+        $searchModel = new Main();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('data-hexaco', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);

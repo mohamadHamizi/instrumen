@@ -1,21 +1,46 @@
 <?php
 
-use app\models\TipiJadual;
+use app\models\hexaco\Main;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use dosamigos\chartjs\ChartJs;
+use yii\web\JsExpression;
 
 ?>
+<style>
+    .honesty {
+        color: blue;
+    }
 
+    .emosi {
+        color: red;
+    }
+
+    .ekstraversi {
+        color: orange;
+    }
+
+    .kebersetujuan {
+        color: green;
+    }
+
+    .keberhemahan {
+        color: brown;
+    }
+
+    .terbuka {
+        color: purple;
+    }
+</style>
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Demografi Responden</strong></h3>
     </div>
     <div class="box-body">
-        <?php 
+        <?php
         echo DetailView::widget([
             'model' => $demo,
             'attributes' => [
-                [                
+                [
                     'label' => 'Nama Penuh',
                     'value' => $demo->nama_penuh,
                 ],
@@ -46,155 +71,359 @@ use yii\widgets\DetailView;
     </div>
 </div>
 
+
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Keputusan</strong></h3>
+        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Dimensi HEXACO</strong></h3>
+    </div>
+    <div class="box-body">
+        <?= ChartJs::widget([
+            'type' => 'radar',
+            'id' => 'structureDoughnut',
+            'options' => [
+                'height' => 400,
+                // 'width' => 00,
+            ],
+            'data' => [
+                // 'radius' =>  "90%",
+                'labels' => $labelDimensi,
+                'datasets' => [
+                    [
+                        'data' => $dimensiArr,
+                        'label' => 'Indeks Dimensi',
+                        'fill' => true,
+                        'backgroundColor' => "rgba(255,99,132,0.2)",
+                        'borderColor' => "rgba(255,99,132,1)",
+                        'pointBorderColor' => "#fff",
+                        'pointBackgroundColor' => "rgba(255,99,132,1)",
+                        'hoverBorderColor' => ["#999", "#999", "#999"],
+                    ]
+                ]
+            ],
+            'clientOptions' => [
+                'responsive' => true,
+                'legend' => [
+                    // 'display' => true,
+                    'position' => 'bottom',
+                    'labels' => [
+                        'fontSize' => 14,
+                        'fontColor' => "#425062",
+                    ]
+                ],
+                'tooltips' => [
+                    'enabled' => true,
+                    'intersect' => true,
+                    'callbacks' => [
+                        'label' => new JsExpression("function(t, d) {
+                     var label = d.labels[t.index];
+                     var data = d.datasets[t.datasetIndex].data[t.index];
+                     if (t.datasetIndex === 0)
+                     return label + ': ' + data;
+                     else if (t.datasetIndex === 1)
+                     return label + ': $' + data.toLocaleString();
+              }"),
+                        'title' => new JsExpression('function(){}')
+                        //                                        'title' => '',
+                    ]
+                ],
+                'hover' => [
+                    'mode' => true
+                ],
+                'maintainAspectRatio' => false,
+                'scale' => [
+                    'ticks' => [
+                        'beginAtZero' => true,
+                        'precision' => 0,
+                        // 'suggestedMax' => max(array_values(ArrayHelper::getColumn($pemberat, 'pemberat'))),
+                        'stepSize' => 5,
+                        'maxTicksLimit' => 10
+                    ],
+                    'pointLabels' => [
+                        'fontColor' => ['blue', 'red', 'orange', 'green', 'brown', 'purple'],
+                    ]
+                ]
+
+            ],
+        ]);
+        ?>
+
+    </div>
+</div>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Sub-Dimensi HEXACO</strong></h3>
     </div>
     <div class="box-body">
         <table class="table table-primary table-striped table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th class='text-center'>Dimensi</th>
-                    <th width='40%' class='text-center'>Indeks</th>
-                    <th class='text-center'>Skor</th>
-                    <th class='text-center'>Purata</th>
-                    <th class='text-center'>Tahap</th>
-                    <th class='text-center'>Rank</th>
+                    <th width='3%'>Bil</th>
+                    <th width='15%' class='text-center'>Dimensi</th>
+                    <th width='5%' class='text-center'>Indeks<br>Dimensi</th>
+                    <th width='15%' class='text-center'>Sub-dimensi</th>
+                    <th class='text-center'>Indeks<br>Sub-dimensi</th>
                 </tr>
             </thead>
-            <tr>
-                <td>Extraversion</td>
-                <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: <?= $extraversionIndex ?>%"></div>
-                    </div>
-                    <?= $extraversionIndex ?>%
+            <tr class="honesty">
+                <td><?= $bil++ ?></td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Kejujuran-Kerendahan Hati<br>(Honesty-Humility)<br>
+                    <font size="6px"><strong>H</strong>
+                    </font>
                 </td>
-                <td class='text-center'><?= $extraversionSkor ?></td>
-                <td class='text-center'><?= $model->extraversionPurata ?></td>
-                <td class='text-center'><?= $model->extraversionTahap ?></td>
-                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $extraversionSkor) ?></td>
-            </tr>
-            <tr>
-                <td>Agreeableness</td>
-                <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-red" style="width: <?= $model->agreeablenessIndex ?>%"></div>
-                    </div>
-                    <?= $model->agreeablenessIndex ?>%
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
+                    <font size="6px"><?= $model->getDimensiKejujuran(); ?>%</font>
                 </td>
-                <td class='text-center'><?= $model->AgreeablenessSkor ?></td>
-                <td class='text-center'><?= $model->AgreeablenessPurata ?></td>
-                <td class='text-center'><?= $model->AgreeablenessTahap ?></td>
-                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $model->AgreeablenessSkor) ?></td>
-            </tr>
-            <tr>
-                <td>Conscientiousness</td>
+                <td><?= Main::labelSubDimensi($no = 0); ?></td>
                 <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-green" style="width: <?= $model->conscientiousnessIndex ?>%"></div>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-                    <?= $model->conscientiousnessIndex ?>%
                 </td>
-                <td class='text-center'><?= $model->conscientiousnessSkor ?></td>
-                <td class='text-center'><?= $model->conscientiousnessPurata ?></td>
-                <td class='text-center'><?= $model->conscientiousnessTahap ?></td>
-                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $model->conscientiousnessSkor) ?></td>
-            </tr>
 
-            <tr>
-                <td>Emotional Stability</td>
-                <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: <?= $model->emotionalIndex ?>%"></div>
-                    </div>
-                    <?= $model->emotionalIndex ?>%
-                </td>
-                <td class='text-center'><?= $model->emotionalSkor ?></td>
-                <td class='text-center'><?= $model->emotionalPurata ?></td>
-                <td class='text-center'><?= $model->emotionalTahap ?></td>
-                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $model->emotionalSkor) ?></td>
             </tr>
-            <tr>
-                <td>Openness to Experiences</td>
+            <tr class="honesty">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 1); ?></td>
                 <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar" style="width: <?= $model->opennessIndex ?>%"></div>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-                    <?= $model->opennessIndex ?>%
                 </td>
-                <td class='text-center'><?= $model->opennessSkor ?></td>
-                <td class='text-center'><?= $model->opennessPurata ?></td>
-                <td class='text-center'><?= $model->opennessTahap ?></td>
-                <td class='text-center'><?= TipiJadual::rank($model->skorArray, $model->opennessSkor) ?></td>
+            </tr>
+            <tr class="honesty">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 2); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="honesty">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 3); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
             </tr>
 
-
-        </table>
-
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Keputusan</strong></h3>
-                <div class="box-body">
-                    <p>
-                        This assessment examined the <strong>Big Five Personality Dimension</strong>, which are (1) extraversion, (2) agreeableness, (3) conscientiousness,
-                        (4) neuroticism, and (5) openness, Let's check out your scores.
-                    </p>
+            <tr class="emosi">
+                <td><?= $bil++ ?></td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Emosi<br>(Emotionality)
                     <br>
-                    <div class="progress-group">
-                        <span class="progress-text">Extraversion</span>
-                        <span class="progress-number"><b>Introversion</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-aqua" style="width: <?= $extraversionIndex ?>%"><?= $extraversionIndex ?>% - <?= $model->extraversionTahap ?></div>
-                        </div>
+                    <font size="6px"><strong>E</strong></font>
+                </td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
+                    <font size="6px"><?= $model->getDimensiEmosi(); ?>%</font>
+                </td>
+                <td><?= Main::labelSubDimensi($no = 4); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Agreeableness</span>
-                        <span class="progress-number"><b>Hostile</b></span>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-red" style="width: <?= $model->agreeablenessIndex ?>%"><?= $model->agreeablenessIndex ?>% - <?= $model->agreeablenessTahap ?></div>
-                        </div>
+                </td>
+            </tr>
+            <tr class="emosi">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 5); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Conscientiousness</span>
-                        <span class="progress-number"><b>Spontaneous</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-green" style="width: <?= $model->conscientiousnessIndex ?>%"><?= $model->conscientiousnessIndex ?>% - <?= $model->conscientiousnessTahap ?></div>
-                        </div>
+                </td>
+            </tr>
+            <tr class="emosi">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 6); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Emotional Stability</span>
-                        <span class="progress-number"><b>Neurotic</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-yellow" style="width: <?= $model->emotionalIndex ?>%"><?= $model->emotionalIndex ?>% - <?= $model->emotionalTahap ?></div>
-                        </div>
+                </td>
+            </tr>
+            <tr class="emosi">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 7); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Openness to Experiences</span>
-                        <span class="progress-number"><b>Closed</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: <?= $model->opennessIndex ?>%"><?= $model->opennessIndex ?>% - <?= $model->opennessTahap ?></div>
-                        </div>
+                </td>
+            </tr>
+            <tr class="ekstraversi">
+                <td><?= $bil++ ?></td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Ekstraversi<br>(Extraversion)<br>
+                    <font size="6px"><strong>X</strong></font>
+                </td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
+                    <font size="6px"><?= $model->getDimensiEkstraversi(); ?>%</font>
+                </td>
+                <td><?= Main::labelSubDimensi($no = 8); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </td>
+            </tr>
+            <tr class="ekstraversi">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 9); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="ekstraversi">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 10); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="ekstraversi">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 11); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="kebersetujuan">
+                <td><?= $bil++ ?></td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Kebersetujuan<br>(Agreeableness)<br>
+                    <font size="6px"><strong>A</strong></font>
+                </td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
+                    <font size="6px"><?= $model->getDimensiKebersetujuan(); ?>%</font>
+                </td>
+                <td><?= Main::labelSubDimensi($no = 12); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="kebersetujuan">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 13); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="kebersetujuan">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 14); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="kebersetujuan">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 15); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="keberhemahan">
+                <td><?= $bil++ ?></td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Keberhemahan<br>(Conscientiousness)<br>
+                    <font size="6px"><strong>C</strong></font>
+                </td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
+                    <font size="6px"><?= $model->getDimensiKeberhemahan(); ?>%</font>
+                </td>
+                <td><?= Main::labelSubDimensi($no = 16); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="keberhemahan">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 17); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="keberhemahan">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 18); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="keberhemahan">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 19); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="terbuka">
+                <td><?= $bil++ ?></td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">Terbuka kepada Pengalaman<br>(Openness to Experience)<br>
+                    <font size="6px"><strong>O</strong></font>
+                </td>
+                <td align="center" class="text-center" rowspan="4" style="vertical-align : middle;text-align:center;">
+                    <font size="6px"><?= $model->getDimensiTerbuka(); ?>%</font>
+                </td>
+                <td><?= Main::labelSubDimensi($no = 20); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="terbuka">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 21); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="terbuka">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 22); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="terbuka">
+                <td><?= $bil++ ?></td>
+                <td><?= Main::labelSubDimensi($no = 23); ?></td>
+                <td>
+                    <div class="progress progress-lg">
+                        <div class="progress-bar <?= Main::tahapColor($subIndex = Main::indeksSubDimensi($id, $no)) ?>" style="width: <?= $subIndex ?>%"><?= $subIndex ?>%</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 <div class="text-center">
-    <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-tipi'], ['class' => 'btn btn-success']); ?>
+    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
 </div>

@@ -13,9 +13,7 @@ use app\models\hexaco\Questions;
 use app\models\hexaco\Terbuka;
 use Yii;
 use yii\web\Controller;
-use app\models\TipiJadual;
 use app\models\UtilityFunc;
-use yii\helpers\VarDumper;
 
 /**
  * TipiController
@@ -389,6 +387,30 @@ class HexacoController extends Controller
         ];
 
         return $this->render('result', [
+            'model' => $model,
+            'dataArr' => $dataArr,
+            'dimensiArr' => $dimensiArr,
+            'id' => $id,
+            'bil' => 1,
+            'labelDimensi' => Main::labelDimensi(),
+        ]);
+    }
+
+    public function actionViewResult($id)
+    {
+        
+        $demo = Demo::findOne(['main_id'=>$id]);
+        $model = Main::find()->where(['id'=>$id])->one();
+
+        $dimensiArr = Main::dimensiAnda($id);
+
+        $dataArr = [
+            'name' => 'Indeks',
+            'data' => Main::resultAnda($id),
+        ];
+
+        return $this->render('view-result', [
+            'demo' => $demo,
             'model' => $model,
             'dataArr' => $dataArr,
             'dimensiArr' => $dimensiArr,
