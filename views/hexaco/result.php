@@ -1,8 +1,6 @@
 <?php
 
 use app\models\hexaco\Main;
-use dosamigos\highcharts\HighCharts;
-use yii\helpers\VarDumper;
 use yii\helpers\Html;
 use dosamigos\chartjs\ChartJs;
 use yii\web\JsExpression;
@@ -33,7 +31,7 @@ use yii\web\JsExpression;
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Dimensi</strong></h3>
+        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Dimensi HEXACO</strong></h3>
     </div>
     <div class="box-body">
         <?= ChartJs::widget([
@@ -111,7 +109,7 @@ use yii\web\JsExpression;
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Sub-Dimensi</strong></h3>
+        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Sub-Dimensi HEXACO</strong></h3>
     </div>
     <div class="box-body">
         <table class="table table-primary table-striped table-bordered">

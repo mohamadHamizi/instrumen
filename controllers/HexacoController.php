@@ -25,7 +25,7 @@ class HexacoController extends Controller
 
     public function actionIndex()
     {
-        $this->view->title = "The HEXACO Personality Inventory-Malay (Hexaco-Malay)";
+        $this->view->title = "The HEXACO Personality Inventory-Malay (HEXACO-Malay)";
 
         $model = new Main();
 
