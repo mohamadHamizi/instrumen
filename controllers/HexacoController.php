@@ -123,7 +123,7 @@ class HexacoController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            // $disabled = true;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -168,7 +168,7 @@ class HexacoController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            // $disabled = true;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -213,7 +213,7 @@ class HexacoController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            // $disabled = true;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -257,7 +257,7 @@ class HexacoController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            // $disabled = true;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -301,7 +301,7 @@ class HexacoController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            // $disabled = true;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -345,7 +345,7 @@ class HexacoController extends Controller
 
         if ($check_model) {
             $model = $check_model;
-            // $disabled = true;
+            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {

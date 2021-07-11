@@ -21,17 +21,6 @@
                         ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['iksokuf/result'], 'visible' => true],
                     ],
                 ],
-                // [
-                //     'label' => 'Mipk',
-                //     'icon' => 'handshake-o',
-                //     'url' => '#',
-                //     'items' => [
-                //         ['label' => 'Pengenalan', 'icon' => 'tachometer', 'url' => ['mipk/index'], 'visible' => true],
-                //         ['label' => 'Bahagian A', 'icon' => 'th-large', 'url' => ['mipk/bahagian-a'], 'visible' => true],
-                //         ['label' => 'Bahagian B', 'icon' => 'random', 'url' => ['mipk/bahagian-b'], 'visible' => true],
-                //         ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['mipk/result'], 'visible' => true],
-                //     ],
-                // ],
                 [
                     'label' => 'EA-Malay',
                     'icon' => 'line-chart',
@@ -69,6 +58,22 @@
                         ['label' => 'Demografi', 'icon' => 'check-square-o', 'url' => ['tipi/demografi'], 'visible' => true],
                         ['label' => 'Jawab Soal Selidik', 'icon' => 'check-square-o', 'url' => ['tipi/questions'], 'visible' => true],
                         ['label' => 'Keputusan', 'icon' => 'check-square-o', 'url' => ['tipi/result'], 'visible' => true],
+                    ],
+                ],
+                [
+                    'label' => 'HEXACO-Malay',
+                    'icon' => 'user-circle-o',
+                    'url' => '#',
+                    'items' => [
+                        ['label' => 'Pengenalan', 'icon' => 'user-circle-o', 'url' => ['hexaco/index'], 'visible' => true],
+                        ['label' => 'Demografi', 'icon' => 'user-circle-o', 'url' => ['hexaco/demografi'], 'visible' => true],
+                        ['label' => 'Bahagian 1', 'icon' => 'user-circle-o', 'url' => ['hexaco/bhgn1'], 'visible' => true],
+                        ['label' => 'Bahagian 2', 'icon' => 'user-circle-o', 'url' => ['hexaco/bhgn2'], 'visible' => true],
+                        ['label' => 'Bahagian 3', 'icon' => 'user-circle-o', 'url' => ['hexaco/bhgn3'], 'visible' => true],
+                        ['label' => 'Bahagian 4', 'icon' => 'user-circle-o', 'url' => ['hexaco/bhgn4'], 'visible' => true],
+                        ['label' => 'Bahagian 5', 'icon' => 'user-circle-o', 'url' => ['hexaco/bhgn5'], 'visible' => true],
+                        ['label' => 'Bahagian 6', 'icon' => 'user-circle-o', 'url' => ['hexaco/bhgn6'], 'visible' => true],
+                        ['label' => 'Keputusan', 'icon' => 'user-circle-o', 'url' => ['hexaco/result'], 'visible' => true],
                     ],
                 ],
                 [
