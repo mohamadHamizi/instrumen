@@ -28,6 +28,7 @@ use yii\helpers\Html;
                 <li>Malay Version of Emblematic Analysis (EA-Malay)</li>
                 <li>Malay Version of Emblematic Analysis (EA-Malay) v2</li>
                 <li>Ten-Item Personality Inventory-Malay (TIPI-Malay)</li>
+                <li>The HEXACO Personality Inventory-Malay (HEXACO-Malay)</li>
             </ol>
 
 
@@ -127,6 +128,27 @@ use yii\helpers\Html;
                     <div class="box-body" style="">
                         <p>Ten-Item Personality Inventory-Malay (TIPI-Malay)</p>
                         <?= Html::a('Jawab Soal Selidik <i class="fa fa-arrow-circle-right"></i>', ['tipi/index'], ['class' => 'small-box-footer']) ?>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="box box-success box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-user-circle-o">&nbsp;</i>HEXACO-MALAY</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="">
+                        <p>The HEXACO Personality Inventory-Malay (HEXACO-Malay)</p>
+                        <?= Html::a('Jawab Soal Selidik <i class="fa fa-arrow-circle-right"></i>', ['hexaco/index'], ['class' => 'small-box-footer']) ?>
                     </div>
                     <!-- /.box-body -->
 

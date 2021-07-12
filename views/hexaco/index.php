@@ -25,10 +25,13 @@ use yii\widgets\ActiveForm;
 
         <p>
             <strong>RUJUKAN</strong><br>
-            <a href="http://hexaco.org/ ">http://hexaco.org/</a>
-
+        <ol>
+            <li><a href="http://hexaco.org/">http://hexaco.org/</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure">https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure</a></li>
+        </ol>
         </p>
         <p>
+        <strong>ARAHAN</strong><br>
         <ol>
             <li>Penyertaan anda dalam sesi pentadbiran soal selidik HEXACO-Malay adalah sukarela.</li>
             <li>Anda perlu menjawab semua soalan HEXACO-Malay dengan jujur dan ikhlas.</li>
