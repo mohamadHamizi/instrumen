@@ -33,9 +33,9 @@ use yii\helpers\Html;
 
 
             <p>
-                Keempat-empat alat ujian atau instrumen ini boleh diakses di pautan berikut, https://uppsiks.ums.edu.my/ . Inventori secara atas talian ini telah dibangunkan sendiri oleh Muhammad Idris Bullare @ Bahari (2020) hasil daripada kajian di peringkat PhD dan ia dinamakan sebagai e-Instrumen Kesejahteraan Subjektif Orang Kurang Upaya-Fizikal (e-IKSOKU-F), dan kemudiannya ditukar menjadi KebahagiaanKu-OKU (KK-OKU)/MyHappiness-PwD/MH-PwD), manakala instrument EA-Malay dan Ten-Item Personality Inventory-Malay (TIPI-Malay) merupakan instrumen piawai yang telah melalui proses terjemahan dan mendapat kebenaran daripada pengasas bagi kedua-dua inventori tersebut.
-                Akhir kata, saya ingin mengambil kesempatan mengucapkan ribuan terima kasih kepada pengguna yang sudi mengunjungi portal ini dan seterusnya menjawab alat ujian atau inventori yang disediakan.
-
+                Kelima-lima alat ujian atau instrumen ini boleh diakses di pautan berikut, <a href="https://uppsiks.ums.edu.my/">https://uppsiks.ums.edu.my</a>. Inventori secara atas talian ini telah dibangunkan sendiri oleh Muhammad Idris Bullare @ Bahari (2020) hasil daripada kajian di peringkat PhD dan ia dinamakan sebagai e-Instrumen Kesejahteraan Subjektif Orang Kurang Upaya-Fizikal (e-IKSOKU-F), dan kemudiannya ditukar menjadi KebahagiaanKu-OKU (KK-OKU)/MyHappiness-PwD/MH-PwD), manakala instrument EA-Malay, Ten-Item Personality Inventory-Malay (TIPI-Malay) dan The HEXACO Personality Inventory-Malay (HEXACO-Malay) merupakan instrumen piawai yang telah melalui proses terjemahan dan mendapat kebenaran daripada pengasas bagi inventori tersebut.
+            <p>
+                Akhir kata, saya ingin mengambil kesempatan mengucapkan ribuan terima kasih kepada pengguna yang sudi mengunjungi portal MISI ini dan seterusnya menjawab alat ujian atau inventori yang disediakan.
             <p>
                 Profesor Madya Dr. Muhammad Idris Bin Bullare @ Bahari<br>
                 Unit Penyelidikan Psikologi dan Kesihatan Sosial<br>
