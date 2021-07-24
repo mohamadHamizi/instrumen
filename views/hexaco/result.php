@@ -394,11 +394,12 @@ use yii\web\JsExpression;
                 </td>
             </tr>
         </table>
+        <div class="text-center" style="margin-top: 30px;margin-bottom:10px;">
+            <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
+        </div>
     </div>
 </div>
-<div class="text-center">
-    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
-</div>
+
 
 <div class="box box-primary">
     <div class="box-header with-border">
