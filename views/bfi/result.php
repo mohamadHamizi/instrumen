@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Keputusan Anda</strong></h3>
+        <h3 class="box-title"><i class="fa fa-fa-user-secret"></i>&nbsp;<strong>Keputusan Anda</strong></h3>
     </div>
     <div class="box-body">
         <table class="table table-primary table-striped table-bordered">

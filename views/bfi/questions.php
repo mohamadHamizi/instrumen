@@ -12,7 +12,7 @@ use app\models\bfi\Questions;
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
+        <h3 class="box-title"><i class="fa fa-fa-user-secret"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
     </div>
 
 

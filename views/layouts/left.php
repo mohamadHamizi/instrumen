@@ -61,6 +61,17 @@
                     ],
                 ],
                 [
+                    'label' => 'BFI-Malay',
+                    'icon' => 'user-secret',
+                    'url' => '#',
+                    'items' => [
+                        ['label' => 'Pengenalan', 'icon' => 'user-secret', 'url' => ['bfi/index'], 'visible' => true],
+                        ['label' => 'Demografi', 'icon' => 'user-secret', 'url' => ['bfi/demografi'], 'visible' => true],
+                        ['label' => 'Jawab Soal Selidik', 'icon' => 'user-secret', 'url' => ['bfi/questions'], 'visible' => true],
+                        ['label' => 'Keputusan', 'icon' => 'user-secret', 'url' => ['bfi/result'], 'visible' => true],
+                    ],
+                ],
+                [
                     'label' => 'HEXACO-Malay',
                     'icon' => 'user-circle-o',
                     'url' => '#',

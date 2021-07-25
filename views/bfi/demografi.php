@@ -14,7 +14,7 @@ use yii\helpers\VarDumper;
 
 <div class="box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-calendar-plus-o"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
+        <h3 class="box-title"><i class="fa fa-fa-user-secret"></i>&nbsp;<strong><?= $this->title ?></strong></h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
