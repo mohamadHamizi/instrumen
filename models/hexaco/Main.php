@@ -589,11 +589,11 @@ class Main extends \yii\db\ActiveRecord
         }
         if ($val == 1.3) {
             return
-                '<p><strong>1.3 Skala Penghindaran Ketamakan</strong> menilai kecenderungan untuk tidak berminat dalam memiliki kekayaan berlimpahan, barangan mewah, dan tanda-tanda status sosial yang tinggi. Individu dengan <font class="skor_rendah">skor rendah</font> mahu menikmati dan memperlihatkan kekayaan dan keistimewaan, manakala individu yang mempunyai skor tinggi tidak didorong oleh kemewahan atau pertimbangan status sosial.</p>';
+                '<p><strong>1.3 Skala Penghindaran Ketamakan</strong> menilai kecenderungan untuk tidak berminat dalam memiliki kekayaan berlimpahan, barangan mewah, dan tanda-tanda status sosial yang tinggi. Individu dengan <font class="skor_rendah">skor rendah</font> mahu menikmati dan memperlihatkan kekayaan dan keistimewaan, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> tidak didorong oleh kemewahan atau pertimbangan status sosial.</p>';
         }
         if ($val == 1.4) {
             return
-                '<p><strong>1.4 Skala Kesederhanaan</strong> menilai kecenderungan untuk bersikap sederhana dan rendah diri. Individu dengan <font class="skor_rendah">skor rendah</font> menganggap diri mereka unggul dan berhak mendapat keistimewaan yang tidak dimiliki orang lain, manakala individu yang mempunyai skor tinggi menganggap diri mereka sebagai orang biasa tanpa hak mendapat layanan istimewa.</p>';
+                '<p><strong>1.4 Skala Kesederhanaan</strong> menilai kecenderungan untuk bersikap sederhana dan rendah diri. Individu dengan <font class="skor_rendah">skor rendah</font> menganggap diri mereka unggul dan berhak mendapat keistimewaan yang tidak dimiliki orang lain, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> menganggap diri mereka sebagai orang biasa tanpa hak mendapat layanan istimewa.</p>';
         }
 
 
