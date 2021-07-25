@@ -622,9 +622,10 @@ class Main extends \yii\db\ActiveRecord
         }
 
         if ($val == 3) {
-            return '<p>Individu dengan <font class="skor_tinggi">skor yang sangat tinggi</font> pada skala Emosi mengalami ketakutan terhadap bahaya fizikal, mengalami kegelisahan sebagai tindak balas terhadap tekanan hidup, mempunyai perasaan memerlukan sokongan emosi daripada orang lain, dan merasa empati dan hubungan sentimental dengan orang lain.</p>
-            
-            <p>Sebaliknya, individu dengan <font class="skor_rendah">skor yang sangat rendah</font> pada skala ini tidak terganggu oleh prospek bahaya fizikal, mempunyai tahap kebimbangan yang rendah walaupun dalam situasi tertekan, tidak ada keperluan berkongsi kebimbangan mereka dengan orang lain, dan berasa terasing secara emosi dengan orang lain.</p>';
+            return
+                '<p>Individu dengan <font class="skor_tinggi">skor yang sangat tinggi</font> pada skala Ekstrovert berasa positif terhadap diri mereka sendiri, yakin ketika memimpin atau berucap kepada kumpulan ramai, gemar perjumpaan dan interaksi sosial, dan mempunyai semangat dan tenaga yang positif. 
+
+                <p>Sebaliknya, individu dengan <font class="skor_rendah">skor yang sangat rendah</font> pada skala ini menganggap diri mereka tidak popular, berasa janggal apabila  mereka menjadi tumpuan perhatian sosial, tidak gemar dengan aktiviti sosial, dan kurang ceria dan kurang optimis berbanding orang lain.';
         }
 
         if ($val == 3.1) {
