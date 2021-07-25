@@ -82,7 +82,7 @@ class Main extends \yii\db\ActiveRecord
         $arr = [
             'Keikhlasan',
             'Keadilan',
-            'Pengelakan-Ketamakan',
+            'Penghindaran-Ketamakan',
             'Kesederhanaan',
             'Ketakutan',
             'Kebimbangan',
@@ -94,7 +94,7 @@ class Main extends \yii\db\ActiveRecord
             'Keaktifan',
             'Kemaafan',
             'Kelembutan',
-            'Fleksibel',
+            'Fleksibiliti',
             'Kesabaran',
             'Organisasi',
             'Ketekunan',
