@@ -580,20 +580,20 @@ class Main extends \yii\db\ActiveRecord
 
         if ($val == 1.1) {
             return
-                '<p><strong>1.1 Skala Keikhlasan</strong> menilai kecenderungan untuk bersikap ikhlas dalam hubungan interpersonal. Individu dengan skor rendah akan memuji orang lain atau berpura-pura menyukai mereka untuk memperoleh bantuan, manakala individu yang mempunyai skor tinggi tidak sanggup memanipulasi orang lain.</p>';
+                '<p><strong>1.1 Skala Keikhlasan</strong> menilai kecenderungan untuk bersikap ikhlas dalam hubungan interpersonal. Individu dengan <font class="skor_rendah">skor rendah</font> akan memuji orang lain atau berpura-pura menyukai mereka untuk memperoleh bantuan, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> tidak sanggup memanipulasi orang lain.</p>';
         }
 
         if ($val == 1.2) {
             return
-                '<p><strong>1.2 Skala Keadilan</strong> menilai kecenderungan untuk mengelakkan penipuan dan rasuah. Individu dengan skor rendah bersedia memperoleh keuntungan dengan menipu atau mencuri, manakala individu yang mempunyai skor tinggi tidak akan mengambil kesempatan terhadap individu lain atau masyarakat pada umumnya.</p>';
+                '<p><strong>1.2 Skala Keadilan</strong> menilai kecenderungan untuk mengelakkan penipuan dan rasuah. Individu dengan <font class="skor_rendah">skor rendah</font> bersedia memperoleh keuntungan dengan menipu atau mencuri, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> tidak akan mengambil kesempatan terhadap individu lain atau masyarakat pada umumnya.</p>';
         }
         if ($val == 1.3) {
             return
-                '<p><strong>1.3 Skala Penghindaran Ketamakan</strong> menilai kecenderungan untuk tidak berminat dalam memiliki kekayaan berlimpahan, barangan mewah, dan tanda-tanda status sosial yang tinggi. Individu dengan skor rendah mahu menikmati dan memperlihatkan kekayaan dan keistimewaan, manakala individu yang mempunyai skor tinggi tidak didorong oleh kemewahan atau pertimbangan status sosial.</p>';
+                '<p><strong>1.3 Skala Penghindaran Ketamakan</strong> menilai kecenderungan untuk tidak berminat dalam memiliki kekayaan berlimpahan, barangan mewah, dan tanda-tanda status sosial yang tinggi. Individu dengan <font class="skor_rendah">skor rendah</font> mahu menikmati dan memperlihatkan kekayaan dan keistimewaan, manakala individu yang mempunyai skor tinggi tidak didorong oleh kemewahan atau pertimbangan status sosial.</p>';
         }
         if ($val == 1.4) {
             return
-                '<p><strong>1.4 Skala Kesederhanaan</strong> menilai kecenderungan untuk bersikap sederhana dan rendah diri. Individu dengan skor rendah menganggap diri mereka unggul dan berhak mendapat keistimewaan yang tidak dimiliki orang lain, manakala individu yang mempunyai skor tinggi menganggap diri mereka sebagai orang biasa tanpa hak mendapat layanan istimewa.</p>';
+                '<p><strong>1.4 Skala Kesederhanaan</strong> menilai kecenderungan untuk bersikap sederhana dan rendah diri. Individu dengan <font class="skor_rendah">skor rendah</font> menganggap diri mereka unggul dan berhak mendapat keistimewaan yang tidak dimiliki orang lain, manakala individu yang mempunyai skor tinggi menganggap diri mereka sebagai orang biasa tanpa hak mendapat layanan istimewa.</p>';
         }
 
 
@@ -606,19 +606,19 @@ class Main extends \yii\db\ActiveRecord
 
         if ($val == 2.1) {
             return
-                ' <p><strong>2.1 Skala Ketakutan</strong> menilai kecenderungan untuk mengalami ketakutan. Individu dengan skor rendah mempunyai kurang perasaan takut akan kecederaan dan secara amnya kuat, berani, dan tidak sensitif terhadap kesakitan fizikal, manakala individu yang mempunyai skor tinggi sangat cenderung untuk mengelak kecederaan fizikal.';
+                ' <p><strong>2.1 Skala Ketakutan</strong> menilai kecenderungan untuk mengalami ketakutan. Individu dengan <font class="skor_rendah">skor rendah</font> mempunyai kurang perasaan takut akan kecederaan dan secara amnya kuat, berani, dan tidak sensitif terhadap kesakitan fizikal, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> sangat cenderung untuk mengelak kecederaan fizikal.';
         }
         if ($val == 2.2) {
             return
-                '<p><strong>2.2 Skala Kebimbangan</strong> menilai kecenderungan untuk bimbang dalam pelbagai konteks. Individu dengan skor rendah kurang tertekan dalam menghadapi kesukaran, manakala individu yang mempunyai skor tinggi cenderung mengalami tekanan walaupun dengan masalah yang agak kecil.';
+                '<p><strong>2.2 Skala Kebimbangan</strong> menilai kecenderungan untuk bimbang dalam pelbagai konteks. Individu dengan <font class="skor_rendah">skor rendah</font> kurang tertekan dalam menghadapi kesukaran, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> cenderung mengalami tekanan walaupun dengan masalah yang agak kecil.';
         }
         if ($val == 2.3) {
             return
-                '<p><strong>2.3 Skala Kebergantungan</strong> menilai keperluan mendapat sokongan emosi daripada orang lain. Individu dengan skor rendah mempunyai keyakinan diri dan berupaya menangani masalah tanpa bantuan atau nasihat orang lain, manakala individu yang mempunyai skor tinggi ingin berkongsi masalah mereka dengan orang lain yang akan memberi dorongan dan penghiburan.</p>';
+                '<p><strong>2.3 Skala Kebergantungan</strong> menilai keperluan mendapat sokongan emosi daripada orang lain. Individu dengan <font class="skor_rendah">skor rendah</font> mempunyai keyakinan diri dan berupaya menangani masalah tanpa bantuan atau nasihat orang lain, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> ingin berkongsi masalah mereka dengan orang lain yang akan memberi dorongan dan penghiburan.</p>';
         }
         if ($val == 2.4) {
             return
-                '<p><strong>2.4 Skala Sentimental</strong> menilai kecenderungan untuk membentuk ikatan emosi yang kuat dengan orang lain. Individu dengan skor rendah kurang beremosi ketika mengucapkan selamat tinggal atau sebagai reaksi kepada keprihatinan orang lain, manakala individu yang mempunyai skor tinggi merasa keterikatan emosi yang kuat dan kepekaan empati terhadap perasaan orang lain.</p>';
+                '<p><strong>2.4 Skala Sentimental</strong> menilai kecenderungan untuk membentuk ikatan emosi yang kuat dengan orang lain. Individu dengan <font class="skor_rendah">skor rendah</font> kurang beremosi ketika mengucapkan selamat tinggal atau sebagai reaksi kepada keprihatinan orang lain, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> merasa keterikatan emosi yang kuat dan kepekaan empati terhadap perasaan orang lain.</p>';
         }
 
         if ($val == 3) {
@@ -629,19 +629,19 @@ class Main extends \yii\db\ActiveRecord
 
         if ($val == 3.1) {
             return
-                '<p><strong>3.1 Skala Penghargaan Kendiri Sosial</strong> menilai kecenderungan untuk bersikap positif terhadap diri sendiri, terutama dalam konteks sosial. Individu dengan skor tinggi umumnya berpuas hati dengan diri mereka sendiri dan menganggap diri mereka mempunyai kualiti yang disukai, manakala individu yang mempunyai skor rendah cenderung melihat diri mereka sebagai tidak berguna dan tidak popular.</p>';
+                '<p><strong>3.1 Skala Penghargaan Kendiri Sosial</strong> menilai kecenderungan untuk bersikap positif terhadap diri sendiri, terutama dalam konteks sosial. Individu dengan <font class="skor_tinggi">skor tinggi</font> umumnya berpuas hati dengan diri mereka sendiri dan menganggap diri mereka mempunyai kualiti yang disukai, manakala individu yang mempunyai <font class="skor_rendah">skor rendah</font> cenderung melihat diri mereka sebagai tidak berguna dan tidak popular.</p>';
         }
         if ($val == 3.2) {
             return
-                '<p><strong>3.2 Skala Keberanian Sosial</strong> menilai keselesaan atau keyakinan seseorang dalam pelbagai situasi sosial. Individu dengan skor rendah berasa malu atau janggal dalam aspek kepimpinan atau ketika berucap di khalayak ramai, manakala individu yang mempunyai skor tinggi bersedia mendekati orang yang tidak dikenali dan mampu bersuara dalam kumpulan.</p>';
+                '<p><strong>3.2 Skala Keberanian Sosial</strong> menilai keselesaan atau keyakinan seseorang dalam pelbagai situasi sosial. Individu dengan <font class="skor_rendah">skor rendah</font> berasa malu atau janggal dalam aspek kepimpinan atau ketika berucap di khalayak ramai, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> bersedia mendekati orang yang tidak dikenali dan mampu bersuara dalam kumpulan.</p>';
         }
         if ($val == 3.3) {
             return
-                '<p><strong>3.3 Skala Keramahan</strong> menilai kecenderungan menyukai perbualan, interaksi sosial, dan majlis keramaian. Individu dengan skor rendah pada amnya lebih suka melakukan aktiviti bersendirian dan tidak gemar perbualan, manakala individu yang mempunyai skor tinggi gemar bercakap, berziarah, dan menyambut keramaian bersama orang lain.';
+                '<p><strong>3.3 Skala Keramahan</strong> menilai kecenderungan menyukai perbualan, interaksi sosial, dan majlis keramaian. Individu dengan <font class="skor_rendah">skor rendah</font> pada amnya lebih suka melakukan aktiviti bersendirian dan tidak gemar perbualan, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> gemar bercakap, berziarah, dan menyambut keramaian bersama orang lain.';
         }
         if ($val == 3.4) {
             return
-                '<p><strong>3.4 Skala Keaktifan</strong> menilai tahap keterujaan dan tenaga seseorang. Individu dengan skor rendah cenderung kepada perasaan tidak ceria atau dinamik, manakala individu yang mempunyai skor tinggi biasanya mempunyai sifat optimis dan semangat yang tinggi.</p>';
+                '<p><strong>3.4 Skala Keaktifan</strong> menilai tahap keterujaan dan tenaga seseorang. Individu dengan <font class="skor_rendah">skor rendah</font> cenderung kepada perasaan tidak ceria atau dinamik, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> biasanya mempunyai sifat optimis dan semangat yang tinggi.</p>';
         }
 
         if ($val == 4) {
@@ -655,25 +655,25 @@ class Main extends \yii\db\ActiveRecord
         if ($val == 4.1) {
 
             return
-                '<p><strong>4.1 Skala Kemaafan</strong> menilai kesediaan seseorang untuk mempercayai dan menerima mereka yang mungkin pernah berbuat salah kepadanya. Individu dengan skor rendah cenderung menyimpan dendam terhadap mereka yang telah menyinggung perasaan mereka, manakala individu yang mempunyai skor tinggi biasanya bersedia untuk mempercayai dan berbaik semula dengan mereka yang telah menganiayanya.';
+                '<p><strong>4.1 Skala Kemaafan</strong> menilai kesediaan seseorang untuk mempercayai dan menerima mereka yang mungkin pernah berbuat salah kepadanya. Individu dengan <font class="skor_rendah">skor rendah</font> cenderung menyimpan dendam terhadap mereka yang telah menyinggung perasaan mereka, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> biasanya bersedia untuk mempercayai dan berbaik semula dengan mereka yang telah menganiayanya.';
         }
 
         if ($val == 4.2) {
 
             return
-                '<p><strong>4.2 Skala Kelembutan</strong> menilai kecenderungan untuk bersikap lembut dan bertolak ansur apabila berurusan dengan orang lain. Individu dengan skor rendah cenderung menjadi kritikal dalam penilaian mereka terhadap orang lain, manakala individu yang mempunyai skor tinggi berat hati menilai orang lain dengan kasar.';
+                '<p><strong>4.2 Skala Kelembutan</strong> menilai kecenderungan untuk bersikap lembut dan bertolak ansur apabila berurusan dengan orang lain. Individu dengan <font class="skor_rendah">skor rendah</font> cenderung menjadi kritikal dalam penilaian mereka terhadap orang lain, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> berat hati menilai orang lain dengan kasar.';
         }
 
         if ($val == 4.3) {
 
             return
-                '<p><strong>4.3 Skala Fleksibiliti</strong> menilai kesediaan seseorang untuk berkompromi dan bekerjasama dengan orang lain. Individu dengan skor rendah dilihat sebagai keras kepala dan bersedia untuk berdebat, manakala individu yang mempunyai skor tinggi mengelak perdebatan dan mempertimbangkan cadangan orang lain, walaupun ianya mungkin tidak masuk akal.';
+                '<p><strong>4.3 Skala Fleksibiliti</strong> menilai kesediaan seseorang untuk berkompromi dan bekerjasama dengan orang lain. Individu dengan <font class="skor_rendah">skor rendah</font> dilihat sebagai keras kepala dan bersedia untuk berdebat, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> mengelak perdebatan dan mempertimbangkan cadangan orang lain, walaupun ianya mungkin tidak masuk akal.';
         }
 
         if ($val == 4.4) {
 
             return
-                '<p><strong>4.4 Skala Kesabaran</strong> menilai kecenderungan untuk kekal tenang dan tidak menjadi marah. Individu dengan skor rendah cenderung untuk cepat marah, manakala individu dengan skor tinggi mempunyai ambang kesabaran tinggi untuk menjadi marah atau meluahkan kemarahan.';
+                '<p><strong>4.4 Skala Kesabaran</strong> menilai kecenderungan untuk kekal tenang dan tidak menjadi marah. Individu dengan <font class="skor_rendah">skor rendah</font> cenderung untuk cepat marah, manakala individu dengan <font class="skor_tinggi">skor tinggi</font> mempunyai ambang kesabaran tinggi untuk menjadi marah atau meluahkan kemarahan.';
         }
 
         if ($val == 5) {
@@ -685,19 +685,19 @@ class Main extends \yii\db\ActiveRecord
 
         if ($val == 5.1) {
             return
-                '<p><strong>5.1 Skala Organisasi</strong> menilai kecenderungan untuk mencari ketertiban, terutama dalam persekitaran fizikal seseorang. Individu dengan skor rendah cenderung leka dan selekeh, manakala individu yang mempunyai skor tinggi memastikan keadaan kemas dan lebih suka pendekatan berstruktur dalam melaksanakan tugas.';
+                '<p><strong>5.1 Skala Organisasi</strong> menilai kecenderungan untuk mencari ketertiban, terutama dalam persekitaran fizikal seseorang. Individu dengan <font class="skor_rendah">skor rendah</font> cenderung leka dan selekeh, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> memastikan keadaan kemas dan lebih suka pendekatan berstruktur dalam melaksanakan tugas.';
         }
         if ($val == 5.2) {
             return
-                '<p><strong>5.2 Skala Ketekunan</strong> menilai kecenderungan untuk bekerja keras. Individu dengan skor rendah mempunyai disiplin diri yang rendah dan tidak bermotivasi untuk mencapai sesuatu, manakala individu yang mempunyai skor tinggi ada "etika kerja" yang tinggi dan bersedia melaksanakan tugas sedaya-upaya.';
+                '<p><strong>5.2 Skala Ketekunan</strong> menilai kecenderungan untuk bekerja keras. Individu dengan <font class="skor_rendah">skor rendah</font> mempunyai disiplin diri yang rendah dan tidak bermotivasi untuk mencapai sesuatu, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> ada "etika kerja" yang tinggi dan bersedia melaksanakan tugas sedaya-upaya.';
         }
         if ($val == 5.3) {
             return
-                '<p><strong>5.3 Skala Kesempurnaan</strong> menilai kecenderungan untuk ketelitian dan mementingkan perincian. Individu dengan skor rendah boleh menerima beberapa kesalahan dalam kerja mereka dan biasanya mengabaikan perincian kecil, manakala individu yang mempunyai skor tinggi meneliti untuk mengesan sebarang kesilapan dan potensi penambahbaikan.';
+                '<p><strong>5.3 Skala Kesempurnaan</strong> menilai kecenderungan untuk ketelitian dan mementingkan perincian. Individu dengan <font class="skor_rendah">skor rendah</font> boleh menerima beberapa kesalahan dalam kerja mereka dan biasanya mengabaikan perincian kecil, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> meneliti untuk mengesan sebarang kesilapan dan potensi penambahbaikan.';
         }
         if ($val == 5.4) {
             return
-                '<p><strong>5.4 Skala Berhemah</strong> menilai kecenderungan untuk berunding dengan teliti dan menghalang impuls. Individu dengan skor rendah bertindak mengikut gerak hati dan biasanya tidak mempertimbangkan akibat, manakala individu yang mempunyai skor tinggi mempertimbangkan pilihan mereka dengan berhati-hati dan biasanya berwaspada dan mengawal diri.';
+                '<p><strong>5.4 Skala Berhemah</strong> menilai kecenderungan untuk berunding dengan teliti dan menghalang impuls. Individu dengan <font class="skor_rendah">skor rendah</font> bertindak mengikut gerak hati dan biasanya tidak mempertimbangkan akibat, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> mempertimbangkan pilihan mereka dengan berhati-hati dan biasanya berwaspada dan mengawal diri.';
         }
 
         if ($val == 6) {
@@ -708,19 +708,19 @@ class Main extends \yii\db\ActiveRecord
 
         if ($val == 6.1) {
             return
-                '<p><strong>6.1 Skala Penghayatan Estetika</strong> menilai keseronokan seseorang terhadap keindahan dalam seni dan alam semula jadi. Individu dengan skor rendah tidak berminat menghayati karya seni atau keajaiban semula jadi, manakala individu dengan skor tinggi mempunyai penghayatan mendalam terhadap pelbagai bentuk seni dan keajaiban alam.';
+                '<p><strong>6.1 Skala Penghayatan Estetika</strong> menilai keseronokan seseorang terhadap keindahan dalam seni dan alam semula jadi. Individu dengan <font class="skor_rendah">skor rendah</font> tidak berminat menghayati karya seni atau keajaiban semula jadi, manakala individu dengan <font class="skor_tinggi">skor tinggi</font> mempunyai penghayatan mendalam terhadap pelbagai bentuk seni dan keajaiban alam.';
         }
         if ($val == 6.2) {
             return
-                '<p><strong>6.2 Skala Rasa Ingin Tahu</strong> menilai kecenderungan untuk mencari maklumat mengenai, dan pengalaman dengan, dunia semula jadi dan manusia. Individu dengan skor rendah memiliki sifat ingin tahu yang rendah tentang sains semula jadi atau sosial, manakala individu yang mempunyai skor tinggi gemar membaca dan mengembara.';
+                '<p><strong>6.2 Skala Rasa Ingin Tahu</strong> menilai kecenderungan untuk mencari maklumat mengenai, dan pengalaman dengan, dunia semula jadi dan manusia. Individu dengan <font class="skor_rendah">skor rendah</font> memiliki sifat ingin tahu yang rendah tentang sains semula jadi atau sosial, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> gemar membaca dan mengembara.';
         }
         if ($val == 6.3) {
             return
-                '<p><strong>6.3 Skala Kreativiti</strong> menilai kecenderungan seseorang terhadap inovasi dan eksperimen. Individu dengan skor rendah tidak teruja dengan idea baru, manakala individu yang mempunyai skor tinggi secara aktif mencari jalan penyelesaian masalah yang baru dan mengekpresikan diri dalam seni.';
+                '<p><strong>6.3 Skala Kreativiti</strong> menilai kecenderungan seseorang terhadap inovasi dan eksperimen. Individu dengan <font class="skor_rendah">skor rendah</font> tidak teruja dengan idea baru, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> secara aktif mencari jalan penyelesaian masalah yang baru dan mengekpresikan diri dalam seni.';
         }
         if ($val == 6.4) {
             return
-                '<p><strong>6.4 Skala Tidak Konvensional</strong> menilai kecenderungan untuk menerima sesuatu di luar kebiasaan. Individu dengan skor rendah menghindari orang yang eksentrik atau berlainan, manakala individu yang mempunyai skor tinggi terbuka kepada idea-idea yang mungkin kelihatan aneh atau radikal.';
+                '<p><strong>6.4 Skala Tidak Konvensional</strong> menilai kecenderungan untuk menerima sesuatu di luar kebiasaan. Individu dengan <font class="skor_rendah">skor rendah</font> menghindari orang yang eksentrik atau berlainan, manakala individu yang mempunyai <font class="skor_tinggi">skor tinggi</font> terbuka kepada idea-idea yang mungkin kelihatan aneh atau radikal.';
         }
     }
 }
