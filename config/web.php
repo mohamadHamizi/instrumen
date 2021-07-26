@@ -14,8 +14,8 @@ $config = [
         // 'i18n' => []
         ]
     ],
-    'id' => 'pentadbiran',
-    'name' => 'UPPsikS',
+    'id' => 'misi',
+    'name' => 'MISI',
     'defaultRoute' => 'site/pdpa',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

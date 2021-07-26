@@ -20,7 +20,7 @@ use yii\helpers\Html;
         <div class="box-body">
             <p>Setiap individu mempunyai pengalaman dengan ujian. Ujian adalah alat pengukuran atau teknik yang digunakan untuk mengukur tingkah laku atau membantu dalam pemahaman dan ramalan tingkah laku. Ujian psikologi adalah sekumpulan item yang dibentuk untuk mengukur ciri-ciri manusia yang berkaitan dengan proses kognitif dan tingkah laku. Ujian merupakan salah satu elemen penting dalam psikologi dan ia bergantung pada pengetahuan yang diperoleh dalam kajian penyelidikan psikologi. Kesahan dan kebolehpercayaan pengukuran penting kepada penyelidikan psikologi. Dalam masyarakat yang kompleks sekarang ini, prinsip yang relevan, aplikasi, dan peranan yang dimainkan oleh ujian psikologi melangkaui bidang psikologi.
 
-            <p>Memandangkan ujian psikologi dilihat signifikan, maka penyelidik telah berusaha menjadikan alat ujian psikologi sama ada yang telah dibina sendiri oleh penyelidik atau menggunakan alat ujian yang sedia ada dibentuk dalam bentuk digital. Terdapat empat alat ujian atau instrumen yang ada dalam Portal MISI iaitu:
+            <p>Memandangkan ujian psikologi dilihat signifikan, maka penyelidik telah berusaha menjadikan alat ujian psikologi sama ada yang telah dibina sendiri oleh penyelidik atau menggunakan alat ujian yang sedia ada dibentuk dalam bentuk digital. Terdapat enam alat ujian atau instrumen yang ada dalam Portal MISI iaitu:
 
             <p>
             <ol>

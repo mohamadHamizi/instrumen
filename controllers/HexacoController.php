@@ -79,6 +79,12 @@ class HexacoController extends Controller
             $model = $check_model;
         }
 
+        $main = Main::findOne($id);
+        $var = UtilityFunc::myKad($main->icno);
+
+        $model->tarikh_lahir = $var['tarikh_lahir'];
+        $model->umur = $var['umur'];
+
         if ($model->load(Yii::$app->request->post())) {
 
             $model->main_id = $id;

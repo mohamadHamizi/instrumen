@@ -10,6 +10,7 @@ use app\models\MeaV2Jadual4;
 use app\models\MeaV2Main;
 use app\models\MeaResult;
 use app\models\Soalan;
+use app\models\UtilityFunc;
 use Yii;
 use yii\web\Controller;
 use yii\helpers\VarDumper;;
@@ -78,6 +79,12 @@ class MeaTwoController extends Controller
         if ($check_model) {
             $model = $check_model;
         }
+
+        $main = MeaV2Main::findOne($id);
+        $var = UtilityFunc::myKad($main->icno);
+
+        $model->tarikh_lahir = $var['tarikh_lahir'];
+        $model->umur = $var['umur'];
 
         if ($model->load(Yii::$app->request->post())) {
 

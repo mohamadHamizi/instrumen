@@ -93,4 +93,36 @@ class UtilityFunc
             'positonX' => 'right'
         ]);
     }
+
+    public static function myKad($icno){
+
+        $arr = [];
+
+        $tmp_hari = substr($icno,4,2);
+        $tmp_bulan = substr($icno,2,2);
+        $tmp_tahun = substr($icno,0,2);
+        
+        //TARIKH LAHIR//////////////////////////////////////
+        if($tmp_tahun >= 00 && $tmp_tahun <= 30) {
+            $tmp_tahun = 2000+$tmp_tahun;
+        }
+        
+        if($tmp_tahun >= 31 && $tmp_tahun <= 99) {
+            $tmp_tahun = 1900+$tmp_tahun;
+        }
+        
+        $tarikh_lahir = $tmp_hari."/".$tmp_bulan."/".$tmp_tahun;
+        
+        //UMUR//////////////////////////////////////
+        $tmp_tarikh_lahir = $tmp_tahun."-".$tmp_bulan."-".$tmp_hari;;
+        $umur = date_create($tmp_tarikh_lahir)->diff(date_create('today'))->y;
+
+        $arr = [
+            'tarikh_lahir' =>  $tarikh_lahir,
+            'umur' => $umur,
+        ];
+
+        return $arr;
+
+    }
 }

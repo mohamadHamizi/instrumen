@@ -8,6 +8,7 @@ use yii\web\Controller;
 use app\models\bfi\Jadual;
 use app\models\bfi\Main;
 use app\models\UtilityFunc;
+use yii\helpers\VarDumper;
 
 /**
  * bfiController
@@ -67,11 +68,19 @@ class BfiController extends Controller
 
         $model = new Demo();
 
-        $check_model = Demo::findOne(['main_id' => $id]);
+        $main = Main::findOne($id);
 
+        
+        $check_model = Demo::findOne(['main_id' => $id]);
+        
         if ($check_model) {
             $model = $check_model;
         }
+        
+        $var = UtilityFunc::myKad($main->icno);
+
+        $model->tarikh_lahir = $var['tarikh_lahir'];
+        $model->umur = $var['umur'];
 
         if ($model->load(Yii::$app->request->post())) {
 
