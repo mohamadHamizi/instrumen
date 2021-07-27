@@ -196,5 +196,5 @@ use yii\widgets\DetailView;
     </div>
 </div>
 <div class="text-center">
-    <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-tipi'], ['class' => 'btn btn-success']); ?>
+    <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-bfi'], ['class' => 'btn btn-success']); ?>
 </div>
