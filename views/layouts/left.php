@@ -100,6 +100,7 @@
                         ['label' => 'MEA v2', 'icon' => 'table', 'url' => ['admin/data-mea-two'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'TIPI', 'icon' => 'smile-o', 'url' => ['admin/data-tipi'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'HEXACO', 'icon' => 'user-circle-o', 'url' => ['admin/data-hexaco'], 'visible' => !Yii::$app->user->isGuest],
+                        ['label' => 'BFI', 'icon' => 'user-secret', 'url' => ['admin/data-bfi'], 'visible' => !Yii::$app->user->isGuest],
                     ]
                 ],
             ],
