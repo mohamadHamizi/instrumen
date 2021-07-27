@@ -63,7 +63,7 @@ class Main extends \yii\db\ActiveRecord
     public function getBtnView()
     {
         if ($this->jadual->item10) {
-            return  Html::a('<i class="fa fa-eye"></i>', ['tipi/view-result', 'id' => $this->id], ['target'=>'_blank']);
+            return  Html::a('<i class="fa fa-eye"></i>', ['bfi/view-result', 'id' => $this->id], ['target'=>'_blank']);
         }
 
         return null;
