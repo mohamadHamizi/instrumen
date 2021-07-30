@@ -70,13 +70,13 @@ class BfiController extends Controller
 
         $main = Main::findOne($id);
 
-        
+
         $check_model = Demo::findOne(['main_id' => $id]);
-        
+
         if ($check_model) {
             $model = $check_model;
         }
-        
+
         $var = UtilityFunc::myKad($main->icno);
 
         $model->tarikh_lahir = $var['tarikh_lahir'];
@@ -163,15 +163,16 @@ class BfiController extends Controller
             'model' => $model,
             'extraversionIndex' => $extraversionIndex,
             'extraversionSkor' => $extraversionSkor,
+            'id' => $id,
         ]);
     }
 
     public function actionViewResult($id)
     {
-        
+
         $model = Jadual::findOne(['main_id' => $id]);
 
-        $demo = Demo::findOne(['main_id'=>$id]);
+        $demo = Demo::findOne(['main_id' => $id]);
 
         $extraversionIndex = $model->extraversionIndex;
         $extraversionSkor = $model->extraversionSkor;
@@ -182,6 +183,36 @@ class BfiController extends Controller
             'extraversionIndex' => $extraversionIndex,
             'extraversionSkor' => $extraversionSkor,
         ]);
+    }
+
+    public function actionSendEmail($id)
+    {
+
+        $model = Jadual::findOne(['main_id' => $id]);
+
+        $demo = Demo::findOne(['main_id' => $id]);
+
+        $extraversionIndex = $model->extraversionIndex;
+        $extraversionSkor = $model->extraversionSkor;
+
+        $set_from = ['misi@ums.edu.my' => 'MISI '];
+        $set_to = [$demo->emel => $demo->nama_penuh];
+        $subject = 'Laporan Keputusan Big Five Inventory-10-Malay (BFI-Malay)';
+
+        $email = Yii::$app->mailer->compose('result_bfi', [
+            'model' => $model,
+            'extraversionIndex' => $extraversionIndex,
+            'extraversionSkor' => $extraversionSkor,
+        ])
+            ->setFrom($set_from)
+            ->setTo($set_to)
+            ->setSubject($subject)
+            ->send();
+
+        if ($email) {
+            UtilityFunc::ifSuccess("Keputusan telah dihantar ke emel anda $demo->emel");
+            return $this->redirect(['result']);
+        }
     }
 
     public function actionDes()

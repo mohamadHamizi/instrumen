@@ -7,11 +7,11 @@ $config = [
     'modules' => [
         'gridview' => [
             'class' => '\kartik\grid\Module'
-        // enter optional module parameters below - only if you need to  
-        // use your own export download action or custom translation 
-        // message source
-        // 'downloadAction' => 'gridview/export/download',
-        // 'i18n' => []
+            // enter optional module parameters below - only if you need to  
+            // use your own export download action or custom translation 
+            // message source
+            // 'downloadAction' => 'gridview/export/download',
+            // 'i18n' => []
         ]
     ],
     'id' => 'misi',
@@ -27,7 +27,7 @@ $config = [
         'view' => [
             'theme' => [
                 'pathMap' => [
-//                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                    //                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
                     '@app/views' => 'views'
                 ],
             ],
@@ -58,7 +58,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'misi@ums.edu.my',
+                'password' => 'Bella#1276',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -73,8 +81,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
     ],
     'params' => $params,
@@ -85,8 +92,8 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-            // uncomment the following to add your IP if you are not connecting from localhost.
-            //'allowedIPs' => ['127.0.0.1', '::1'],
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
@@ -94,7 +101,7 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
-        'generators' => [// HERE
+        'generators' => [ // HERE
             'crud' => [
                 'class' => 'yii\gii\generators\crud\Generator',
                 'templates' => [

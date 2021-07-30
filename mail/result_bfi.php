@@ -1,7 +1,6 @@
 <?php
 
 use app\models\bfi\Jadual;
-use yii\helpers\Html;
 
 ?>
 
@@ -93,68 +92,4 @@ use yii\helpers\Html;
 
 
     </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Keputusan Anda</strong></h3>
-                <div class="box-body">
-                    <p>
-                        This assessment examined the <strong>Big Five Personality Dimension</strong>, which are (1) extraversion, (2) agreeableness, (3) conscientiousness,
-                        (4) neuroticism, and (5) openness, Let's check out your scores.
-                    </p>
-                    <br>
-                    <div class="progress-group">
-                        <span class="progress-text">Extraversion</span>
-                        <span class="progress-number"><b>Introversion</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-aqua" style="width: <?= $extraversionIndex ?>%"><?= $extraversionIndex ?>% - <?= $model->extraversionTahap ?></div>
-                        </div>
-                    </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Agreeableness</span>
-                        <span class="progress-number"><b>Hostile</b></span>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-red" style="width: <?= $model->agreeablenessIndex ?>%"><?= $model->agreeablenessIndex ?>% - <?= $model->agreeablenessTahap ?></div>
-                        </div>
-                    </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Conscientiousness</span>
-                        <span class="progress-number"><b>Spontaneous</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-green" style="width: <?= $model->conscientiousnessIndex ?>%"><?= $model->conscientiousnessIndex ?>% - <?= $model->conscientiousnessTahap ?></div>
-                        </div>
-                    </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Emotional Stability</span>
-                        <span class="progress-number"><b>Neurotic</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-yellow" style="width: <?= $model->emotionalIndex ?>%"><?= $model->emotionalIndex ?>% - <?= $model->emotionalTahap ?></div>
-                        </div>
-                    </div>
-
-                    <div class="progress-group">
-                        <span class="progress-text">Openness to Experiences</span>
-                        <span class="progress-number"><b>Closed</b></span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: <?= $model->opennessIndex ?>%"><?= $model->opennessIndex ?>% - <?= $model->opennessTahap ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="text-center">
-    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/bfi/des'], ['class' => 'btn btn-danger']); ?>
-    <?= Html::a('<i class="fa fa-envelope-o"></i>&nbsp;Hantar keputusan ke emel anda', ['send-email', 'id'=>$id], ['class' => 'btn btn-success']); ?>
 </div>
