@@ -80,7 +80,7 @@ class Demo extends \yii\db\ActiveRecord
             [['jantina'], 'string', 'max' => 1],
             [['warna', 'bangsa'], 'string', 'max' => 100],
             [['emel', 'status_kerja_lain'], 'string', 'max' => 100],
-            ['emael', 'email'],
+            ['emel', 'email'],
             [['status_kerja'], 'string', 'max' => 30],
             [['darah'], 'string', 'max' => 5],
         ];
