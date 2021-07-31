@@ -11,11 +11,11 @@ use yii\widgets\DetailView;
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Demografi Responden</strong></h3>
     </div>
     <div class="box-body">
-        <?php 
+        <?php
         echo DetailView::widget([
             'model' => $demo,
             'attributes' => [
-                [                
+                [
                     'label' => 'Nama Penuh',
                     'value' => $demo->nama_penuh,
                 ],
@@ -195,6 +195,8 @@ use yii\widgets\DetailView;
         </div>
     </div>
 </div>
-<div class="text-center">
-    <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-bfi'], ['class' => 'btn btn-success']); ?>
-</div>
+<?php if ($back) { ?>
+    <div class="text-center">
+        <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-bfi'], ['class' => 'btn btn-success']); ?>
+    </div>
+<?php } ?>

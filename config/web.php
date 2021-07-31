@@ -66,7 +66,7 @@ $config = [
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
-            'useFileTransport' => false,
+            'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

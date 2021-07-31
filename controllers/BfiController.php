@@ -182,6 +182,26 @@ class BfiController extends Controller
             'demo' => $demo,
             'extraversionIndex' => $extraversionIndex,
             'extraversionSkor' => $extraversionSkor,
+            'back' => true,
+        ]);
+    }
+
+    public function actionKeputusan($id)
+    {
+
+        $model = Jadual::find()->where(['SHA1(main_id)' => $id])->one();
+
+        $demo = Demo::find()->where(['SHA1(main_id)' => $id])->one();
+
+        $extraversionIndex = $model->extraversionIndex;
+        $extraversionSkor = $model->extraversionSkor;
+
+        return $this->render('view-result', [
+            'model' => $model,
+            'demo' => $demo,
+            'extraversionIndex' => $extraversionIndex,
+            'extraversionSkor' => $extraversionSkor,
+            'back' => false,
         ]);
     }
 
@@ -203,6 +223,8 @@ class BfiController extends Controller
             'model' => $model,
             'extraversionIndex' => $extraversionIndex,
             'extraversionSkor' => $extraversionSkor,
+            'header1' => $subject,
+            'id' => sha1($id),
         ])
             ->setFrom($set_from)
             ->setTo($set_to)
