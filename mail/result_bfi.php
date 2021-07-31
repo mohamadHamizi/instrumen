@@ -98,7 +98,7 @@ use yii\helpers\Url;
                         <td class="table-space-td" valign="middle" height="12" style="height: 12px; width: 650px; padding-left: 16px; padding-right: 16px; background-color: #ffffff;" width="650" bgcolor="#FFFFFF" align="center"><?= Jadual::rank($model->skorArray, $model->opennessSkor) ?></td>
                     </tr>
                 </table>
-                <table class="table-row" width="650" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff; padding-top:30px" cellspacing="0" cellpadding="0" border="0">
+                <table class="table-row" width="650" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff; padding-top:30px; padding-bottom:30px" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
                             <td class="table-row-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 36px; padding-right: 36px;" valign="top" align="left">
@@ -125,14 +125,14 @@ use yii\helpers\Url;
                     </tbody>
                 </table>
 
-                <table class="table-row-fixed" width="600" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0">
+                <table class="table-row-fixed" width="640" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
                             <td class="table-row-fixed-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 1px; padding-right: 1px;" valign="top" align="left">
                                 <table class="table-col" align="left" width="" c650ellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;">
                                     <tbody>
                                         <tr>
-                                            <td class="table-col-td" width="643" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal;" valign="top" align="left">
+                                            <td class="table-col-td" width="650" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal;" valign="top" align="left">
                                                 <table width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;">
                                                     <tbody>
                                                         <tr>
