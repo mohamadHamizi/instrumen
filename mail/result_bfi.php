@@ -125,7 +125,7 @@ use yii\helpers\Url;
                     </tbody>
                 </table>
 
-                <table class="table-row-fixed" width="640" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0">
+                <table class="table-row-fixed" width="650" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
                             <td class="table-row-fixed-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 1px; padding-right: 1px;" valign="top" align="left">
