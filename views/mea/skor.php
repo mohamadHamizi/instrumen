@@ -416,19 +416,22 @@ use yii\helpers\Html;
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped">
-                        <tr>
-                            <td class="text-center"><strong><?php echo $model->jadual1->pil_anda ?></strong></td>
-                            <td class="text-center"><strong><?php echo $model->jadual2->pil_anda ?></strong></td>
-                            <td class="text-center"><strong><?php echo $model->jadual3->pil_anda ?></strong></td>
-                            <td class="text-center"><strong><?php echo $model->jadual4->pil_anda ?></strong></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"><strong><?php echo $anda->tret ?></strong><br><?php echo $anda->rumusan ?></td>
-                        </tr>
-                    </table>
-                </div>
+                <table class="table table-bordered table-hover table-striped">
+                    <tr style="font-size: 30px; text-transform:uppercase;">
+                        <td class="text-center"><strong><?php echo $model->jadual1->pil_anda ?></strong></td>
+                        <td class="text-center"><strong><?php echo $model->jadual2->pil_anda ?></strong></td>
+                        <td class="text-center"><strong><?php echo $model->jadual3->pil_anda ?></strong></td>
+                        <td class="text-center"><strong><?php echo $model->jadual4->pil_anda ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-center"><strong>
+                                <font style="font-size: 30px; text-transform:uppercase;">The <?php echo $anda->ciri ?></font>
+                            </strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><?php echo $anda->rumusan ?></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -444,19 +447,22 @@ use yii\helpers\Html;
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped">
-                        <tr>
-                            <td class="text-center"><strong><?php echo $model->jadual1->pil_bos ?></strong></td>
-                            <td class="text-center"><strong><?php echo $model->jadual2->pil_bos ?></strong></td>
-                            <td class="text-center"><strong><?php echo $model->jadual3->pil_bos ?></strong></td>
-                            <td class="text-center"><strong><?php echo $model->jadual4->pil_bos ?></strong></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"><strong><?php echo $bos->tret ?></strong><br><?php echo $bos->rumusan ?></td>
-                        </tr>
-                    </table>
-                </div>
+                <table class="table table-bordered table-hover table-striped">
+                    <tr style="font-size: 30px; text-transform:uppercase;">
+                        <td class="text-center"><strong><?php echo $model->jadual1->pil_bos ?></strong></td>
+                        <td class="text-center"><strong><?php echo $model->jadual2->pil_bos ?></strong></td>
+                        <td class="text-center"><strong><?php echo $model->jadual3->pil_bos ?></strong></td>
+                        <td class="text-center"><strong><?php echo $model->jadual4->pil_bos ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-center"><strong>
+                                <font style="font-size: 30px; text-transform:uppercase;">The <?php echo $bos->ciri ?></font>
+                            </strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><?php echo $bos->rumusan ?></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
