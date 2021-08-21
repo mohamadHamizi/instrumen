@@ -516,7 +516,7 @@ use yii\helpers\Html;
 
                 <tr>
                     <td><?= Html::img('/instrumen/web/img/e.png', ['width' => '70px']); ?></td>
-                    <td class="text-right title_text" style="width: 15%;">Extraversion <font style="color: crimson;">E</font>
+                    <td class="text-right title_text" style="width: 15%;">Extravert <font style="color: crimson;">E</font>
                     </td>
                     <td class="text-center" colspan="4" style="width: 35%;">
                         <div class="progress progress-lg">
@@ -535,7 +535,7 @@ use yii\helpers\Html;
                         </div>
                     </td>
                     <td class="title_text" style="width: 15%;">
-                        <font style="color: crimson;">I</font> Introversion
+                        <font style="color: crimson;">I</font> Introvert
                     </td>
                     <td><?= Html::img('/instrumen/web/img/i.png', ['width' => '70px']); ?></td>
                 </tr>
