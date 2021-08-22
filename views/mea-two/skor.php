@@ -628,32 +628,32 @@ use yii\helpers\Html;
                 <th class="text-center" colspan="4">Penilai 2</th>
             </tr>
             <tr>
-                <td class="text-center"><strong><?php echo $model->jadual1->pil_anda ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual2->pil_anda ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual3->pil_anda ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual4->pil_anda ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual1->pil_pen_1 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual2->pil_pen_1 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual3->pil_pen_1 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual4->pil_pen_1 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual1->pil_pen_2 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual2->pil_pen_2 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual3->pil_pen_2 ?></strong></td>
-                <td class="text-center"><strong><?php echo $model->jadual4->pil_pen_2 ?></strong></td>
+                <td class="text-center progress-bar-primary"><strong><?php echo $model->jadual1->pil_anda ?></strong></td>
+                <td class="text-center progress-bar-primary"><strong><?php echo $model->jadual2->pil_anda ?></strong></td>
+                <td class="text-center progress-bar-primary"><strong><?php echo $model->jadual3->pil_anda ?></strong></td>
+                <td class="text-center progress-bar-primary"><strong><?php echo $model->jadual4->pil_anda ?></strong></td>
+                <td class="text-center progress-bar-red"><strong><?php echo $model->jadual1->pil_pen_1 ?></strong></td>
+                <td class="text-center progress-bar-red"><strong><?php echo $model->jadual3->pil_pen_1 ?></strong></td>
+                <td class="text-center progress-bar-red"><strong><?php echo $model->jadual2->pil_pen_1 ?></strong></td>
+                <td class="text-center progress-bar-red"><strong><?php echo $model->jadual4->pil_pen_1 ?></strong></td>
+                <td class="text-center progress-bar-green"><strong><?php echo $model->jadual1->pil_pen_2 ?></strong></td>
+                <td class="text-center progress-bar-green"><strong><?php echo $model->jadual2->pil_pen_2 ?></strong></td>
+                <td class="text-center progress-bar-green"><strong><?php echo $model->jadual3->pil_pen_2 ?></strong></td>
+                <td class="text-center progress-bar-green"><strong><?php echo $model->jadual4->pil_pen_2 ?></strong></td>
             </tr>
             <tr>
                 <td colspan="4" class="text-center">
-                    <font style="font-size: 30px; text-transform:uppercase;">THE <?php echo $anda->ciri ?>
+                    <font style="font-size: 30px; text-transform:uppercase; font-weight:bold;">THE <?php echo $anda->ciri ?>
                     </font>
                     <hr>
                     <?php echo $anda->rumusan ?>
                 </td>
                 <td colspan="4" class="text-center">
-                    <font style="font-size: 30px; text-transform:uppercase;">THE <?php echo $pen_1->ciri ?></font>
+                    <font style="font-size: 30px; text-transform:uppercase; font-weight:bold;">THE <?php echo $pen_1->ciri ?></font>
                     <hr><?php echo $pen_1->rumusan ?>
                 </td>
                 <td colspan="4" class="text-center">
-                    <font style="font-size: 30px; text-transform:uppercase;">THE <?php echo $pen_2->ciri ?></font>
+                    <font style="font-size: 30px; text-transform:uppercase; font-weight:bold;">THE <?php echo $pen_2->ciri ?></font>
                     <hr><?php echo $pen_2->rumusan ?>
                 </td>
             </tr>
