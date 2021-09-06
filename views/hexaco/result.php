@@ -76,7 +76,7 @@ use kartik\popover\PopoverX;
             'clientOptions' => [
                 'responsive' => true,
                 'legend' => [
-                    // 'display' => true,
+                    'display' => true,
                     'position' => 'bottom',
                     'labels' => [
                         'fontSize' => 14,
@@ -91,16 +91,16 @@ use kartik\popover\PopoverX;
                      var label = d.labels[t.index];
                      var data = d.datasets[t.datasetIndex].data[t.index];
                      if (t.datasetIndex === 0)
-                     return label + ': ' + data;
+                     return label;
                      else if (t.datasetIndex === 1)
                      return label + ': $' + data.toLocaleString();
               }"),
                         'title' => new JsExpression('function(){}')
-                        //                                        'title' => '',
+                        //    'title' => 'a',
                     ]
                 ],
                 'hover' => [
-                    'mode' => true
+                    'mode' => true,
                 ],
                 'maintainAspectRatio' => false,
                 'scale' => [
@@ -478,14 +478,14 @@ use kartik\popover\PopoverX;
             <br><br>
         <p><strong>6. KETERBUKAAN UNTUK PENGALAMAN:</strong>
 
-        <?php
+            <?php
             echo Main::deskripsi(6);
             echo Main::deskripsi(6.1);
             echo Main::deskripsi(6.2);
             echo Main::deskripsi(6.3);
             echo Main::deskripsi(6.4);
             ?>
-        <br><br>
+            <br><br>
         <p>Sumber: <a href="https://hexaco.org/scaledescriptions">https://hexaco.org/scaledescriptions</a>
 
     </div>

@@ -192,6 +192,21 @@ class Main extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function labelDimensiAnda($id)
+    {
+
+        $model = self::findOne($id);
+
+        return [
+            'Kejujuran-Kerendahan Hati' . ' (' . $model->getDimensiKejujuran() . '%)',
+            'Emosi' . ' (' . $model->getDimensiEmosi() . '%)',
+            'Ekstraversi' . ' (' . $model->getDimensiEkstraversi() . '%)',
+            'Kebersetujuan' . ' (' . $model->getDimensiKebersetujuan() . '%)',
+            'Keberhemahan' . ' (' . $model->getDimensiKeberhemahan() . '%)',
+            'Terbuka kepada Pengalaman' . ' (' . $model->getDimensiTerbuka() . '%)',
+        ];
+    }
+
     public static function dimensiAnda($id)
     {
         $model = self::findOne($id);

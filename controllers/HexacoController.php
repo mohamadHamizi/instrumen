@@ -398,7 +398,7 @@ class HexacoController extends Controller
             'dimensiArr' => $dimensiArr,
             'id' => $id,
             'bil' => 1,
-            'labelDimensi' => Main::labelDimensi(),
+            'labelDimensi' => Main::labelDimensiAnda($id),
         ]);
     }
 
@@ -422,7 +422,7 @@ class HexacoController extends Controller
             'dimensiArr' => $dimensiArr,
             'id' => $id,
             'bil' => 1,
-            'labelDimensi' => Main::labelDimensi(),
+            'labelDimensi' => Main::labelDimensiAnda($id),
         ]);
     }
 
