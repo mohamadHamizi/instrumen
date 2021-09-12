@@ -2,28 +2,28 @@
 
 namespace app\controllers;
 
-use app\models\hexaco\Demo;
-use app\models\hexaco\Ekstraversi;
-use app\models\hexaco\Emosi;
-use app\models\hexaco\Keberhemahan;
-use app\models\hexaco\Kebersetujuan;
-use app\models\hexaco\Kejujuran;
-use app\models\hexaco\Main;
-use app\models\hexaco\Questions;
-use app\models\hexaco\Terbuka;
+use app\models\eq\Demo;
+use app\models\eq\Main;
+use app\models\eq\Bhgn1;
+use app\models\eq\Bhgn2;
+use app\models\eq\Bhgn3;
+use app\models\eq\Bhgn4;
+use app\models\eq\Bhgn5;
+use app\models\eq\Bhgn6;
+use app\models\eq\Questions;
 use Yii;
 use yii\web\Controller;
 use app\models\UtilityFunc;
 
 /**
- * HexacoController
+ * TipiController
  */
-class HexacoController extends Controller
+class EqController extends Controller
 {
 
     public function actionIndex()
     {
-        $this->view->title = "The HEXACO Personality Inventory-Malay (HEXACO-Malay)";
+        $this->view->title = "(EQ-Malay)";
 
         $model = new Main();
 
@@ -44,8 +44,8 @@ class HexacoController extends Controller
             $model->create_dt = date('Y-m-d H:i:s');
             if ($model->save()) {
 
-                $this->ifSuccess();
-                $session->set('hexaco_main_id', $model->id);
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
+                $session->set('eq_main_id', $model->id);
                 return $this->redirect(['demografi']);
             }
         }
@@ -57,10 +57,10 @@ class HexacoController extends Controller
     {
         $this->view->title = "Demografi";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
@@ -90,7 +90,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
 
                 return $this->redirect(['bhgn1']);
             }
@@ -109,21 +109,21 @@ class HexacoController extends Controller
     public function actionBhgn1()
     {
 
-        $this->view->title = "Kejujuran Kerendahan Hati";
+        $this->view->title = "Intrapersonal";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
         $dataProvider = Questions::getProvider(1);
 
-        $model = new Kejujuran();
+        $model = new Bhgn1();
         $disabled = false;
 
-        $check_model = Kejujuran::findOne(['main_id' => $id]);
+        $check_model = Bhgn1::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
@@ -139,7 +139,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['bhgn2']);
             }
         }
@@ -154,21 +154,21 @@ class HexacoController extends Controller
 
     public function actionBhgn2()
     {
-        $this->view->title = "Emosi";
+        $this->view->title = "Interpersonal";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
         $dataProvider = Questions::getProvider(2);
 
-        $model = new Emosi();
+        $model = new Bhgn2();
         $disabled = false;
 
-        $check_model = Emosi::findOne(['main_id' => $id]);
+        $check_model = Bhgn2::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
@@ -184,7 +184,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['bhgn3']);
             }
         }
@@ -199,21 +199,21 @@ class HexacoController extends Controller
 
     public function actionBhgn3()
     {
-        $this->view->title = "Ekstraversi";
+        $this->view->title = "Pengurusan Stress";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
         $dataProvider = Questions::getProvider(3);
 
-        $model = new Ekstraversi();
+        $model = new Bhgn3();
         $disabled = false;
 
-        $check_model = Ekstraversi::findOne(['main_id' => $id]);
+        $check_model = Bhgn3::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
@@ -229,7 +229,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['bhgn4']);
             }
         }
@@ -243,21 +243,21 @@ class HexacoController extends Controller
     }
     public function actionBhgn4()
     {
-        $this->view->title = "Kebersetujuan";
+        $this->view->title = "Adaptasi";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
         $dataProvider = Questions::getProvider(4);
 
-        $model = new Kebersetujuan();
+        $model = new Bhgn4();
         $disabled = false;
 
-        $check_model = Kebersetujuan::findOne(['main_id' => $id]);
+        $check_model = Bhgn4::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
@@ -273,7 +273,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['bhgn5']);
             }
         }
@@ -287,21 +287,21 @@ class HexacoController extends Controller
     }
     public function actionBhgn5()
     {
-        $this->view->title = "Keberhemahan";
+        $this->view->title = "Mood Umum";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
         $dataProvider = Questions::getProvider(5);
 
-        $model = new Keberhemahan();
+        $model = new Bhgn5();
         $disabled = false;
 
-        $check_model = Keberhemahan::findOne(['main_id' => $id]);
+        $check_model = Bhgn5::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
@@ -317,7 +317,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['bhgn6']);
             }
         }
@@ -331,21 +331,21 @@ class HexacoController extends Controller
     }
     public function actionBhgn6()
     {
-        $this->view->title = "Terbuka kepada Pengalaman";
+        $this->view->title = "Positive Impression";
 
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
         $dataProvider = Questions::getProvider(6);
 
-        $model = new Terbuka();
+        $model = new Bhgn6();
         $disabled = false;
 
-        $check_model = Terbuka::findOne(['main_id' => $id]);
+        $check_model = Bhgn6::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
@@ -361,7 +361,7 @@ class HexacoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                $this->ifSuccess();
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['result']);
             }
         }
@@ -376,37 +376,35 @@ class HexacoController extends Controller
 
     public function actionResult()
     {
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
-            $this->ifError();
+            UtilityFunc::ifError("Sila isi masukkan No. Kad Pengenalan");
             return $this->redirect(['index']);
         }
 
-        $model = Main::find()->where(['id'=>$id])->one();
-
-        $dimensiArr = Main::dimensiAnda($id);
+        $model = Main::find()->where(['id' => $id])->one();
 
         $dataArr = [
-            'name' => 'Indeks',
-            'data' => Main::resultAnda($id),
+            Main::FormulaIndeks(1, $id),
+            Main::FormulaIndeks(2, $id),
+            Main::FormulaIndeks(3, $id),
+            Main::FormulaIndeks(4, $id),
+            Main::FormulaIndeks(5, $id),
+            Main::FormulaIndeks(6, $id),
         ];
 
         return $this->render('result', [
             'model' => $model,
             'dataArr' => $dataArr,
-            'dimensiArr' => $dimensiArr,
-            'id' => $id,
-            'bil' => 1,
-            'labelDimensi' => Main::labelDimensiAnda($id),
         ]);
     }
 
     public function actionViewResult($id)
     {
-        
-        $demo = Demo::findOne(['main_id'=>$id]);
-        $model = Main::find()->where(['id'=>$id])->one();
+
+        $demo = Demo::findOne(['main_id' => $id]);
+        $model = Main::find()->where(['id' => $id])->one();
 
         $dimensiArr = Main::dimensiAnda($id);
 
@@ -431,15 +429,15 @@ class HexacoController extends Controller
 
         Yii::$app->session->close();
 
-        Yii::$app->session->remove('hexaco_main_id');
+        Yii::$app->session->remove('eq_main_id');
 
         Yii::$app->session->destroy(); // destroy all session
-        return $this->redirect(['hexaco/index']);
+        return $this->redirect(['eq/index']);
     }
 
     protected function checkSession()
     {
-        $id = \Yii::$app->session->get('hexaco_main_id');
+        $id = \Yii::$app->session->get('eq_main_id');
 
         if (!$id) {
             Yii::$app->getSession()->setFlash('danger', [
@@ -453,32 +451,5 @@ class HexacoController extends Controller
             ]);
             return $this->redirect(['index']);
         }
-    }
-
-
-    protected function ifError()
-    {
-        return Yii::$app->getSession()->setFlash('danger', [
-            'type' => 'danger',
-            'duration' => 5000,
-            'icon' => 'fa fa-exclamation',
-            'message' => 'Sila isi masukkan No. Kad Pengenalan',
-            'title' => 'Tidak Berjaya',
-            'positonY' => 'top',
-            'positonX' => 'right'
-        ]);
-    }
-
-    protected function ifSuccess()
-    {
-        return Yii::$app->getSession()->setFlash('success', [
-            'type' => 'success',
-            'duration' => 5000,
-            'icon' => 'fa fa-check',
-            'message' => 'Maklumat telah disimpan',
-            'title' => 'Berjaya',
-            'positonY' => 'top',
-            'positonX' => 'right'
-        ]);
     }
 }
