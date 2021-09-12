@@ -3,6 +3,8 @@
 namespace app\models\eq;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "eq_demo".
@@ -34,6 +36,34 @@ class Demo extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'eq_demo';
+    }
+
+    //  untuk convert date
+    public function behaviors()
+    {
+        return [
+            'tarikh_lahir' => [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
+                ],
+                'value' => function ($event) {
+                    return date('Y-m-d', strtotime(str_replace("/", "-", $this->tarikh_lahir)));
+                },
+            ],
+        ];
+    }
+
+    public function afterFind()
+
+    {
+
+        $this->tarikh_lahir = Yii::$app->formatter->asDate($this->tarikh_lahir, 'dd/MM/yyyy');
+
+        parent::afterFind();
+
+        return true;
     }
 
     /**
