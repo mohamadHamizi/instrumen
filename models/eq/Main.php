@@ -29,7 +29,8 @@ class Main extends \yii\db\ActiveRecord
     {
         return [
             [['icno'], 'required'],
-            [['create_dt'], 'safe'],
+            [['create_dt', 'completed_dt', 'completed'], 'safe'],
+            [['completed'], 'integer'],
             [['icno'], 'string', 'max' => 12],
         ];
     }
@@ -43,6 +44,8 @@ class Main extends \yii\db\ActiveRecord
             'id' => 'ID',
             'icno' => 'Icno',
             'create_dt' => 'Create Dt',
+            'completed_dt' => 'Tarikh/Masa Selesai',
+            'completed' => 'Selesai ?',
         ];
     }
 
@@ -140,5 +143,34 @@ class Main extends \yii\db\ActiveRecord
         }
 
         return null;
+    }
+
+    public static function checkComplete($id)
+    {
+        $model = Main::find()->where(['id' => $id, 'completed' => 1])->one();
+
+        if ($model) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function label($id = null)
+    {
+        $arr = [
+            "Intrapersonal",
+            "Interpersonal",
+            "Pengurusan Stres",
+            "Adaptasi",
+            "Mood Umum",
+            "Tanggapan Positif",
+        ];
+
+        if ($id) {
+            return $arr[$id];
+        }
+
+        return $arr;
     }
 }

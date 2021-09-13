@@ -23,7 +23,7 @@ class EqController extends Controller
 
     public function actionIndex()
     {
-        $this->view->title = "(EQ-Malay)";
+        $this->view->title = "EQ-Malay";
 
         $model = new Main();
 
@@ -121,13 +121,12 @@ class EqController extends Controller
         $dataProvider = Questions::getProvider(1);
 
         $model = new Bhgn1();
-        $disabled = false;
+        $disabled = Main::checkComplete($id);
 
         $check_model = Bhgn1::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -166,13 +165,12 @@ class EqController extends Controller
         $dataProvider = Questions::getProvider(2);
 
         $model = new Bhgn2();
-        $disabled = false;
+        $disabled = Main::checkComplete($id);
 
         $check_model = Bhgn2::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -199,7 +197,7 @@ class EqController extends Controller
 
     public function actionBhgn3()
     {
-        $this->view->title = "Pengurusan Stress";
+        $this->view->title = "Pengurusan Stres";
 
         $id = \Yii::$app->session->get('eq_main_id');
 
@@ -211,13 +209,12 @@ class EqController extends Controller
         $dataProvider = Questions::getProvider(3);
 
         $model = new Bhgn3();
-        $disabled = false;
+        $disabled = Main::checkComplete($id);
 
         $check_model = Bhgn3::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -255,13 +252,12 @@ class EqController extends Controller
         $dataProvider = Questions::getProvider(4);
 
         $model = new Bhgn4();
-        $disabled = false;
+        $disabled = Main::checkComplete($id);
 
         $check_model = Bhgn4::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -299,13 +295,12 @@ class EqController extends Controller
         $dataProvider = Questions::getProvider(5);
 
         $model = new Bhgn5();
-        $disabled = false;
+        $disabled = Main::checkComplete($id);
 
         $check_model = Bhgn5::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -331,7 +326,7 @@ class EqController extends Controller
     }
     public function actionBhgn6()
     {
-        $this->view->title = "Positive Impression";
+        $this->view->title = "Tanggapan Positif";
 
         $id = \Yii::$app->session->get('eq_main_id');
 
@@ -343,13 +338,12 @@ class EqController extends Controller
         $dataProvider = Questions::getProvider(6);
 
         $model = new Bhgn6();
-        $disabled = false;
+        $disabled = Main::checkComplete($id);
 
         $check_model = Bhgn6::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
-            $disabled = true;
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -361,6 +355,15 @@ class EqController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
+
+                $main = Main::findOne($id);
+
+                if ($main->completed == 0) {
+                    $main->completed = 1;
+                    $main->completed_dt = date('Y-m-d H:i:s');
+                    $main->save();
+                }
+
                 UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['result']);
             }
@@ -397,32 +400,33 @@ class EqController extends Controller
         return $this->render('result', [
             'model' => $model,
             'dataArr' => $dataArr,
+            'label' => Main::label(),
         ]);
     }
 
-    public function actionViewResult($id)
-    {
+    // public function actionViewResult($id)
+    // {
 
-        $demo = Demo::findOne(['main_id' => $id]);
-        $model = Main::find()->where(['id' => $id])->one();
+    //     $demo = Demo::findOne(['main_id' => $id]);
+    //     $model = Main::find()->where(['id' => $id])->one();
 
-        $dimensiArr = Main::dimensiAnda($id);
+    //     $dimensiArr = Main::dimensiAnda($id);
 
-        $dataArr = [
-            'name' => 'Indeks',
-            'data' => Main::resultAnda($id),
-        ];
+    //     $dataArr = [
+    //         'name' => 'Indeks',
+    //         'data' => Main::resultAnda($id),
+    //     ];
 
-        return $this->render('view-result', [
-            'demo' => $demo,
-            'model' => $model,
-            'dataArr' => $dataArr,
-            'dimensiArr' => $dimensiArr,
-            'id' => $id,
-            'bil' => 1,
-            'labelDimensi' => Main::labelDimensiAnda($id),
-        ]);
-    }
+    //     return $this->render('view-result', [
+    //         'demo' => $demo,
+    //         'model' => $model,
+    //         'dataArr' => $dataArr,
+    //         'dimensiArr' => $dimensiArr,
+    //         'id' => $id,
+    //         'bil' => 1,
+    //         'labelDimensi' => Main::labelDimensiAnda($id),
+    //     ]);
+    // }
 
     public function actionDes()
     {
