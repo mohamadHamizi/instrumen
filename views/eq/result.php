@@ -59,6 +59,11 @@ use dosamigos\chartjs\ChartJs;
                             <td class="text-center"><strong><?= $v ?>%</strong></td>
                         <?php } ?>
                     </tr>
+                    <tr style="font-size: 12px; text-transform:uppercase;color:black;">
+                        <?php foreach ($deskripsi as $des) { ?>
+                            <td class="text-center"><strong><?= $des ?></strong></td>
+                        <?php } ?>
+                    </tr>
                 </table>
             </div>
         </div>

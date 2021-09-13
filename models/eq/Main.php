@@ -173,4 +173,22 @@ class Main extends \yii\db\ActiveRecord
 
         return $arr;
     }
+
+    public static function deskripsi($id = null)
+    {
+        $arr = [
+            "Berupaya memahami emosi diri dan orang lain, menilai diri, berdikari, berpendirian serta mempunyai matlamat.",
+            "Berupaya membina empati, bertanggungjawab serta disenangi oleh orang lain.",
+            "Berupaya mengawal tekanan dan mengawal diri ketika berada dalam keadaan yang sukar tanpa terperangkap di dalam keadaan tersebut.",
+            "Berupaya membuat keputusan dengan baik, fleksibel dan juga seorang yang objektif.",
+            "Seorang yang optimis dan periang. ",
+            "Individu yang memperoleh skor yang tinggi dalam komponen ini cenderung memberikan tindak balas positif yang berlebihan (ekstrim)",
+        ];
+
+        if ($id) {
+            return $arr[$id];
+        }
+
+        return $arr;
+    }
 }

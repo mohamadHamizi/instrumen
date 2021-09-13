@@ -401,6 +401,7 @@ class EqController extends Controller
             'model' => $model,
             'dataArr' => $dataArr,
             'label' => Main::label(),
+            'deskripsi' => Main::deskripsi(),
         ]);
     }
 
