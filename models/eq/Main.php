@@ -3,6 +3,7 @@
 namespace app\models\eq;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 
 /**
@@ -43,9 +44,10 @@ class Main extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'icno' => 'Icno',
-            'create_dt' => 'Create Dt',
+            'create_dt' => 'Tarikh/Masa',
             'completed_dt' => 'Tarikh/Masa Selesai',
             'completed' => 'Selesai ?',
+            'btnView' => 'Perician',
         ];
     }
 
@@ -53,6 +55,7 @@ class Main extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Demo::class, ['main_id' => 'id']);
     }
+    
 
     public static function reverseSkor($skorItem)
     {
@@ -138,8 +141,8 @@ class Main extends \yii\db\ActiveRecord
 
     public function getBtnView()
     {
-        if ($this->terbuka->item60) {
-            return  Html::a('<i class="fa fa-eye"></i>', ['hexaco/view-result', 'id' => $this->id], ['target' => '_blank']);
+        if ($this->checkComplete($this->id)) {
+            return  Html::a('<i class="fa fa-eye"></i>', ['eq/view-result', 'id' => $this->id], ['target' => '_blank']);
         }
 
         return null;
@@ -174,6 +177,13 @@ class Main extends \yii\db\ActiveRecord
         return $arr;
     }
 
+    /**
+     * Paparan deskripsi
+     * 
+     * @param int $id 0 to 5
+     * 
+     * @return array if id provided return specific description
+     */
     public static function deskripsi($id = null)
     {
         $arr = [
@@ -190,5 +200,79 @@ class Main extends \yii\db\ActiveRecord
         }
 
         return $arr;
+    }
+
+    /**
+     * Return dataprovider object
+     * 
+     * @param array $params parameters
+     * 
+     * @return array object
+     */
+    public function search($params)
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => self::find(),
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        return $dataProvider;
+    }
+
+    public function getIntrapersonal()
+    {
+        if($this->checkComplete($this->id)){
+            return $this->FormulaIndeks(1,$this->id);
+        }
+
+        return null;
+    }
+
+    public function getInterpersonal()
+    {
+        if($this->checkComplete($this->id)){
+            return $this->FormulaIndeks(2,$this->id);
+        }
+
+        return null;
+    }
+    public function getPengurusanStres()
+    {
+        if($this->checkComplete($this->id)){
+            return $this->FormulaIndeks(3,$this->id);
+        }
+
+        return null;
+    }
+    public function getAdaptasi()
+    {
+        if($this->checkComplete($this->id)){
+            return $this->FormulaIndeks(4,$this->id);
+        }
+
+        return null;
+    }
+    public function getMoodUmum()
+    {
+        if($this->checkComplete($this->id)){
+            return $this->FormulaIndeks(5,$this->id);
+        }
+
+        return null;
+    }
+    public function getTanggapanPositif()
+    {
+        if($this->checkComplete($this->id)){
+            return $this->FormulaIndeks(6,$this->id);
+        }
+
+        return null;
     }
 }

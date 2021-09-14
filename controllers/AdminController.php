@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\bfi\Main as BfiMain;
+use app\models\eq\Main as EqMain;
 use app\models\hexaco\Main;
 use Yii;
 use yii\filters\AccessControl;
@@ -26,7 +27,7 @@ class AdminController extends \yii\web\Controller {
     public function behaviors() {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
 //                'only' => ['index'],
                 'rules' => [
                     [
@@ -37,7 +38,7 @@ class AdminController extends \yii\web\Controller {
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -149,6 +150,20 @@ class AdminController extends \yii\web\Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('data-bfi', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
+    public function actionDataEq() {
+        
+        ini_set('memory_limit', '1024M'); // or you could use 1G
+        
+        $searchModel = new EqMain();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('data-eq', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);

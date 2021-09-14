@@ -405,29 +405,29 @@ class EqController extends Controller
         ]);
     }
 
-    // public function actionViewResult($id)
-    // {
+    public function actionViewResult($id)
+    {
 
-    //     $demo = Demo::findOne(['main_id' => $id]);
-    //     $model = Main::find()->where(['id' => $id])->one();
+        $demo = Demo::findOne(['main_id' => $id]);
+        $model = Main::find()->where(['id' => $id])->one();
 
-    //     $dimensiArr = Main::dimensiAnda($id);
+        $dataArr = [
+            Main::FormulaIndeks(1, $id),
+            Main::FormulaIndeks(2, $id),
+            Main::FormulaIndeks(3, $id),
+            Main::FormulaIndeks(4, $id),
+            Main::FormulaIndeks(5, $id),
+            Main::FormulaIndeks(6, $id),
+        ];
 
-    //     $dataArr = [
-    //         'name' => 'Indeks',
-    //         'data' => Main::resultAnda($id),
-    //     ];
-
-    //     return $this->render('view-result', [
-    //         'demo' => $demo,
-    //         'model' => $model,
-    //         'dataArr' => $dataArr,
-    //         'dimensiArr' => $dimensiArr,
-    //         'id' => $id,
-    //         'bil' => 1,
-    //         'labelDimensi' => Main::labelDimensiAnda($id),
-    //     ]);
-    // }
+        return $this->render('view-result', [
+            'demo' => $demo,
+            'model' => $model,
+            'dataArr' => $dataArr,
+            'label' => Main::label(),
+            'deskripsi' => Main::deskripsi(),
+        ]);
+    }
 
     public function actionDes()
     {

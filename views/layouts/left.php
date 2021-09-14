@@ -88,6 +88,22 @@
                     ],
                 ],
                 [
+                    'label' => 'EQ-Malay',
+                    'icon' => 'id-badge',
+                    'url' => '#',
+                    'items' => [
+                        ['label' => 'Pengenalan', 'icon' => 'id-badge', 'url' => ['eq/index'], 'visible' => true],
+                        ['label' => 'Demografi', 'icon' => 'id-badge', 'url' => ['eq/demografi'], 'visible' => true],
+                        ['label' => 'Bahagian 1', 'icon' => 'id-badge', 'url' => ['eq/bhgn1'], 'visible' => true],
+                        ['label' => 'Bahagian 2', 'icon' => 'id-badge', 'url' => ['eq/bhgn2'], 'visible' => true],
+                        ['label' => 'Bahagian 3', 'icon' => 'id-badge', 'url' => ['eq/bhgn3'], 'visible' => true],
+                        ['label' => 'Bahagian 4', 'icon' => 'id-badge', 'url' => ['eq/bhgn4'], 'visible' => true],
+                        ['label' => 'Bahagian 5', 'icon' => 'id-badge', 'url' => ['eq/bhgn5'], 'visible' => true],
+                        ['label' => 'Bahagian 6', 'icon' => 'id-badge', 'url' => ['eq/bhgn6'], 'visible' => true],
+                        ['label' => 'Keputusan', 'icon' => 'id-badge', 'url' => ['eq/result'], 'visible' => true],
+                    ],
+                ],
+                [
                     'label' => 'Admin Dashboard',
                     'icon' => 'dashboard',
                     'url' => '#',
@@ -101,6 +117,7 @@
                         ['label' => 'TIPI', 'icon' => 'smile-o', 'url' => ['admin/data-tipi'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'HEXACO', 'icon' => 'user-circle-o', 'url' => ['admin/data-hexaco'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'BFI', 'icon' => 'user-secret', 'url' => ['admin/data-bfi'], 'visible' => !Yii::$app->user->isGuest],
+                        ['label' => 'EQ', 'icon' => 'id-badge', 'url' => ['admin/data-eq'], 'visible' => !Yii::$app->user->isGuest],
                     ]
                 ],
             ],
