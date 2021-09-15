@@ -22,7 +22,7 @@ use app\models\OkuQuestions;
         $form = ActiveForm::begin();
         ?>
         <div class="box-body">
-            <p><strong>Arahan:</strong> Pernyataan berikut merupakan persetujuan anda mengenai kesan kebahagiaan subjektif OKU-Fizikal. Anda dikehendaki menjawab <strong>SEMUA</strong> pernyataan dengan menandakan pada salah satu respons yang diberikan. </p>
+            <p><strong>Arahan:</strong> Anda dikehendaki menjawab <strong>SEMUA</strong> pernyataan dengan menandakan pada salah satu respons yang diberikan. </p>
             <div class="table-responsive">
 
                  <?=$this->render('_skala')?>

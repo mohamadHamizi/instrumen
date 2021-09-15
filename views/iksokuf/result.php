@@ -124,7 +124,7 @@ use app\models\VDemoResults;
 <!-- PRODUCT LIST -->
 <div class="box box-success">
     <div class="box-header with-border">
-        <h3 class="box-title">BAHAGIAN B : SUMBER KEBAHAGIAN SUBJEKTIF OKU-FIZIKAL</h3>
+        <h3 class="box-title">BAHAGIAN B : SUMBER KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -140,7 +140,7 @@ use app\models\VDemoResults;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'SKOR SUMBER KEBAHAGIAN SUBJEKTIF OKU-FIZIKAL'
+                    'text' => 'SKOR SUMBER KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
                 ],
                 'xAxis' => [
                     'categories' => OkuGroups::groupLabel('B'),
@@ -204,7 +204,7 @@ use app\models\VDemoResults;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'STATISTIK STRATEGI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                    'text' => 'SKOR STRATEGI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
                 ],
                 'xAxis' => [
                     'categories' => OkuGroups::groupLabel('C'),
@@ -249,7 +249,7 @@ use app\models\VDemoResults;
 <!-- PRODUCT LIST -->
 <div class="box box-danger">
     <div class="box-header with-border">
-        <h3 class="box-title">BAHAGIAN D : KESEJAHTERAAN PSIKOLOGI</h3>
+        <h3 class="box-title">BAHAGIAN D : KESEJAHTERAAN PSIKOLOGI OKU-FIZIKAL</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -265,7 +265,7 @@ use app\models\VDemoResults;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'SKOR KESEJAHTERAAN PSIKOLOGI'
+                    'text' => 'SKOR KESEJAHTERAAN PSIKOLOGI OKU-FIZIKAL'
                 ],
                 'xAxis' => [
                     'categories' => OkuGroups::groupLabel('D'),
