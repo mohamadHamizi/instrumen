@@ -113,7 +113,13 @@ class IksokufController extends Controller
             $model = $dimensi;
         }
 
+        $disabled = OkuMain::checkComplete($main_id);
+
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['bahagian-b']);
+            }
 
             $model->main_id = $main_id;
 
@@ -128,7 +134,7 @@ class IksokufController extends Controller
             'model1' => $model,
             'groups' => $groups,
             'main_id' => $main_id,
-            'disabled' => OkuMain::checkComplete($main_id),
+            'disabled' => $disabled,
         ]);
     }
 
@@ -154,8 +160,14 @@ class IksokufController extends Controller
             $model = $sumber;
         }
 
+        $disabled = OkuMain::checkComplete($main_id);
+
 
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['bahagian-c']);
+            }
 
             $model->main_id = $main_id;
 
@@ -169,7 +181,7 @@ class IksokufController extends Controller
         return $this->render('bahagian-b', [
             'model1' => $model,
             'groups' => $groups,
-            'disabled' => OkuMain::checkComplete($main_id),
+            'disabled' => $disabled,
         ]);
     }
 
@@ -191,7 +203,14 @@ class IksokufController extends Controller
             $model = $strategi;
         }
 
+        $disabled = OkuMain::checkComplete($main_id);
+
+
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['bahagian-d']);
+            }
 
             $model->main_id = $main_id;
 
@@ -205,7 +224,7 @@ class IksokufController extends Controller
         return $this->render('bahagian-c', [
             'model1' => $model,
             'groups' => $groups,
-            'disabled' => OkuMain::checkComplete($main_id),
+            'disabled' => $disabled,
         ]);
     }
 
@@ -227,7 +246,13 @@ class IksokufController extends Controller
             $model = $kesan;
         }
 
+        $disabled = OkuMain::checkComplete($main_id);
+
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['bahagian-e']);
+            }
 
             $model->main_id = $main_id;
 
@@ -243,7 +268,7 @@ class IksokufController extends Controller
         return $this->render('bahagian-d', [
             'model1' => $model,
             'groups' => $groups,
-            'disabled' => OkuMain::checkComplete($main_id),
+            'disabled' => $disabled,
         ]);
     }
 
@@ -263,7 +288,13 @@ class IksokufController extends Controller
             $model = $kesan;
         }
 
+        $disabled = OkuMain::checkComplete($main_id);
+
         if ($model->load(Yii::$app->request->post())) {
+
+            if ($disabled == true) {
+                return $this->redirect(['result']);
+            }
 
             $model->main_id = $main_id;
 
@@ -283,7 +314,7 @@ class IksokufController extends Controller
         return $this->render('bahagian-e', [
             'model1' => $model,
             'type' => 'E',
-            'disabled' => OkuMain::checkComplete($main_id),
+            'disabled' => $disabled,
         ]);
     }
 
