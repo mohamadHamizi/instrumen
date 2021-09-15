@@ -62,7 +62,7 @@ use yii\helpers\Html;
                     <!-- /.box-header -->
                     <div class="box-body" style="">
                         <p>KebahagiaanKu-OKU/MyHappiness-PwD</p>
-                        <?= Html::a('Jawab Soal Selidik <i class="fa fa-arrow-circle-right"></i>', ['tipi/index'], ['class' => 'small-box-footer']) ?>
+                        <?= Html::a('Jawab Soal Selidik <i class="fa fa-arrow-circle-right"></i>', ['iksokuf/index'], ['class' => 'small-box-footer']) ?>
                     </div>
                     <!-- /.box-body -->
 
