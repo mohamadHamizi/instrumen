@@ -11,7 +11,7 @@ use app\models\VDemoResults;
 ?>
 
 <div class="row">
-    <div class="col-lg-6 col-xs-6">
+    <div class="col-lg-4 col-xs-4">
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
@@ -26,7 +26,7 @@ use app\models\VDemoResults;
         </div>
     </div>
     <!-- ./col -->
-    <div class="col-lg-6 col-xs-6">
+    <div class="col-lg-4 col-xs-4">
         <div class="small-box bg-green">
             <div class="inner">
                 <h3><?= $indeksAll ?><sup style="font-size: 20px">%</sup></h3>
@@ -36,6 +36,19 @@ use app\models\VDemoResults;
                 <i class="fa fa-users"></i>
             </div>
             <a href="#" class="small-box-footer">Indeks Keseluruhan <i class="fa fa-line-chart"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-xs-4">
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3><?= $skorE ?><sup style="font-size: 20px">%</sup></h3>
+                <p><?= $tahapSkorE ?></p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-podcast"></i>
+            </div>
+            <a href="#" class="small-box-footer">Indeks SKJ <i class="fa fa-podcast"></i></a>
         </div>
     </div>
 </div>
@@ -62,7 +75,7 @@ use app\models\VDemoResults;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'STATISTIK DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                    'text' => 'SKOR DIMENSI KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
                 ],
                 'xAxis' => [
                     'categories' => OkuGroups::groupLabel('A'),
@@ -127,7 +140,7 @@ use app\models\VDemoResults;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'STATISTIK SUMBER KEBAHAGIAN SUBJEKTIF OKU-FIZIKAL'
+                    'text' => 'SKOR SUMBER KEBAHAGIAN SUBJEKTIF OKU-FIZIKAL'
                 ],
                 'xAxis' => [
                     'categories' => OkuGroups::groupLabel('B'),
@@ -203,8 +216,8 @@ use app\models\VDemoResults;
                 ],
                 'series' => [
                     ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'C')],
-//                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
-//                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
+                    //                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
+                    //                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
                 ],
                 'plotOptions' => [
                     'line' => [
@@ -236,7 +249,7 @@ use app\models\VDemoResults;
 <!-- PRODUCT LIST -->
 <div class="box box-danger">
     <div class="box-header with-border">
-        <h3 class="box-title">BAHAGIAN D : KESAN KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL</h3>
+        <h3 class="box-title">BAHAGIAN D : KESEJAHTERAAN PSIKOLOGI</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -252,7 +265,7 @@ use app\models\VDemoResults;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'STATISTIK KESAN KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL'
+                    'text' => 'SKOR KESEJAHTERAAN PSIKOLOGI'
                 ],
                 'xAxis' => [
                     'categories' => OkuGroups::groupLabel('D'),
@@ -264,8 +277,8 @@ use app\models\VDemoResults;
                 ],
                 'series' => [
                     ['name' => 'ANDA', 'data' => OkuScoring::loadScale($main_id, 'D')],
-//                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
-//                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
+                    //                    ['name' => 'GLOBAL', 'data' => [3.8, 3, 3.4,3.2,2.8,4,4]],
+                    //                    ['name' => 'SABAH', 'data' => [3.2, 2.8, 3.1,2.8,2,3.5,3]]
                 ],
                 'plotOptions' => [
                     'line' => [
@@ -297,5 +310,3 @@ use app\models\VDemoResults;
     <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi', ['iksokuf/des'], ['class' => 'btn btn-danger']) ?>
 
 </div>
-
-

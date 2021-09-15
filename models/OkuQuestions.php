@@ -49,19 +49,20 @@ class OkuQuestions extends \yii\db\ActiveRecord
             'pernyataan' => 'Pernyataan',
         ];
     }
-    
-    public function getSmallCode(){
+
+    public function getSmallCode()
+    {
         return strtolower($this->code);
     }
-    
-    public static function getProvider($group_id, $type){
-        
+
+    public static function getProvider($group_id = null, $type)
+    {
+
         $provider = new ActiveDataProvider([
-            'query' => self::find()->where(['group_id'=>$group_id, 'type'=>$type])->orderBy(['id' => SORT_ASC]),
+            'query' => self::find()->where(['type' => $type])->andFilterWhere(['group_id' => $group_id])->orderBy(['id' => SORT_ASC]),
             'pagination' => false,
         ]);
-        
+
         return $provider;
-        
     }
 }

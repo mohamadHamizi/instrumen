@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\OkuBhgnE;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -15,13 +16,16 @@ use app\models\OkuDemografi;
 use app\models\OkuScoring;
 use app\models\OkuTotals;
 use app\models\OkuIndeks;
+use app\models\UtilityFunc;
 
 /**
  * IksokufController implements the CRUD actions for Iksokuf model.
  */
-class IksokufController extends Controller {
+class IksokufController extends Controller
+{
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $this->view->title = "KebahagiaanKu-OKU/MyHappiness-PwD";
 
         $model = new OkuMain();
@@ -34,30 +38,14 @@ class IksokufController extends Controller {
             //sekiranya ada rekod.. just continue ke page yang blum ada markah
             if ($exist) {
 
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
-                
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
+
                 $session->set('icno', $exist->icno);
                 $session->set('main_id', $exist->id);
                 return $this->redirect(['demografi']);
             } else {
-                
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
 
                 $model->created_dt = date("Y-m-d H:i:s");
 
@@ -70,19 +58,20 @@ class IksokufController extends Controller {
         }
 
         return $this->render('index', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
-    public function actionDemografi() {
-        
+    public function actionDemografi()
+    {
+
         $this->view->title = "PROFIL DEMOGRAFI";
         $this->checkSession();
 
         $main_id = \Yii::$app->session->get('main_id');
 
         $model = new OkuDemografi();
-        
+
         $demografi = OkuDemografi::findOne(['main_id' => $main_id]);
 
         if ($demografi) {
@@ -94,25 +83,19 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
+
                 return $this->redirect(['bahagian-a']);
             }
         }
 
         return $this->render('demografi', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
-    public function actionBahagianA() {
+    public function actionBahagianA()
+    {
 
         $this->checkSession();
 
@@ -135,23 +118,17 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
+
                 return $this->redirect(['bahagian-b']);
             }
         }
 
         return $this->render('bahagian-a', [
-                    'model1' => $model,
-                    'groups' => $groups,
+            'model1' => $model,
+            'groups' => $groups,
             'main_id' => $main_id,
+            'disabled' => OkuMain::checkComplete($main_id),
         ]);
     }
 
@@ -159,7 +136,8 @@ class IksokufController extends Controller {
      * Lists all RekodCuti models.
      * @return mixed
      */
-    public function actionBahagianB() {
+    public function actionBahagianB()
+    {
 
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
@@ -182,26 +160,21 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
+
                 return $this->redirect(['bahagian-c']);
             }
         }
 
         return $this->render('bahagian-b', [
-                    'model1' => $model,
-                    'groups' => $groups,
+            'model1' => $model,
+            'groups' => $groups,
+            'disabled' => OkuMain::checkComplete($main_id),
         ]);
     }
 
-    public function actionBahagianC() {
+    public function actionBahagianC()
+    {
 
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
@@ -223,31 +196,26 @@ class IksokufController extends Controller {
             $model->main_id = $main_id;
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
+
                 return $this->redirect(['bahagian-d']);
             }
         }
 
         return $this->render('bahagian-c', [
-                    'model1' => $model,
-                    'groups' => $groups,
+            'model1' => $model,
+            'groups' => $groups,
+            'disabled' => OkuMain::checkComplete($main_id),
         ]);
     }
 
-    public function actionBahagianD() {
+    public function actionBahagianD()
+    {
 
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
-        $this->view->title = "BAHAGIAN D : KESAN KEBAHAGIAAN SUBJEKTIF OKU-FIZIKAL";
+        $this->view->title = "BAHAGIAN D : KESEJAHTERAAN PSIKOLOGI";
 
         $groups = OkuGroups::findAll(['type' => 'D']);
 
@@ -262,7 +230,43 @@ class IksokufController extends Controller {
         if ($model->load(Yii::$app->request->post())) {
 
             $model->main_id = $main_id;
-             
+
+
+            if ($model->save()) {
+
+                UtilityFunc::ifSuccess('Maklumat telah disimpan');
+
+                return $this->redirect(['bahagian-e']);
+            }
+        }
+
+        return $this->render('bahagian-d', [
+            'model1' => $model,
+            'groups' => $groups,
+            'disabled' => OkuMain::checkComplete($main_id),
+        ]);
+    }
+
+    public function actionBahagianE()
+    {
+
+        $this->checkSession();
+        $main_id = \Yii::$app->session->get('main_id');
+
+        $this->view->title = "BAHAGIAN E";
+
+        $model = new OkuBhgnE();
+
+        $kesan = OkuBhgnE::findOne(['main_id' => $main_id]);
+
+        if ($kesan) {
+            $model = $kesan;
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->main_id = $main_id;
+
 
             if ($model->save()) {
 
@@ -270,31 +274,26 @@ class IksokufController extends Controller {
                 $main->status = 1;
                 $main->save(false);
 
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Tahniah anda selesai menjawab semua soalan :)',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                UtilityFunc::ifSuccess('Tahniah anda selesai menjawab semua soalan :)');
+
                 return $this->redirect(['result']);
             }
         }
 
-        return $this->render('bahagian-d', [
-                    'model1' => $model,
-                    'groups' => $groups,
+        return $this->render('bahagian-e', [
+            'model1' => $model,
+            'type' => 'E',
+            'disabled' => OkuMain::checkComplete($main_id),
         ]);
     }
 
-    public function actionResult() {
+    public function actionResult()
+    {
         $this->checkSession();
         $main_id = \Yii::$app->session->get('main_id');
 
         $this->view->title = "KEPUTUSAN";
-        
+
         $this->saveTotals($main_id);
 
         $model = OkuMain::findOne(['id' => $main_id]);
@@ -307,35 +306,38 @@ class IksokufController extends Controller {
         $groupsB = OkuGroups::findAll(['type' => 'B']);
         $groupsC = OkuGroups::findAll(['type' => 'C']);
         $groupsD = OkuGroups::findAll(['type' => 'D']);
-        
-        $indeksAll = OkuIndeks::find()->orderBy(['id'=>'DESC'])->one();
-        
+
+        $indeksAll = OkuIndeks::find()->orderBy(['id' => 'DESC'])->one();
+
         return $this->render('result', [
-                    'indeksAll' => $indeksAll->indeks,
-                    'tahapIndeksAll' => OkuDimensi::tahap($indeksAll->indeks),
-                    'model' => $model,
-                    'bhgnA' => $bhgnA,
-                    'bhgnB' => $bhgnB,
-                    'bhgnC' => $bhgnC,
-                    'bhgnD' => $bhgnD,
-                    'groups' => $groups,
-                    'groupsB' => $groupsB,
-                    'groupsC' => $groupsC,
-                    'groupsD' => $groupsD,
-                    'main_id' => $main_id,
+            'indeksAll' => $indeksAll->indeks,
+            'skorE' => $model->bhgnE->skor,
+            'tahapSkorE' => OkuDimensi::tahap($model->bhgnE->skor),
+            'tahapIndeksAll' => OkuDimensi::tahap($indeksAll->indeks),
+            'model' => $model,
+            'bhgnA' => $bhgnA,
+            'bhgnB' => $bhgnB,
+            'bhgnC' => $bhgnC,
+            'bhgnD' => $bhgnD,
+            'groups' => $groups,
+            'groupsB' => $groupsB,
+            'groupsC' => $groupsC,
+            'groupsD' => $groupsD,
+            'main_id' => $main_id,
         ]);
     }
 
-    public static function saveTotals($main_id){
-        
-        $model = OkuTotals::findOne(['main_id'=>$main_id]);
-        
-        if(!$model){
+    public static function saveTotals($main_id)
+    {
+
+        $model = OkuTotals::findOne(['main_id' => $main_id]);
+
+        if (!$model) {
             $model = new OkuTotals();
         }
-        
-        $model->main_id = $main_id; 
-        
+
+        $model->main_id = $main_id;
+
         $model->kp = OkuScoring::ScaleOnly('KP', $main_id);
         $model->pn = OkuScoring::ScaleOnly('PN', $main_id);
         $model->al = OkuScoring::ScaleOnly('AL', $main_id);
@@ -366,24 +368,24 @@ class IksokufController extends Controller {
         $model->em = OkuScoring::ScaleOnly('EM', $main_id);
         $model->pi = OkuScoring::ScaleOnly('PI', $main_id);
         $model->kh = OkuScoring::ScaleOnly('KH', $main_id);
-        
-        
-        if($model->save()){
+
+
+        if ($model->save()) {
             return true;
         }
-        
-        
+
+
         return false;
-        
     }
 
-    public function actionDes() {
+    public function actionDes()
+    {
 
         \Yii::$app->session->destroy(); // destroy all session
         return $this->redirect(['site/pdpa']);
     }
 
-    
+
 
     /**
      * Displays a single RekodCuti model.
@@ -391,20 +393,21 @@ class IksokufController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
-   
 
-    protected function checkSession() {
+
+    protected function checkSession()
+    {
         $icno = \Yii::$app->session->get('icno');
 
         if (!$icno) {
             return $this->redirect(['index']);
         }
     }
-
 }

@@ -18,6 +18,7 @@
                         ['label' => 'Bahagian B', 'icon' => 'random', 'url' => ['iksokuf/bahagian-b'], 'visible' => true],
                         ['label' => 'Bahagian C', 'icon' => 'hourglass-start', 'url' => ['iksokuf/bahagian-c'], 'visible' => true],
                         ['label' => 'Bahagian D', 'icon' => 'cloud-download', 'url' => ['iksokuf/bahagian-d'], 'visible' => true],
+                        ['label' => 'Bahagian E', 'icon' => 'etsy', 'url' => ['iksokuf/bahagian-e'], 'visible' => true],
                         ['label' => 'Keputusan', 'icon' => 'file-text', 'url' => ['iksokuf/result'], 'visible' => true],
                     ],
                 ],

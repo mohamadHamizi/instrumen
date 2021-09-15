@@ -64,10 +64,10 @@ use app\models\OkuQuestions;
                                 'label' => 'RESPONS',
                                 'headerOptions' => ['class' => 'text-center'],
                                 'contentOptions' => ['class' => 'text-center', 'style' => 'width:20%'],
-                                'value' => function($model) use ($form, $model1) {
+                                'value' => function($model) use ($form, $model1, $disabled) {
                                     //return Html::radio('skor['.$model->id.']', false, ['value' => $model->id]);
                                     $data = [1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5'];
-                                    return $form->field($model1, "$model->smallCode")->radioButtonGroup($data,['class'=>'', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary']]])->label(false);
+                                    return $form->field($model1, "$model->smallCode")->radioButtonGroup($data,['class'=>'', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary', 'disabled'=>$disabled]]])->label(false);
                                 },
                                 'format' => 'raw'
                             ],

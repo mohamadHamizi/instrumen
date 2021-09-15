@@ -54,33 +54,55 @@ class OkuMain extends \yii\db\ActiveRecord
             'created_dt' => 'Created Dt',
         ];
     }
-    
-    
-    public function getDemografi() {
-        return $this->hasOne(OkuDemografi::className(), ['main_id'=>'id']);
+
+
+    public function getDemografi()
+    {
+        return $this->hasOne(OkuDemografi::className(), ['main_id' => 'id']);
     }
-    public function getDimensi() {
-        return $this->hasOne(OkuDimensi::className(), ['main_id'=>'id']);
+    public function getDimensi()
+    {
+        return $this->hasOne(OkuDimensi::className(), ['main_id' => 'id']);
     }
-    public function getSumber() {
-        return $this->hasOne(OkuSumber::className(), ['main_id'=>'id']);
+    public function getSumber()
+    {
+        return $this->hasOne(OkuSumber::className(), ['main_id' => 'id']);
     }
-    public function getStrategi() {
-        return $this->hasOne(OkuStrategi::className(), ['main_id'=>'id']);
+    public function getStrategi()
+    {
+        return $this->hasOne(OkuStrategi::className(), ['main_id' => 'id']);
     }
-    public function getKesan() {
-        return $this->hasOne(OkuKesan::className(), ['main_id'=>'id']);
+    public function getKesan()
+    {
+        return $this->hasOne(OkuKesan::className(), ['main_id' => 'id']);
     }
-    
-    public function getTarikh() {
+    public function getBhgnE()
+    {
+        return $this->hasOne(OkuBhgnE::class, ['main_id' => 'id']);
+    }
+
+    public function getTarikh()
+    {
         return ($this->created_dt) ? Yii::$app->formatter->asDate($this->created_dt, 'd/MM/Y') : '-';
     }
 
-    public function getStatusName() {
-        if($this->status == 1){
+    public function getStatusName()
+    {
+        if ($this->status == 1) {
             return 'COMPLETED';
         } else {
             return 'INCOMPLETE';
         }
+    }
+
+    public static function checkComplete($id)
+    {
+        $model = self::find()->where(['id' => $id, 'status' => 1])->one();
+
+        if ($model) {
+            return true;
+        }
+
+        return false;
     }
 }

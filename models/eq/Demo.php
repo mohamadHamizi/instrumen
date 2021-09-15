@@ -98,7 +98,7 @@ class Demo extends \yii\db\ActiveRecord
             'jantina' => 'Jantina',
             'umur' => 'Umur',
             'jawatan' => 'Jawatan',
-            'organisasi' => 'Organisasi',
+            'organisasi' => 'JFPIU (Bagi kakitangan & pelajar UMS Sahaja)',
             'organisasi_lain' => 'Organisasi Lain',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna',
