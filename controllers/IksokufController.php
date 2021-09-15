@@ -311,8 +311,8 @@ class IksokufController extends Controller
 
         return $this->render('result', [
             'indeksAll' => $indeksAll->indeks,
-            'skorE' => $model->bhgnE->skor,
-            'tahapSkorE' => OkuDimensi::tahap($model->bhgnE->skor),
+            'skorE' => $skorE = ($model->bhgnE) ? $model->bhgnE->skor : 0,
+            'tahapSkorE' => OkuDimensi::tahap($skorE),
             'tahapIndeksAll' => OkuDimensi::tahap($indeksAll->indeks),
             'model' => $model,
             'bhgnA' => $bhgnA,
