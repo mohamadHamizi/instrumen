@@ -975,6 +975,27 @@ class MeaTwoController extends Controller
         ]);
     }
 
+    public function actionViewResult($id)
+    {
+
+        $this->view->title = "Keputusan";
+
+        $model = MeaV2Main::findOne(['id' => $id]);
+        $demo = MeaV2Demo::findOne(['main_id' => $id]);
+
+        $anda = MeaResult::tret($model->jadual1->pil_anda, $model->jadual2->pil_anda, $model->jadual3->pil_anda, $model->jadual4->pil_anda);
+        $pen_1 = MeaResult::tret($model->jadual1->pil_pen_1, $model->jadual2->pil_pen_1, $model->jadual3->pil_pen_1, $model->jadual4->pil_pen_1);
+        $pen_2 = MeaResult::tret($model->jadual1->pil_pen_2, $model->jadual2->pil_pen_2, $model->jadual3->pil_pen_2, $model->jadual4->pil_pen_2);
+
+        return $this->render('view-result', [
+            'model' => $model,
+            'anda' => $anda,
+            'pen_1' => $pen_1,
+            'pen_2' => $pen_2,
+            'demo' => $demo,
+        ]);
+    }
+
     public function actionDes()
     {
 

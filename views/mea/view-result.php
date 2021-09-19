@@ -69,6 +69,7 @@ use yii\widgets\DetailView;
                     'label' => 'Nama Penuh',
                     'value' => $demo->nama_penuh,
                 ],
+                'nama_kj:html',
                 'jantina',
                 'umur',
                 [                      // the owner name of the model

@@ -158,12 +158,13 @@ class VDataMeaV2 extends \yii\db\ActiveRecord
             'j4_pil_anda' => 'J4 Pil Anda',
             'j4_pil_pen_1' => 'J4 Pil Pen 1',
             'j4_pil_pen_2' => 'J4 Pil Pen 2',
+            'btnView' => 'Perincian',
         ];
     }
     public function getBtnView()
     {
         if ($this->j4_pil_pen_2) {
-            return  Html::a('<i class="fa fa-eye"></i>', ['mea/view-result', 'id' => $this->id], ['target' => '_blank']);
+            return  Html::a('<i class="fa fa-eye"></i>', ['mea-two/view-result', 'id' => $this->id], ['target' => '_blank']);
         }
 
         return null;
