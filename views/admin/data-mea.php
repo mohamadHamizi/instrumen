@@ -9,7 +9,6 @@ use kartik\export\ExportMenu;
 /* @var $searchModel app\models\OkuMainSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Senarai';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-info">

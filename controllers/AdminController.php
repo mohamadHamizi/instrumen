@@ -88,6 +88,8 @@ class AdminController extends \yii\web\Controller {
 
     public function actionDataMea() {
         
+        $this->view->title = "Data EA-Malay";
+
         ini_set('memory_limit', '1024M'); // or you could use 1G
         
         $searchModel = new VDataMeaSearch();
@@ -102,6 +104,8 @@ class AdminController extends \yii\web\Controller {
 
     public function actionDataMeaTwo() {
         
+        $this->view->title = "Data EA-Malay Version 2";
+
         ini_set('memory_limit', '1024M'); // or you could use 1G
         
         $searchModel = new VDataMeaV2Search();

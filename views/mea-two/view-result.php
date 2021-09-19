@@ -701,6 +701,7 @@ use yii\widgets\DetailView;
             </tr>
         </table>
     </div>
-    <div class="box-footer text-center">
-        <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi / Jawab Semula', ['mea-two/des'], ['class' => 'btn btn-danger']) ?>
-    </div>
+</div>
+<div class="box-footer text-center">
+    <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Kembali', ['/admin/data-mea-two'], ['class' => 'btn btn-danger']) ?>
+</div>
