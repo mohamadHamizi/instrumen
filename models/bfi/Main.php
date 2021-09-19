@@ -5,7 +5,6 @@ namespace app\models\bfi;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
-
 /**
  * This is the model class for table "tipi_main".
  *
@@ -15,6 +14,8 @@ use yii\helpers\Html;
  */
 class Main extends \yii\db\ActiveRecord
 {
+    public $reCaptcha;
+
     /**
      * {@inheritdoc}
      */
@@ -32,6 +33,13 @@ class Main extends \yii\db\ActiveRecord
             [['icno'], 'required'],
             [['create_dt'], 'safe'],
             [['icno'], 'string', 'max' => 12],
+            // verifyCode needs to be entered correctly
+            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator3::class,
+            'secret' => '', // unnecessary if reСaptcha is already configured
+            'threshold' => 1.5,
+            'action' => 'bfi/index',
+          ],
+
         ];
     }
 
@@ -47,6 +55,7 @@ class Main extends \yii\db\ActiveRecord
             'pdpaStatus' => 'Status PDPA',
             'pdpaTarikh' => 'Tarikh PDPA',
             'btnView' => 'Perician',
+            'reCaptcha' => '',
         ];
     }
 
@@ -63,7 +72,7 @@ class Main extends \yii\db\ActiveRecord
     public function getBtnView()
     {
         if ($this->jadual->item10) {
-            return  Html::a('<i class="fa fa-eye"></i>', ['bfi/view-result', 'id' => $this->id], ['target'=>'_blank']);
+            return  Html::a('<i class="fa fa-eye"></i>', ['bfi/view-result', 'id' => $this->id], ['target' => '_blank']);
         }
 
         return null;

@@ -22,10 +22,10 @@ class BfiController extends Controller
 
         $model = new Main();
 
-        if (Yii::$app->request->isAjax && $model->load($_POST)) {
-            Yii::$app->response->format = 'json';
-            return \yii\widgets\ActiveForm::validate($model);
-        }
+        // if (Yii::$app->request->isAjax && $model->load($_POST)) {
+        //     Yii::$app->response->format = 'json';
+        //     return \yii\widgets\ActiveForm::validate($model);
+        // }
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -37,7 +37,7 @@ class BfiController extends Controller
 
             $session = Yii::$app->session;
             $model->create_dt = date('Y-m-d H:i:s');
-            if ($model->save()) {
+            if ($model->save(false)) {
 
                 $this->ifSuccess();
                 $session->set('bfi_main_id', $model->id);

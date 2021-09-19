@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "v_data_mea".
@@ -122,6 +123,16 @@ class VDataMea extends \yii\db\ActiveRecord
             'j4_total_bos_2' => 'P-Bos',
             'j4_pil_anda' => 'J atau P',
             'j4_pil_bos' => 'J atau P',
+            'btnView' => 'Perincian',
         ];
+    }
+
+    public function getBtnView()
+    {
+        if ($this->j4_total_bos_2) {
+            return  Html::a('<i class="fa fa-eye"></i>', ['mea/view-result', 'id' => $this->id], ['target' => '_blank']);
+        }
+
+        return null;
     }
 }

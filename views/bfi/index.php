@@ -53,7 +53,7 @@ use yii\widgets\ActiveForm;
 
         <?php
         $form = ActiveForm::begin([
-            'enableAjaxValidation' => true,
+            // 'enableAjaxValidation' => true,
             'fieldConfig' => [
                 'options' => [
                     'tag' => false,
@@ -70,7 +70,16 @@ use yii\widgets\ActiveForm;
 
             <div class="col-sm-4">
                 <?= $form->field($model, 'icno')->textInput(['maxlength' => true, 'placeholder' => 'Sila Masukkan No. Kad Pengenalan anda(Tanpa "-") '])->label(false); ?>
+            </div>
 
+            <div class="col-sm-4">
+                <?= $form->field($model, 'reCaptcha')->widget(
+                    \himiklab\yii2\recaptcha\ReCaptcha3::class,
+                    [
+                        // 'siteKey' => 'your siteKey', // unnecessary is reCaptcha component was set up
+                        'action' => 'bfi/index',
+                    ]
+                ) ?>
             </div>
 
         </div>
