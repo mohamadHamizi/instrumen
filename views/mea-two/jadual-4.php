@@ -20,7 +20,7 @@ use kartik\checkbox\CheckboxX;
         <table class="table table-bordered table-responsive table-success">
             <thead>
                 <tr>
-                    <th class="text-center" colspan="4">Persepsi anda terhadap DIRI SENDIRI &amp; KETUA</th>
+                    <th class="text-center" colspan="4">Persepsi anda terhadap DIRI SENDIRI &amp; PENILAI</th>
                 </tr>
             </thead>
 
