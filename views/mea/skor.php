@@ -326,7 +326,7 @@ use yii\helpers\Html;
                     <td><?= Html::img('/instrumen/web/img/n.png', ['width' => '70px']); ?></td>
                 </tr>
                 <tr>
-                <td><?= Html::img('/instrumen/web/img/t.png', ['width' => '70px']); ?></td>
+                    <td><?= Html::img('/instrumen/web/img/t.png', ['width' => '70px']); ?></td>
                     <td class="text-right title_text">Thinking <font style="color: crimson;">T</font>
                     </td>
                     <td class="text-right" colspan="4">
@@ -351,7 +351,7 @@ use yii\helpers\Html;
                     <td><?= Html::img('/instrumen/web/img/f.png', ['width' => '70px']); ?></td>
                 </tr>
                 <tr>
-                <td><?= Html::img('/instrumen/web/img/j.png', ['width' => '70px']); ?></td>
+                    <td><?= Html::img('/instrumen/web/img/j.png', ['width' => '70px']); ?></td>
                     <td class="text-right title_text">Judging <font style="color: crimson;">J</font>
                     </td>
                     <td class="text-right" colspan="4">
@@ -466,5 +466,6 @@ use yii\helpers\Html;
 </div>
 
 <div class="box-footer text-center">
+    <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Sebelumnya', ['jadual-4'], ['class' => 'btn btn-warning']); ?>
     <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi / Jawab Semula', ['mea/des'], ['class' => 'btn btn-danger']) ?>
 </div>

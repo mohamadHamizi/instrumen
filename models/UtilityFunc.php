@@ -39,12 +39,16 @@ class UtilityFunc
     {
         return [
             'A+' => 'A+',
+            'A' => 'A',
             'A-' => 'A-',
             'B+' => 'B+',
+            'B' => 'B',
             'B-' => 'B-',
             'AB+' => 'AB+',
+            'AB' => 'AB',
             'AB-' => 'AB-',
             'O+' => 'O+',
+            'O' => 'O',
             'O-' => 'O-',
             'x' => 'Tidak Tahu',
         ];

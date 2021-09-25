@@ -41,10 +41,10 @@ use kartik\checkbox\CheckboxX;
                         <td class="text-center" style="width: 23.75%;">KETUA</td>
                     </tr>
                     <tr>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required'=>true]) ?></td>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required'=>true]); ?></td>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required'=>true]); ?></td>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required'=>true]); ?></td>
+                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]) ?></td>
+                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
+                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
+                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -55,7 +55,12 @@ use kartik\checkbox\CheckboxX;
 
 
         <div class="form-group text-center">
-            <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Sebelumnya', ['jadual-2'], ['class' => 'btn btn-warning']); ?>
+            <?php if ($disabled) { ?>
+                <?= Html::a('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['jadual-4'], ['class' => 'btn btn-primary']); ?>
+            <?php } else { ?>
+                <?= Html::submitButton('<i class="fa fa-arrow-right"></i>&nbsp;Seterusnya', ['class' => 'btn btn-primary']) ?>
+            <?php } ?>
         </div>
 
         <?php ActiveForm::end(); ?>

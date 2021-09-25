@@ -96,4 +96,15 @@ class MeaMain extends \yii\db\ActiveRecord
 
     //     return null;
     // }
+
+    public static function checkComplete($id)
+    {
+        $model = MeaMain::find()->where(['id' => $id, 'completed' => 1])->one();
+
+        if ($model) {
+            return true;
+        }
+
+        return false;
+    }
 }

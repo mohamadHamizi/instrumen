@@ -159,21 +159,15 @@ use app\models\OkuRefDemo;
         <div class="form-group">
             <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'darah'); ?></label>
 
-            <div class="col-sm-6">
-
-                <?= $form->field($model, 'darah')->radiolist(
-                    [
-                        'A+' => 'A+',
-                        'A-' => 'A-',
-                        'B+' => 'B+',
-                        'B-' => 'B-',
-                        'AB+' => 'AB+',
-                        'AB-' => 'AB-',
-                        'O+' => 'O+',
-                        'O-' => 'O-',
-                        'x' => 'Tidak Tahu',
-                    ]
-                )->label(false);
+            <div class="col-sm-2">
+                <?php // Usage with ActiveForm and model
+                echo $form->field($model, 'darah')->widget(Select2::class, [
+                    'data' => $jenis_darah,
+                    'options' => ['placeholder' => '--PILIH JENIS DARAH--'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])->label(false);
                 ?>
             </div>
         </div>

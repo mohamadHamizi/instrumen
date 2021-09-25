@@ -13,7 +13,7 @@ use app\models\Soalan;
 use app\models\UtilityFunc;
 use Yii;
 use yii\web\Controller;
-use yii\helpers\VarDumper;;
+use yii\helpers\VarDumper;
 
 /**
  * CutiController implements the CRUD actions for RekodCuti model.
@@ -57,20 +57,13 @@ class MeaController extends Controller
 
         $id = \Yii::$app->session->get('mea_main_id');
         $department = UtilityFunc::DepartmentList();
+        $jenis_darah =  UtilityFunc::BloodTypeList();
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+
+            UtilityFunc::ifError("Sila Masukkan No. Kad pengenalan");
             return $this->redirect(['index']);
         }
-
 
         $model = new MeaDemo();
 
@@ -91,21 +84,16 @@ class MeaController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
-
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['jadual-1']);
             }
         }
 
-        return $this->render('demografi', ['model' => $model, 'department' => $department]);
+        return $this->render('demografi', [
+            'model' => $model,
+            'department' => $department,
+            'jenis_darah' => $jenis_darah,
+        ]);
     }
 
     public function actionJadual1()
@@ -113,6 +101,7 @@ class MeaController extends Controller
         $this->view->title = "JADUAL 1";
 
         $id = \Yii::$app->session->get('mea_main_id');
+
 
         if (!$id) {
             UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
@@ -122,6 +111,7 @@ class MeaController extends Controller
         $soalan = Soalan::find()->where(['jadual' => 1])->all();
 
         $model = new MeaJadual1();
+        $disabled = MeaMain::checkComplete($id);
         $check_model = MeaJadual1::findOne(['main_id' => $id]);
 
         if ($check_model) {
@@ -129,7 +119,6 @@ class MeaController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post())) {
-
 
             $model->main_id = $id;
 
@@ -245,6 +234,7 @@ class MeaController extends Controller
         return $this->render('jadual-1', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual2()
@@ -253,9 +243,9 @@ class MeaController extends Controller
 
         $soalan = Soalan::find()->where(['jadual' => 2])->all();
         $model = new MeaJadual2();
-        $disabled = false;
 
         $id = \Yii::$app->session->get('mea_main_id');
+        $disabled = MeaMain::checkComplete($id);
 
         if (!$id) {
             UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
@@ -383,6 +373,7 @@ class MeaController extends Controller
         return $this->render('jadual-2', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
 
@@ -394,6 +385,7 @@ class MeaController extends Controller
         $model = new MeaJadual3();
 
         $id = \Yii::$app->session->get('mea_main_id');
+        $disabled = MeaMain::checkComplete($id);
 
         if (!$id) {
             UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
@@ -407,7 +399,6 @@ class MeaController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post())) {
-
             $model->main_id = $id;
 
             $model->total_anda1 = 0;
@@ -521,6 +512,7 @@ class MeaController extends Controller
         return $this->render('jadual-3', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual4()
@@ -531,6 +523,7 @@ class MeaController extends Controller
         $model = new MeaJadual4();
 
         $id = \Yii::$app->session->get('mea_main_id');
+        $disabled = MeaMain::checkComplete($id);
 
         if (!$id) {
             UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
@@ -658,6 +651,7 @@ class MeaController extends Controller
         return $this->render('jadual-4', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
 
@@ -675,6 +669,12 @@ class MeaController extends Controller
         }
 
         $model = MeaMain::findOne(['id' => $id]);
+
+        if ($model->completed == 0) {
+            $model->completed = 1;
+            $model->completed_dt = date('Y-m-d H:i:s');
+            $model->save();
+        }
 
         $anda = MeaResult::tret($model->jadual1->pil_anda, $model->jadual2->pil_anda, $model->jadual3->pil_anda, $model->jadual4->pil_anda);
         $bos = MeaResult::tret($model->jadual1->pil_bos, $model->jadual2->pil_bos, $model->jadual3->pil_bos, $model->jadual4->pil_bos);
@@ -704,8 +704,6 @@ class MeaController extends Controller
             'demo' => $demo,
         ]);
     }
-
-
 
     public function actionDes()
     {
