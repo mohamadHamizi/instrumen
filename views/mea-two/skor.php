@@ -660,5 +660,6 @@ use yii\helpers\Html;
         </table>
     </div>
     <div class="box-footer text-center">
+        <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Sebelumnya', ['jadual-4'], ['class' => 'btn btn-warning']); ?>
         <?= Html::a('<i class="fa fa-stop-circle"></i>&nbsp;Tamat Sesi / Jawab Semula', ['mea-two/des'], ['class' => 'btn btn-danger']) ?>
     </div>

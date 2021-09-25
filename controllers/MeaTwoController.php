@@ -23,7 +23,7 @@ class MeaTwoController extends Controller
 
     public function actionIndex()
     {
-        $this->view->title = "Malay Version of Emblematic Analysis (EA-Malay)";
+        $this->view->title = "Malay Version of Emblematic Analysis (EA-Malay) Version 2";
 
         $model = new MeaV2Main();
 
@@ -44,7 +44,7 @@ class MeaTwoController extends Controller
             $model->create_dt = date('Y-m-d H:i:s');
             $model->save();
 
-            $session->set('mea_main_id', $model->id);
+            $session->set('mea_v2_main_id', $model->id);
             return $this->redirect(['demografi']);
         }
 
@@ -55,19 +55,12 @@ class MeaTwoController extends Controller
     {
         $this->view->title = "Demografi";
 
-        $id = \Yii::$app->session->get('mea_main_id');
-        $department = $this->DepartmentList();
+        $id = \Yii::$app->session->get('mea_v2_main_id');
+        $department = UtilityFunc::DepartmentList();
+        $jenis_darah =  UtilityFunc::BloodTypeList();
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError("Sila Masukkan No. Kad pengenalan");
             return $this->redirect(['index']);
         }
 
@@ -91,60 +84,33 @@ class MeaTwoController extends Controller
             $model->main_id = $id;
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
-
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
                 return $this->redirect(['jadual-1']);
             }
         }
 
-        return $this->render('demografi', ['model' => $model, 'department'=>$department]);
-    }
-
-    public function DepartmentList()
-    {
-
-        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
-
-        // Read JSON file
-        $json_data = file_get_contents($api_url);
-
-        // Decode JSON data into PHP array
-        $response_data = json_decode($json_data);
-
-        return $response_data;
+        return $this->render('demografi', [
+            'model' => $model, 
+            'department' => $department,
+            'jenis_darah' => $jenis_darah,
+        ]);
     }
 
     public function actionJadual1()
     {
-        // $this->checkSession();
         $this->view->title = "JADUAL 1";
 
-        $id = \Yii::$app->session->get('mea_main_id');
+        $id = \Yii::$app->session->get('mea_v2_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
         $soalan = Soalan::find()->where(['jadual' => 1])->all();
 
         $model = new MeaV2Jadual1();
+        $disabled = MeaV2Main::checkComplete($id);
 
         $check_model = MeaV2Jadual1::findOne(['main_id' => $id]);
 
@@ -218,7 +184,7 @@ class MeaTwoController extends Controller
             } else {
                 $model->total_pen_12++;
             }
-            
+
             if ($model->r3_pen_1 == 1) {
                 $model->total_pen_11++;
             } else {
@@ -309,15 +275,8 @@ class MeaTwoController extends Controller
             }
 
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', [
-                    'type' => 'success',
-                    'duration' => 5000,
-                    'icon' => 'fa fa-check',
-                    'message' => 'Maklumat telah disimpan',
-                    'title' => 'Berjaya',
-                    'positonY' => 'top',
-                    'positonX' => 'right'
-                ]);
+                
+                UtilityFunc::ifSuccess("Maklumat telah disimpan");
 
                 return $this->redirect(['jadual-2']);
             }
@@ -326,6 +285,7 @@ class MeaTwoController extends Controller
         return $this->render('jadual-1', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual2()
@@ -335,18 +295,11 @@ class MeaTwoController extends Controller
         $soalan = Soalan::find()->where(['jadual' => 2])->all();
         $model = new MeaV2Jadual2();
 
-        $id = \Yii::$app->session->get('mea_main_id');
+        $id = \Yii::$app->session->get('mea_v2_main_id');
+        $disabled = MeaV2Main::checkComplete($id);
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
@@ -422,7 +375,7 @@ class MeaTwoController extends Controller
             } else {
                 $model->total_pen_12++;
             }
-            
+
             if ($model->r3_pen_1 == 1) {
                 $model->total_pen_11++;
             } else {
@@ -530,6 +483,7 @@ class MeaTwoController extends Controller
         return $this->render('jadual-2', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual3()
@@ -539,18 +493,11 @@ class MeaTwoController extends Controller
         $soalan = Soalan::find()->where(['jadual' => 3])->all();
         $model = new MeaV2Jadual3();
 
-        $id = \Yii::$app->session->get('mea_main_id');
+        $id = \Yii::$app->session->get('mea_v2_main_id');
+        $disabled = MeaV2Main::checkComplete($id);
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
@@ -626,7 +573,7 @@ class MeaTwoController extends Controller
             } else {
                 $model->total_pen_12++;
             }
-            
+
             if ($model->r3_pen_1 == 1) {
                 $model->total_pen_11++;
             } else {
@@ -734,6 +681,7 @@ class MeaTwoController extends Controller
         return $this->render('jadual-3', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
     public function actionJadual4()
@@ -743,18 +691,11 @@ class MeaTwoController extends Controller
         $soalan = Soalan::find()->where(['jadual' => 4])->all();
         $model = new MeaV2Jadual4();
 
-        $id = \Yii::$app->session->get('mea_main_id');
+        $id = \Yii::$app->session->get('mea_v2_main_id');
+        $disabled = MeaV2Main::checkComplete($id);
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
@@ -830,7 +771,7 @@ class MeaTwoController extends Controller
             } else {
                 $model->total_pen_12++;
             }
-            
+
             if ($model->r3_pen_1 == 1) {
                 $model->total_pen_11++;
             } else {
@@ -938,6 +879,7 @@ class MeaTwoController extends Controller
         return $this->render('jadual-4', [
             'soalan' => $soalan,
             'model' => $model,
+            'disabled' => $disabled,
         ]);
     }
 
@@ -946,22 +888,19 @@ class MeaTwoController extends Controller
 
         $this->view->title = "Keputusan";
 
-        $id = \Yii::$app->session->get('mea_main_id');
+        $id = \Yii::$app->session->get('mea_v2_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
 
         $model = MeaV2Main::findOne(['id' => $id]);
+        if ($model->completed == 0) {
+            $model->completed = 1;
+            $model->completed_dt = date('Y-m-d H:i:s');
+            $model->save();
+        }
 
         $anda = MeaResult::tret($model->jadual1->pil_anda, $model->jadual2->pil_anda, $model->jadual3->pil_anda, $model->jadual4->pil_anda);
         $pen_1 = MeaResult::tret($model->jadual1->pil_pen_1, $model->jadual2->pil_pen_1, $model->jadual3->pil_pen_1, $model->jadual4->pil_pen_1);
@@ -1001,26 +940,18 @@ class MeaTwoController extends Controller
 
         Yii::$app->session->close();
 
-        Yii::$app->session->remove('mea_main_id');
+        Yii::$app->session->remove('mea_v2_main_id');
 
         Yii::$app->session->destroy(); // destroy all session
-        return $this->redirect(['mea/index']);
+        return $this->redirect(['mea-two/index']);
     }
 
     protected function checkSession()
     {
-        $id = \Yii::$app->session->get('mea_main_id');
+        $id = \Yii::$app->session->get('mea_v2_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
     }

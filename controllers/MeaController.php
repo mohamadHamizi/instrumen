@@ -663,7 +663,7 @@ class MeaController extends Controller
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            UtilityFunc::ifSuccess('Sila Masukkan No. Kad pengenalan');
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
 
             return $this->redirect(['index']);
         }
