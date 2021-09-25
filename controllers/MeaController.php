@@ -721,15 +721,7 @@ class MeaController extends Controller
         $id = \Yii::$app->session->get('mea_main_id');
 
         if (!$id) {
-            Yii::$app->getSession()->setFlash('danger', [
-                'type' => 'danger',
-                'duration' => 5000,
-                'icon' => 'fa fa-exclamation',
-                'message' => 'Sila Masukkan No. Kad pengenalan',
-                'title' => 'Tidak berjaya',
-                'positonY' => 'top',
-                'positonX' => 'right'
-            ]);
+            UtilityFunc::ifError('Sila Masukkan No. Kad pengenalan');
             return $this->redirect(['index']);
         }
     }

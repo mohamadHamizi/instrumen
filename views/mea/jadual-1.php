@@ -31,20 +31,20 @@ use kartik\checkbox\CheckboxX;
                         <td class="bg-primary" colspan="4"><?= $s->no ?>.&nbsp;<?= $s->persepsi ?></td>
                     </tr>
                     <tr>
-                        <td class="text-center" colspan="2"><strong><?= $s->pil_1 ?></strong></td>
-                        <td class="text-center" colspan="2"><strong><?= $s->pil_2 ?></strong></td>
+                        <td class="text-center bg-success" colspan="2"><strong><?= $s->pil_1 ?></strong></td>
+                        <td class="text-center bg-warning" colspan="2"><strong><?= $s->pil_2 ?></strong></td>
                     </tr>
                     <tr>
-                        <td class="text-center" style="width: 23.75%;">ANDA</td>
-                        <td class="text-center" style="width: 23.75%;">KETUA</td>
-                        <td class="text-center" style="width: 23.75%;">ANDA</td>
-                        <td class="text-center" style="width: 23.75%;">KETUA</td>
+                        <td class="text-center bg-success" style="width: 23.75%;">ANDA</td>
+                        <td class="text-center bg-success" style="width: 23.75%;">KETUA</td>
+                        <td class="text-center bg-warning" style="width: 23.75%;">ANDA</td>
+                        <td class="text-center bg-warning" style="width: 23.75%;">KETUA</td>
                     </tr>
                     <tr>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]) ?></td>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
-                        <td class="text-center"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
+                        <td class="text-center bg-success"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]) ?></td>
+                        <td class="text-center bg-success"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 1, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
+                        <td class="text-center bg-warning"><?php echo $form->field($model, 'r' . $s->no . '_anda')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
+                        <td class="text-center bg-warning"><?php echo $form->field($model, 'r' . $s->no . '_bos')->radio(['label' => false, 'value' => 2, 'uncheck' => null, 'required' => true, 'disabled' => $disabled]); ?></td>
                     </tr>
                 </tbody>
             </table>
