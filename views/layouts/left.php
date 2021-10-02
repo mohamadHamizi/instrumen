@@ -91,6 +91,7 @@
                 [
                     'label' => 'EQ-Malay',
                     'icon' => 'id-badge',
+                    'visible' => false,
                     'url' => '#',
                     'items' => [
                         ['label' => 'Pengenalan', 'icon' => 'id-badge', 'url' => ['eq/index'], 'visible' => true],
