@@ -35,6 +35,22 @@ class Demo extends \yii\db\ActiveRecord
     {
         return 'eq2_demo';
     }
+    //  untuk convert date
+    public function behaviors()
+    {
+        return [
+            'tarikh_lahir' => [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
+                ],
+                'value' => function ($event) {
+                    return date('Y-m-d', strtotime(str_replace("/", "-", $this->tarikh_lahir)));
+                },
+            ],
+        ];
+    }
 
     public function afterFind()
 
