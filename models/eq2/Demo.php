@@ -3,6 +3,8 @@
 namespace app\models\eq2;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "eq2_demo".
