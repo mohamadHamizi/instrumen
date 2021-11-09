@@ -36,6 +36,18 @@ class Demo extends \yii\db\ActiveRecord
         return 'eq2_demo';
     }
 
+    public function afterFind()
+
+    {
+
+        $this->tarikh_lahir = Yii::$app->formatter->asDate($this->tarikh_lahir, 'dd/MM/yyyy');
+
+        parent::afterFind();
+
+        return true;
+    }
+
+
     /**
      * {@inheritdoc}
      */
@@ -68,7 +80,7 @@ class Demo extends \yii\db\ActiveRecord
             'jantina' => 'Jantina',
             'umur' => 'Umur',
             'jawatan' => 'Jawatan',
-            'organisasi' => 'Organisasi',
+            'organisasi' => 'JFPIU (Bagi kakitangan & pelajar UMS Sahaja)',
             'organisasi_lain' => 'Organisasi Lain',
             'tarikh_lahir' => 'Tarikh Lahir',
             'warna' => 'Warna',
