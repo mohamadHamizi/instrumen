@@ -106,6 +106,23 @@
                     ],
                 ],
                 [
+                    'label' => 'EQ-Malay (v2)',
+                    'icon' => 'magic',
+                    'visible' => true,
+                    'url' => '#',
+                    'items' => [
+                        ['label' => 'Pengenalan', 'icon' => 'magic', 'url' => ['eq2/index'], 'visible' => true],
+                        ['label' => 'Demografi', 'icon' => 'magic', 'url' => ['eq2/demografi'], 'visible' => true],
+                        ['label' => 'Bahagian 1', 'icon' => 'magic', 'url' => ['eq2/bhgn1'], 'visible' => true],
+                        ['label' => 'Bahagian 2', 'icon' => 'magic', 'url' => ['eq2/bhgn2'], 'visible' => true],
+                        ['label' => 'Bahagian 3', 'icon' => 'magic', 'url' => ['eq2/bhgn3'], 'visible' => true],
+                        ['label' => 'Bahagian 4', 'icon' => 'magic', 'url' => ['eq2/bhgn4'], 'visible' => true],
+                        ['label' => 'Bahagian 5', 'icon' => 'magic', 'url' => ['eq2/bhgn5'], 'visible' => true],
+                        ['label' => 'Bahagian 6', 'icon' => 'magic', 'url' => ['eq2/bhgn6'], 'visible' => true],
+                        ['label' => 'Keputusan', 'icon' => 'magic', 'url' => ['eq2/result'], 'visible' => true],
+                    ],
+                ],
+                [
                     'label' => 'Admin Dashboard',
                     'icon' => 'dashboard',
                     'url' => '#',
