@@ -240,8 +240,11 @@ use yii\helpers\Html;
                 <td align="center" class="text-center" rowspan="2" style="vertical-align : middle;text-align:center;">
                     <font size="6px"><?= $model->tanggapanPositif ?>%</font>
                 </td>
-                <td>&nbsp;</td>
+                <td style="vertical-align : middle;">6.1 Tanggapan Positif</td>
                 <td align="center" class="text-center" style="vertical-align : middle;text-align:center;">
+                <div class="progress progress-lg">
+                        <div class="progress-bar bg-primary" style="width: <?= $model->tanggapanPositif ?>%"><?= $model->tanggapanPositif ?>%</div>
+                    </div>
                 </td>
             </tr>
         </table>

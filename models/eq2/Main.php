@@ -152,7 +152,7 @@ class Main extends \yii\db\ActiveRecord
     public function getBtnView()
     {
         if ($this->checkComplete($this->id)) {
-            return  Html::a('<i class="fa fa-eye"></i>', ['eq/view-result', 'id' => $this->id], ['target' => '_blank']);
+            return  Html::a('<i class="fa fa-eye"></i>', ['eq2/view-result', 'id' => $this->id], ['target' => '_blank']);
         }
 
         return null;
