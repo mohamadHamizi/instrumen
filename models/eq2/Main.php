@@ -82,13 +82,9 @@ class Main extends \yii\db\ActiveRecord
         return $reverse;
     }
 
-    public static function FormulaIndeks($domain, $main_id, $sub_domain=null)
+    public static function FormulaIndeks($domain, $main_id)
     {
         $question = Questions::find()->where(['domain' => $domain])->all();
-
-        if($sub_domain){
-            $question = Questions::find()->where(['domain' => $domain, 'sub_domain'=>$sub_domain])->all();
-        }
 
         $maxSkor = count($question) * 5;
         $minSkor = count($question);
@@ -97,6 +93,32 @@ class Main extends \yii\db\ActiveRecord
 
         $jumlahSkor = 0;
         for ($x = 1; $x <= $minSkor; $x++) {
+
+            if (Questions::getRevItem($domain, $x)) {
+                $jumlahSkor += Main::reverseSkor($model->{'item' . $x});
+            } else {
+                $jumlahSkor += $model->{'item' . $x};
+            }
+        }
+
+        $indeks = ($jumlahSkor - $minSkor) / ($maxSkor - $minSkor) * 100;
+
+        return round($indeks, 2);
+    }
+
+    public static function FormulaIndeksSub($domain, $main_id, $sub_domain)
+    {
+        $question = Questions::find()->where(['domain' => $domain, 'sub_domain'=>$sub_domain])->all();
+        $minItem = Questions::getMin($domain,$sub_domain); //25
+        $maxItem = Questions::getMax($domain,$sub_domain); //31
+
+        $maxSkor = count($question) * 5; //35
+        $minSkor = count($question); //7
+        
+        $model = self::getBhgn($domain, $main_id);
+
+        $jumlahSkor = 0;
+        for ($x = $minItem; $x <= $maxItem; $x++) {
 
             if (Questions::getRevItem($domain, $x)) {
                 $jumlahSkor += Main::reverseSkor($model->{'item' . $x});
@@ -248,7 +270,7 @@ class Main extends \yii\db\ActiveRecord
     public function getPenilaianKendiri()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(1, $this->id, '1.1');
+            return $this->FormulaIndeksSub(1, $this->id, '1.1');
         }
 
         return null;
@@ -257,7 +279,7 @@ class Main extends \yii\db\ActiveRecord
     public function getKesedaranEmosi()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(1, $this->id, '1.2');
+            return $this->FormulaIndeksSub(1, $this->id, '1.2');
         }
 
         return null;
@@ -265,7 +287,7 @@ class Main extends \yii\db\ActiveRecord
     public function getPenegasanDiri()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(1, $this->id, '1.3');
+            return $this->FormulaIndeksSub(1, $this->id, '1.3');
         }
 
         return null;
@@ -273,7 +295,7 @@ class Main extends \yii\db\ActiveRecord
     public function getBerdikari()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(1, $this->id, '1.4');
+            return $this->FormulaIndeksSub(1, $this->id, '1.4');
         }
 
         return null;
@@ -281,7 +303,7 @@ class Main extends \yii\db\ActiveRecord
     public function getKesempurnaanKendiri()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(1, $this->id, '1.5');
+            return $this->FormulaIndeksSub(1, $this->id, '1.5');
         }
 
         return null;
@@ -299,7 +321,7 @@ class Main extends \yii\db\ActiveRecord
     public function getEmpati()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(2, $this->id, '2.1');
+            return $this->FormulaIndeksSub(2, $this->id, '2.1');
         }
 
         return null;
@@ -307,7 +329,7 @@ class Main extends \yii\db\ActiveRecord
     public function getTanggungjawabSosial()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(2, $this->id, '2.2');
+            return $this->FormulaIndeksSub(2, $this->id, '2.2');
         }
 
         return null;
@@ -315,7 +337,7 @@ class Main extends \yii\db\ActiveRecord
     public function getHubunganInterpersonal()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(2, $this->id, '2.3');
+            return $this->FormulaIndeksSub(2, $this->id, '2.3');
         }
 
         return null;
@@ -333,7 +355,7 @@ class Main extends \yii\db\ActiveRecord
     public function getPenghayatanRealiti()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(3, $this->id, '3.1');
+            return $this->FormulaIndeksSub(3, $this->id, '3.1');
         }
 
         return null;
@@ -341,7 +363,7 @@ class Main extends \yii\db\ActiveRecord
     public function getFleksibel()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(3, $this->id, '3.2');
+            return $this->FormulaIndeksSub(3, $this->id, '3.2');
         }
 
         return null;
@@ -349,7 +371,7 @@ class Main extends \yii\db\ActiveRecord
     public function getPenyelesaianMasalah()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(3, $this->id, '3.3');
+            return $this->FormulaIndeksSub(3, $this->id, '3.3');
         }
 
         return null;
@@ -367,7 +389,7 @@ class Main extends \yii\db\ActiveRecord
     public function getToleransiStres()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(4, $this->id, '4.1');
+            return $this->FormulaIndeksSub(4, $this->id, '4.1');
         }
 
         return null;
@@ -376,7 +398,7 @@ class Main extends \yii\db\ActiveRecord
     public function getPengawalanDorongan()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(4, $this->id, '4.2');
+            return $this->FormulaIndeksSub(4, $this->id, '4.2');
         }
 
         return null;
@@ -394,7 +416,7 @@ class Main extends \yii\db\ActiveRecord
     public function getOptimis()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(5, $this->id, '5.1');
+            return $this->FormulaIndeksSub(5, $this->id, '5.1');
         }
 
         return null;
@@ -403,7 +425,7 @@ class Main extends \yii\db\ActiveRecord
     public function getKebahagiaan()
     {
         if ($this->checkComplete($this->id)) {
-            return $this->FormulaIndeks(5, $this->id, '5.2');
+            return $this->FormulaIndeksSub(5, $this->id, '5.2');
         }
 
         return null;

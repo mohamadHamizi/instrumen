@@ -72,4 +72,20 @@ class Questions extends \yii\db\ActiveRecord
         }
         return false;
     }
+
+    public static function getMin($domain, $sub_domain)
+    {
+        $question = Questions::find()->where(['domain' => $domain, 'sub_domain' => $sub_domain])->min('item_no');
+
+        return $question;
+
+    }
+
+    public static function getMax($domain, $sub_domain)
+    {
+        $question = Questions::find()->where(['domain' => $domain, 'sub_domain' => $sub_domain])->max('item_no');
+
+        return $question;
+
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\eq2\Questions;
 use yii\helpers\Html;
 
 ?>
@@ -101,7 +102,7 @@ use yii\helpers\Html;
                 <td>1.2 Kesedaran Emosi Diri</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->kesedaranEmosi ?>0%"><?= $model->kesedaranEmosi ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->kesedaranEmosi ?>%"><?= $model->kesedaranEmosi ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -109,7 +110,7 @@ use yii\helpers\Html;
                 <td>1.3 Penegasan Diri</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->penegasanDiri ?>0%"><?= $model->penegasanDiri ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->penegasanDiri ?>%"><?= $model->penegasanDiri ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -117,7 +118,7 @@ use yii\helpers\Html;
                 <td>1.4 Berdikari</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->berdikari ?>0%"><?= $model->berdikari ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->berdikari ?>%"><?= $model->berdikari ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -125,7 +126,7 @@ use yii\helpers\Html;
                 <td>1.5 Kesempurnaan Kendiri</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->kesempurnaanKendiri ?>0%"><?= $model->kesempurnaanKendiri ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->kesempurnaanKendiri ?>%"><?= $model->kesempurnaanKendiri ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -256,3 +257,8 @@ use yii\helpers\Html;
     <?= Html::a('<i class="fa fa-arrow-left"></i>&nbsp;Sebelumnya', ['bhgn6'], ['class' => 'btn btn-warning']); ?>
     <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['des'], ['class' => 'btn btn-danger']); ?>
 </div>
+
+<?php //echo Questions::getMin(1,'1.5'); ?>
+<?php //echo Questions::getMax(1,'1.5'); ?>
+<!-- <br> -->
+<?php //echo $model->berdikari; ?>
