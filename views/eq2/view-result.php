@@ -106,7 +106,7 @@ use yii\widgets\DetailView;
                 <td>1.2 Kesedaran Emosi Diri</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->kesedaranEmosi ?>0%"><?= $model->kesedaranEmosi ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->kesedaranEmosi ?>%"><?= $model->kesedaranEmosi ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -114,7 +114,7 @@ use yii\widgets\DetailView;
                 <td>1.3 Penegasan Diri</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->penegasanDiri ?>0%"><?= $model->penegasanDiri ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->penegasanDiri ?>%"><?= $model->penegasanDiri ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -122,7 +122,7 @@ use yii\widgets\DetailView;
                 <td>1.4 Berdikari</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->berdikari ?>0%"><?= $model->berdikari ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->berdikari ?>%"><?= $model->berdikari ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -130,7 +130,7 @@ use yii\widgets\DetailView;
                 <td>1.5 Kesempurnaan Kendiri</td>
                 <td>
                     <div class="progress progress-lg">
-                        <div class="progress-bar bg-primary" style="width: <?= $model->kesempurnaanKendiri ?>0%"><?= $model->kesempurnaanKendiri ?>%</div>
+                        <div class="progress-bar bg-primary" style="width: <?= $model->kesempurnaanKendiri ?>%"><?= $model->kesempurnaanKendiri ?>%</div>
                     </div>
                 </td>
             </tr>
@@ -169,7 +169,7 @@ use yii\widgets\DetailView;
                     3. ADAPTASI
                 </td>
                 <td align="center" class="text-center" rowspan="3" style="vertical-align : middle;text-align:center;">
-                    <font size="6px"><?= $model->intrapersonal ?>%</font>
+                    <font size="6px"><?= $model->adaptasi ?>%</font>
                 </td>
                 <td>3.1 Penghayatan Realiti</td>
                 <td align="center" class="text-center" style="vertical-align : middle;text-align:center;">
