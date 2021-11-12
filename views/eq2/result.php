@@ -165,7 +165,7 @@ use yii\helpers\Html;
                     3. ADAPTASI
                 </td>
                 <td align="center" class="text-center" rowspan="3" style="vertical-align : middle;text-align:center;">
-                    <font size="6px"><?= $model->intrapersonal ?>%</font>
+                    <font size="6px"><?= $model->adaptasi ?>%</font>
                 </td>
                 <td>3.1 Penghayatan Realiti</td>
                 <td align="center" class="text-center" style="vertical-align : middle;text-align:center;">
