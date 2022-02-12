@@ -7,6 +7,20 @@ use Yii;
 class UtilityFunc
 {
 
+    public static function TeamList()
+    {
+
+        $api_url = 'https://registrar.ums.edu.my/staff/web/api/attendance/today-team?icno=890426495037';
+
+        // Read JSON file
+        $json_data = file_get_contents($api_url);
+
+        // Decode JSON data into PHP array
+        $response_data = json_decode($json_data);
+
+        return $response_data;
+    }
+
     public static function CountryList()
     {
 

@@ -25,6 +25,8 @@ class Eq2Controller extends Controller
     {
         $this->view->title = "EQ-Malay Version 2";
 
+        $cur_year = date('Y');
+
         $model = new Main();
 
         if (Yii::$app->request->isAjax && $model->load($_POST)) {
@@ -34,13 +36,19 @@ class Eq2Controller extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            $check_main = Main::findOne(['icno' => $model->icno]);
+            $session = Yii::$app->session;
+            $check_main = Main::find()->where(['icno' => $model->icno, 'YEAR(create_dt)' => $cur_year])->one();
 
             if ($check_main) {
-                $model = $check_main;
+
+                if ($check_main->completed == 1) {
+                    $session->set('eq2_main_id', $check_main->id);
+                    return $this->redirect(['result']);
+                } else if ($check_main->completed == 0) {
+                    $model = $check_main;
+                }
             }
 
-            $session = Yii::$app->session;
             $model->create_dt = date('Y-m-d H:i:s');
             if ($model->save()) {
 
@@ -49,6 +57,8 @@ class Eq2Controller extends Controller
                 return $this->redirect(['demografi']);
             }
         }
+
+
 
         return $this->render('index', ['model' => $model]);
     }
@@ -71,15 +81,24 @@ class Eq2Controller extends Controller
         $department = UtilityFunc::DepartmentList();
         $country = UtilityFunc::CountryList();
 
+        $main = Main::findOne($id);
         $model = new Demo();
 
         $check_model = Demo::findOne(['main_id' => $id]);
 
         if ($check_model) {
             $model = $check_model;
+        } else {
+            $oldDemo = Demo::find()->joinWith(['relMain'])->where(['eq2_main.icno' => $main->icno, 'eq2_main.completed' => 1])->one();
+
+            if ($oldDemo) {
+                $model = new Demo(
+                    $oldDemo->getAttributes() // get all attributes and copy them to the new instance
+                );
+                $model->id = null;
+            } 
         }
 
-        $main = Main::findOne($id);
         $var = UtilityFunc::myKad($main->icno);
 
         $model->tarikh_lahir = $var['tarikh_lahir'];

@@ -42,7 +42,7 @@ class Demo extends \yii\db\ActiveRecord
     {
         return [
             'tarikh_lahir' => [
-                'class' => AttributeBehavior::className(),
+                'class' => AttributeBehavior::class,
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['tarikh_lahir'], // update 1 attribute 'created' OR multiple attribute ['created','updated']
@@ -52,6 +52,11 @@ class Demo extends \yii\db\ActiveRecord
                 },
             ],
         ];
+    }
+
+    public function getRelMain()
+    {
+        return $this->hasOne(Main::class, ['id' => 'main_id']);
     }
 
     public function afterFind()

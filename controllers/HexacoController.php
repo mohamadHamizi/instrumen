@@ -14,6 +14,7 @@ use app\models\hexaco\Terbuka;
 use Yii;
 use yii\web\Controller;
 use app\models\UtilityFunc;
+use yii\helpers\VarDumper;
 
 /**
  * HexacoController
@@ -480,5 +481,12 @@ class HexacoController extends Controller
             'positonY' => 'top',
             'positonX' => 'right'
         ]);
+    }
+
+    public function actionTest()
+    {
+        $team = UtilityFunc::TeamList();
+
+        VarDumper::dump($team,10,true);
     }
 }
