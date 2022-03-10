@@ -57,6 +57,30 @@ class Main extends \yii\db\ActiveRecord
         return $this->hasOne(Demo::class, ['main_id' => 'id']);
     }
 
+    public function getBhgn1()
+    {
+        return $this->hasOne(Bhgn1::class, ['main_id' => 'id']);
+    }
+    public function getBhgn2()
+    {
+        return $this->hasOne(Bhgn2::class, ['main_id' => 'id']);
+    }
+    public function getBhgn3()
+    {
+        return $this->hasOne(Bhgn3::class, ['main_id' => 'id']);
+    }
+    public function getBhgn4()
+    {
+        return $this->hasOne(Bhgn4::class, ['main_id' => 'id']);
+    }
+    public function getBhgn5()
+    {
+        return $this->hasOne(Bhgn5::class, ['main_id' => 'id']);
+    }
+    public function getBhgn6()
+    {
+        return $this->hasOne(Bhgn6::class, ['main_id' => 'id']);
+    }
 
     public static function reverseSkor($skorItem)
     {

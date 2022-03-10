@@ -137,7 +137,8 @@
                         ['label' => 'HEXACO', 'icon' => 'user-circle-o', 'url' => ['admin/data-hexaco'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'BFI', 'icon' => 'user-secret', 'url' => ['admin/data-bfi'], 'visible' => !Yii::$app->user->isGuest],
                         ['label' => 'EQ', 'icon' => 'id-badge', 'url' => ['admin/data-eq'], 'visible' => !Yii::$app->user->isGuest],
-                        ['label' => 'EQ v2', 'icon' => 'magic', 'url' => ['admin/data-eq2'], 'visible' => !Yii::$app->user->isGuest],
+                        ['label' => 'EQ v2(Domain)', 'icon' => 'magic', 'url' => ['admin/domain-eq2'], 'visible' => !Yii::$app->user->isGuest],
+                        ['label' => 'EQ v2(raw-data)', 'icon' => 'magic', 'url' => ['admin/data-eq2'], 'visible' => !Yii::$app->user->isGuest],
                     ]
                 ],
             ],

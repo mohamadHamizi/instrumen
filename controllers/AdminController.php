@@ -189,6 +189,20 @@ class AdminController extends \yii\web\Controller {
         
     }
 
+    public function actionDomainEq2() {
+        
+        ini_set('memory_limit', '1024M'); // or you could use 1G
+        
+        $searchModel = new EqMain2();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('domain-eq2', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
     public function actionShowResult($id){
 //        $this->checkSession();
         $main_id = $id;
