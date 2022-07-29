@@ -23,3 +23,5 @@ web/minify/**
 
 config/db.php
 web/index.php
+
+composer.lock
