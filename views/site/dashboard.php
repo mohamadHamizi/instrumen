@@ -175,15 +175,12 @@ use yii\helpers\Html;
                     <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body" style="">
+                <div class="box-body">
                     <p>Skala Daya Tindak Stres-Pelajar Universiti (SDTS-PU)</p>
-                    <?= Html::a('Jawab Soal Selidik <i class="fa fa-arrow-circle-right"></i>', ['bfi/index'], ['class' => 'small-box-footer']) ?>
+                    <?= Html::a('Jawab Soal Selidik <i class="fa fa-arrow-circle-right"></i>', ['sdts/index'], ['class' => 'small-box-footer']) ?>
                 </div>
                 <!-- /.box-body -->
             </div>
         </div>
-
-
-
     </div>
 </div>

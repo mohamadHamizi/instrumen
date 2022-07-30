@@ -86,6 +86,36 @@ class UtilityFunc
         ];
     }
 
+    public static function TahapPengajian()
+    {
+        return [
+            1 => 'Asasi',
+            2 => 'Diploma',
+            3 => 'Degree',
+            4 => 'Diploma Pascasiswazah',
+            5 => 'Master',
+            6 => 'PHD',
+            7 => 'Lain-lain',
+        ];
+    }
+    public static function modPengajian()
+    {
+        return [
+            1 => 'Sepenuh masa',
+            2 => 'Separuh Masa',
+        ];
+    }
+
+    public static function StatusTempatTinggal()
+    {
+        return [
+            1 => 'Asrama',
+            2 => 'Rumah Keluarga',
+            3 => 'Rumah (Sendiri/Sewa)',
+            4 => 'Lain-lain',
+        ];
+    }
+
     public static function ifError($msg)
     {
         return Yii::$app->getSession()->setFlash('danger', [
@@ -143,4 +173,18 @@ class UtilityFunc
         return $arr;
 
     }
+
+    public static function Quartile($Array, $Quartile) {
+        sort($Array);
+        $pos = (count($Array) - 1) * $Quartile;
+      
+        $base = floor($pos);
+        $rest = $pos - $base;
+      
+        if( isset($Array[$base+1]) ) {
+          return $Array[$base] + $rest * ($Array[$base+1] - $Array[$base]);
+        } else {
+          return $Array[$base];
+        }
+      }
 }
