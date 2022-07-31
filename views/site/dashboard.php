@@ -10,7 +10,7 @@ use yii\helpers\Html;
     <div class="box-body">
         <p>Setiap individu mempunyai pengalaman dengan ujian. Ujian adalah alat pengukuran atau teknik yang digunakan untuk mengukur tingkah laku atau membantu dalam pemahaman dan ramalan tingkah laku. Ujian psikologi adalah sekumpulan item yang dibentuk untuk mengukur ciri-ciri manusia yang berkaitan dengan proses kognitif dan tingkah laku. Ujian merupakan salah satu elemen penting dalam psikologi dan ia bergantung pada pengetahuan yang diperoleh dalam kajian penyelidikan psikologi. Kesahan dan kebolehpercayaan pengukuran penting kepada penyelidikan psikologi. Dalam masyarakat yang kompleks sekarang ini, prinsip yang relevan, aplikasi, dan peranan yang dimainkan oleh ujian psikologi melangkaui bidang psikologi.
 
-        <p>Memandangkan ujian psikologi dilihat signifikan, maka penyelidik telah berusaha menjadikan alat ujian psikologi sama ada yang telah dibina sendiri oleh penyelidik atau menggunakan alat ujian yang sedia ada dibentuk dalam bentuk digital. Terdapat enam alat ujian atau instrumen yang ada dalam Portal MISI iaitu:
+        <p>Memandangkan ujian psikologi dilihat signifikan, maka penyelidik telah berusaha menjadikan alat ujian psikologi sama ada yang telah dibina sendiri oleh penyelidik atau menggunakan alat ujian yang sedia ada dibentuk dalam bentuk digital. Terdapat tujuh alat ujian atau instrumen yang ada dalam Portal MISI iaitu:
 
         <p>
         <p>
@@ -21,12 +21,13 @@ use yii\helpers\Html;
             <li>Ten-Item Personality Inventory-Malay (TIPI-Malay)</li>
             <li>The HEXACO Personality Inventory-Malay (HEXACO-Malay)</li>
             <li>Big Five Inventory-10-Malay (BFI-Malay)</li>
+            <li>Skala Daya Tindak Stres-Pelajar Universiti (SDTS-PU)</li>
         </ol>
         </p>
 
 
         <p>
-            Keenam-enam alat ujian atau instrumen ini boleh diakses di pautan berikut, <a href="https://uppsiks.ums.edu.my/">https://uppsiks.ums.edu.my</a>. Inventori secara atas talian ini telah dibangunkan sendiri oleh Muhammad Idris Bullare @ Bahari (2020) hasil daripada kajian di peringkat PhD dan ia dinamakan sebagai e-Instrumen Kesejahteraan Subjektif Orang Kurang Upaya-Fizikal (e-IKSOKU-F), dan kemudiannya ditukar menjadi KebahagiaanKu-OKU (KK-OKU)/MyHappiness-PwD/MH-PwD), manakala instrument EA-Malay, Ten-Item Personality Inventory-Malay (TIPI-Malay), The HEXACO Personality Inventory-Malay (HEXACO-Malay) dan Big Five Inventory-10-Malay (BFI-Malay) merupakan instrumen piawai yang telah melalui proses terjemahan dan mendapat kebenaran daripada pengasas bagi inventori tersebut.
+            Ketujuh-tujuh alat ujian atau instrumen ini boleh diakses di pautan berikut, <a href="https://uppsiks.ums.edu.my/">https://uppsiks.ums.edu.my</a>. Inventori secara atas talian ini telah dibangunkan sendiri oleh Muhammad Idris Bullare @ Bahari (2020) hasil daripada kajian di peringkat PhD dan ia dinamakan sebagai e-Instrumen Kesejahteraan Subjektif Orang Kurang Upaya-Fizikal (e-IKSOKU-F), dan kemudiannya ditukar menjadi KebahagiaanKu-OKU (KK-OKU)/MyHappiness-PwD/MH-PwD), manakala instrument EA-Malay, Ten-Item Personality Inventory-Malay (TIPI-Malay), The HEXACO Personality Inventory-Malay (HEXACO-Malay) dan Big Five Inventory-10-Malay (BFI-Malay) merupakan instrumen piawai yang telah melalui proses terjemahan dan mendapat kebenaran daripada pengasas bagi inventori tersebut.
         <p>
             Akhir kata, saya ingin mengambil kesempatan mengucapkan ribuan terima kasih kepada pengguna yang sudi mengunjungi portal MISI ini dan seterusnya menjawab alat ujian atau inventori yang disediakan.
         <p>

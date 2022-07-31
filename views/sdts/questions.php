@@ -30,12 +30,12 @@ use app\models\sdts\Questions;
             'summary' => '',
             'dataProvider' => Questions::getProvider(),
             'columns' => [
-                [
-                    'label' => 'No.',
-                    'headerOptions' => ['class' => 'text-center'],
-                    'contentOptions' => ['class' => 'text-center', 'style' => 'width:5%'],
-                    'attribute' => 'item',
-                ],
+                // [
+                //     'label' => 'No.',
+                //     'headerOptions' => ['class' => 'text-center'],
+                //     'contentOptions' => ['class' => 'text-center', 'style' => 'width:5%'],
+                //     'attribute' => 'item',
+                // ],
                 [
                     'label' => 'Pernyataan',
                     'headerOptions' => ['class' => ''],

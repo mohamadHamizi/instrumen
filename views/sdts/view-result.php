@@ -132,8 +132,10 @@ use yii\helpers\ArrayHelper;
             </tbody>
 
         </table>
-        <div class="text-center" style="margin-top: 30px;margin-bottom:10px;">
-            <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/sdts/des'], ['class' => 'btn btn-danger']); ?>
-        </div>
     </div>
 </div>
+<?php if ($back) { ?>
+    <div class="text-center">
+        <?= Html::a('<i class="fa fa-undo"></i>&nbsp;Kembali', ['/admin/data-sdts'], ['class' => 'btn btn-success']); ?>
+    </div>
+<?php } ?>

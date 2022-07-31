@@ -17,6 +17,7 @@ use app\models\OkuDimensi;
 use app\models\OkuStrategi;
 use app\models\OkuKesan;
 use app\models\OkuSumber;
+use app\models\sdts\Main as SdtsMain;
 use app\models\TipiMain;
 use app\models\VDataMea;
 use app\models\VDataMeaSearch;
@@ -155,6 +156,20 @@ class AdminController extends \yii\web\Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('data-bfi', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
+    public function actionDataSdts() {
+        
+        ini_set('memory_limit', '1024M'); // or you could use 1G
+        
+        $searchModel = new SdtsMain();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('data-sdts', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);

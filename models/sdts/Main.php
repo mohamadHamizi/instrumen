@@ -4,7 +4,9 @@ namespace app\models\sdts;
 
 use app\models\UtilityFunc;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "sdts_main".
@@ -70,6 +72,39 @@ class Main extends \yii\db\ActiveRecord
             'pngk' => 'PNGK',
             'status' => 'Status',
         ];
+    }
+
+     /**
+     * Return dataprovider object
+     * 
+     * @param array $params parameters
+     * 
+     * @return array object
+     */
+    public function search($params)
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => self::find(),
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        return $dataProvider;
+    }
+
+    public function getBtnView()
+    {
+        if ($this->status == 1) {
+            return  Html::a('<i class="fa fa-eye"></i>', ['sdts/view-result', 'id' => $this->id], ['target' => '_blank']);
+        }
+
+        return null;
     }
 
     public function getItems()

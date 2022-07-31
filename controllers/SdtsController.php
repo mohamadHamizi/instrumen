@@ -6,6 +6,7 @@ use app\models\sdts\Main;
 use Yii;
 use yii\web\Controller;
 use app\models\bfi\Jadual;
+use app\models\sdts\Dimensi;
 use app\models\sdts\Items;
 use app\models\sdts\Questions;
 use app\models\UtilityFunc;
@@ -83,6 +84,8 @@ class SdtsController extends Controller
             $main->status = 1;
             $main->save();
 
+
+
             if ($model->save()) {
                 $this->ifSuccess();
                 return $this->redirect(['result']);
@@ -107,6 +110,19 @@ class SdtsController extends Controller
 
         $model = Main::findOne($id);
 
+        $dimensi = Dimensi::findOne($id);
+
+        if (!$dimensi) {
+            $dimensi = new Dimensi();
+            $dimensi->main_id = $id;
+            $dimensi->agama = $model->getAgama();
+            $dimensi->masalah = $model->masalah;
+            $dimensi->interaksi = $model->interaksi;
+            $dimensi->produktif = $model->produktif;
+            $dimensi->rakan = $model->rakan;
+            $dimensi->save();
+        }
+
         return $this->render('result', [
             'model' => $model,
             'id' => $id,
@@ -119,72 +135,19 @@ class SdtsController extends Controller
     public function actionViewResult($id)
     {
 
-        $model = Jadual::findOne(['main_id' => $id]);
-
-        $demo = Demo::findOne(['main_id' => $id]);
-
-        $extraversionIndex = $model->extraversionIndex;
-        $extraversionSkor = $model->extraversionSkor;
+        $model = Main::findOne($id);
 
         return $this->render('view-result', [
             'model' => $model,
-            'demo' => $demo,
-            'extraversionIndex' => $extraversionIndex,
-            'extraversionSkor' => $extraversionSkor,
+            'id' => $id,
+            'bil' => 1,
+            'data' => $model->resultItemIndividu(),
+            'arrQuestions' => Questions::findQuestion(),
             'back' => true,
         ]);
     }
 
-    public function actionKeputusan($id)
-    {
 
-        $model = Jadual::find()->where(['SHA1(main_id)' => $id])->one();
-
-        $demo = Demo::find()->where(['SHA1(main_id)' => $id])->one();
-
-        $extraversionIndex = $model->extraversionIndex;
-        $extraversionSkor = $model->extraversionSkor;
-
-        return $this->render('view-result', [
-            'model' => $model,
-            'demo' => $demo,
-            'extraversionIndex' => $extraversionIndex,
-            'extraversionSkor' => $extraversionSkor,
-            'back' => false,
-        ]);
-    }
-
-    public function actionSendEmail($id)
-    {
-
-        $model = Jadual::findOne(['main_id' => $id]);
-
-        $demo = Demo::findOne(['main_id' => $id]);
-
-        $extraversionIndex = $model->extraversionIndex;
-        $extraversionSkor = $model->extraversionSkor;
-
-        $set_from = ['misi@ums.edu.my' => 'MISI '];
-        $set_to = [$demo->emel => $demo->nama_penuh];
-        $subject = 'Laporan Keputusan Big Five Inventory-10-Malay (BFI-Malay)';
-
-        $email = Yii::$app->mailer->compose('result_bfi', [
-            'model' => $model,
-            'extraversionIndex' => $extraversionIndex,
-            'extraversionSkor' => $extraversionSkor,
-            'header1' => $subject,
-            'id' => sha1($id),
-        ])
-            ->setFrom($set_from)
-            ->setTo($set_to)
-            ->setSubject($subject)
-            ->send();
-
-        if ($email) {
-            UtilityFunc::ifSuccess("Keputusan telah dihantar ke emel anda $demo->emel");
-            return $this->redirect(['result']);
-        }
-    }
 
     public function actionDes()
     {
