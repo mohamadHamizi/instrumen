@@ -31,6 +31,9 @@ use yii\helpers\ArrayHelper;
                 ],
                 'series' => [
                     ['name' => 'indeks', 'data' => $model->indeksDimensi(),],
+                    ['name' => 'Anda', 'data' => $model->indeksDimensi(),],
+                    ['name' => 'Lelaki', 'data' => $model->indeksDimensiJenis(1),],
+                    ['name' => 'Perempuan', 'data' => $model->indeksDimensiJenis(2),],
                 ]
             ]
         ]); ?>
