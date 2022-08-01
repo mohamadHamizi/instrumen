@@ -30,7 +30,10 @@ use yii\helpers\ArrayHelper;
                     ]
                 ],
                 'series' => [
-                    ['name' => 'indeks', 'data' => $model->indeksDimensi(),],
+                    ['name' => 'Keseluruhan', 'data' => $model->indeksDimensiJenis(),],
+                    ['name' => 'Anda', 'data' => $model->indeksDimensi(),],
+                    ['name' => 'Lelaki', 'data' => $model->indeksDimensiJenis(1),],
+                    ['name' => 'Perempuan', 'data' => $model->indeksDimensiJenis(2),],
                 ]
             ]
         ]); ?>
@@ -137,3 +140,9 @@ use yii\helpers\ArrayHelper;
         </div>
     </div>
 </div>
+
+<?php
+
+$model->indeksDimensiJenis(1);
+
+?>

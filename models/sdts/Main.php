@@ -74,7 +74,7 @@ class Main extends \yii\db\ActiveRecord
         ];
     }
 
-     /**
+    /**
      * Return dataprovider object
      * 
      * @param array $params parameters
@@ -111,6 +111,12 @@ class Main extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Items::class, ['main_id' => 'id']);
     }
+
+    public function getDimensi()
+    {
+        return $this->hasOne(Dimensi::class, ['main_id' => 'id']);
+    }
+
 
 
     public function FormulaIndeks($arrItems)
@@ -176,6 +182,38 @@ class Main extends \yii\db\ActiveRecord
             $this->getInteraksi(),
             $this->getProduktif(),
             $this->getRakan(),
+        ];
+
+        return $arr;
+    }
+
+    public function indeksDimensiJenis($type = null)
+    {
+
+        $model = self::find()->joinWith(['dimensi'])->andFilterWhere(['jantina' => $type])->all();
+
+        $agama = 0;
+        $masalah = 0;
+        $interaksi = 0;
+        $produktif = 0;
+        $rakan = 0;
+
+        $total = count($model);
+
+        foreach ($model as $mdl) {
+            $agama += $mdl->dimensi->agama;
+            $masalah += $mdl->dimensi->masalah;
+            $interaksi += $mdl->dimensi->interaksi;
+            $produktif += $mdl->dimensi->produktif;
+            $rakan += $mdl->dimensi->rakan;
+        }
+
+        $arr = [
+            round(($agama / $total), 2),
+            round(($masalah / $total), 2),
+            round(($interaksi / $total), 2),
+            round(($produktif / $total), 2),
+            round(($rakan / $total), 2),
         ];
 
         return $arr;
@@ -267,7 +305,7 @@ class Main extends \yii\db\ActiveRecord
         }
 
         if ($val >= UtilityFunc::Quartile($arr, 0.75)) {
-           
+
 
             return  'bg-green';
         }
