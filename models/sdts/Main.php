@@ -42,7 +42,7 @@ class Main extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['jantina', 'create_dt', 'tahap_pengajian', 'mod_pengajian', 'tahun_pengajian', 'umur', 'agama', 'darah', 'universiti_kolej', 'fakulti', 'pngs', 'pngk'], 'required'],
+            [['jantina', 'create_dt', 'tahap_pengajian', 'mod_pengajian', 'tahun_pengajian', 'umur', 'agama', 'darah', 'universiti_kolej', 'fakulti',], 'required'],
             [['jantina', 'tahap_pengajian', 'mod_pengajian', 'tahun_pengajian', 'umur', 'status'], 'integer'],
             [['create_dt'], 'safe'],
             [['pngs', 'pngk'], 'number'],

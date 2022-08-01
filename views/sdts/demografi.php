@@ -3,8 +3,6 @@
 use app\models\OkuRefDemo;
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
-use kartik\widgets\DatePicker;
-use kartik\widgets\Select2;
 
 use yii\helpers\ArrayHelper;
 ?>
@@ -58,8 +56,8 @@ use yii\helpers\ArrayHelper;
 
             <div class="col-sm-3">
 
-                <?= $form->field($model, 'agama')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 6])->all(), 'key', 'value'))->label(false);
-                ?>
+                <?= $form->field($model, 'agama')->radiolist(ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 6])->all(), 'key', 'value'))->label(false);?>
+                <?= $form->field($model, 'agama_lain')->textInput(['hidden'=>true, 'id'=>'agama_lain'])->label(false)?>
             </div>
         </div>
 
@@ -125,6 +123,22 @@ use yii\helpers\ArrayHelper;
                     4 => 'Tahun 4',
                     5 => 'Tahun 5',
                     6 => 'Tahun 6',
+                    7 => 'Tahun 7',
+                    8 => 'Tahun 8',
+                    9 => 'Tahun 9',
+                    10 => 'Tahun 10',
+                ])->label(false);
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label"><?= Html::activeLabel($model, 'semester'); ?></label>
+
+            <div class="col-sm-3">
+
+                <?= $form->field($model, 'semester')->dropDownList([
+                    1 => 'Semester 1',
+                    2 => 'Semester 2',
                 ])->label(false);
                 ?>
             </div>
@@ -165,3 +179,29 @@ use yii\helpers\ArrayHelper;
     </div>
 
 </div>
+
+
+<?php
+$script = <<< JS
+    
+       
+        $(function () {
+        
+        $('#agama_lain').hide();
+        
+        
+        $('input[name="Main[agama]"]').on('click', function () {
+            if ($(this).val() == '99') {
+                $('#agama_lain').show();
+            } else {
+                $('#agama_lain').hide();
+            }
+        });
+        
+    
+        
+    });
+        
+JS;
+$this->registerJs($script);
+?>
