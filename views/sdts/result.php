@@ -144,6 +144,6 @@ use yii\helpers\VarDumper;
 
 <?php
 
-VarDumper::dump($model->julatQuartile, 10, true);
+//VarDumper::dump($model->julatQuartile, 10, true);
 
 ?>
