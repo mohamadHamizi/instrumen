@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use dosamigos\chartjs\ChartJs;
 use yii\web\JsExpression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 ?>
 
@@ -143,6 +144,6 @@ use yii\helpers\ArrayHelper;
 
 <?php
 
-$model->indeksDimensiJenis(1);
+VarDumper::dump($model->julatQuartile, 10, true);
 
 ?>

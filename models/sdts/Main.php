@@ -310,4 +310,18 @@ class Main extends \yii\db\ActiveRecord
             return  'bg-green';
         }
     }
+
+    public function julatQuartile($arr, $val)
+    {
+
+        sort($arr);
+
+        $data =[
+            UtilityFunc::Quartile($arr, 0.25), 
+            UtilityFunc::Quartile($arr, 0.50), 
+            UtilityFunc::Quartile($arr, 0.75), 
+        ]; 
+
+        return $data;
+    }
 }
