@@ -237,6 +237,19 @@ class Main extends \yii\db\ActiveRecord
             'd3' => $this->items->d3,
             'e1' => $this->items->e1,
             'e2' => $this->items->e2,
+            'julat_a1' => $this->julatQuartile($data['a1'], $this->items->a1),
+            'julat_a2' => $this->julatQuartile($data['a2'], $this->items->a2),
+            'julat_b1' => $this->julatQuartile($data['b1'], $this->items->b1),
+            'julat_b2' => $this->julatQuartile($data['b2'], $this->items->b2),
+            'julat_c1' => $this->julatQuartile($data['c1'], $this->items->c1),
+            'julat_c2' => $this->julatQuartile($data['c2'], $this->items->c2),
+            'julat_c3' => $this->julatQuartile($data['c3'], $this->items->c3),
+            'julat_c4' => $this->julatQuartile($data['c4'], $this->items->c4),
+            'julat_d1' => $this->julatQuartile($data['d1'], $this->items->d1),
+            'julat_d2' => $this->julatQuartile($data['d2'], $this->items->d2),
+            'julat_d3' => $this->julatQuartile($data['d3'], $this->items->d3),
+            'julat_e1' => $this->julatQuartile($data['e1'], $this->items->e1),
+            'julat_e2' => $this->julatQuartile($data['e2'], $this->items->e2),
             'tahap_a1' => $this->tahapQuartile($data['a1'], $this->items->a1),
             'tahap_a2' => $this->tahapQuartile($data['a2'], $this->items->a2),
             'tahap_b1' => $this->tahapQuartile($data['b1'], $this->items->b1),
@@ -311,7 +324,7 @@ class Main extends \yii\db\ActiveRecord
         }
     }
 
-    public function julatQuartile($arr, $val)
+    public function julatQuartile($arr)
     {
 
         sort($arr);

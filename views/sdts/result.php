@@ -20,7 +20,7 @@ use yii\helpers\VarDumper;
                     'type' => 'line'
                 ],
                 'title' => [
-                    'text' => 'Domain'
+                    'text' => 'Dimensi'
                 ],
                 'xAxis' => [
                     'categories' =>  $model->labelDimensi(),
@@ -141,9 +141,3 @@ use yii\helpers\VarDumper;
         </div>
     </div>
 </div>
-
-<?php
-
-//VarDumper::dump($model->julatQuartile, 10, true);
-
-?>

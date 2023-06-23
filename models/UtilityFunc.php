@@ -24,13 +24,15 @@ class UtilityFunc
     public static function CountryList()
     {
 
-        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/country-list';
+        // $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/country-list';
 
-        // Read JSON file
-        $json_data = file_get_contents($api_url);
+        // // Read JSON file
+        // $json_data = file_get_contents($api_url);
 
-        // Decode JSON data into PHP array
-        $response_data = json_decode($json_data);
+        // // Decode JSON data into PHP array
+        // $response_data = json_decode($json_data);
+        //tukar blk pakai direct table
+        $response_data = Country::find()->where(['isActive' => 1])->asArray()->all();
 
         return $response_data;
     }
@@ -38,13 +40,16 @@ class UtilityFunc
     public static function DepartmentList()
     {
 
-        $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
+        // $api_url = 'https://registrar.ums.edu.my/staff/web/api/staff/dept-list';
 
-        // Read JSON file
-        $json_data = file_get_contents($api_url);
+        // // Read JSON file
+        // $json_data = file_get_contents($api_url);
 
-        // Decode JSON data into PHP array
-        $response_data = json_decode($json_data);
+        // // Decode JSON data into PHP array
+        // $response_data = json_decode($json_data);
+
+        //tukar blk pakai direct table
+        $response_data = Department::find()->where(['isActive' => 1])->asArray()->all();
 
         return $response_data;
     }
