@@ -220,7 +220,7 @@ class EqbiController extends Controller
 
     public function actionBhgn3()
     {
-        $this->view->title = "ADAPTASI";
+        $this->view->title = "ADAPTIBILITY";
 
         $id = \Yii::$app->session->get('eqbi_main_id');
 
@@ -263,7 +263,7 @@ class EqbiController extends Controller
     }
     public function actionBhgn4()
     {
-        $this->view->title = "4. PENGURUSAN STRES";
+        $this->view->title = "4. STRESS MANAGEMENT";
 
         $id = \Yii::$app->session->get('eqbi_main_id');
 
@@ -306,7 +306,7 @@ class EqbiController extends Controller
     }
     public function actionBhgn5()
     {
-        $this->view->title = "5. MOOD UMUM";
+        $this->view->title = "5. GENERAL MOOD";
 
         $id = \Yii::$app->session->get('eqbi_main_id');
 
@@ -349,7 +349,7 @@ class EqbiController extends Controller
     }
     public function actionBhgn6()
     {
-        $this->view->title = "6. TANGGAPAN POSITIF";
+        $this->view->title = "6. POSITIVE IMPRESSION";
 
         $id = \Yii::$app->session->get('eqbi_main_id');
 

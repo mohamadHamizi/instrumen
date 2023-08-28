@@ -71,7 +71,7 @@ use yii\helpers\Html;
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-bar-chart"></i>&nbsp;<strong>Indeks Domain / Sub-Domain</strong></h3>
+        <h3 class="box-title"><i class="fa fa-bar-chart"></i>&nbsp;<strong>Domain / Sub-domain Index</strong></h3>
     </div>
     <div class="box-body">
         <table class="table table-primary table-striped table-bordered">
