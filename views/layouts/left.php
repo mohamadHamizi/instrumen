@@ -126,6 +126,23 @@
                             ],
                         ],
                         [
+                            'label' => 'EQ-English (v2)',
+                            'icon' => 'magic',
+                            'visible' => true,
+                            'url' => '#',
+                            'items' => [
+                                ['label' => 'Introduction', 'icon' => 'magic', 'url' => ['eqbi/index'], 'visible' => true],
+                                ['label' => 'demographics', 'icon' => 'magic', 'url' => ['eqbi/demografi'], 'visible' => true],
+                                ['label' => 'Part 1', 'icon' => 'magic', 'url' => ['eqbi/bhgn1'], 'visible' => true],
+                                ['label' => 'Part 2', 'icon' => 'magic', 'url' => ['eqbi/bhgn2'], 'visible' => true],
+                                ['label' => 'Part 3', 'icon' => 'magic', 'url' => ['eqbi/bhgn3'], 'visible' => true],
+                                ['label' => 'Part 4', 'icon' => 'magic', 'url' => ['eqbi/bhgn4'], 'visible' => true],
+                                ['label' => 'Part 5', 'icon' => 'magic', 'url' => ['eqbi/bhgn5'], 'visible' => true],
+                                ['label' => 'Part 6', 'icon' => 'magic', 'url' => ['eqbi/bhgn6'], 'visible' => true],
+                                ['label' => 'Result', 'icon' => 'magic', 'url' => ['eqbi/result'], 'visible' => true],
+                            ],
+                        ],
+                        [
                             'label' => 'SDTS-PU',
                             'icon' => 'street-view',
                             'visible' => true,
