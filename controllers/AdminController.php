@@ -136,7 +136,7 @@ class AdminController extends \yii\web\Controller {
 
     public function actionDataHexaco() {
         
-        ini_set('memory_limit', '1024M'); // or you could use 1G
+        ini_set('memory_limit', '2G'); // or you could use 1G
         
         $searchModel = new Main();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
