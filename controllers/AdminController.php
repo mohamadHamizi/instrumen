@@ -26,6 +26,9 @@ use app\models\VDataMeaV2Search;
 
 class AdminController extends \yii\web\Controller {
 
+    private $searchModel;
+    private $dataProvider;
+
     public function behaviors() {
         return [
             'access' => [
@@ -134,18 +137,48 @@ class AdminController extends \yii\web\Controller {
         
     }
 
-    public function actionDataHexaco() {
+    // public function actionDataHexaco() {
         
-        ini_set('memory_limit', '2G'); // or you could use 1G
+    //     ini_set('memory_limit', '2G'); // or you could use 1G
         
-        $searchModel = new Main();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    //     $searchModel = new Main();
+    //     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+    //     return $this->render('data-hexaco', [
+    //                 'searchModel' => $searchModel,
+    //                 'dataProvider' => $dataProvider,
+    //     ]);
+        
+    // }
+
+    public function actionDataHexaco()
+    {
+        // ...
+
+        $searchModel = $this->getSearchModel();
+        $dataProvider = $this->getDataProvider();
 
         return $this->render('data-hexaco', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
-        
+    }
+
+    private function getSearchModel()
+    {
+        if ($this->searchModel === null) {
+            $this->searchModel = new Main();
+        }
+        return $this->searchModel;
+    }
+
+    private function getDataProvider()
+    {
+        if ($this->dataProvider === null) {
+            $searchModel = $this->getSearchModel();
+            $this->dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        }
+        return $this->dataProvider;
     }
 
     public function actionDataBfi() {
