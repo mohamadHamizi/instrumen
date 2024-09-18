@@ -16,6 +16,9 @@ use yii\helpers\Html;
  */
 class Main extends \yii\db\ActiveRecord
 {
+
+    public $year;
+
     /**
      * {@inheritdoc}
      */
@@ -30,6 +33,7 @@ class Main extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['year'], 'integer'],
             [['icno'], 'required'],
             [['create_dt'], 'safe'],
             [['icno'], 'string', 'max' => 12],
@@ -44,6 +48,7 @@ class Main extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'icno' => 'ICNO',
+            'year' => 'Tahun',
             'create_dt' => 'Tarikh/Masa',
             'pdpaStatus' => 'Status PDPA',
             'pdpaTarikh' => 'Tarikh PDPA',
@@ -369,10 +374,10 @@ class Main extends \yii\db\ActiveRecord
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
+
+        $query->andFilterWhere(['YEAR(created_at)' => $this->year]);
 
         return $dataProvider;
     }

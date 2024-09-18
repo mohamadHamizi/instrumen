@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use kartik\export\ExportMenu;
+use yii\widgets\ActiveForm;
 
 //use yii\widgets\Pjax;
 /* @var $this yii\web\View */
@@ -22,6 +23,34 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box-body">
+
+    <div class="data-hexaco-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?php $form = ActiveForm::begin([
+        'action' => ['data-hexaco'],
+        'method' => 'get',
+    ]); ?>
+
+    <?= 
+    $form->field($searchModel, 'year')->dropDownList([
+        '2021' => '2021',
+        '2022' => '2022',
+        '2023' => '2023',
+        '2024' => '2024',
+    ]) ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+
+</div>
+
 
         <?php
         $gridColumns = [
