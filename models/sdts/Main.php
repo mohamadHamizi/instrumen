@@ -190,7 +190,7 @@ class Main extends \yii\db\ActiveRecord
     public function indeksDimensiJenis($type = null)
     {
 
-        $model = self::find()->joinWith(['dimensi'])->where(['status' => 1])->andFilterWhere(['jantina' => $type])->all();
+        $model = self::find()->innerJoinWith(['dimensi'])->where(['status' => 1])->andFilterWhere(['jantina' => $type])->all();
 
         $agama = 0;
         $masalah = 0;
