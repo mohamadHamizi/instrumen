@@ -151,7 +151,7 @@
                                 ['label' => 'Pengenalan', 'icon' => 'street-view', 'url' => ['sdts/index'], 'visible' => true],
                                 ['label' => 'Demografi', 'icon' => 'street-view', 'url' => ['sdts/demografi'], 'visible' => true],
                                 ['label' => 'Soal Selidik', 'icon' => 'street-view', 'url' => ['sdts/questions'], 'visible' => true],
-                                ['label' => 'Keputusan', 'icon' => 'street-view', 'url' => ['eq2/result'], 'visible' => true],
+                                ['label' => 'Keputusan', 'icon' => 'street-view', 'url' => ['sdts/result'], 'visible' => true],
                             ],
                         ],
                     ],
