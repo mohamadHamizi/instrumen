@@ -363,6 +363,11 @@ class Main extends \yii\db\ActiveRecord
         return $this->hasOne(Demo::className(), ['main_id' => 'id']);
     }
 
+    public function getSkj()
+    {
+        return $this->hasOne(Skj::className(), ['main_id' => 'id']);
+    }
+
     public function search($params)
     {
         $query = self::find();

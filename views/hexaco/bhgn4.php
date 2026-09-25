@@ -32,7 +32,9 @@ use kartik\form\ActiveForm;
                     'label' => 'No.',
                     'headerOptions' => ['class' => 'text-center'],
                     'contentOptions' => ['class' => 'text-center', 'style' => 'width:5%'],
-                    'attribute' => 'id',
+                    'value' => function ($model, $key, $index) {
+                        return $index + 1;
+                    },
                 ],
                 [
                     'label' => 'Item',
@@ -52,6 +54,18 @@ use kartik\form\ActiveForm;
                     'format' => 'raw'
                 ],
             ],
+            'afterRow' => function ($model, $key, $index, $grid) use ($form, $skj, $disabled, $skjQuestion) {
+                if ($index === 9 && $skjQuestion) {
+                    $data = [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5];
+                    $radio = $form->field($skj, 's4')->radioButtonGroup($data, ['class' => '', 'itemOptions' => ['labelOptions' => ['class' => 'btn btn-primary', 'disabled' => $disabled]]])->label(false);
+                    return '<tr>'
+                        . '<td class="text-center" style="width:5%">11</td>'
+                        . '<td>' . Html::encode($skjQuestion->pernyataan) . '</td>'
+                        . '<td class="text-center" style="width:50%">' . $radio . '</td>'
+                        . '</tr>';
+                }
+                return '';
+            },
         ]);
         ?>
 

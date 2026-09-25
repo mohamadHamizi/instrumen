@@ -43,8 +43,6 @@ use kartik\popover\PopoverX;
     }
 </style>
 
-
-
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong>Indeks Dimensi HEXACO</strong></h3>
@@ -414,10 +412,43 @@ use kartik\popover\PopoverX;
                 </td>
             </tr>
         </table>
-        <div class="text-center" style="margin-top: 30px;margin-bottom:10px;">
-            <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
+    </div>
+</div>
+
+
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-podcast"></i>&nbsp;Indeks SKJ&nbsp;<small>Skala Kejujuran Jawapan</small></h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-3 col-xs-12 text-center">
+                <span style="font-size: 40px; font-weight: bold;"><?= ($skjIndex !== null) ? $skjIndex : '-' ?><sup style="font-size: 18px;">%</sup></span>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="progress progress-lg" style="margin-top: 22px; margin-bottom: 0;">
+                    <div class="progress-bar progress-bar-info" style="width: <?= ($skjIndex !== null) ? $skjIndex : 0 ?>%"></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-center">
+                <?php
+                $skjLabelClass = 'label-default';
+                if ($tahapSkj === 'RENDAH') {
+                    $skjLabelClass = 'label-danger';
+                } elseif ($tahapSkj === 'SEDERHANA') {
+                    $skjLabelClass = 'label-warning';
+                } elseif ($tahapSkj === 'TINGGI') {
+                    $skjLabelClass = 'label-success';
+                }
+                ?>
+                <span class="label <?= $skjLabelClass ?>" style="font-size: 14px; padding: 8px 16px;"><?= $tahapSkj ? $tahapSkj : '—' ?></span>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="text-center" style="margin-top: 30px;margin-bottom:10px;">
+    <?= Html::a('<i class="fa fa-check"></i>&nbsp;Tamat Sesi / Jawab Semula', ['/hexaco/des'], ['class' => 'btn btn-danger']); ?>
 </div>
 
 
