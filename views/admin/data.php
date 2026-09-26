@@ -1,8 +1,11 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
 use kartik\grid\GridView;
 use kartik\export\ExportMenu;
+use app\models\OkuRefDemo;
 
 //use yii\widgets\Pjax;
 /* @var $this yii\web\View */
@@ -11,7 +14,43 @@ use kartik\export\ExportMenu;
 
 $this->title = 'Senarai';
 $this->params['breadcrumbs'][] = $this->title;
+
+$jantinaList = ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 5])->orderBy(['key' => SORT_ASC])->all(), 'key', 'value');
+$negeriList = ArrayHelper::map(OkuRefDemo::find()->where(['pd' => 18])->orderBy(['key' => SORT_ASC])->all(), 'key', 'value');
 ?>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-search"></i>&nbsp;<strong>Carian Data</strong></h3>
+    </div>
+    <div class="box-body">
+        <?php $form = ActiveForm::begin([
+            'method' => 'get',
+            'action' => ['data'],
+        ]); ?>
+        <div class="row">
+            <div class="col-sm-3"><?= $form->field($searchModel, 'icno')->label('No. KP / IC') ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'nama')->label('Nama') ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'jantina')->label('Jantina')->dropDownList($jantinaList, ['prompt' => 'Pilih Jantina']) ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'negeri')->label('Negeri')->dropDownList($negeriList, ['prompt' => 'Pilih Negeri']) ?></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"><?= $form->field($searchModel, 'umur')->label('Umur') ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'tarikh_mula')->label('Tarikh Mula')->textInput(['type' => 'date']) ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'tarikh_akhir')->label('Tarikh Akhir')->textInput(['type' => 'date']) ?></div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">&nbsp;</label>
+                    <div>
+                        <?= Html::submitButton('Cari', ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('Reset', ['data'], ['class' => 'btn btn-default']) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php ActiveForm::end(); ?>
+    </div>
+</div>
+
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong><?= Html::encode($this->title) ?></strong></h3>
@@ -120,6 +159,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ];
 
 
+        echo Html::a('Export CSV (Fast)', ['export-data-csv'] + Yii::$app->request->queryParams, ['class' => 'btn btn-success']);
+        echo '&nbsp;';
+
         echo ExportMenu::widget([
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
@@ -130,7 +172,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?=
         GridView::widget([
             'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
+//            'filterModel' => $searchModel,
 //            'responsiveWrap' => true,
 //            'responsive' => true,
             'hover' => true,

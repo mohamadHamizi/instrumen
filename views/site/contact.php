@@ -28,7 +28,7 @@ use app\models\OkuRefDemo;
             Bimbit: <strong>+016-5202070</strong> Faks: <strong>+6088-320440</strong><br>
             E-mel: <strong>ferlis@ums.edu.my;ferlis27@yahoo.com</strong>
         </P>
-    </div>ßß
+    </div>
 
     <!-- /.box-body -->
     <div class="box-footer text-center">
