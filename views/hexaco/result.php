@@ -418,7 +418,7 @@ use kartik\popover\PopoverX;
 
 <div class="box box-default">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-podcast"></i>&nbsp;Indeks SKJ&nbsp;<small>Skala Kejujuran Jawapan</small></h3>
+        <h3 class="box-title"><i class="fa fa-podcast"></i>&nbsp;Indeks SKJ</h3>
     </div>
     <div class="box-body">
         <div class="row">
