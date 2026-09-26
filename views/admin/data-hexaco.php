@@ -4,15 +4,53 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use kartik\export\ExportMenu;
 use yii\widgets\ActiveForm;
+use app\models\hexaco\Skj;
 
 //use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\OkuMainSearch */
+/* @var $searchModel app\models\hexaco\Main */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Senarai HEXACO';
 $this->params['breadcrumbs'][] = $this->title;
+
+$yearList = [];
+for ($y = (int) date('Y'); $y >= 2021; $y--) {
+    $yearList[(string) $y] = $y;
+}
+$jantinaList = ['L' => 'Lelaki', 'P' => 'Perempuan'];
 ?>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-search"></i>&nbsp;<strong>Carian Data</strong></h3>
+    </div>
+    <div class="box-body">
+        <?php $form = ActiveForm::begin([
+            'method' => 'get',
+            'action' => ['data-hexaco'],
+        ]); ?>
+        <div class="row">
+            <div class="col-sm-3"><?= $form->field($searchModel, 'icno')->label('No. KP') ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'nama_penuh')->label('Nama') ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'jantina')->label('Jantina')->dropDownList($jantinaList, ['prompt' => 'Pilih Jantina']) ?></div>
+            <div class="col-sm-3"><?= $form->field($searchModel, 'umur')->label('Umur') ?></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"><?= $form->field($searchModel, 'year')->label('Tahun Penilaian')->dropDownList($yearList, ['prompt' => 'Semua Tahun']) ?></div>
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label class="control-label">&nbsp;</label>
+                    <div>
+                        <?= Html::submitButton('Cari', ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('Reset', ['data-hexaco'], ['class' => 'btn btn-default']) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php ActiveForm::end(); ?>
+    </div>
+</div>
+
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="fa fa-th-large"></i>&nbsp;<strong><?= Html::encode($this->title) ?></strong></h3>
@@ -23,36 +61,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box-body">
-
-    <div class="data-hexaco-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php $form = ActiveForm::begin([
-        'action' => ['data-hexaco'],
-        'method' => 'get',
-    ]); ?>
-
-    <?= 
-    $form->field($searchModel, 'year')->dropDownList([
-        '2021' => '2021',
-        '2022' => '2022',
-        '2023' => '2023',
-        '2024' => '2024',
-        '2025' => '2025',
-        '2026' => '2026',
-    ]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-
-</div>
-
 
         <?php
         $gridColumns = [
@@ -162,6 +170,42 @@ $this->params['breadcrumbs'][] = $this->title;
             'terbuka.item59',
             'terbuka.item60',
         ];
+
+        $skjQuestions = [
+            1 => 'Semua tabiat saya baik dan disenangi.',
+            2 => 'Saya sentiasa mengamalkan perkara yang saya katakan.',
+            3 => 'Saya selalu bercakap benar.',
+            4 => 'Saya tidak pernah berkata apa-apa yang tidak baik atau jahat berkenaan orang lain.',
+            5 => 'Saya tidak pernah mengeluarkan kata-kata yang mengguris perasaan orang lain.',
+            6 => 'Saya memenuhi semua janji saya.',
+        ];
+
+        foreach ($skjQuestions as $skjNo => $skjQuestion) {
+            $gridColumns[] = [
+                'attribute' => 'skj.s' . $skjNo,
+                'label' => 'SKJ ' . $skjNo,
+                'headerOptions' => ['title' => $skjQuestion],
+            ];
+        }
+
+        $gridColumns[] = [
+            'label' => 'Indeks SKJ',
+            'value' => function ($model) {
+                $skj = $model->skj;
+                return ($skj !== null && $skj->isComplete()) ? $skj->getSkor() : '';
+            },
+        ];
+
+        $gridColumns[] = [
+            'label' => 'Tahap SKJ',
+            'value' => function ($model) {
+                $skj = $model->skj;
+                return ($skj !== null && $skj->isComplete()) ? Skj::tahap($skj->getSkor()) : '';
+            },
+        ];
+
+        echo Html::a('Export CSV (Fast)', ['export-hexaco-csv'] + Yii::$app->request->queryParams, ['class' => 'btn btn-success']);
+        echo '&nbsp;';
 
         echo ExportMenu::widget([
             'dataProvider' => $dataProvider,

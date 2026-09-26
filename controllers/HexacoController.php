@@ -10,6 +10,8 @@ use app\models\hexaco\Kebersetujuan;
 use app\models\hexaco\Kejujuran;
 use app\models\hexaco\Main;
 use app\models\hexaco\Questions;
+use app\models\hexaco\Skj;
+use app\models\hexaco\SkjQuestion;
 use app\models\hexaco\Terbuka;
 use Yii;
 use yii\web\Controller;
@@ -110,7 +112,7 @@ class HexacoController extends Controller
     public function actionBhgn1()
     {
 
-        $this->view->title = "Kejujuran Kerendahan Hati";
+        $this->view->title = "Bahagian 1";
 
         $id = \Yii::$app->session->get('hexaco_main_id');
 
@@ -131,23 +133,40 @@ class HexacoController extends Controller
             $disabled = true;
         }
 
+        $skj = Skj::findOne(['main_id' => $id]);
+        if (!$skj) {
+            $skj = new Skj();
+        }
+        $skj->scenario = Skj::SCENARIO_S1;
+
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($disabled == true) {
-                return $this->redirect(['bhgn2']);
-            }
+            $skj->load(Yii::$app->request->post());
 
             $model->main_id = $id;
+            $skj->main_id = $id;
 
-            if ($model->save()) {
-                $this->ifSuccess();
-                return $this->redirect(['bhgn2']);
+            if ($disabled == true) {
+                if ($skj->validate()) {
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn2']);
+                }
+            } else {
+                if ($model->validate() && $skj->validate()) {
+                    $model->save(false);
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn2']);
+                }
             }
         }
 
         return $this->render('bhgn1', [
             'model' => $model,
             'model1' => $model,
+            'skj' => $skj,
+            'skjQuestion' => SkjQuestion::getBySection(1),
             'disabled' => $disabled,
             'dataProvider' => $dataProvider,
         ]);
@@ -155,7 +174,7 @@ class HexacoController extends Controller
 
     public function actionBhgn2()
     {
-        $this->view->title = "Emosi";
+        $this->view->title = "Bahagian 2";
 
         $id = \Yii::$app->session->get('hexaco_main_id');
 
@@ -176,23 +195,40 @@ class HexacoController extends Controller
             $disabled = true;
         }
 
+        $skj = Skj::findOne(['main_id' => $id]);
+        if (!$skj) {
+            $skj = new Skj();
+        }
+        $skj->scenario = Skj::SCENARIO_S2;
+
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($disabled == true) {
-                return $this->redirect(['bhgn3']);
-            }
+            $skj->load(Yii::$app->request->post());
 
             $model->main_id = $id;
+            $skj->main_id = $id;
 
-            if ($model->save()) {
-                $this->ifSuccess();
-                return $this->redirect(['bhgn3']);
+            if ($disabled == true) {
+                if ($skj->validate()) {
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn3']);
+                }
+            } else {
+                if ($model->validate() && $skj->validate()) {
+                    $model->save(false);
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn3']);
+                }
             }
         }
 
         return $this->render('bhgn2', [
             'model' => $model,
             'model1' => $model,
+            'skj' => $skj,
+            'skjQuestion' => SkjQuestion::getBySection(2),
             'disabled' => $disabled,
             'dataProvider' => $dataProvider,
         ]);
@@ -200,7 +236,7 @@ class HexacoController extends Controller
 
     public function actionBhgn3()
     {
-        $this->view->title = "Ekstraversi";
+        $this->view->title = "Bahagian 3";
 
         $id = \Yii::$app->session->get('hexaco_main_id');
 
@@ -221,30 +257,47 @@ class HexacoController extends Controller
             $disabled = true;
         }
 
+        $skj = Skj::findOne(['main_id' => $id]);
+        if (!$skj) {
+            $skj = new Skj();
+        }
+        $skj->scenario = Skj::SCENARIO_S3;
+
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($disabled == true) {
-                return $this->redirect(['bhgn4']);
-            }
+            $skj->load(Yii::$app->request->post());
 
             $model->main_id = $id;
+            $skj->main_id = $id;
 
-            if ($model->save()) {
-                $this->ifSuccess();
-                return $this->redirect(['bhgn4']);
+            if ($disabled == true) {
+                if ($skj->validate()) {
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn4']);
+                }
+            } else {
+                if ($model->validate() && $skj->validate()) {
+                    $model->save(false);
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn4']);
+                }
             }
         }
 
         return $this->render('bhgn3', [
             'model' => $model,
             'model1' => $model,
+            'skj' => $skj,
+            'skjQuestion' => SkjQuestion::getBySection(3),
             'disabled' => $disabled,
             'dataProvider' => $dataProvider,
         ]);
     }
     public function actionBhgn4()
     {
-        $this->view->title = "Kebersetujuan";
+        $this->view->title = "Bahagian 4";
 
         $id = \Yii::$app->session->get('hexaco_main_id');
 
@@ -265,30 +318,47 @@ class HexacoController extends Controller
             $disabled = true;
         }
 
+        $skj = Skj::findOne(['main_id' => $id]);
+        if (!$skj) {
+            $skj = new Skj();
+        }
+        $skj->scenario = Skj::SCENARIO_S4;
+
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($disabled == true) {
-                return $this->redirect(['bhgn5']);
-            }
+            $skj->load(Yii::$app->request->post());
 
             $model->main_id = $id;
+            $skj->main_id = $id;
 
-            if ($model->save()) {
-                $this->ifSuccess();
-                return $this->redirect(['bhgn5']);
+            if ($disabled == true) {
+                if ($skj->validate()) {
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn5']);
+                }
+            } else {
+                if ($model->validate() && $skj->validate()) {
+                    $model->save(false);
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn5']);
+                }
             }
         }
 
         return $this->render('bhgn4', [
             'model' => $model,
             'model1' => $model,
+            'skj' => $skj,
+            'skjQuestion' => SkjQuestion::getBySection(4),
             'disabled' => $disabled,
             'dataProvider' => $dataProvider,
         ]);
     }
     public function actionBhgn5()
     {
-        $this->view->title = "Keberhemahan";
+        $this->view->title = "Bahagian 5";
 
         $id = \Yii::$app->session->get('hexaco_main_id');
 
@@ -309,30 +379,47 @@ class HexacoController extends Controller
             $disabled = true;
         }
 
+        $skj = Skj::findOne(['main_id' => $id]);
+        if (!$skj) {
+            $skj = new Skj();
+        }
+        $skj->scenario = Skj::SCENARIO_S5;
+
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($disabled == true) {
-                return $this->redirect(['bhgn6']);
-            }
+            $skj->load(Yii::$app->request->post());
 
             $model->main_id = $id;
+            $skj->main_id = $id;
 
-            if ($model->save()) {
-                $this->ifSuccess();
-                return $this->redirect(['bhgn6']);
+            if ($disabled == true) {
+                if ($skj->validate()) {
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn6']);
+                }
+            } else {
+                if ($model->validate() && $skj->validate()) {
+                    $model->save(false);
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['bhgn6']);
+                }
             }
         }
 
         return $this->render('bhgn5', [
             'model' => $model,
             'model1' => $model,
+            'skj' => $skj,
+            'skjQuestion' => SkjQuestion::getBySection(5),
             'disabled' => $disabled,
             'dataProvider' => $dataProvider,
         ]);
     }
     public function actionBhgn6()
     {
-        $this->view->title = "Terbuka kepada Pengalaman";
+        $this->view->title = "Bahagian 6";
 
         $id = \Yii::$app->session->get('hexaco_main_id');
 
@@ -353,23 +440,40 @@ class HexacoController extends Controller
             $disabled = true;
         }
 
+        $skj = Skj::findOne(['main_id' => $id]);
+        if (!$skj) {
+            $skj = new Skj();
+        }
+        $skj->scenario = Skj::SCENARIO_S6;
+
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($disabled == true) {
-                return $this->redirect(['result']);
-            }
+            $skj->load(Yii::$app->request->post());
 
             $model->main_id = $id;
+            $skj->main_id = $id;
 
-            if ($model->save()) {
-                $this->ifSuccess();
-                return $this->redirect(['result']);
+            if ($disabled == true) {
+                if ($skj->validate()) {
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['result']);
+                }
+            } else {
+                if ($model->validate() && $skj->validate()) {
+                    $model->save(false);
+                    $skj->save(false);
+                    $this->ifSuccess();
+                    return $this->redirect(['result']);
+                }
             }
         }
 
         return $this->render('bhgn6', [
             'model' => $model,
             'model1' => $model,
+            'skj' => $skj,
+            'skjQuestion' => SkjQuestion::getBySection(6),
             'disabled' => $disabled,
             'dataProvider' => $dataProvider,
         ]);
@@ -393,6 +497,14 @@ class HexacoController extends Controller
             'data' => Main::resultAnda($id),
         ];
 
+        $skj = $model->skj;
+        $skjIndex = null;
+        $tahapSkj = '';
+        if ($skj && $skj->isComplete()) {
+            $skjIndex = $skj->skor;
+            $tahapSkj = Skj::tahap($skjIndex);
+        }
+
         return $this->render('result', [
             'model' => $model,
             'dataArr' => $dataArr,
@@ -400,6 +512,8 @@ class HexacoController extends Controller
             'id' => $id,
             'bil' => 1,
             'labelDimensi' => Main::labelDimensiAnda($id),
+            'skjIndex' => $skjIndex,
+            'tahapSkj' => $tahapSkj,
         ]);
     }
 
@@ -416,6 +530,14 @@ class HexacoController extends Controller
             'data' => Main::resultAnda($id),
         ];
 
+        $skj = $model->skj;
+        $skjIndex = null;
+        $tahapSkj = '';
+        if ($skj && $skj->isComplete()) {
+            $skjIndex = $skj->skor;
+            $tahapSkj = Skj::tahap($skjIndex);
+        }
+
         return $this->render('view-result', [
             'demo' => $demo,
             'model' => $model,
@@ -424,6 +546,8 @@ class HexacoController extends Controller
             'id' => $id,
             'bil' => 1,
             'labelDimensi' => Main::labelDimensiAnda($id),
+            'skjIndex' => $skjIndex,
+            'tahapSkj' => $tahapSkj,
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace app\models\hexaco;
 use kartik\popover\PopoverX;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use yii\helpers\Html;
 
 /**
@@ -16,8 +17,12 @@ use yii\helpers\Html;
  */
 class Main extends \yii\db\ActiveRecord
 {
+    const SCENARIO_SEARCH = 'search';
 
     public $year;
+    public $nama_penuh;
+    public $jantina;
+    public $umur;
 
     /**
      * {@inheritdoc}
@@ -33,9 +38,9 @@ class Main extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['year'], 'integer'],
-            [['icno'], 'required'],
-            [['create_dt'], 'safe'],
+            [['year', 'umur'], 'integer'],
+            [['icno'], 'required', 'except' => self::SCENARIO_SEARCH],
+            [['create_dt', 'nama_penuh', 'jantina'], 'safe'],
             [['icno'], 'string', 'max' => 12],
         ];
     }
@@ -363,6 +368,11 @@ class Main extends \yii\db\ActiveRecord
         return $this->hasOne(Demo::className(), ['main_id' => 'id']);
     }
 
+    public function getSkj()
+    {
+        return $this->hasOne(Skj::className(), ['main_id' => 'id']);
+    }
+
     public function search($params)
     {
         $query = self::find();
@@ -371,15 +381,118 @@ class Main extends \yii\db\ActiveRecord
             'query' => $query,
         ]);
 
-        $this->load($params);
+        $this->scenario = self::SCENARIO_SEARCH;
+        $this->loadFilters($params);
 
         if (!$this->validate()) {
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['YEAR(created_at)' => $this->year]);
+        $query->joinWith('demo', false);
+
+        $this->applyFilters($query, 'hexaco_main', 'hexaco_demo');
 
         return $dataProvider;
+    }
+
+    /**
+     * Loads search filter parameters and normalises the assessment year.
+     *
+     * When no year is supplied it defaults to the current year, preserving the
+     * historical behaviour of the admin data page. An empty string (from the
+     * "Semua Tahun" option) means "all years" and is left untouched.
+     *
+     * @param array $params
+     */
+    public function loadFilters($params)
+    {
+        $this->load($params);
+
+        if ($this->year === null) {
+            $this->year = date('Y');
+        }
+    }
+
+    /**
+     * Applies the common filter conditions to a query.
+     *
+     * Shared by the grid data provider and the fast CSV export so both always
+     * interpret the same filter parameters identically.
+     *
+     * @param Query $query
+     * @param string $mainAlias alias of the hexaco_main table in $query
+     * @param string $demoAlias alias of the hexaco_demo table in $query
+     */
+    public function applyFilters(Query $query, $mainAlias, $demoAlias)
+    {
+        $query->andFilterWhere(['like', $mainAlias . '.icno', $this->icno]);
+        $query->andFilterWhere(['like', $demoAlias . '.nama_penuh', $this->nama_penuh]);
+        $query->andFilterWhere([$demoAlias . '.jantina' => $this->jantina]);
+        $query->andFilterWhere([$demoAlias . '.umur' => $this->umur]);
+
+        if ($this->year !== null && $this->year !== '') {
+            $query->andFilterWhere(['YEAR(' . $mainAlias . '.create_dt)' => $this->year]);
+        }
+    }
+
+    /**
+     * Computes the 24 HEXACO sub-dimension indices from raw item values.
+     *
+     * Mirrors the 24 instance getters (SincerityIndex ... UnconventionalityIndex)
+     * by reusing FormulaIndeks() and reverseSkor(). Returns null for any index
+     * whose underlying item values are missing (legacy incomplete records) so
+     * the caller can export a blank cell instead of raising notices.
+     *
+     * @param array $items associative array keyed by "item1".."item60"
+     * @return array|null[] 24 indices in the same order as the admin export
+     */
+    public static function indexesFromItems($items)
+    {
+        $get = function ($key) use ($items) {
+            return array_key_exists($key, $items) ? $items[$key] : null;
+        };
+        $rev = function ($key) use ($get) {
+            $value = $get($key);
+            return $value === null ? null : self::reverseSkor($value);
+        };
+        $idx = function ($values) {
+            foreach ($values as $value) {
+                if ($value === null) {
+                    return null;
+                }
+            }
+            if (count($values) === 2) {
+                return self::FormulaIndeks($values[0], $values[1]);
+            }
+            return self::FormulaIndeks($values[0], $values[1], $values[2]);
+        };
+
+        return [
+            $idx([$get('item1'), $rev('item2'), $get('item3')]),
+            $idx([$rev('item4'), $get('item5'), $rev('item6')]),
+            $idx([$get('item7'), $rev('item8')]),
+            $idx([$rev('item9'), $rev('item10')]),
+            $idx([$get('item11'), $get('item12'), $rev('item13')]),
+            $idx([$get('item14'), $rev('item15')]),
+            $idx([$get('item16'), $rev('item17')]),
+            $idx([$get('item18'), $get('item19'), $rev('item20')]),
+            $idx([$get('item21'), $rev('item22'), $rev('item23')]),
+            $idx([$rev('item24'), $get('item25'), $get('item26')]),
+            $idx([$get('item27'), $get('item28')]),
+            $idx([$get('item29'), $rev('item30')]),
+            $idx([$get('item31'), $get('item32')]),
+            $idx([$rev('item33'), $get('item34'), $get('item35')]),
+            $idx([$rev('item36'), $get('item37'), $rev('item38')]),
+            $idx([$rev('item39'), $rev('item40')]),
+            $idx([$get('item41'), $rev('item42')]),
+            $idx([$get('item43'), $rev('item44')]),
+            $idx([$rev('item45'), $get('item46'), $rev('item47')]),
+            $idx([$rev('item48'), $rev('item49'), $rev('item50')]),
+            $idx([$rev('item51'), $get('item52')]),
+            $idx([$rev('item53'), $get('item54')]),
+            $idx([$get('item55'), $get('item56'), $rev('item57')]),
+            $idx([$rev('item58'), $get('item59'), $rev('item60')]),
+        ];
     }
 
     public static function reverseSkor($skorItem)
