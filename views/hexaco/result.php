@@ -434,11 +434,11 @@ use kartik\popover\PopoverX;
                 <?php
                 $skjLabelClass = 'label-default';
                 if ($tahapSkj === 'RENDAH') {
-                    $skjLabelClass = 'label-danger';
+                    $skjLabelClass = 'label-success';
                 } elseif ($tahapSkj === 'SEDERHANA') {
                     $skjLabelClass = 'label-warning';
                 } elseif ($tahapSkj === 'TINGGI') {
-                    $skjLabelClass = 'label-success';
+                    $skjLabelClass = 'label-danger';
                 }
                 ?>
                 <span class="label <?= $skjLabelClass ?>" style="font-size: 14px; padding: 8px 16px;"><?= $tahapSkj ? $tahapSkj : '—' ?></span>

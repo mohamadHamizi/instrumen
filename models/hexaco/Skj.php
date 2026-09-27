@@ -96,15 +96,15 @@ class Skj extends \yii\db\ActiveRecord
     {
         $tahap = '';
 
-        if ($val <= 49.99) {
+        if ($val <= 33.33) {
             $tahap = 'RENDAH';
         }
 
-        if ($val >= 50 && $val <= 79.99) {
+        if ($val >= 33.34 && $val <= 66.66) {
             $tahap = 'SEDERHANA';
         }
 
-        if ($val >= 80) {
+        if ($val >= 66.67) {
             $tahap = 'TINGGI';
         }
 
